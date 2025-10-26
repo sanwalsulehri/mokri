@@ -37,14 +37,14 @@ export function Banner({
       case 'success':
         return {
           container: 'bg-muted border-border text-foreground',
-          icon: 'text-white',
+          icon: 'text-foreground',
           iconBg: '',
           cross: 'text-foreground/70'
         };
       case 'warning':
         return {
           container: 'bg-muted border-border text-foreground',
-          icon: 'text-white',
+          icon: 'text-foreground',
           iconBg: '',
           cross: 'text-foreground/70'
         };
@@ -58,21 +58,21 @@ export function Banner({
       case 'info':
         return {
           container: 'bg-muted border-border text-foreground',
-          icon: 'text-white',
+          icon: 'text-foreground',
           iconBg: '',
           cross: 'text-foreground/70'
         };
       case 'gradient':
         return {
           container: 'bg-muted border-border text-foreground',
-          icon: 'text-white',
+          icon: 'text-foreground',
           iconBg: '',
           cross: 'text-foreground/70'
         };
       default:
         return {
           container: 'bg-muted border-border text-foreground',
-          icon: 'text-white',
+          icon: 'text-foreground',
           iconBg: '',
           cross: 'text-foreground/70'
         };
@@ -156,7 +156,7 @@ export function Banner({
       exit={{ opacity: 0, y: -10 }}
       transition={{ duration: 0.2, ease: "easeOut" }}
       className={`
-        ${headerStyle ? 'border-b-0' : 'border rounded-lg'} shadow-sm
+        ${headerStyle ? 'border-b-0' : 'border rounded-lg'}
         ${variantStyles.container}
         ${headerStyle ? 'p-4' : sizeStyles.container}
         ${className}
