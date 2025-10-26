@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ThemeToggle } from "../../components/theme-toggle";
 import { Button } from "../../components/ui/button";
 import { Badge } from "../../components/ui/badge";
@@ -15,10 +15,20 @@ import { Drawer } from "../../components/ui/drawer";
 import { Breadcrumbs, BreadcrumbPresets } from "../../components/ui/breadcrumbs";
 import { Tabs, TabPresets, AnimationPresets } from "../../components/ui/tabs";
 import { Pagination, PaginationPresets } from "../../components/ui/pagination";
-export default function page() {
+import { ToastProvider, useToast } from "../../components/ui/toast";
+import { Banner, BannerPresets } from "../../components/ui/banner";
+import { Loader, LoaderPresets } from "../../components/ui/loader";
+import { ProgressBar, ProgressBarPresets } from "../../components/ui/progress-bar";
+function CompPageContent() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isLeftDrawerOpen, setIsLeftDrawerOpen] = useState(false);
   const [isBottomDrawerOpen, setIsBottomDrawerOpen] = useState(false);
+  const [dismissedBanners, setDismissedBanners] = useState<Set<string>>(new Set());
+  const { addToast } = useToast();
+
+  const handleBannerDismiss = (bannerId: string) => {
+    setDismissedBanners(prev => new Set(prev).add(bannerId));
+  };
   
   // Pagination states
   const [currentPage1, setCurrentPage1] = useState(1);
@@ -747,8 +757,321 @@ export default function page() {
         </div>
       </Drawer>
 
+      {/* Progress Bar Components */}
+      <div className="space-y-6">
+        <div className="text-center space-y-2">
+          <h2 className="text-xl font-semibold">Progress Bar Components</h2>
+          <p className="text-foreground/70">Different progress indicators and variants</p>
+        </div>
+        
+        <div className="space-y-6">
+          {/* Basic Progress Bars */}
+          <div>
+            <h3 className="text-sm font-medium mb-3">Basic Progress Bars</h3>
+            <div className="space-y-4">
+              <ProgressBar value={25} />
+              <ProgressBar value={75} color="secondary" backgroundColor="accent" />
+            </div>
+          </div>
+
+          {/* Scroll Progress Bar */}
+          <div>
+            <h3 className="text-sm font-medium mb-3">Scroll Progress Bar</h3>
+            <div className="space-y-4">
+              <ProgressBar type="scroll" scrollProgress={true} />
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      {/* Loader Components */}
+      <div className="space-y-6">
+        <div className="text-center space-y-2">
+          <h2 className="text-xl font-semibold">Loader Components</h2>
+          <p className="text-foreground/70">Different loading animations and variants</p>
+        </div>
+        
+        <div className="space-y-6">
+          {/* Spinner Variants */}
+          <div>
+            <h3 className="text-sm font-medium mb-3">Spinner Loaders</h3>
+            <div className="flex items-center gap-6">
+              <div className="flex items-center gap-2">
+                <Loader size="sm" variant="spinner" />
+                <span className="text-sm text-foreground/70">Small</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Loader size="md" variant="spinner" />
+                <span className="text-sm text-foreground/70">Medium</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Loader size="lg" variant="spinner" />
+                <span className="text-sm text-foreground/70">Large</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Dots Variants */}
+          <div>
+            <h3 className="text-sm font-medium mb-3">Dots Loaders</h3>
+            <div className="flex items-center gap-6">
+              <div className="flex items-center gap-2">
+                <Loader size="sm" variant="dots" />
+                <span className="text-sm text-foreground/70">Small</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Loader size="md" variant="dots" />
+                <span className="text-sm text-foreground/70">Medium</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Loader size="lg" variant="dots" />
+                <span className="text-sm text-foreground/70">Large</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Pulse Variants */}
+          <div>
+            <h3 className="text-sm font-medium mb-3">Pulse Loaders</h3>
+            <div className="flex items-center gap-6">
+              <div className="flex items-center gap-2">
+                <Loader size="sm" variant="pulse" />
+                <span className="text-sm text-foreground/70">Small</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Loader size="md" variant="pulse" />
+                <span className="text-sm text-foreground/70">Medium</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Loader size="lg" variant="pulse" />
+                <span className="text-sm text-foreground/70">Large</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Bars Variants */}
+          <div>
+            <h3 className="text-sm font-medium mb-3">Bars Loaders</h3>
+            <div className="flex items-center gap-6">
+              <div className="flex items-center gap-2">
+                <Loader size="sm" variant="bars" />
+                <span className="text-sm text-foreground/70">Small</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Loader size="md" variant="bars" />
+                <span className="text-sm text-foreground/70">Medium</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Loader size="lg" variant="bars" />
+                <span className="text-sm text-foreground/70">Large</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Color Variants */}
+          <div>
+            <h3 className="text-sm font-medium mb-3">Color Variants</h3>
+            <div className="flex items-center gap-6">
+              <div className="flex items-center gap-2">
+                <Loader color="primary" />
+                <span className="text-sm text-foreground/70">Primary</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Loader color="secondary" />
+                <span className="text-sm text-foreground/70">Secondary</span>
+              </div>
+             
+            </div>
+          </div>
+
+          {/* Preset Examples */}
+          <div>
+            <h3 className="text-sm font-medium mb-3">Preset Examples</h3>
+            <div className="flex items-center gap-6">
+              <div className="flex items-center gap-2">
+                <Loader {...LoaderPresets.smallSpinner} />
+                <span className="text-sm text-foreground/70">Small Spinner</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Loader {...LoaderPresets.mediumDots} />
+                <span className="text-sm text-foreground/70">Medium Dots</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Loader {...LoaderPresets.largePulse} />
+                <span className="text-sm text-foreground/70">Large Pulse</span>
+              </div>
+             
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Banner Components */}
+      <div className="space-y-6">
+        <div className="text-center space-y-2">
+          <h2 className="text-xl font-semibold">Banner Components</h2>
+          <p className="text-foreground/70">Different banner variants and sizes</p>
+        </div>
+        
+        <div className="space-y-4">
+          {/* Success Alert */}
+          <div>
+            <h3 className="text-sm font-medium mb-2">Success Alert</h3>
+            <Banner
+              variant="success"
+              title="Success! Your changes have been saved"
+              description="This is an alert with icon, title and description."
+            />
+          </div>
+
+          {/* Info Alert */}
+          <div>
+            <h3 className="text-sm font-medium mb-2">Info Alert</h3>
+            <Banner
+              variant="info"
+              title="This Alert has a title and an icon."
+              description="This is an info alert with description."
+            />
+          </div>
+
+          {/* Error Alert */}
+          <div>
+            <h3 className="text-sm font-medium mb-2">Error Alert</h3>
+            <Banner
+            size="sm"
+              variant="error"
+              title="Unable to process your payment."
+              description="Please verify your billing information and try again."
+            >
+              <ul className="mt-4 space-y-1.5 text-sm opacity-90">
+                <li>• Check your card details</li>
+                <li>• Ensure sufficient funds</li>
+                <li>• Verify billing address</li>
+              </ul>
+            </Banner>
+          </div>
+        </div>
+      </div>
+
+      {/* Toast Components */}
+      <div className="space-y-6">
+        <div className="text-center space-y-2">
+          <h2 className="text-xl font-semibold">Toast Notifications</h2>
+          <p className="text-foreground/70">Click any button to see toast notifications</p>
+        </div>
+        
+        <div className="flex gap-4 flex-wrap">
+          <Button 
+            onClick={() => addToast({
+              title: "Success!",
+              description: "Your action was completed successfully.",
+              variant: "success"
+            })}
+          >
+            Success Toast
+          </Button>
+          
+          <Button 
+            onClick={() => addToast({
+              title: "Error Alert",
+              description: "Something went wrong. Please try again.",
+              variant: "error"
+            })}
+            bg={false}
+          >
+            Error Toast
+          </Button>
+          
+          <Button 
+            onClick={() => addToast({
+              title: "Warning",
+              description: "Please review your input before proceeding.",
+              variant: "warning"
+            })}
+            bg={false} 
+            outline={true}
+          >
+            Warning Toast
+          </Button>
+          
+          <Button 
+            onClick={() => addToast({
+              title: "Information",
+              description: "Here's some useful information for you.",
+              variant: "default"
+            })}
+          >
+            Info Toast
+          </Button>
+          
+          <Button 
+            onClick={() => addToast({
+              title: "Action Required",
+              description: "Please confirm this action to continue.",
+              variant: "default",
+              action: {
+                label: "Confirm",
+                onClick: () => addToast({
+                  title: "Confirmed!",
+                  description: "Action has been confirmed.",
+                  variant: "success"
+                })
+              }
+            })}
+            bg={false}
+          >
+            Interactive Toast
+          </Button>
+          
+          <Button 
+            onClick={() => addToast({
+              title: "Persistent Message",
+              description: "This toast will stay until you manually close it.",
+              duration: 0
+            })}
+            bg={false} 
+            outline={true}
+          >
+            Persistent Toast
+          </Button>
+        </div>
+        
+        <div className="text-center">
+          <Button 
+            onClick={() => {
+              addToast({
+                title: "Welcome!",
+                description: "Welcome to our toast notification system!",
+                variant: "success"
+              });
+              setTimeout(() => addToast({
+                title: "Features",
+                description: "Smooth animations and interactive elements.",
+                variant: "default"
+              }), 500);
+              setTimeout(() => addToast({
+                title: "Customizable",
+                description: "Easy to customize colors, timing, and behavior.",
+                variant: "warning"
+              }), 1000);
+            }}
+          >
+            Show All Toasts
+          </Button>
+        </div>
+      </div>
+
       {/* Footer Section */}
     </div>
+  );
+}
+
+export default function page() {
+  return (
+    <ToastProvider>
+      <CompPageContent />
+    </ToastProvider>
   );
 }
 
