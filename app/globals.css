@@ -11,9 +11,9 @@
 [data-theme="light"] {
   --background: #ffffff;
   --foreground: #171717;
-  --secondary: #262626;
+  --secondary: #E5E5E5;
   --destructive: #9E4042;
-  --muted: #151515;
+  --muted: #F3F4F6;
 }
 
 [data-theme="dark"] {

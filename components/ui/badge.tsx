@@ -16,11 +16,11 @@ interface BadgeProps {
       
       switch (variant) {
         case 'secondary':
-          return 'bg-secondary text-white';
+          return 'bg-secondary text-foreground';
         case 'destructive':
           return 'bg-destructive text-white';
         case 'muted':
-          return 'bg-muted text-white';
+          return 'bg-muted text-foreground';
         default:
           return 'bg-foreground text-background';
       }
@@ -29,7 +29,7 @@ interface BadgeProps {
     return (
      <button 
        onClick={onClick}
-       className={`px-2 py-1 flex items-center gap-1 leading-tight rounded-full text-xs font-medium transition-all duration-200 ease-in-out ${getVariantClasses()} ${className}`}
+       className={`px-2 py-1 flex justify-center items-center gap-1 leading-tight rounded-full text-xs font-medium transition-all duration-200 ease-in-out ${getVariantClasses()} ${className}`}
      >
        {children}
      </button>
