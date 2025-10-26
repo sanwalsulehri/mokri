@@ -21,7 +21,7 @@ export function Card({
   return (
     <div 
       className={`
-        w-full max-w-md bg-background border border-border rounded-lg 
+        w-full max-w-[450px] bg-background border border-border rounded-lg 
         shadow-md p-6 space-y-6
         ${className}
       `}
