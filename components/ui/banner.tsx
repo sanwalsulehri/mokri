@@ -50,10 +50,10 @@ export function Banner({
         };
       case 'error':
         return {
-          container: 'bg-muted border-border text-red-400',
-          icon: 'text-red-400',
+          container: 'bg-muted border-border text-red-600',
+          icon: 'text-red-600',
           iconBg: '',
-          cross: 'text-red-400'
+          cross: 'text-red-600'
         };
       case 'info':
         return {

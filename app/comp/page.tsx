@@ -34,6 +34,8 @@ import Skeleton, {
 import Avatar from "../../components/ui/avatar";
 import { DropdownMenu, DropdownIcons } from "../../components/ui/dropdown-menu";
 import { Image, sampleUsers } from "../../components/ui/image";
+import Typography, { TypographyPresets, Heading1, Heading2, Heading3, Body, Small, Caption, Lead } from "../../components/ui/typography";
+import Container from "../../components/ui/container";
 function CompPageContent() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isLeftDrawerOpen, setIsLeftDrawerOpen] = useState(false);
@@ -1194,6 +1196,94 @@ function CompPageContent() {
         </div>
       </div>
 
+      {/* Typography Components */}
+      <div className="space-y-6">
+        <div className="text-center space-y-2">
+          <h2 className="text-xl font-semibold">Typography Components</h2>
+          <p className="text-sm text-muted-foreground">Consistent text styling with variants and presets</p>
+        </div>
+        
+        <div className="space-y-6">
+          <div>
+            <h3 className="text-sm font-medium mb-3">Typography Examples</h3>
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <h4 className="text-sm font-medium">Heading Variants</h4>
+                <div className="space-y-3">
+                  <Heading1>Heading 1 - Main Title</Heading1>
+                  <Heading2>Heading 2 - Section Title</Heading2>
+                  <Heading3>Heading 3 - Subsection Title</Heading3>
+                  <Typography variant="h4">Heading 4 - Minor Heading</Typography>
+                  <Typography variant="h5">Heading 5 - Small Heading</Typography>
+                  <Typography variant="h6">Heading 6 - Smallest Heading</Typography>
+                </div>
+              </div>
+              
+              <div className="space-y-2">
+                <h4 className="text-sm font-medium">Text Variants</h4>
+                <div className="space-y-3">
+                  <Lead>This is a lead paragraph that stands out and draws attention to important content.</Lead>
+                  <Body>This is a regular body text paragraph that contains the main content of your page.</Body>
+                  <Small>This is small text used for secondary information or captions.</Small>
+                  <Caption>This is caption text for very small details or metadata.</Caption>
+                </div>
+              </div>
+              
+            
+              
+           
+              
+           
+              
+             
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Container Components */}
+      <div className="space-y-6">
+        <div className="text-center space-y-2">
+          <h2 className="text-xl font-semibold">Container Components</h2>
+          <p className="text-sm text-muted-foreground">Simple containers with max-width, centering, and padding</p>
+        </div>
+        
+        <div className="space-y-6">
+          <div>
+            <h3 className="text-sm font-medium mb-3">Container Examples</h3>
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <h4 className="text-sm font-medium">Size Variants</h4>
+                <div className="space-y-3">
+                  <Container size="xs" className="bg-muted py-4">
+                    <Typography variant="small">XS Container (max-w-sm)</Typography>
+                  </Container>
+                  <Container size="sm" className="bg-muted py-4">
+                    <Typography variant="small">SM Container (max-w-4xl)</Typography>
+                  </Container>
+                  <Container size="md" className="bg-muted py-4">
+                    <Typography variant="small">MD Container (max-w-5xl)</Typography>
+                  </Container>
+                  <Container size="lg" className="bg-muted py-4">
+                    <Typography variant="small">LG Container (max-w-6xl)</Typography>
+                  </Container>
+                  <Container size="xl" className="bg-muted py-4">
+                    <Typography variant="small">XL Container (max-w-7xl)</Typography>
+                  </Container>
+                  <Container size="2xl" className="bg-muted py-4">
+                    <Typography variant="small">2XL Container (max-w-8xl)</Typography>
+                  </Container>
+                </div>
+              </div>
+              
+          
+              
+            
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Skeleton Components */}
       <div className="space-y-6">
         <div className="text-center space-y-2">
@@ -1298,7 +1388,6 @@ function CompPageContent() {
         </div>
       </div>
 
-      {/* Footer Section */}
     </div>
   );
 }
