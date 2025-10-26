@@ -10,12 +10,25 @@ import { TextArea } from "../../components/ui/textarea";
 import { Switch } from "../../components/ui/switch";
 import { Modal, ModalTrigger } from "../../components/ui/modal";
 import { Tooltip, TooltipWrapper } from "../../components/ui/tooltip";
-import { Card, CardGrid } from "../../components/ui/Card";
+import { Card } from "../../components/ui/card";
 import { Drawer } from "../../components/ui/drawer";
+import { Breadcrumbs, BreadcrumbPresets } from "../../components/ui/breadcrumbs";
+import { Tabs, TabPresets, AnimationPresets } from "../../components/ui/tabs";
+import { Pagination, PaginationPresets } from "../../components/ui/pagination";
 export default function page() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isLeftDrawerOpen, setIsLeftDrawerOpen] = useState(false);
   const [isBottomDrawerOpen, setIsBottomDrawerOpen] = useState(false);
+  
+  // Pagination states
+  const [currentPage1, setCurrentPage1] = useState(1);
+  const [currentPage2, setCurrentPage2] = useState(3);
+  const [currentPage3, setCurrentPage3] = useState(1);
+  const [currentPage4, setCurrentPage4] = useState(5);
+  const [currentPage5, setCurrentPage5] = useState(2);
+  const [currentPage6, setCurrentPage6] = useState(1);
+  const [currentPage7, setCurrentPage7] = useState(1);
+  const [currentPage8, setCurrentPage8] = useState(15);
 
   return (
     <div className="min-h-screen space-y-10">
@@ -126,12 +139,12 @@ export default function page() {
                   </div>
                 </div>
                 <div className="flex mt-10 justify-center">
-                  <Button size="lg">Get Started</Button>
+                  <Button>Get Started</Button>
                 </div>
               </div>
             }
           >
-            <Button variant="secondary">Open Large Modal</Button>
+            <Button>Open Large Modal</Button>
           </ModalTrigger>
         </div>
       </div>
@@ -190,6 +203,428 @@ export default function page() {
             <Button bg={false} outline={true} className="w-full min-h-[34px]">Create Account</Button>
           </div>
         </Card>
+      </div>
+
+      <div className="space-y-4">
+        <h2 className="text-lg font-semibold">Breadcrumb Components</h2>
+        <div className="space-y-4">
+          <div>
+            <h3 className="text-sm font-medium mb-2">Basic Breadcrumb</h3>
+            <Breadcrumbs 
+              items={[
+                { label: 'Dashboard' },
+                { label: 'Settings' },
+                { label: 'Profile' }
+              ]}
+            />
+          </div>
+          
+          <div>
+            <h3 className="text-sm font-medium mb-2">With Icons</h3>
+            <Breadcrumbs 
+              items={[
+                { label: 'Documents', icon: (
+                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                )},
+                { label: 'Projects' },
+                { label: 'Current Project' }
+              ]}
+            />
+          </div>
+
+          <div>
+            <h3 className="text-sm font-medium mb-2">File System Navigation</h3>
+            <Breadcrumbs 
+              items={BreadcrumbPresets.fileSystem(['Projects', 'Web App', 'Components'])}
+            />
+          </div>
+
+          <div>
+            <h3 className="text-sm font-medium mb-2">E-commerce Navigation</h3>
+            <Breadcrumbs 
+              items={BreadcrumbPresets.ecommerce('Electronics', 'Phones', 'iPhone 15')}
+            />
+          </div>
+
+          <div>
+            <h3 className="text-sm font-medium mb-2">Admin Panel</h3>
+            <Breadcrumbs 
+              items={BreadcrumbPresets.admin('Users', 'User Management')}
+            />
+          </div>
+
+          <div>
+            <h3 className="text-sm font-medium mb-2">Custom Separator</h3>
+            <Breadcrumbs 
+              items={[
+                { label: 'Home' },
+                { label: 'Category' },
+                { label: 'Subcategory' }
+              ]}
+              separator={
+                <svg className="h-4 w-4 text-foreground/40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+                </svg>
+              }
+            />
+          </div>
+        </div>
+      </div>
+
+      <div className="space-y-4">
+        <h2 className="text-lg font-semibold">Tabs Components</h2>
+        <div className="space-y-6">
+          {/* Default Tabs - Smooth Animation */}
+          <div>
+            <h3 className="text-sm font-medium mb-3">Default Tabs (Smooth Animation)</h3>
+            <Tabs
+              tabs={[
+                { id: 'tab1', label: 'Overview' },
+                { id: 'tab2', label: 'Analytics' },
+                { id: 'tab3', label: 'Settings' }
+              ]}
+              contents={[
+                {
+                  id: 'tab1',
+                  content: (
+                    <div className="space-y-4">
+                      <h4 className="text-lg font-semibold">Overview</h4>
+                      <p className="text-foreground/70">
+                        This is the overview tab content with smooth animations. Notice the gentle transitions.
+                      </p>
+                      <div className="grid grid-cols-3 gap-4">
+                        <div className="p-4 bg-foreground/5 rounded-lg text-center">
+                          <div className="text-2xl font-bold text-blue-500">24</div>
+                          <div className="text-sm text-foreground/60">Total Users</div>
+                        </div>
+                        <div className="p-4 bg-foreground/5 rounded-lg text-center">
+                          <div className="text-2xl font-bold text-green-500">156</div>
+                          <div className="text-sm text-foreground/60">Active Sessions</div>
+                        </div>
+                        <div className="p-4 bg-foreground/5 rounded-lg text-center">
+                          <div className="text-2xl font-bold text-purple-500">89%</div>
+                          <div className="text-sm text-foreground/60">Uptime</div>
+                        </div>
+                      </div>
+                    </div>
+                  )
+                },
+                {
+                  id: 'tab2',
+                  content: (
+                    <div className="space-y-4">
+                      <h4 className="text-lg font-semibold">Analytics</h4>
+                      <p className="text-foreground/70">
+                        Analytics dashboard with charts and metrics. Smooth content transitions.
+                      </p>
+                      <div className="h-32 bg-foreground/5 rounded-lg flex items-center justify-center">
+                        <span className="text-foreground/60">Chart placeholder</span>
+                      </div>
+                    </div>
+                  )
+                },
+                {
+                  id: 'tab3',
+                  content: (
+                    <div className="space-y-4">
+                      <h4 className="text-lg font-semibold">Settings</h4>
+                      <div className="space-y-3">
+                        <Switch title="Enable Notifications" leftLabel="Off" rightLabel="On" />
+                        <Switch title="Dark Mode" leftLabel="Light" rightLabel="Dark" />
+                        <Switch title="Auto-save" leftLabel="Off" rightLabel="On" />
+                      </div>
+                    </div>
+                  )
+                }
+              ]}
+              animations={AnimationPresets.smooth}
+            />
+          </div>
+
+          {/* Pills Tabs - Bouncy Animation */}
+          <div>
+            <h3 className="text-sm font-medium mb-3">Pills Tabs (Bouncy Animation)</h3>
+            <Tabs
+              variant="pills"
+              tabs={TabPresets.dashboard}
+              contents={[
+                {
+                  id: 'overview',
+                  content: (
+                    <div className="space-y-4">
+                      <h4 className="text-lg font-semibold">Dashboard Overview</h4>
+                      <p className="text-foreground/70">Welcome to your dashboard overview with playful bouncy animations!</p>
+                    </div>
+                  )
+                },
+                {
+                  id: 'analytics',
+                  content: (
+                    <div className="space-y-4">
+                      <h4 className="text-lg font-semibold">Analytics Data</h4>
+                      <p className="text-foreground/70">View your analytics and performance metrics with spring-like transitions.</p>
+                    </div>
+                  )
+                },
+                {
+                  id: 'settings',
+                  content: (
+                    <div className="space-y-4">
+                      <h4 className="text-lg font-semibold">Settings Panel</h4>
+                      <p className="text-foreground/70">Configure your application settings with dynamic animations.</p>
+                    </div>
+                  )
+                }
+              ]}
+              animations={AnimationPresets.bouncy}
+            />
+          </div>
+
+          {/* Underline Tabs - Snappy Animation */}
+          <div>
+            <h3 className="text-sm font-medium mb-3">Underline Tabs (Snappy Animation)</h3>
+            <Tabs
+              variant="underline"
+              tabs={TabPresets.profile}
+              contents={[
+                {
+                  id: 'personal',
+                  content: (
+                    <div className="space-y-4">
+                      <h4 className="text-lg font-semibold">Personal Information</h4>
+                      <p className="text-foreground/70">Fast and responsive animations for quick form interactions.</p>
+                      <div className="grid grid-cols-2 gap-4">
+                        <Input isLabel={true} label="First Name" placeholder="Enter first name" />
+                        <Input isLabel={true} label="Last Name" placeholder="Enter last name" />
+                      </div>
+                      <Input isLabel={true} label="Email" type="email" placeholder="Enter email" />
+                    </div>
+                  )
+                },
+                {
+                  id: 'security',
+                  content: (
+                    <div className="space-y-4">
+                      <h4 className="text-lg font-semibold">Security Settings</h4>
+                      <p className="text-foreground/70">Snappy transitions perfect for productivity applications.</p>
+                      <Input isLabel={true} label="Current Password" type="password" />
+                      <Input isLabel={true} label="New Password" type="password" />
+                      <Input isLabel={true} label="Confirm Password" type="password" />
+                    </div>
+                  )
+                },
+                {
+                  id: 'notifications',
+                  content: (
+                    <div className="space-y-4">
+                      <h4 className="text-lg font-semibold">Notification Preferences</h4>
+                      <p className="text-foreground/70">Immediate feedback with quick animations.</p>
+                      <div className="space-y-3">
+                        <Switch title="Email Notifications" leftLabel="Off" rightLabel="On" />
+                        <Switch title="Push Notifications" leftLabel="Off" rightLabel="On" />
+                        <Switch title="SMS Notifications" leftLabel="Off" rightLabel="On" />
+                      </div>
+                    </div>
+                  )
+                },
+                {
+                  id: 'billing',
+                  content: (
+                    <div className="space-y-4">
+                      <h4 className="text-lg font-semibold">Billing Information</h4>
+                      <p className="text-foreground/70">Manage your subscription and payment methods with fast transitions.</p>
+                    </div>
+                  )
+                }
+              ]}
+              animations={AnimationPresets.snappy}
+            />
+          </div>
+
+          {/* Different Sizes with Elegant Animation */}
+          <div>
+            <h3 className="text-sm font-medium mb-3">Different Sizes (Elegant Animation)</h3>
+            <div className="space-y-4">
+              <div>
+                <h4 className="text-sm font-medium mb-2">Small Size - Elegant</h4>
+                <Tabs
+                  size="sm"
+                  tabs={[
+                    { id: 'small1', label: 'Tab 1' },
+                    { id: 'small2', label: 'Tab 2' }
+                  ]}
+                  contents={[
+                    { id: 'small1', content: <p className="text-sm">Small tab with sophisticated animations</p> },
+                    { id: 'small2', content: <p className="text-sm">Elegant transitions for premium feel</p> }
+                  ]}
+                  animations={AnimationPresets.elegant}
+                />
+              </div>
+              
+              <div>
+                <h4 className="text-sm font-medium mb-2">Large Size - Minimal</h4>
+                <Tabs
+                  size="lg"
+                  tabs={[
+                    { id: 'large1', label: 'Large Tab 1' },
+                    { id: 'large2', label: 'Large Tab 2' }
+                  ]}
+                  contents={[
+                    { id: 'large1', content: <p className="text-lg">Large tab with minimal, clean animations</p> },
+                    { id: 'large2', content: <p className="text-lg">Subtle transitions for content focus</p> }
+                  ]}
+                  animations={AnimationPresets.minimal}
+                />
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div className="space-y-4">
+        <h2 className="text-lg font-semibold">Pagination Components</h2>
+        <div className="space-y-6">
+          {/* Default Pagination */}
+          <div>
+            <h3 className="text-sm font-medium mb-3">Default Pagination</h3>
+            <div className="space-y-4">
+              <div>
+                <h4 className="text-sm font-medium mb-2">Full Featured (Page {currentPage1} of 10)</h4>
+                <Pagination
+                  currentPage={currentPage1}
+                  totalPages={10}
+                  onPageChange={setCurrentPage1}
+                  {...PaginationPresets.full}
+                />
+              </div>
+              
+              <div>
+                <h4 className="text-sm font-medium mb-2">Simple (Page {currentPage2} of 8)</h4>
+                <Pagination
+                  currentPage={currentPage2}
+                  totalPages={8}
+                  onPageChange={setCurrentPage2}
+                  {...PaginationPresets.simple}
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Different Variants */}
+          <div>
+            <h3 className="text-sm font-medium mb-3">Different Variants</h3>
+            <div className="space-y-4">
+              <div>
+                <h4 className="text-sm font-medium mb-2">Minimal Variant (Page {currentPage3} of 6)</h4>
+                <Pagination
+                  currentPage={currentPage3}
+                  totalPages={6}
+                  onPageChange={setCurrentPage3}
+                  {...PaginationPresets.minimal}
+                />
+              </div>
+              
+              <div>
+                <h4 className="text-sm font-medium mb-2">Numbers Only (Page {currentPage4} of 12)</h4>
+                <Pagination
+                  currentPage={currentPage4}
+                  totalPages={12}
+                  onPageChange={setCurrentPage4}
+                  {...PaginationPresets.numbers}
+                />
+              </div>
+              
+              <div>
+                <h4 className="text-sm font-medium mb-2">Dots Variant (Page {currentPage5} of 5)</h4>
+                <Pagination
+                  currentPage={currentPage5}
+                  totalPages={5}
+                  onPageChange={setCurrentPage5}
+                  {...PaginationPresets.dots}
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Different Sizes */}
+          <div>
+            <h3 className="text-sm font-medium mb-3">Different Sizes</h3>
+            <div className="space-y-4">
+              <div>
+                <h4 className="text-sm font-medium mb-2">Small Size</h4>
+                <Pagination
+                  currentPage={currentPage1}
+                  totalPages={7}
+                  onPageChange={setCurrentPage1}
+                  size="sm"
+                  {...PaginationPresets.simple}
+                />
+              </div>
+              
+              <div>
+                <h4 className="text-sm font-medium mb-2">Medium Size (Default)</h4>
+                <Pagination
+                  currentPage={currentPage2}
+                  totalPages={7}
+                  onPageChange={setCurrentPage2}
+                  size="md"
+                  {...PaginationPresets.simple}
+                />
+              </div>
+              
+              <div>
+                <h4 className="text-sm font-medium mb-2">Large Size</h4>
+                <Pagination
+                  currentPage={currentPage3}
+                  totalPages={7}
+                  onPageChange={setCurrentPage3}
+                  size="lg"
+                  {...PaginationPresets.simple}
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Edge Cases */}
+          <div>
+            <h3 className="text-sm font-medium mb-3">Edge Cases</h3>
+            <div className="space-y-4">
+              <div>
+                <h4 className="text-sm font-medium mb-2">Single Page (Hidden)</h4>
+                <Pagination
+                  currentPage={1}
+                  totalPages={1}
+                  onPageChange={() => {}}
+                  {...PaginationPresets.full}
+                />
+                <p className="text-sm text-foreground/60 mt-2">Pagination is hidden when there's only one page</p>
+              </div>
+              
+              <div>
+                <h4 className="text-sm font-medium mb-2">Two Pages</h4>
+                <Pagination
+                  currentPage={currentPage6}
+                  totalPages={2}
+                  onPageChange={setCurrentPage6}
+                  {...PaginationPresets.simple}
+                />
+              </div>
+              
+              <div>
+                <h4 className="text-sm font-medium mb-2">Many Pages (with ellipsis)</h4>
+                <Pagination
+                  currentPage={currentPage8}
+                  totalPages={50}
+                  onPageChange={setCurrentPage8}
+                  {...PaginationPresets.full}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div className="space-y-4">
