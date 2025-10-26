@@ -746,6 +746,8 @@ export default function page() {
           </div>
         </div>
       </Drawer>
+
+      {/* Footer Section */}
     </div>
   );
 }
