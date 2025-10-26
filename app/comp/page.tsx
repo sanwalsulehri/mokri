@@ -14,6 +14,7 @@ export default function page() {
   return (
     <div className="min-h-screen space-y-10">
       <ThemeToggle />
+    
       <h1>Components</h1>
       <div className="flex gap-4 flex-wrap">
         <Button>Click me</Button>
@@ -118,7 +119,7 @@ export default function page() {
                     </ul>
                   </div>
                 </div>
-                <div className="flex justify-center">
+                <div className="flex mt-10 justify-center">
                   <Button size="lg">Get Started</Button>
                 </div>
               </div>
@@ -179,8 +180,8 @@ export default function page() {
             leftLabel="Remember me"
           />
           <div className="space-y-3">
-            <Button className="w-full">Sign In</Button>
-            <Button bg={false} outline={true} className="w-full">Create Account</Button>
+            <Button className="w-full min-h-[34px]">Sign In</Button>
+            <Button bg={false} outline={true} className="w-full min-h-[34px]">Create Account</Button>
           </div>
         </Card>
       </div>

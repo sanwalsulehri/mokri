@@ -108,14 +108,14 @@ export function DropDown({
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -5 }}
               transition={{ duration: 0.15, ease: "easeOut" }}
-              className="absolute z-50 py-2 w-full mt-1 bg-background border border-secondary rounded-lg shadow-lg max-h-60 overflow-auto"
+              className="absolute z-50 py-2 w-full mt-1 px-2 bg-background border border-secondary rounded-lg shadow-lg max-h-60 overflow-auto"
             >
               {options.map((option, index) => (
                 <motion.button
                   key={option.value}
                   type="button"
                   onClick={() => handleSelect(option.value)}
-                  className={`w-full text-left px-4 py-2 font-medium hover:bg-secondary/40 cursor-pointer text-sm text-foreground/80 transition-colors duration-150 rounded-md mx-1 ${
+                  className={`w-full text-left px-3 py-2 font-medium hover:bg-secondary/40 cursor-pointer text-sm text-foreground/80 transition-colors duration-150 rounded-md  ${
                     selectedValue === option.value ? 'bg-secondary/20 font-semibold' : ''
                   }`}
                   whileTap={{ scale: 0.98 }}

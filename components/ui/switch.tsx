@@ -76,11 +76,7 @@ export function Switch({
         transition={{ duration: 0.1 }}
       >
         <motion.div
-          className={`${currentSize.track} rounded-full transition-colors duration-300 ${
-            isChecked 
-              ? 'bg-foreground' 
-              : 'bg-gray-800 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-300'
-          }`}
+          className={`${currentSize.track} rounded-full transition-all duration-300 hover:opacity-70`}
           animate={{
             backgroundColor: isChecked ? 'var(--foreground)' : 'var(--secondary)'
           }}

@@ -6,6 +6,7 @@
   --secondary: #262626;
   --destructive: #9E4042;
   --muted: #151515;
+  --border: #E5E5E5;
 }
 
 [data-theme="light"] {
@@ -14,6 +15,7 @@
   --secondary: #E5E5E5;
   --destructive: #9E4042;
   --muted: #F3F4F6;
+  --border: #E5E5E5;
 }
 
 [data-theme="dark"] {
@@ -22,6 +24,7 @@
   --secondary: #262626;
   --destructive: #9E4042;
   --muted: #151515;
+  --border: #262626;
 }
 
 @theme inline {
@@ -30,6 +33,7 @@
   --color-secondary: var(--secondary);
   --color-destructive: var(--destructive);
   --color-muted: var(--muted);
+  --color-border: var(--border);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
