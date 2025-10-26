@@ -19,11 +19,60 @@ import { ToastProvider, useToast } from "../../components/ui/toast";
 import { Banner, BannerPresets } from "../../components/ui/banner";
 import { Loader, LoaderPresets } from "../../components/ui/loader";
 import { ProgressBar, ProgressBarPresets } from "../../components/ui/progress-bar";
+import Skeleton, { 
+  SkeletonText, 
+  SkeletonAvatar, 
+  SkeletonButton, 
+  SkeletonInput, 
+  SkeletonCard, 
+  SkeletonProfile, 
+  SkeletonPost, 
+  SkeletonTable, 
+  SkeletonDashboard, 
+  SkeletonPresets 
+} from "../../components/ui/skeleton";
+import Avatar from "../../components/ui/avatar";
+import { DropdownMenu, DropdownIcons } from "../../components/ui/dropdown-menu";
+import { Image, sampleUsers } from "../../components/ui/image";
 function CompPageContent() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isLeftDrawerOpen, setIsLeftDrawerOpen] = useState(false);
   const [isBottomDrawerOpen, setIsBottomDrawerOpen] = useState(false);
   const [dismissedBanners, setDismissedBanners] = useState<Set<string>>(new Set());
+
+  const dropdownOptions = [
+    {
+      label: 'Profile',
+      value: 'profile',
+      icon: <DropdownIcons.Profile />,
+      onClick: () => console.log('Profile clicked')
+    },
+    {
+      label: 'Settings',
+      value: 'settings',
+      icon: <DropdownIcons.Settings />,
+      onClick: () => console.log('Settings clicked')
+    },
+    {
+      label: 'Notifications',
+      value: 'notifications',
+      icon: <DropdownIcons.Bell />,
+      onClick: () => console.log('Notifications clicked')
+    },
+    {
+      label: 'Help',
+      value: 'help',
+      icon: <DropdownIcons.Help />,
+      onClick: () => console.log('Help clicked'),
+      divider: true
+    },
+    {
+      label: 'Logout',
+      value: 'logout',
+      icon: <DropdownIcons.Logout />,
+      onClick: () => console.log('Logout clicked')
+    }
+  ];
   const { addToast } = useToast();
 
   const handleBannerDismiss = (bannerId: string) => {
@@ -770,7 +819,7 @@ function CompPageContent() {
             <h3 className="text-sm font-medium mb-3">Basic Progress Bars</h3>
             <div className="space-y-4">
               <ProgressBar value={25} />
-              <ProgressBar value={75} color="secondary" backgroundColor="accent" />
+              <ProgressBar value={75} color="primary" />
             </div>
           </div>
 
@@ -1059,6 +1108,193 @@ function CompPageContent() {
           >
             Show All Toasts
           </Button>
+        </div>
+      </div>
+
+      {/* Avatar Components */}
+      <div className="space-y-6">
+        <div className="text-center space-y-2">
+          <h2 className="text-xl font-semibold">Avatar Components</h2>
+          <p className="text-foreground/70">Simple user avatars with image and alphabet fallback</p>
+        </div>
+        
+        <div className="space-y-6">
+          {/* Basic Avatars */}
+          <div>
+            <h3 className="text-sm font-medium mb-3">Basic Avatars</h3>
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <h4 className="text-sm font-medium">Different Sizes</h4>
+                <div className="flex items-center gap-4">
+                  <Avatar size="sm" fallback="S" />
+                  <Avatar size="md" fallback="M" />
+                  <DropdownMenu
+                    trigger={
+                      <Avatar 
+                        size="lg" 
+                        fallback="L" 
+                        className="cursor-pointer"
+                      />
+                    }
+                    options={dropdownOptions}
+                    align="left"
+                  />
+                </div>
+              </div>
+              
+              <div className="space-y-2">
+                <h4 className="text-sm font-medium">With Images</h4>
+                <div className="flex items-center gap-4">
+                  <Avatar 
+                    src="https://i.pravatar.cc/100?img=1" 
+                    alt="John Doe"
+                    fallback="JD"
+                  />
+                  <Avatar 
+                    src="https://i.pravatar.cc/100?img=2" 
+                    alt="Jane Smith"
+                    fallback="JS"
+                  />
+                  <Avatar 
+                    src="https://i.pravatar.cc/100?img=3" 
+                    alt="Mike Johnson"
+                    fallback="MJ"
+                  />
+                </div>
+              </div>
+              
+            
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Image Component */}
+      <div className="space-y-6">
+        <div className="text-center space-y-2">
+          <h2 className="text-xl font-semibold">Image Component</h2>
+          <p className="text-sm text-muted-foreground">Clean user list with avatars and actions</p>
+        </div>
+        
+        <div className="space-y-6">
+          <div>
+            <h3 className="text-sm font-medium mb-3">Image Examples</h3>
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <h4 className="text-sm font-medium">Sample User List</h4>
+                <div className="max-w-sm">
+                  <Image 
+                    users={sampleUsers}
+                    onAddUser={(userId) => console.log('Add user:', userId)}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Skeleton Components */}
+      <div className="space-y-6">
+        <div className="text-center space-y-2">
+          <h2 className="text-xl font-semibold">Skeleton Components</h2>
+          <p className="text-foreground/70">Beautiful loading placeholders with multiple variants and animations</p>
+        </div>
+        
+        <div className="space-y-6">
+         
+
+          {/* Animation Variants */}
+          <div>
+            <h3 className="text-sm font-medium mb-3">Animation Variants</h3>
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <h4 className="text-sm font-medium">Pulse Animation (Default)</h4>
+                <div className="flex items-center gap-4">
+                  <Skeleton animation="pulse" width="100px" height="20px" />
+                  <Skeleton animation="pulse" width="150px" height="20px" />
+                  <Skeleton animation="pulse" width="80px" height="20px" />
+                </div>
+              </div>
+              
+              <div className="space-y-2">
+                <h4 className="text-sm font-medium">Wave Animation</h4>
+                <div className="flex items-center gap-4">
+                  <Skeleton animation="wave" width="100px" height="20px" />
+                  <Skeleton animation="wave" width="150px" height="20px" />
+                  <Skeleton animation="wave" width="80px" height="20px" />
+                </div>
+              </div>
+              
+              <div className="space-y-2">
+                <h4 className="text-sm font-medium">Shimmer Animation</h4>
+                <div className="flex items-center gap-4">
+                  <Skeleton animation="shimmer" width="100px" height="20px" />
+                  <Skeleton animation="shimmer" width="150px" height="20px" />
+                  <Skeleton animation="shimmer" width="80px" height="20px" />
+                </div>
+              </div>
+              
+              <div className="space-y-2">
+                <h4 className="text-sm font-medium">No Animation</h4>
+                <div className="flex items-center gap-4">
+                  <Skeleton animation="none" width="100px" height="20px" />
+                  <Skeleton animation="none" width="150px" height="20px" />
+                  <Skeleton animation="none" width="80px" height="20px" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Complex Layouts */}
+          <div>
+            <h3 className="text-sm font-medium mb-3">Complex Layouts</h3>
+            <div className="space-y-6">
+         
+           
+              
+              <div className="space-y-2">
+                <h4 className="text-sm font-medium">Table Skeleton</h4>
+                <SkeletonTable rows={4} columns={4} />
+              </div>
+              
+            
+            </div>
+          </div>
+
+          {/* Preset Examples */}
+          <div>
+            <h3 className="text-sm font-medium mb-3">Preset Examples</h3>
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <h4 className="text-sm font-medium">Text Presets</h4>
+                <div className="space-y-2">
+                  <Skeleton {...SkeletonPresets.title} />
+                  <Skeleton {...SkeletonPresets.subtitle} />
+                  <Skeleton {...SkeletonPresets.paragraph} />
+                </div>
+              </div>
+              
+              <div className="space-y-2">
+                <h4 className="text-sm font-medium">Component Presets</h4>
+                <div className="flex items-center gap-4">
+                  <Skeleton {...SkeletonPresets.smallButton} />
+                  <Skeleton {...SkeletonPresets.mediumButton} />
+                  <Skeleton {...SkeletonPresets.largeButton} />
+                </div>
+              </div>
+              
+              <div className="space-y-2">
+                <h4 className="text-sm font-medium">Animation Presets</h4>
+                <div className="flex items-center gap-4">
+                  <Skeleton {...SkeletonPresets.pulse} width="100px" height="20px" />
+                  <Skeleton {...SkeletonPresets.wave} width="100px" height="20px" />
+                  <Skeleton {...SkeletonPresets.shimmer} width="100px" height="20px" />
+                  <Skeleton {...SkeletonPresets.static} width="100px" height="20px" />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 

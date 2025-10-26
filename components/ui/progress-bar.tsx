@@ -235,11 +235,11 @@ export function ProgressBar({
 
         {/* Progress Bar Container */}
         <div 
-          className={`w-full rounded-full overflow-hidden ${sizeStyles.container} shadow-inner ${bgColorStyle.className}`}
+          className={`w-full rounded-full overflow-hidden ${sizeStyles.container} ${bgColorStyle.className}`}
           style={bgColorStyle.backgroundColor ? { backgroundColor: bgColorStyle.backgroundColor } : {}}
         >
           <motion.div
-            className={`${progressClasses} h-full rounded-full shadow-sm ${colorStyle.className}`}
+            className={`${progressClasses} h-full rounded-full ${colorStyle.className}`}
             style={colorStyle.backgroundColor ? { backgroundColor: colorStyle.backgroundColor } : {}}
             initial={{ width: 0 }}
             animate={{ width: `${percentage}%` }}
