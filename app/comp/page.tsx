@@ -39,6 +39,7 @@ import Container from "../../components/ui/container";
 import { BeautifulImageCarousel, BeautifulCardCarousel } from "../../components/ui/carousel";
 import { ImageCarousel } from "../../components/ui/image-carousel";
 import { Marquee } from "../../components/ui/marquee";
+import { Accordion, AccordionPresets, AccordionIcons } from "../../components/ui/accordion";
 function CompPageContent() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isLeftDrawerOpen, setIsLeftDrawerOpen] = useState(false);
@@ -1399,6 +1400,44 @@ function CompPageContent() {
               fadeEdges={true}
               layers="double"
             />
+          </div>
+        </div>
+
+        {/* Accordion Components */}
+        <div className="space-y-6">
+          <div className="text-center space-y-2">
+            <h3 className="text-xl font-semibold">Accordion Components</h3>
+            <p className="text-sm text-muted-foreground">Collapsible content sections with smooth animations</p>
+          </div>
+          
+          <div className="space-y-6">
+            {/* FAQ Accordion */}
+
+            <div>
+                  <h5 className="text-xs font-medium mb-2 text-foreground/70">Single Open (Default)</h5>
+                  <Accordion
+                    items={[
+                      {
+                        id: 'single-1',
+                        title: 'Only One Open',
+                        content: 'When you open a new item, the previous one closes automatically.'
+                      },
+                      {
+                        id: 'single-2',
+                        title: 'Clean Interface',
+                        content: 'Keeps the interface clean and focused on one piece of content at a time.'
+                      },
+                      {
+                        id: 'single-3',
+                        title: 'Better UX',
+                        content: 'Reduces visual clutter and helps users focus on the content they need.'
+                      }
+                    ]}
+                    variant="bordered"
+                    size="sm"
+                    allowMultiple={false}
+                  />
+                </div>
           </div>
         </div>
       </div>
