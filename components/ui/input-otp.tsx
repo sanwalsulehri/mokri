@@ -161,7 +161,7 @@ export function InputOTP({
                   text-center font-semibold
                   bg-background border border-border rounded-lg
                   text-foreground placeholder:text-muted-foreground
-                  focus:outline-none focus:ring-2 shadow-xs focus:ring-border focus:ring-offset-1 focus:border-secondary/50
+                  focus:outline-none focus:ring-2 focus:ring-foreground/20
                   transition-all duration-200 ease-out
                   hover:border-border/80
                   ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-text'}
