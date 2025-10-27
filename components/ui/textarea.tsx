@@ -49,7 +49,7 @@ export function TextArea({
             disabled={disabled}
             rows={rows}
             maxLength={maxLength}
-            className={`w-full bg-background border font-medium placeholder:font-medium border-border rounded-lg text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-3 focus:ring-ring focus:border-focusborder focus:ring-offset-[.2px] transition-all duration-300 ease-out shadow hover:border-border disabled:opacity-50 disabled:cursor-not-allowed resize-none px-3 py-2.5 ${className}`}
+            className={`w-full bg-background border font-medium placeholder:font-medium border-border rounded-lg text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-3 focus:ring-ring focus:border-focusborder focus:ring-offset-[.2px] transition-all duration-300 ease-out shadow hover:border-border disabled:opacity-50 disabled:cursor-not-allowed resize-y px-3 py-2.5 ${className}`}
           />
         </div>
         
