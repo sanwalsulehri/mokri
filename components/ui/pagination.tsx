@@ -14,6 +14,7 @@ interface PaginationProps {
   maxVisiblePages?: number;
   className?: string;
   disabled?: boolean;
+  withBorder?: boolean;
 }
 
 export function Pagination({
@@ -26,7 +27,8 @@ export function Pagination({
   showPrevNext = true,
   maxVisiblePages = 5,
   className = "",
-  disabled = false
+  disabled = false,
+  withBorder = true
 }: PaginationProps) {
   
   // Responsive state for window width
@@ -144,6 +146,13 @@ export function Pagination({
       );
     }
 
+    // Build button styles based on withBorder prop
+    const buttonStyles = withBorder 
+      ? `${currentVariant.button}`
+      : isActive 
+        ? 'rounded-md bg-foreground text-background hover:bg-foreground/90 transition-colors'
+        : 'rounded-md bg-transparent hover:bg-foreground/5 transition-colors';
+
     return (
       <motion.button
         key={page}
@@ -151,7 +160,7 @@ export function Pagination({
         disabled={isDisabled}
         className={`
           ${currentSize.button}
-          ${isActive ? currentVariant.active : currentVariant.button}
+          ${isActive ? currentVariant.active : buttonStyles}
           ${isDisabled ? currentVariant.disabled : 'cursor-pointer'}
           flex items-center justify-center font-medium
           focus:outline-none focus:ring-2 focus:ring-foreground/20
@@ -171,8 +180,8 @@ export function Pagination({
         disabled={disabled}
         className={`
           ${currentSize.button}
-          ${currentVariant.button}
-          ${disabled ? currentVariant.disabled : 'cursor-pointer'}
+          rounded-md border border-border bg-background hover:bg-foreground/5 transition-colors
+          ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
           flex items-center justify-center font-medium
           focus:outline-none focus:ring-2 focus:ring-foreground/20
         `}

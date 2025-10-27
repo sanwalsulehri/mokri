@@ -926,6 +926,7 @@ function CompPageContent() {
                   currentPage={currentPage1}
                   totalPages={10}
                   onPageChange={setCurrentPage1}
+                  withBorder={false}
                   {...PaginationPresets.full}
                 />
               </div>
@@ -936,6 +937,7 @@ function CompPageContent() {
                   currentPage={currentPage2}
                   totalPages={8}
                   onPageChange={setCurrentPage2}
+                  withBorder={false}
                   {...PaginationPresets.simple}
                 />
               </div>
@@ -952,6 +954,7 @@ function CompPageContent() {
                   currentPage={currentPage3}
                   totalPages={6}
                   onPageChange={setCurrentPage3}
+                  withBorder={false}
                   {...PaginationPresets.minimal}
                 />
               </div>
@@ -962,6 +965,7 @@ function CompPageContent() {
                   currentPage={currentPage4}
                   totalPages={12}
                   onPageChange={setCurrentPage4}
+                  withBorder={false}
                   {...PaginationPresets.numbers}
                 />
               </div>
@@ -972,6 +976,7 @@ function CompPageContent() {
                   currentPage={currentPage5}
                   totalPages={5}
                   onPageChange={setCurrentPage5}
+                  withBorder={false}
                   {...PaginationPresets.dots}
                 />
               </div>
@@ -989,6 +994,7 @@ function CompPageContent() {
                   totalPages={7}
                   onPageChange={setCurrentPage1}
                   size="sm"
+                  withBorder={false}
                   {...PaginationPresets.simple}
                 />
               </div>
@@ -1000,6 +1006,7 @@ function CompPageContent() {
                   totalPages={7}
                   onPageChange={setCurrentPage2}
                   size="md"
+                  withBorder={false}
                   {...PaginationPresets.simple}
                 />
               </div>
@@ -1011,6 +1018,7 @@ function CompPageContent() {
                   totalPages={7}
                   onPageChange={setCurrentPage3}
                   size="lg"
+                  withBorder={false}
                   {...PaginationPresets.simple}
                 />
               </div>
@@ -1027,6 +1035,7 @@ function CompPageContent() {
                   currentPage={1}
                   totalPages={1}
                   onPageChange={() => {}}
+                  withBorder={false}
                   {...PaginationPresets.full}
                 />
                 <p className="text-sm text-foreground/60 mt-2">Pagination is hidden when there's only one page</p>
@@ -1038,6 +1047,7 @@ function CompPageContent() {
                   currentPage={currentPage6}
                   totalPages={2}
                   onPageChange={setCurrentPage6}
+                  withBorder={false}
                   {...PaginationPresets.simple}
                 />
               </div>
@@ -1048,6 +1058,7 @@ function CompPageContent() {
                   currentPage={currentPage8}
                   totalPages={50}
                   onPageChange={setCurrentPage8}
+                  withBorder={false}
                   {...PaginationPresets.full}
                 />
               </div>
