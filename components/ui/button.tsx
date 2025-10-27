@@ -6,14 +6,20 @@ interface ButtonProps {
   className?: string;
   bg?: boolean;
   outline?: boolean;
+  size?: 'sm' | 'md' | 'lg';
 }
 
-export function Button({ children, onClick, className = "", bg = true, outline = false }: ButtonProps) {
+export function Button({ children, onClick, className = "", bg = true, outline = false, size = 'md' }: ButtonProps) {
+  const sizeClasses = {
+    sm: 'px-3 py-[6px] text-sm',
+    md: 'px-4 py-2.5 text-base',
+    lg: 'px-6 py-3 text-lg'
+  };
 
   return (
    <button 
      onClick={onClick}
-     className={`px-3 py-[6px] flex items-center justify-center gap-2 cursor-pointer leading-tight rounded-lg text-sm font-medium transition-all duration-200 ease-in-out ${bg ? 'bg-foreground text-background hover:opacity-80' : 'text-foreground bg-transparent hover:bg-foreground/10'} ${outline ? 'border border-secondary bg-transparent text-foreground hover:bg-secondary/30' : ''} ${className}`}
+     className={`${sizeClasses[size]} flex items-center justify-center gap-2 cursor-pointer leading-tight rounded-lg font-medium transition-all duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-border focus:ring-offset-1 ${bg ? 'bg-foreground text-background hover:opacity-80' : 'text-foreground bg-transparent hover:bg-foreground/10'} ${outline ? 'border border-secondary bg-transparent text-foreground hover:bg-secondary/30' : ''} ${className}`}
    >
      {children}
    </button>

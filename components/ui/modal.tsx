@@ -90,7 +90,8 @@ export function Modal({
                   <Button
                     onClick={onClose}
                     bg={false}
-                    className="p-1.5 md:p-2 hover:bg-secondary/40"
+                    size="md"
+                    className="hover:bg-secondary/40"
                   >
                     <svg 
                       className="w-4 h-4 md:w-5 md:h-5" 

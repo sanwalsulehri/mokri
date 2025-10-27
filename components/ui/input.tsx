@@ -66,9 +66,9 @@ export function Input({
             value={value}
             onChange={onChange}
             disabled={disabled}
-            className={`w-full bg-background w-full border font-medium placeholder:font-medium border-secondary rounded-lg text-sm text-foreground placeholder:text-foreground/60 focus:outline-none focus:ring-2 focus:border-secondary/70 focus:ring-secondary/90  transition-all duration-100 ease-in-out shadow-sm focus:shadow-md disabled:opacity-50 disabled:cursor-not-allowed ${
+            className={`w-full bg-background border font-medium placeholder:font-medium border-border rounded-lg text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-border focus:ring-offset-1 focus:border-secondary/50 transition-all duration-300 ease-out shadow hover:border-border/80 disabled:opacity-50 disabled:cursor-not-allowed ${
               isWithIcon ? 'pl-8' : 'pl-3'
-            } py-2 ${className}`}
+            } py-2.5 ${className}`}
           />
         </div>
         

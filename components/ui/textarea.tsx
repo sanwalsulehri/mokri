@@ -49,7 +49,7 @@ export function TextArea({
             disabled={disabled}
             rows={rows}
             maxLength={maxLength}
-            className={`w-full bg-background border font-medium placeholder:font-medium border-secondary rounded-lg text-sm text-foreground placeholder:text-foreground/60 focus:outline-none focus:ring-2 focus:ring-secondary/80 focus:border-secondary/40 transition-all duration-200 ease-in-out shadow-sm focus:shadow-md disabled:opacity-50 disabled:cursor-not-allowed resize-none px-3 py-3 ${className}`}
+            className={`w-full bg-background border font-medium placeholder:font-medium border-border rounded-lg text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-border focus:ring-offset-1 focus:border-secondary/50 transition-all duration-300 ease-out shadow hover:border-border/80 disabled:opacity-50 disabled:cursor-not-allowed resize-none px-3 py-2.5 ${className}`}
           />
         </div>
         
@@ -57,8 +57,8 @@ export function TextArea({
           <div className="flex justify-end">
             <Button
               onClick={onButtonClick}
-              className="px-6 py-2 text-sm"
               bg={true}
+              size="md"
             >
               {buttonText}
             </Button>

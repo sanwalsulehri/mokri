@@ -137,8 +137,9 @@ export function Drawer({
                 {showCloseButton && (
                   <Button
                     onClick={onClose}
-                    className="ml-2 md:ml-4 p-1.5 md:p-2"
+                    className="ml-2 md:ml-4"
                     bg={false}
+                    size="md"
                     aria-label="Close drawer"
                   >
                     <svg 
