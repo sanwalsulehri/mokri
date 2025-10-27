@@ -57,7 +57,7 @@ export function ButtonGroup({
     default: orientation === 'horizontal' ? '[&>*:not(:first-child)]:ml-0 [&>*:not(:last-child)]:mr-0 [&>*:not(:first-child)]:rounded-l-none [&>*:not(:last-child)]:rounded-r-none [&>*:not(:first-child):not(:last-child)]:rounded-none' : '[&>*:not(:first-child)]:mt-0 [&>*:not(:last-child)]:mb-0 [&>*:not(:first-child)]:rounded-t-none [&>*:not(:last-child)]:rounded-b-none [&>*:not(:first-child):not(:last-child)]:rounded-none',
     segmented: orientation === 'horizontal' ? '[&>*:not(:first-child)]:ml-0 [&>*:not(:last-child)]:mr-0 [&>*:not(:first-child)]:rounded-l-none [&>*:not(:last-child)]:rounded-r-none [&>*:not(:first-child):not(:last-child)]:rounded-none [&>*:not(:first-child)]:border-l-0' : '[&>*:not(:first-child)]:mt-0 [&>*:not(:last-child)]:mb-0 [&>*:not(:first-child)]:rounded-t-none [&>*:not(:last-child)]:rounded-b-none [&>*:not(:first-child):not(:last-child)]:rounded-none [&>*:not(:first-child)]:border-t-0',
     attached: orientation === 'horizontal' ? '[&>*:not(:first-child)]:ml-0 [&>*:not(:last-child)]:mr-0 [&>*:not(:first-child)]:rounded-l-none [&>*:not(:last-child)]:rounded-r-none [&>*:not(:first-child):not(:last-child)]:rounded-none [&>*:not(:first-child)]:border-l-0 [&>*:not(:first-child)]:shadow-none' : '[&>*:not(:first-child)]:mt-0 [&>*:not(:last-child)]:mb-0 [&>*:not(:first-child)]:rounded-t-none [&>*:not(:last-child)]:rounded-b-none [&>*:not(:first-child):not(:last-child)]:rounded-none [&>*:not(:first-child)]:border-t-0 [&>*:not(:first-child)]:shadow-none',
-    spaced: orientation === 'horizontal' ? 'gap-2' : 'gap-2',
+    spaced: orientation === 'horizontal' ? 'gap-1 sm:gap-2' : 'gap-1 sm:gap-2',
     bordered: 'border border-border rounded-lg overflow-hidden bg-background'
   };
 
@@ -92,7 +92,7 @@ export function ButtonGroupItem({
     <Button
       onClick={onClick}
       disabled={disabled}
-      className={`${variantClasses[variant]} ${active ? 'shadow-sm' : ''} ${className}`}
+      className={`${variantClasses[variant]} ${active ? 'shadow-sm' : ''} text-xs sm:text-sm px-2 py-1 sm:px-3 sm:py-2 ${className}`}
       bg={false}
     >
       {children}
@@ -109,9 +109,9 @@ export function BorderedButtonGroup({
   disabled = false
 }: BorderedButtonGroupProps) {
   const sizeClasses = {
-    sm: 'px-3 py-[6px] text-sm',
-    md: 'px-4 py-2.5 text-base',
-    lg: 'px-6 py-3 text-lg'
+    sm: 'px-2 py-1 sm:px-3 sm:py-[6px] text-xs sm:text-sm',
+    md: 'px-3 py-2 sm:px-4 sm:py-2.5 text-sm sm:text-base',
+    lg: 'px-4 py-2.5 sm:px-6 sm:py-3 text-base sm:text-lg'
   };
 
 
@@ -137,7 +137,7 @@ export function BorderedButtonGroup({
           disabled={button.disabled || disabled}
             className={`
               ${sizeClasses[size]} 
-              flex items-center justify-center gap-2 
+              flex items-center justify-center gap-1 sm:gap-2 
               cursor-pointer leading-tight 
               font-medium transition-all duration-200 ease-in-out 
               focus:outline-none
@@ -170,8 +170,9 @@ export function BorderedButtonGroup({
                 ${disabled ? 'opacity-50 cursor-not-allowed pointer-events-none' : ''}
               `}
             >
-              More
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <span className="hidden sm:inline">More</span>
+              <span className="sm:hidden text-xs">...</span>
+              <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
             </button>

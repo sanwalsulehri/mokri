@@ -1,0 +1,355 @@
+'use client';
+
+import React, { useState } from 'react';
+import { DropdownMenu } from './dropdown-menu';
+
+interface CalendarProps {
+  selectedDate?: Date;
+  onDateSelect?: (date: Date) => void;
+  className?: string;
+  size?: 'sm' | 'md' | 'lg';
+  showToday?: boolean;
+  disabledDates?: Date[];
+}
+
+export function Calendar({
+  selectedDate,
+  onDateSelect,
+  className = '',
+  size = 'md',
+  showToday = true,
+  disabledDates = []
+}: CalendarProps) {
+  const [currentDate, setCurrentDate] = useState(selectedDate || new Date());
+
+  const sizeClasses = {
+    sm: {
+      container: 'w-64 sm:w-72',
+      header: 'text-xs sm:text-sm',
+      dayLabel: 'text-[10px] sm:text-xs',
+      day: 'w-7 h-7 sm:w-8 sm:h-8 text-xs sm:text-sm',
+      navButton: 'w-6 h-6'
+    },
+    md: {
+      container: 'w-[95%] sm:w-96 md:w-80 lg:w-96',
+      header: 'text-sm sm:text-base',
+      dayLabel: 'text-xs sm:text-sm',
+      day: 'w-9 h-9 sm:w-10 sm:h-10 text-sm',
+      navButton: 'w-6 h-6 sm:w-8 sm:h-8'
+    },
+    lg: {
+      container: 'w-[95%] sm:w-96 md:w-full lg:w-96',
+      header: 'text-base sm:text-lg',
+      dayLabel: 'text-sm sm:text-base',
+      day: 'w-10 h-10 sm:w-12 sm:h-12 text-sm sm:text-base',
+      navButton: 'w-8 h-8 sm:w-10 sm:h-10'
+    }
+  };
+
+  const today = new Date();
+  const currentMonth = currentDate.getMonth();
+  const currentYear = currentDate.getFullYear();
+
+  const monthNames = [
+    'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'
+  ];
+
+  const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+  const getDaysInMonth = (date: Date) => {
+    return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+  };
+
+  const getFirstDayOfMonth = (date: Date) => {
+    return new Date(date.getFullYear(), date.getMonth(), 1).getDay();
+  };
+
+  const navigateMonth = (direction: 'prev' | 'next') => {
+    const newDate = new Date(currentDate);
+    if (direction === 'prev') {
+      newDate.setMonth(currentMonth - 1);
+    } else {
+      newDate.setMonth(currentMonth + 1);
+    }
+    setCurrentDate(newDate);
+  };
+
+  const isToday = (date: Date) => {
+    return date.toDateString() === today.toDateString();
+  };
+
+  const isSelected = (date: Date) => {
+    return selectedDate && date.toDateString() === selectedDate.toDateString();
+  };
+
+  const isDisabled = (date: Date) => {
+    return disabledDates.some(disabledDate => 
+      date.toDateString() === disabledDate.toDateString()
+    );
+  };
+
+  const handleDateClick = (day: number) => {
+    const clickedDate = new Date(currentYear, currentMonth, day);
+    if (!isDisabled(clickedDate)) {
+      onDateSelect?.(clickedDate);
+    }
+  };
+
+  const renderCalendarDays = () => {
+    const daysInMonth = getDaysInMonth(currentDate);
+    const firstDay = getFirstDayOfMonth(currentDate);
+    const days = [];
+
+    // Previous month's trailing days
+    const prevMonth = new Date(currentYear, currentMonth - 1);
+    const daysInPrevMonth = getDaysInMonth(prevMonth);
+    
+    for (let i = firstDay - 1; i >= 0; i--) {
+      const day = daysInPrevMonth - i;
+      const date = new Date(currentYear, currentMonth - 1, day);
+      days.push(
+        <div
+          key={`prev-${day}`}
+          className={`${sizeClasses[size].day} flex items-center justify-center text-foreground/30`}
+        >
+          {day}
+        </div>
+      );
+    }
+
+    // Current month's days
+    for (let day = 1; day <= daysInMonth; day++) {
+      const date = new Date(currentYear, currentMonth, day);
+      const isCurrentDay = isToday(date);
+      const isSelectedDay = isSelected(date);
+      const isDisabledDay = isDisabled(date);
+
+      days.push(
+        <div
+          key={day}
+          className={`
+            ${sizeClasses[size].day}
+            flex items-center justify-center
+            rounded-lg cursor-pointer transition-all duration-200
+            font-medium relative
+            ${isSelectedDay 
+              ? 'bg-foreground text-background outline outline-border outline-offset-2' 
+              : isCurrentDay && showToday
+                ? 'bg-secondary/50 text-secondary-foreground'
+                : 'text-foreground hover:bg-muted'
+            }
+            ${isDisabledDay 
+              ? 'opacity-30 cursor-not-allowed pointer-events-none' 
+              : ''
+            }
+          `}
+          onClick={() => handleDateClick(day)}
+        >
+          {day}
+        </div>
+      );
+    }
+
+    // Next month's leading days
+    const totalCells = 42; // 6 weeks * 7 days
+    const remainingCells = totalCells - days.length;
+    
+    for (let day = 1; day <= remainingCells; day++) {
+      days.push(
+        <div
+          key={`next-${day}`}
+          className={`${sizeClasses[size].day} flex items-center justify-center text-foreground/30`}
+        >
+          {day}
+        </div>
+      );
+    }
+
+    return days;
+  };
+
+  return (
+    <div className={`${sizeClasses[size].container} bg-background border border-border rounded-xl p-4 shadow-lg ${className}`}>
+      {/* Header */}
+      <div className="flex items-center justify-between mb-6">
+        <button
+          onClick={() => navigateMonth('prev')}
+          className={`
+            ${sizeClasses[size].navButton}
+            flex items-center justify-center
+            rounded-lg bg-transparent text-foreground
+            hover:bg-muted transition-colors duration-200
+            focus:outline-none focus:ring-2 focus:ring-foreground/20
+          `}
+        >
+          <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+
+        <div className="flex items-center gap-2">
+          <DropdownMenu
+            trigger={
+              <button className="flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold text-foreground bg-background border border-border hover:bg-muted rounded-lg transition-colors duration-200">
+                <span className="hidden sm:inline">{monthNames[currentMonth]}</span>
+                <span className="sm:hidden text-[10px]">{monthNames[currentMonth].substring(0, 3)}</span>
+                <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+            }
+            options={monthNames.map((month, index) => ({
+              label: month,
+              value: index.toString(),
+              onClick: () => {
+                const newDate = new Date(currentDate);
+                newDate.setMonth(index);
+                setCurrentDate(newDate);
+              }
+            }))}
+            align="center"
+          />
+          
+          <DropdownMenu
+            trigger={
+              <button className="flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold text-foreground bg-background border border-border hover:bg-muted rounded-lg transition-colors duration-200">
+                {currentYear}
+                <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+            }
+            options={Array.from({ length: 30 }, (_, i) => {
+              const year = 2000 + i;
+              return {
+                label: year.toString(),
+                value: year.toString(),
+                onClick: () => {
+                  const newDate = new Date(currentDate);
+                  newDate.setFullYear(year);
+                  setCurrentDate(newDate);
+                }
+              };
+            })}
+            align="center"
+          />
+        </div>
+
+        <button
+          onClick={() => navigateMonth('next')}
+          className={`
+            ${sizeClasses[size].navButton}
+            flex items-center justify-center
+            rounded-lg bg-transparent text-foreground
+            hover:bg-muted transition-colors duration-200
+            focus:outline-none focus:ring-2 focus:ring-foreground/20
+          `}
+        >
+          <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+
+      {/* Day labels */}
+      <div className="grid grid-cols-7 gap-1 mb-2">
+        {dayNames.map((day) => (
+          <div
+            key={day}
+            className={`${sizeClasses[size].dayLabel} text-center font-medium text-foreground/60`}
+          >
+            {day}
+          </div>
+        ))}
+      </div>
+
+      {/* Calendar grid */}
+      <div className="grid grid-cols-7 gap-1">
+        {renderCalendarDays()}
+      </div>
+
+      {/* Footer */}
+      {showToday && (
+        <div className="mt-4 pt-3 border-t border-border">
+          <button
+            onClick={() => {
+              const todayDate = new Date();
+              setCurrentDate(todayDate);
+              onDateSelect?.(todayDate);
+            }}
+            className="w-full py-2 px-3 text-xs sm:text-sm font-medium text-foreground/70 hover:text-foreground bg-transparent hover:bg-muted rounded-lg transition-colors duration-200"
+          >
+            Go to Today
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// Calendar with date range selection
+interface CalendarRangeProps {
+  startDate?: Date;
+  endDate?: Date;
+  onDateRangeSelect?: (startDate: Date | null, endDate: Date | null) => void;
+  className?: string;
+  size?: 'sm' | 'md' | 'lg';
+}
+
+export function CalendarRange({
+  startDate,
+  endDate,
+  onDateRangeSelect,
+  className = '',
+  size = 'md'
+}: CalendarRangeProps) {
+  const [currentDate, setCurrentDate] = useState(startDate || new Date());
+  const [selectedStart, setSelectedStart] = useState<Date | null>(startDate || null);
+  const [selectedEnd, setSelectedEnd] = useState<Date | null>(endDate || null);
+  const [isSelecting, setIsSelecting] = useState(false);
+
+  const handleDateClick = (date: Date) => {
+    if (!selectedStart || (selectedStart && selectedEnd)) {
+      // Start new selection
+      setSelectedStart(date);
+      setSelectedEnd(null);
+      setIsSelecting(true);
+      onDateRangeSelect?.(date, null);
+    } else {
+      // Complete selection
+      if (date < selectedStart) {
+        setSelectedEnd(selectedStart);
+        setSelectedStart(date);
+      } else {
+        setSelectedEnd(date);
+      }
+      setIsSelecting(false);
+      onDateRangeSelect?.(selectedStart, date);
+    }
+  };
+
+  const isInRange = (date: Date) => {
+    if (!selectedStart) return false;
+    if (!selectedEnd) return date >= selectedStart;
+    return date >= selectedStart && date <= selectedEnd;
+  };
+
+  const isRangeStart = (date: Date) => {
+    return selectedStart && date.toDateString() === selectedStart.toDateString();
+  };
+
+  const isRangeEnd = (date: Date) => {
+    return selectedEnd && date.toDateString() === selectedEnd.toDateString();
+  };
+
+  return (
+    <Calendar
+      selectedDate={selectedStart || undefined}
+      onDateSelect={handleDateClick}
+      className={className}
+      size={size}
+      showToday={true}
+    />
+  );
+}

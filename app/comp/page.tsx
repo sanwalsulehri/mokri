@@ -41,6 +41,7 @@ import { ImageCarousel } from "../../components/ui/image-carousel";
 import { Marquee } from "../../components/ui/marquee";
 import { Accordion, AccordionPresets, AccordionIcons } from "../../components/ui/accordion";
 import { ButtonGroup, ButtonGroupItem, ButtonGroupPresets, ButtonGroupConfigs, BorderedButtonGroup } from "../../components/ui/button-group";
+import { Calendar, CalendarRange } from "../../components/ui/calendar";
 function CompPageContent() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isLeftDrawerOpen, setIsLeftDrawerOpen] = useState(false);
@@ -157,6 +158,11 @@ function CompPageContent() {
 
   // Button group states
   const [activeBorderedFilter, setActiveBorderedFilter] = useState('all');
+  
+  // Calendar states
+  const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
+  const [rangeStart, setRangeStart] = useState<Date | null>(null);
+  const [rangeEnd, setRangeEnd] = useState<Date | null>(null);
 
   return (
     <div className="min-h-screen space-y-10">
@@ -228,6 +234,36 @@ function CompPageContent() {
         
         </div>
       </div>
+
+      {/* Calendar Components */}
+      <div className="space-y-6">
+        <div className="text-center space-y-2">
+          <h2 className="text-xl font-semibold">Calendar Components</h2>
+          <p className="text-foreground/70">Beautiful minimal calendars with smooth animations</p>
+        </div>
+
+        <div className="flex justify-center">
+          {/* Basic Calendar */}
+          <div>
+            <h3 className="text-sm font-medium mb-3 text-center">Calendar</h3>
+            <div className="space-y-2">
+              <Calendar
+                selectedDate={selectedDate}
+                onDateSelect={(date) => {
+                  setSelectedDate(date);
+                  console.log('Selected date:', date.toDateString());
+                }}
+                size="md"
+                showToday={true}
+              />
+              <p className="text-sm text-foreground/60 text-center">
+                Selected: <strong>{selectedDate?.toLocaleDateString()}</strong>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className="">
         <Badge>Click me</Badge>
         <Badge bg={false}>Click me</Badge>

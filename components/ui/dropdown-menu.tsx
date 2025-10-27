@@ -96,9 +96,9 @@ export const DropdownMenu: React.FC<DropdownMenuProps> = ({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: -5 }}
             transition={{ duration: 0.15, ease: "easeOut" }}
-            className={`absolute z-50 mt-2 w-48 md:w-56 ${getAlignmentClasses()}`}
+            className={`absolute z-50 mt-2 w-48 md:w-56 ${getAlignmentClasses()} ${className}`}
           >
-            <div className="bg-muted border py-1.5 border-border rounded-lg shadow-lg overflow-hidden">
+            <div className="bg-muted border py-1.5 border-border rounded-lg shadow-lg overflow-y-auto max-h-64">
               {options.map((item, index) => (
                 <React.Fragment key={item.value}>
                   {item.divider && index > 0 && (
