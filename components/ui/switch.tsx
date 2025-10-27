@@ -37,18 +37,18 @@ export function Switch({
 
   const sizeClasses = {
     sm: {
-      track: 'w-8 h-4',
-      thumb: 'w-3 h-3',
+      track: 'w-6 h-3 md:w-8 md:h-4',
+      thumb: 'w-2 h-2 md:w-3 md:h-3',
       translate: 'translate-x-4'
     },
     md: {
-      track: 'w-12 h-6',
-      thumb: 'w-5 h-5',
+      track: 'w-8 h-4 md:w-12 md:h-6',
+      thumb: 'w-3 h-3 md:w-5 md:h-5',
       translate: 'translate-x-6'
     },
     lg: {
-      track: 'w-16 h-8',
-      thumb: 'w-7 h-7',
+      track: 'w-10 h-5 md:w-16 md:h-8',
+      thumb: 'w-4 h-4 md:w-7 md:h-7',
       translate: 'translate-x-8'
     }
   };
@@ -56,10 +56,10 @@ export function Switch({
   const currentSize = sizeClasses[size];
 
   return (
-    <div className={`flex items-center gap-3 ${className}`}>
+    <div className={`flex items-center gap-2 md:gap-3 ${className}`}>
       {/* Left Label */}
       {leftLabel && (
-        <span className="text-sm font-medium text-foreground">
+        <span className="text-xs md:text-sm font-medium text-foreground">
           {leftLabel}
         </span>
       )}
@@ -99,7 +99,7 @@ export function Switch({
 
       {/* Right Label */}
       {rightLabel && (
-        <span className="text-sm font-medium text-foreground">
+        <span className="text-xs md:text-sm font-medium text-foreground">
           {rightLabel}
         </span>
       )}

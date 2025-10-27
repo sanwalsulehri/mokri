@@ -16,13 +16,13 @@ export function Card({
   title,
   description,
   children,
-  className = ""
+  className = "max-w-[450px] p-6 rounded-lg"
 }: CardProps) {
   return (
     <div 
       className={`
-        w-full max-w-[450px] bg-background border border-border rounded-lg 
-        shadow-md p-6 space-y-6
+        w-full  bg-background border border-border  
+        shadow-md  space-y-6
         ${className}
       `}
     >

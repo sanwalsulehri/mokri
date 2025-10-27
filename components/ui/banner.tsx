@@ -83,30 +83,30 @@ export function Banner({
     switch (size) {
       case 'sm':
         return {
-          container: 'px-4 py-2',
-          icon: 'w-4 h-4',
-          iconContainer: 'w-6 h-6',
-          title: 'text-sm font-semibold',
-          description: 'text-sm opacity-90',
-          gap: 'gap-2'
+          container: 'px-3 py-1.5 md:px-4 md:py-2',
+          icon: 'w-3 h-3 md:w-4 md:h-4',
+          iconContainer: 'w-5 h-5 md:w-6 md:h-6',
+          title: 'text-xs md:text-sm font-semibold',
+          description: 'text-xs md:text-sm opacity-90',
+          gap: 'gap-1.5 md:gap-2'
         };
       case 'lg':
         return {
-          container: 'px-4 py-4',
-          icon: 'w-5 h-5',
-          iconContainer: 'w-8 h-8',
-          title: 'text-lg font-semibold',
-          description: 'text-base opacity-90',
-          gap: 'gap-3'
+          container: 'px-4 py-3 md:px-4 md:py-4',
+          icon: 'w-4 h-4 md:w-5 md:h-5',
+          iconContainer: 'w-6 h-6 md:w-8 md:h-8',
+          title: 'text-base md:text-lg font-semibold',
+          description: 'text-sm md:text-base opacity-90',
+          gap: 'gap-2 md:gap-3'
         };
       default: // md
         return {
-          container: 'px-5 py-3',
-          icon: 'w-4 h-4',
-          iconContainer: 'w-6 h-6',
-          title: 'text-base font-semibold',
-          description: 'text-sm opacity-90',
-          gap: 'gap-2'
+          container: 'px-4 py-2.5 md:px-5 md:py-3',
+          icon: 'w-3 h-3 md:w-4 md:h-4',
+          iconContainer: 'w-5 h-5 md:w-6 md:h-6',
+          title: 'text-sm md:text-base font-semibold',
+          description: 'text-xs md:text-sm opacity-90',
+          gap: 'gap-1.5 md:gap-2'
         };
     }
   };
@@ -158,7 +158,7 @@ export function Banner({
       className={`
         ${headerStyle ? 'border-b-0' : 'border rounded-lg'}
         ${variantStyles.container}
-        ${headerStyle ? 'p-4' : sizeStyles.container}
+        ${headerStyle ? 'p-3 md:p-4' : sizeStyles.container}
         ${className}
       `}
     >
@@ -186,10 +186,10 @@ export function Banner({
             </div>
           )}
           {action && (
-            <div className="mt-3">
+            <div className="mt-2 md:mt-3">
               <button
                 onClick={action.onClick}
-                className="text-xs px-3 py-1 bg-foreground/10 hover:bg-foreground/20 text-foreground rounded border border-border transition-colors duration-200"
+                className="text-xs px-2 py-1 md:px-3 md:py-1 bg-foreground/10 hover:bg-foreground/20 text-foreground rounded border border-border transition-colors duration-200"
               >
                 {action.label}
               </button>
@@ -202,12 +202,12 @@ export function Banner({
           <button
             onClick={onDismiss}
             className={`
-              flex-shrink-0 w-5 h-5 rounded flex items-center justify-center
+              flex-shrink-0 w-4 h-4 md:w-5 md:h-5 rounded flex items-center justify-center
               ${variantStyles.cross} opacity-60 hover:opacity-100 hover:bg-foreground/10
               transition-all duration-200
             `}
           >
-            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-2.5 h-2.5 md:w-3 md:h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>

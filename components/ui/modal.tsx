@@ -45,10 +45,10 @@ export function Modal({
   };
 
   const sizeClasses = {
-    sm: 'max-w-md',
-    md: 'max-w-lg',
-    lg: 'max-w-2xl',
-    xl: 'max-w-4xl'
+    sm: 'max-w-sm md:max-w-md',
+    md: 'max-w-md md:max-w-lg',
+    lg: 'max-w-lg md:max-w-2xl',
+    xl: 'max-w-xl md:max-w-4xl'
   };
 
   return (
@@ -59,7 +59,7 @@ export function Modal({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
-          className="fixed inset-0 z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 z-50 flex items-center justify-center p-2 md:p-4"
           onClick={handleBackdropClick}
         >
           {/* Backdrop */}
@@ -80,9 +80,9 @@ export function Modal({
           >
             {/* Header */}
             {(title || showCloseButton) && (
-              <div className="flex items-center justify-between p-6 border-b border-secondary/20">
+              <div className="flex items-center justify-between p-4 md:p-6 border-b border-secondary/20">
                 {title && (
-                  <h2 className="text-xl font-semibold text-foreground">
+                  <h2 className="text-lg md:text-xl font-semibold text-foreground">
                     {title}
                   </h2>
                 )}
@@ -90,10 +90,10 @@ export function Modal({
                   <Button
                     onClick={onClose}
                     bg={false}
-                    className="p-2 hover:bg-secondary/40"
+                    className="p-1.5 md:p-2 hover:bg-secondary/40"
                   >
                     <svg 
-                      className="w-5 h-5" 
+                      className="w-4 h-4 md:w-5 md:h-5" 
                       fill="none" 
                       stroke="currentColor" 
                       viewBox="0 0 24 24"
@@ -111,7 +111,7 @@ export function Modal({
             )}
 
             {/* Content */}
-            <div className="p-6">
+            <div className="p-4 md:p-6">
               {children}
             </div>
           </motion.div>

@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 interface PaginationProps {
@@ -29,21 +29,43 @@ export function Pagination({
   disabled = false
 }: PaginationProps) {
   
-  // Calculate visible page range
+  // Responsive state for window width
+  const [windowWidth, setWindowWidth] = useState(1024); // Default to desktop
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    // Set initial width
+    handleResize();
+    
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Calculate visible page range with responsive behavior
   const getVisiblePages = () => {
-    if (totalPages <= maxVisiblePages) {
+    // Mobile: Always show max 3 pages, desktop: show more
+    const maxPages = windowWidth < 768 ? 3 : maxVisiblePages;
+    
+    // If total pages <= maxPages, show all pages
+    if (totalPages <= maxPages) {
       return Array.from({ length: totalPages }, (_, i) => i + 1);
     }
 
-    const half = Math.floor(maxVisiblePages / 2);
-    let start = Math.max(1, currentPage - half);
-    let end = Math.min(totalPages, start + maxVisiblePages - 1);
-
-    if (end - start + 1 < maxVisiblePages) {
-      start = Math.max(1, end - maxVisiblePages + 1);
+    // For more pages, show maxPages with ellipsis
+    if (currentPage <= Math.floor(maxPages / 2) + 1) {
+      return Array.from({ length: maxPages }, (_, i) => i + 1);
     }
-
-    return Array.from({ length: end - start + 1 }, (_, i) => start + i);
+    
+    if (currentPage >= totalPages - Math.floor(maxPages / 2)) {
+      return Array.from({ length: maxPages }, (_, i) => totalPages - maxPages + i + 1);
+    }
+    
+    // Show current page centered
+    const start = currentPage - Math.floor(maxPages / 2);
+    return Array.from({ length: maxPages }, (_, i) => start + i);
   };
 
   const visiblePages = getVisiblePages();
@@ -52,19 +74,19 @@ export function Pagination({
 
   const sizeClasses = {
     sm: {
-      button: 'px-2 py-1 text-xs min-w-[28px] h-7',
+      button: 'px-2 py-1 text-xs min-w-[24px] h-6 md:min-w-[28px] md:h-7',
       icon: 'h-3 w-3',
       gap: 'gap-1'
     },
     md: {
-      button: 'px-3 py-2 text-sm min-w-[36px] h-9',
-      icon: 'h-4 w-4',
-      gap: 'gap-2'
+      button: 'px-2 py-1 text-xs min-w-[28px] h-7 md:px-3 md:py-2 md:text-sm md:min-w-[36px] md:h-9',
+      icon: 'h-3 w-3 md:h-4 md:w-4',
+      gap: 'gap-1 md:gap-2'
     },
     lg: {
-      button: 'px-4 py-3 text-base min-w-[44px] h-11',
-      icon: 'h-5 w-5',
-      gap: 'gap-3'
+      button: 'px-3 py-2 text-sm min-w-[32px] h-8 md:px-4 md:py-3 md:text-base md:min-w-[44px] md:h-11',
+      icon: 'h-4 w-4 md:h-5 md:w-5',
+      gap: 'gap-2 md:gap-3'
     }
   };
 
@@ -134,9 +156,6 @@ export function Pagination({
           flex items-center justify-center font-medium
           focus:outline-none focus:ring-2 focus:ring-foreground/20
         `}
-        whileHover={!isDisabled ? { scale: 1.05 } : {}}
-        whileTap={!isDisabled ? { scale: 0.95 } : {}}
-        transition={{ duration: 0.1 }}
       >
         {page}
       </motion.button>
@@ -157,9 +176,6 @@ export function Pagination({
           flex items-center justify-center font-medium
           focus:outline-none focus:ring-2 focus:ring-foreground/20
         `}
-        whileHover={!disabled ? { scale: 1.05 } : {}}
-        whileTap={!disabled ? { scale: 0.95 } : {}}
-        transition={{ duration: 0.1 }}
         aria-label={label}
       >
         {icon}
@@ -171,8 +187,8 @@ export function Pagination({
 
   return (
     <div className={`${currentVariant.container} ${currentSize.gap} ${className}`}>
-      {/* First Page */}
-      {showFirstLast && !isFirstPage && (
+      {/* First Page - Hide on mobile */}
+      {showFirstLast && !isFirstPage && windowWidth >= 768 && (
         <>
           {renderIconButton(
             () => handlePageChange(1),
@@ -206,29 +222,33 @@ export function Pagination({
       {/* Page Numbers */}
       {variant !== 'dots' && (
         <>
-          {/* Show ellipsis at start if needed */}
-          {visiblePages[0] > 1 && (
+          {/* Show first page + ellipsis if needed */}
+          {totalPages > (windowWidth < 768 ? 3 : maxVisiblePages) && visiblePages[0] > 1 && (
             <>
               {renderPageButton(1)}
-              {visiblePages[0] > 2 && (
-                <span className={`${currentSize.button} flex items-center justify-center text-foreground/60`}>
-                  ...
-                </span>
-              )}
+              <div className={`${currentSize.button} flex items-center justify-center`}>
+                <div className="flex gap-1">
+                  <div className="w-1 h-1 rounded-full bg-foreground/40"></div>
+                  <div className="w-1 h-1 rounded-full bg-foreground/40"></div>
+                  <div className="w-1 h-1 rounded-full bg-foreground/40"></div>
+                </div>
+              </div>
             </>
           )}
 
           {/* Visible page numbers */}
           {visiblePages.map(page => renderPageButton(page, page === currentPage))}
 
-          {/* Show ellipsis at end if needed */}
-          {visiblePages[visiblePages.length - 1] < totalPages && (
+          {/* Show ellipsis + last page if needed */}
+          {totalPages > (windowWidth < 768 ? 3 : maxVisiblePages) && visiblePages[visiblePages.length - 1] < totalPages && (
             <>
-              {visiblePages[visiblePages.length - 1] < totalPages - 1 && (
-                <span className={`${currentSize.button} flex items-center justify-center text-foreground/60`}>
-                  ...
-                </span>
-              )}
+              <div className={`${currentSize.button} flex items-center justify-center`}>
+                <div className="flex gap-1">
+                  <div className="w-1 h-1 rounded-full bg-foreground/40"></div>
+                  <div className="w-1 h-1 rounded-full bg-foreground/40"></div>
+                  <div className="w-1 h-1 rounded-full bg-foreground/40"></div>
+                </div>
+              </div>
               {renderPageButton(totalPages)}
             </>
           )}
@@ -260,8 +280,8 @@ export function Pagination({
         </>
       )}
 
-      {/* Last Page */}
-      {showFirstLast && !isLastPage && (
+      {/* Last Page - Hide on mobile */}
+      {showFirstLast && !isLastPage && windowWidth >= 768 && (
         <>
           {renderIconButton(
             () => handlePageChange(totalPages),

@@ -36,11 +36,73 @@ import { DropdownMenu, DropdownIcons } from "../../components/ui/dropdown-menu";
 import { Image, sampleUsers } from "../../components/ui/image";
 import Typography, { TypographyPresets, Heading1, Heading2, Heading3, Body, Small, Caption, Lead } from "../../components/ui/typography";
 import Container from "../../components/ui/container";
+import { BeautifulImageCarousel, BeautifulCardCarousel } from "../../components/ui/carousel";
+import { ImageCarousel } from "../../components/ui/image-carousel";
+import { Marquee } from "../../components/ui/marquee";
 function CompPageContent() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isLeftDrawerOpen, setIsLeftDrawerOpen] = useState(false);
   const [isBottomDrawerOpen, setIsBottomDrawerOpen] = useState(false);
   const [dismissedBanners, setDismissedBanners] = useState<Set<string>>(new Set());
+
+  // Custom data examples
+  const customImageData = [
+    {
+      id: "nature-1",
+      title: "Beautiful Sunset",
+      subtitle: "Golden Hour Magic",
+      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=500&fit=crop"
+    },
+    {
+      id: "nature-2", 
+      title: "Ocean Waves",
+      subtitle: "Serene Waters",
+      image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&h=500&fit=crop"
+    },
+    {
+      id: "nature-3",
+      title: "Forest Path",
+      subtitle: "Peaceful Journey", 
+      image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&h=500&fit=crop"
+    },
+    {
+      id: "nature-4",
+      title: "Mountain Peak",
+      subtitle: "Majestic Views",
+      image: "https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?w=800&h=500&fit=crop"
+    }
+  ];
+
+  const customCardData = [
+    {
+      id: "feature-1",
+      title: "Advanced Analytics",
+      subtitle: "Data Insights",
+      description: "Get detailed insights and analytics to make informed decisions for your business growth.",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop"
+    },
+    {
+      id: "feature-2",
+      title: "Team Collaboration",
+      subtitle: "Work Together",
+      description: "Collaborate seamlessly with your team members using our advanced collaboration tools.",
+      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=300&fit=crop"
+    },
+    {
+      id: "feature-3",
+      title: "Security First",
+      subtitle: "Protected Data",
+      description: "Your data is protected with enterprise-grade security and encryption protocols.",
+      image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&h=300&fit=crop"
+    },
+    {
+      id: "feature-4",
+      title: "Mobile Ready",
+      subtitle: "Any Device",
+      description: "Access your data and collaborate from any device, anywhere in the world.",
+      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=300&fit=crop"
+    }
+  ];
 
   const dropdownOptions = [
     {
@@ -821,7 +883,7 @@ function CompPageContent() {
             <h3 className="text-sm font-medium mb-3">Basic Progress Bars</h3>
             <div className="space-y-4">
               <ProgressBar value={25} />
-              <ProgressBar value={75} color="primary" />
+              <ProgressBar value={75} color="purple" />
             </div>
           </div>
 
@@ -1275,11 +1337,68 @@ function CompPageContent() {
                   </Container>
                 </div>
               </div>
-              
-          
-              
-            
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Beautiful Carousels */}
+      <div className="space-y-12">
+        <div className="text-center space-y-2">
+          <h2 className="text-2xl font-bold">Beautiful Carousels</h2>
+          <p className="text-sm text-muted-foreground">Stunning image and card carousels with custom arrows and modern pagination</p>
+        </div>
+        
+      
+
+        {/* Custom Image Carousel */}
+        <div className="space-y-6">
+          <div className="text-center space-y-2">
+            <h3 className="text-xl font-semibold">Custom Image Carousel</h3>
+            <p className="text-sm text-muted-foreground">Separate image carousel component with custom data and different settings</p>
+          </div>
+          <div className="py-8">
+            <ImageCarousel 
+              data={customImageData}
+              itemsPerView={2}
+              autoPlay={true}
+              autoPlaySpeed={4000}
+              arrowsInside={true}
+            />
+          </div>
+        </div>
+
+        {/* Custom Card Carousel */}
+        <div className="space-y-6">
+          <div className="text-center space-y-2">
+            <h3 className="text-xl font-semibold">Custom Card Carousel</h3>
+            <p className="text-sm text-muted-foreground">Card carousel with custom business feature data</p>
+          </div>
+          <div className="py-8">
+            <BeautifulCardCarousel 
+              data={customCardData}
+              itemsPerView={3}
+              autoPlay={true}
+              autoPlaySpeed={5000}
+              arrowsInside={false}
+            />
+          </div>
+        </div>
+
+        {/* Beautiful Marquee */}
+        <div className="space-y-6">
+          <div className="text-center space-y-2">
+            <h3 className="text-xl font-semibold">Beautiful Card Marquee</h3>
+            <p className="text-sm text-muted-foreground">Smooth scrolling cards with fade edges and focus rings</p>
+          </div>
+          <div className="py-8">
+            <Marquee 
+              speed="normal"
+              direction="left"
+              pauseOnHover={true}
+              fadeEdges={true}
+              layers="double"
+            />
           </div>
         </div>
       </div>
@@ -1292,8 +1411,6 @@ function CompPageContent() {
         </div>
         
         <div className="space-y-6">
-         
-
           {/* Animation Variants */}
           <div>
             <h3 className="text-sm font-medium mb-3">Animation Variants</h3>

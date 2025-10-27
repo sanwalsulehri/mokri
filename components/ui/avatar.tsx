@@ -21,9 +21,9 @@ const Avatar: React.FC<AvatarProps> = ({
 }) => {
   const getSizeClasses = () => {
     const sizes = {
-      sm: 'h-8 w-8 text-sm',
-      md: 'h-10 w-10 text-base',
-      lg: 'h-12 w-12 text-lg'
+      sm: 'h-6 w-6 md:h-8 md:w-8 text-xs md:text-sm',
+      md: 'h-8 w-8 md:h-10 md:w-10 text-sm md:text-base',
+      lg: 'h-10 w-10 md:h-12 md:w-12 text-base md:text-lg'
     };
     return sizes[size];
   };

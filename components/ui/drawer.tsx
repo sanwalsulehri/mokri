@@ -47,10 +47,10 @@ export function Drawer({
   }, [isOpen, onClose]);
 
   const sizeClasses = {
-    sm: position === 'left' || position === 'right' ? 'w-80' : 'h-64',
-    md: position === 'left' || position === 'right' ? 'w-96' : 'h-96',
-    lg: position === 'left' || position === 'right' ? 'w-[32rem]' : 'h-[32rem]',
-    xl: position === 'left' || position === 'right' ? 'w-[40rem]' : 'h-[40rem]'
+    sm: position === 'left' || position === 'right' ? 'w-full md:w-80' : 'h-64',
+    md: position === 'left' || position === 'right' ? 'w-full md:w-96' : 'h-96',
+    lg: position === 'left' || position === 'right' ? 'w-full md:w-[32rem]' : 'h-[32rem]',
+    xl: position === 'left' || position === 'right' ? 'w-full md:w-[40rem]' : 'h-[40rem]'
   };
 
   const positionClasses = {
@@ -120,15 +120,15 @@ export function Drawer({
           >
             {/* Header */}
             {(title || description || showCloseButton) && (
-              <div className="flex items-center justify-between p-6 border-b border-border">
+              <div className="flex items-center justify-between p-4 md:p-6 border-b border-border">
                 <div className="flex-1">
                   {title && (
-                    <h2 className="text-xl font-semibold text-foreground">
+                    <h2 className="text-lg md:text-xl font-semibold text-foreground">
                       {title}
                     </h2>
                   )}
                   {description && (
-                    <p className="text-sm text-foreground/70 mt-1">
+                    <p className="text-xs md:text-sm text-foreground/70 mt-1">
                       {description}
                     </p>
                   )}
@@ -137,12 +137,12 @@ export function Drawer({
                 {showCloseButton && (
                   <Button
                     onClick={onClose}
-                    className="ml-4 p-2"
+                    className="ml-2 md:ml-4 p-1.5 md:p-2"
                     bg={false}
                     aria-label="Close drawer"
                   >
                     <svg 
-                      className="h-4 w-4" 
+                      className="h-3 w-3 md:h-4 md:w-4" 
                       fill="none" 
                       viewBox="0 0 24 24" 
                       stroke="currentColor"
@@ -160,7 +160,7 @@ export function Drawer({
             )}
 
             {/* Content */}
-            <div className="flex-1 overflow-y-auto p-6">
+            <div className="flex-1 overflow-y-auto p-4 md:p-6">
               {children}
             </div>
           </motion.div>
