@@ -41,15 +41,15 @@ export function Tooltip({
   const getPositionClasses = () => {
     switch (position) {
       case 'top':
-        return 'bottom-full left-1/2 transform -translate-x-1/2 mb-2';
+        return 'bottom-full left-1/2 transform -translate-x-1/2 mb-1 md:mb-2';
       case 'bottom':
-        return 'top-full left-1/2 transform -translate-x-1/2 mt-2';
+        return 'top-full left-1/2 transform -translate-x-1/2 mt-1 md:mt-2';
       case 'left':
-        return 'right-full top-1/2 transform -translate-y-1/2 mr-2';
+        return 'right-full top-1/2 transform -translate-y-1/2 mr-1 md:mr-2';
       case 'right':
-        return 'left-full top-1/2 transform -translate-y-1/2 ml-2';
+        return 'left-full top-1/2 transform -translate-y-1/2 ml-1 md:ml-2';
       default:
-        return 'bottom-full left-1/2 transform -translate-x-1/2 mb-2';
+        return 'bottom-full left-1/2 transform -translate-x-1/2 mb-1 md:mb-2';
     }
   };
 
@@ -91,10 +91,10 @@ export function Tooltip({
             }}
             className={`absolute z-50 ${getPositionClasses()}`}
           >
-            <div className="relative bg-foreground text-background px-3 py-2 rounded-lg text-sm font-medium shadow-lg whitespace-nowrap">
+            <div className="relative bg-foreground text-background px-2 py-1.5 md:px-3 md:py-2 rounded-lg text-xs md:text-sm font-medium shadow-lg whitespace-nowrap">
               {content}
               {/* Arrow */}
-              <div className={`absolute w-0 h-0 border-4 ${getArrowClasses()}`} />
+              <div className={`absolute w-0 h-0 border-3 md:border-4 ${getArrowClasses()}`} />
             </div>
           </motion.div>
         )}
