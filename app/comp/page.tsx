@@ -40,6 +40,7 @@ import { BeautifulImageCarousel, BeautifulCardCarousel } from "../../components/
 import { ImageCarousel } from "../../components/ui/image-carousel";
 import { Marquee } from "../../components/ui/marquee";
 import { Accordion, AccordionPresets, AccordionIcons } from "../../components/ui/accordion";
+import { ButtonGroup, ButtonGroupItem, ButtonGroupPresets, ButtonGroupConfigs, BorderedButtonGroup } from "../../components/ui/button-group";
 function CompPageContent() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isLeftDrawerOpen, setIsLeftDrawerOpen] = useState(false);
@@ -154,6 +155,9 @@ function CompPageContent() {
   const [currentPage7, setCurrentPage7] = useState(1);
   const [currentPage8, setCurrentPage8] = useState(15);
 
+  // Button group states
+  const [activeBorderedFilter, setActiveBorderedFilter] = useState('all');
+
   return (
     <div className="min-h-screen space-y-10">
       <ThemeToggle />
@@ -166,6 +170,63 @@ function CompPageContent() {
         <Button bg={false} className="text-red-500">
           Click me
         </Button>
+      </div>
+
+      {/* Button Group Components */}
+      <div className="space-y-6">
+        <div className="text-center space-y-2">
+          <h2 className="text-xl font-semibold">Button Group Components</h2>
+          <p className="text-foreground/70">Button groups with borders, rounded corners, and dropdown menus</p>
+        </div>
+        
+        <div className="space-y-6">
+          {/* Filter Example */}
+          <div>
+            <h3 className="text-sm font-medium mb-3">Filter with More Options</h3>
+            <div className="space-y-2">
+              <BorderedButtonGroup
+                buttons={[
+                  { 
+                    label: 'All', 
+                    active: activeBorderedFilter === 'all', 
+                    onClick: () => setActiveBorderedFilter('all') 
+                  },
+                  { 
+                    label: 'Active', 
+                    active: activeBorderedFilter === 'active', 
+                    onClick: () => setActiveBorderedFilter('active') 
+                  },
+                  { 
+                    label: 'Pending', 
+                    active: activeBorderedFilter === 'pending', 
+                    onClick: () => setActiveBorderedFilter('pending') 
+                  }
+                ]}
+                moreOptions={[
+                  { 
+                    label: 'Completed', 
+                    onClick: () => setActiveBorderedFilter('completed'),
+                    icon: <DropdownIcons.Bell />
+                  },
+                  { 
+                    label: 'Archived', 
+                    onClick: () => setActiveBorderedFilter('archived'),
+                    icon: <DropdownIcons.Settings />
+                  },
+                  { 
+                    label: 'Deleted', 
+                    onClick: () => setActiveBorderedFilter('deleted'),
+                    icon: <DropdownIcons.Logout />,
+                    divider: true
+                  }
+                ]}
+              />
+              <p className="text-sm text-foreground/60">Selected: <strong>{activeBorderedFilter}</strong></p>
+            </div>
+          </div>
+
+        
+        </div>
       </div>
       <div className="">
         <Badge>Click me</Badge>
