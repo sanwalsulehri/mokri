@@ -42,6 +42,14 @@ import { Marquee } from "../../components/ui/marquee";
 import { Accordion, AccordionPresets, AccordionIcons } from "../../components/ui/accordion";
 import { ButtonGroup, ButtonGroupItem, ButtonGroupPresets, ButtonGroupConfigs, BorderedButtonGroup } from "../../components/ui/button-group";
 import { Calendar, CalendarRange } from "../../components/ui/calendar";
+import { Collapsible, CollapsibleGroup, CollapsiblePresets, CollapsibleIcons } from "../../components/ui/collapsible";
+import { Checkbox, CheckboxGroup } from "../../components/ui/checkbox";
+import { Command, CommandGroup, CommandPresets, CommandIcons } from "../../components/ui/command";
+import { DatePicker, DatePickerPresets } from "../../components/ui/date-picker";
+import { InputOTP, InputOTPPresets } from "../../components/ui/input-otp";
+import { Slider, SliderPresets } from "../../components/ui/slider";
+import { ScrollArea, ScrollAreaPresets } from "../../components/ui/scroll-area";
+import { DataTable, DataTablePresets } from "../../components/ui/data-table";
 function CompPageContent() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isLeftDrawerOpen, setIsLeftDrawerOpen] = useState(false);
@@ -161,6 +169,10 @@ function CompPageContent() {
   
   // Calendar states
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
+  const [datePickerValue, setDatePickerValue] = useState<Date | undefined>(undefined);
+  const [otpValue, setOtpValue] = useState<string>('');
+  const [selectedTableRows, setSelectedTableRows] = useState<any[]>([]);
+  const [sliderValue, setSliderValue] = useState(75);
   const [rangeStart, setRangeStart] = useState<Date | null>(null);
   const [rangeEnd, setRangeEnd] = useState<Date | null>(null);
 
@@ -261,6 +273,166 @@ function CompPageContent() {
               </p>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Collapsible Components */}
+      <div className="space-y-6">
+        <div className="text-center space-y-2">
+          <h2 className="text-xl font-semibold">Collapsible Components</h2>
+          <p className="text-foreground/70">Beautiful minimal collapsible sections with smooth animations</p>
+        </div>
+
+        <div className="max-w-2xl mx-auto space-y-4">
+          {/* Settings Panel */}
+          <div>
+            <h3 className="text-sm font-medium mb-3">Settings Panel</h3>
+            <CollapsibleGroup spacing="sm">
+              <Collapsible
+                title="Account Settings"
+                variant="default"
+                size="sm"
+                icon={<CollapsibleIcons.Settings />}
+              >
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <Checkbox 
+                      label="Email notifications" 
+                      size="sm"
+                      defaultChecked={true}
+                    />
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <Checkbox 
+                      label="SMS notifications" 
+                      size="sm"
+                    />
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <Checkbox 
+                      label="Marketing emails" 
+                      size="sm"
+                    />
+                  </div>
+                </div>
+              </Collapsible>
+              
+              <Collapsible
+                title="Privacy Settings"
+                variant="default"
+                size="sm"
+                icon={<CollapsibleIcons.Settings />}
+              >
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <label className="text-sm text-foreground whitespace-nowrap">Profile visibility</label>
+                    <div className="w-24">
+                      <DropDown
+                        options={[
+                          { value: 'public', label: 'Public' },
+                          { value: 'friends', label: 'Friends only' },
+                          { value: 'private', label: 'Private' }
+                        ]}
+                        placeholder="Select"
+                        className="w-full text-xs py-1.5 px-2"
+                      />
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <Checkbox 
+                      label="Data sharing" 
+                      size="sm"
+                    />
+                  </div>
+                </div>
+              </Collapsible>
+            </CollapsibleGroup>
+          </div>
+        </div>
+      </div>
+
+      {/* Command Components */}
+      <div className="space-y-6">
+        <div className="text-center space-y-2">
+          <h2 className="text-xl font-semibold">Command Components</h2>
+          <p className="text-foreground/70">Powerful command palette and search interfaces</p>
+        </div>
+
+        <div className="max-w-sm sm:max-w-md md:max-w-lg mx-auto">
+          {/* Command Palette */}
+          <Command
+            items={[
+              {
+                id: 'calendar',
+                label: 'Calendar',
+                icon: <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>,
+                keywords: ['schedule', 'events', 'dates'],
+                action: () => console.log('Calendar opened'),
+                group: 'Suggestions'
+              },
+              {
+                id: 'search-emoji',
+                label: 'Emoji',
+                icon: <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>,
+                keywords: ['emoji', 'smile', 'search'],
+                action: () => console.log('Emoji search opened'),
+                group: 'Suggestions'
+              },
+              {
+                id: 'calculator',
+                label: 'Calculator',
+                icon: <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                </svg>,
+                keywords: ['math', 'calculate', 'numbers'],
+                action: () => console.log('Calculator opened'),
+                group: 'Suggestions'
+              },
+              {
+                id: 'profile',
+                label: 'Profile',
+                icon: <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>,
+                keywords: ['user', 'account', 'profile'],
+                action: () => console.log('Profile opened'),
+                group: 'Settings',
+                shortcut: '⌘ P'
+              },
+              {
+                id: 'billing',
+                label: 'Billing',
+                icon: <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                </svg>,
+                keywords: ['payment', 'invoice', 'billing'],
+                action: () => console.log('Billing opened'),
+                group: 'Settings',
+                shortcut: '⌘ B'
+              },
+              {
+                id: 'settings',
+                label: 'Settings',
+                icon: <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>,
+                keywords: ['preferences', 'config', 'options'],
+                action: () => console.log('Settings opened'),
+                group: 'Settings',
+                shortcut: '⌘ S'
+              }
+            ]}
+            placeholder="Type a command or search..."
+            size="sm"
+            variant="default"
+            showGroups={true}
+            maxHeight="max-h-64"
+          />
         </div>
       </div>
 
@@ -1574,6 +1746,168 @@ function CompPageContent() {
           </div>
         </div>
       </div>
+
+      {/* Date Picker Components */}
+      <div className="space-y-6">
+        <div className="text-center space-y-2">
+          <h2 className="text-xl font-semibold">Date Picker Components</h2>
+          <p className="text-foreground/70">Beautiful date selection with calendar dropdown</p>
+        </div>
+
+        <div className="w-full space-y-6">
+          {/* Date Picker Examples */}
+          <div className="space-y-4">
+            <div className="space-y-2">
+              <h3 className="text-sm font-medium">Select Date</h3>
+              <DatePicker
+                value={datePickerValue}
+                onChange={(date) => setDatePickerValue(date)}
+                placeholder="Choose a date..."
+                size="sm"
+                showToday={true}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* OTP Input Components */}
+      <div className="space-y-6">
+        <div className="text-center space-y-2">
+          <h2 className="text-xl font-semibold">OTP Input Components</h2>
+          <p className="text-foreground/70">Beautiful one-time password input with sequential filling</p>
+        </div>
+
+        <div className="w-full max-w-sm sm:max-w-md mx-auto">
+          {/* OTP Example */}
+          <div className="space-y-2">
+            <h3 className="text-sm font-medium text-center">6-Digit OTP</h3>
+            <InputOTP
+              length={6}
+              value={otpValue}
+              onChange={setOtpValue}
+              size="sm"
+              autoFocus={true}
+            />
+            <p className="text-xs text-muted-foreground text-center">Entered: {otpValue || 'None'}</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Data Table Components */}
+      <div className="space-y-6">
+        <div className="text-center space-y-2">
+          <h2 className="text-xl font-semibold">Data Table Components</h2>
+          <p className="text-foreground/70">Beautiful data tables with checkboxes and sorting</p>
+        </div>
+
+        <div className="w-full max-w-full overflow-x-auto">
+          {/* Sample Data */}
+          {(() => {
+            const sampleData = [
+              { id: 1, name: 'John Doe', email: 'john@example.com', role: 'Admin', status: 'Active', department: 'Engineering', lastLogin: '2 hours ago', projects: 12, score: 95 },
+              { id: 2, name: 'Jane Smith', email: 'jane@example.com', role: 'User', status: 'Inactive', department: 'Marketing', lastLogin: '1 day ago', projects: 8, score: 87 },
+              { id: 3, name: 'Bob Johnson', email: 'bob@example.com', role: 'Moderator', status: 'Active', department: 'Support', lastLogin: '30 minutes ago', projects: 15, score: 92 },
+              { id: 4, name: 'Alice Brown', email: 'alice@example.com', role: 'User', status: 'Pending', department: 'Sales', lastLogin: 'Never', projects: 5, score: 78 },
+              { id: 5, name: 'Charlie Wilson', email: 'charlie@example.com', role: 'Admin', status: 'Active', department: 'Engineering', lastLogin: '5 minutes ago', projects: 20, score: 98 },
+              { id: 6, name: 'Diana Prince', email: 'diana@example.com', role: 'User', status: 'Active', department: 'Design', lastLogin: '1 hour ago', projects: 9, score: 89 },
+              { id: 7, name: 'Ethan Hunt', email: 'ethan@example.com', role: 'Moderator', status: 'Inactive', department: 'Security', lastLogin: '3 days ago', projects: 11, score: 85 },
+              { id: 8, name: 'Fiona Green', email: 'fiona@example.com', role: 'User', status: 'Active', department: 'HR', lastLogin: '45 minutes ago', projects: 6, score: 82 }
+            ];
+
+            const columns = [
+              { key: 'name' as const, label: 'Name', sortable: true },
+              { key: 'email' as const, label: 'Email', sortable: true },
+              { key: 'role' as const, label: 'Role', sortable: true },
+              { key: 'department' as const, label: 'Department', sortable: true },
+              { key: 'projects' as const, label: 'Projects', sortable: true },
+              { key: 'lastLogin' as const, label: 'Last Login', sortable: true }
+            ];
+
+            return (
+              <div className="space-y-4">
+                <div className="space-y-2">
+                  <h3 className="text-sm font-medium">User Management Table</h3>
+                  <DataTable
+                    data={sampleData}
+                    columns={columns}
+                    size="md"
+                    selectable={true}
+                    onSelectionChange={setSelectedTableRows}
+                    onRowClick={(row) => console.log('Row clicked:', row)}
+                  />
+                  <p className="text-xs text-muted-foreground">
+                    Selected: {selectedTableRows.length} row(s)
+                  </p>
+                </div>
+              </div>
+            );
+          })()}
+        </div>
+      </div>
+
+      {/* Slider Components */}
+      <section className="space-y-6">
+        <div className="space-y-2">
+          <h2 className="text-xl font-semibold">Slider Components</h2>
+          <p className="text-muted-foreground">Interactive range sliders for value selection</p>
+        </div>
+        
+        <div className="space-y-4">
+          <div className="space-y-2">
+            <h3 className="text-sm font-medium">Volume Control</h3>
+            <div className="w-full max-w-xs sm:max-w-sm md:max-w-md">
+              <Slider
+                value={sliderValue}
+                onChange={setSliderValue}
+                min={0}
+                max={100}
+                step={1}
+                size="md"
+                className="w-full"
+              />
+              <p className="text-xs sm:text-sm text-muted-foreground mt-2">Volume: {sliderValue}%</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Scroll Area Components */}
+      <section className="space-y-6">
+        <div className="space-y-2">
+          <h2 className="text-xl font-semibold">Scroll Area Components</h2>
+          <p className="text-muted-foreground">Scrollable content areas with custom styling</p>
+        </div>
+        
+        <div className="space-y-4">
+          <div className="space-y-2">
+            <h3 className="text-sm font-medium">Version Tags</h3>
+            <div className="w-full max-w-xs sm:max-w-sm md:max-w-md">
+              <ScrollArea
+                title="Tags"
+                size="md"
+                showBorder={true}
+              >
+                <div className="text-xs sm:text-sm text-foreground font-mono">v1.2.0-beta.50</div>
+                <div className="text-xs sm:text-sm text-foreground font-mono">v1.2.0-beta.49</div>
+                <div className="text-xs sm:text-sm text-foreground font-mono">v1.2.0-beta.48</div>
+                <div className="text-xs sm:text-sm text-foreground font-mono">v1.2.0-beta.47</div>
+                <div className="text-xs sm:text-sm text-foreground font-mono">v1.2.0-beta.46</div>
+                <div className="text-xs sm:text-sm text-foreground font-mono">v1.2.0-beta.45</div>
+                <div className="text-xs sm:text-sm text-foreground font-mono">v1.2.0-beta.44</div>
+                <div className="text-xs sm:text-sm text-foreground font-mono">v1.2.0-beta.43</div>
+                <div className="text-xs sm:text-sm text-foreground font-mono">v1.2.0-beta.42</div>
+                <div className="text-xs sm:text-sm text-foreground font-mono">v1.2.0-beta.41</div>
+                <div className="text-xs sm:text-sm text-foreground font-mono">v1.2.0-beta.40</div>
+                <div className="text-xs sm:text-sm text-foreground font-mono">v1.2.0-beta.39</div>
+                <div className="text-xs sm:text-sm text-foreground font-mono">v1.2.0-beta.38</div>
+                <div className="text-xs sm:text-sm text-foreground font-mono">v1.2.0-beta.37</div>
+                <div className="text-xs sm:text-sm text-foreground font-mono">v1.2.0-beta.36</div>
+              </ScrollArea>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Skeleton Components */}
       <div className="space-y-6">

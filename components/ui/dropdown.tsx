@@ -56,12 +56,13 @@ export function DropDown({
 
   const toggleDropdown = () => {
     if (!disabled) {
+      console.log('Toggling dropdown, current state:', isOpen);
       setIsOpen(!isOpen);
     }
   };
 
   return (
-    <div className="w-full">
+    <div className={`w-full ${className}`}>
       {label && (
         <label className="block text-sm font-medium text-foreground mb-2">
           {label}
@@ -74,7 +75,7 @@ export function DropDown({
           type="button"
           onClick={toggleDropdown}
           disabled={disabled}
-          className={`w-full bg-background border border-secondary rounded-lg text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-secondary/70 focus:border-secondary/40 focus:ring-offset-2 focus:ring-offset-background transition-all duration-200 ease-in-out shadow-sm focus:shadow-md py-2 pl-3 pr-8 text-left cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed ${className}`}
+          className={`w-full bg-background border border-border rounded-lg text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-border/70 focus:border-border/40 focus:ring-offset-2 focus:ring-offset-background transition-all duration-200 ease-in-out shadow-sm focus:shadow-md py-2 pl-3 pr-8 text-left cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed ${className}`}
         >
           <span className={selectedOption ? 'text-foreground' : 'text-foreground/60'}>
             {selectedOption ? selectedOption.label : placeholder}
@@ -108,15 +109,15 @@ export function DropDown({
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -5 }}
               transition={{ duration: 0.15, ease: "easeOut" }}
-              className="absolute z-50 py-2 w-full mt-1 px-2 bg-background border border-secondary rounded-lg shadow-lg max-h-60 overflow-auto"
+              className="absolute z-[9999] py-2 w-full mt-1 px-2 bg-background border border-border rounded-lg shadow-lg max-h-60 overflow-auto"
             >
               {options.map((option, index) => (
                 <motion.button
                   key={option.value}
                   type="button"
                   onClick={() => handleSelect(option.value)}
-                  className={`w-full text-left px-3 py-2 font-medium hover:bg-secondary/40 cursor-pointer text-sm text-foreground/80 transition-colors duration-150 rounded-md  ${
-                    selectedValue === option.value ? 'bg-secondary/20 font-semibold' : ''
+                  className={`w-full text-left px-3 py-2 font-medium hover:bg-muted cursor-pointer text-sm text-foreground/80 transition-colors duration-150 rounded-md  ${
+                    selectedValue === option.value ? 'bg-muted/50 font-semibold' : ''
                   }`}
                   whileTap={{ scale: 0.98 }}
                 >

@@ -24,24 +24,24 @@ export function Calendar({
 
   const sizeClasses = {
     sm: {
-      container: 'w-64 sm:w-72',
+      container: 'w-full max-w-64 sm:max-w-72',
       header: 'text-xs sm:text-sm',
       dayLabel: 'text-[10px] sm:text-xs',
-      day: 'w-7 h-7 sm:w-8 sm:h-8 text-xs sm:text-sm',
-      navButton: 'w-6 h-6'
+      day: 'w-6 h-6 sm:w-7 sm:h-7 text-[10px] sm:text-xs',
+      navButton: 'w-5 h-5 sm:w-6 sm:h-6'
     },
     md: {
-      container: 'w-[95%] sm:w-96 md:w-80 lg:w-96',
+      container: 'w-full max-w-80 sm:max-w-96 md:max-w-80 lg:max-w-96',
       header: 'text-sm sm:text-base',
       dayLabel: 'text-xs sm:text-sm',
-      day: 'w-9 h-9 sm:w-10 sm:h-10 text-sm',
+      day: 'w-8 h-8 sm:w-9 sm:h-9 text-xs sm:text-sm',
       navButton: 'w-6 h-6 sm:w-8 sm:h-8'
     },
     lg: {
-      container: 'w-[95%] sm:w-96 md:w-full lg:w-96',
+      container: 'w-full max-w-96 sm:max-w-full md:max-w-96 lg:max-w-full',
       header: 'text-base sm:text-lg',
       dayLabel: 'text-sm sm:text-base',
-      day: 'w-10 h-10 sm:w-12 sm:h-12 text-sm sm:text-base',
+      day: 'w-9 h-9 sm:w-10 sm:h-10 text-sm sm:text-base',
       navButton: 'w-8 h-8 sm:w-10 sm:h-10'
     }
   };
@@ -134,10 +134,10 @@ export function Calendar({
             rounded-lg cursor-pointer transition-all duration-200
             font-medium relative
             ${isSelectedDay 
-              ? 'bg-foreground text-background outline outline-border outline-offset-2' 
+              ? 'bg-foreground text-background outline outline-border outline-offset-2 focus:outline-2 focus:outline-foreground/80' 
               : isCurrentDay && showToday
                 ? 'bg-secondary/50 text-secondary-foreground'
-                : 'text-foreground hover:bg-muted'
+                : 'text-foreground hover:bg-muted focus:outline focus:outline-2 focus:outline-foreground/60'
             }
             ${isDisabledDay 
               ? 'opacity-30 cursor-not-allowed pointer-events-none' 
