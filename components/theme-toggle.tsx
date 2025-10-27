@@ -48,6 +48,7 @@ export function ThemeToggle({
         className={className}
         leftLabel={leftLabel}
         rightLabel={rightLabel}
+        controlTheme={true}
       />
     );
   }

@@ -191,7 +191,7 @@ export function Calendar({
         <div className="flex items-center gap-2">
           <DropdownMenu
             trigger={
-              <button className="flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold text-foreground bg-background border border-border hover:bg-muted rounded-lg transition-colors duration-200">
+              <button className="flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm  text-foreground bg-background border border-border hover:bg-muted rounded-lg transition-colors duration-200">
                 <span className="hidden sm:inline">{monthNames[currentMonth]}</span>
                 <span className="sm:hidden text-[10px]">{monthNames[currentMonth].substring(0, 3)}</span>
                 <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -213,7 +213,7 @@ export function Calendar({
           
           <DropdownMenu
             trigger={
-              <button className="flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold text-foreground bg-background border border-border hover:bg-muted rounded-lg transition-colors duration-200">
+              <button className="flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm  text-foreground bg-background border border-border hover:bg-muted rounded-lg transition-colors duration-200">
                 {currentYear}
                 <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />

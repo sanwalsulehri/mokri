@@ -83,7 +83,7 @@ export function Input({
             onBlur={onBlur}
             onKeyDown={onKeyDown}
             disabled={disabled}
-            className={`w-full bg-background border font-medium placeholder:font-medium border-border rounded-lg text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-border focus:ring-offset-1 focus:border-secondary/50 transition-all duration-300 ease-out shadow hover:border-border/80 disabled:opacity-50 disabled:cursor-not-allowed ${
+            className={`w-full bg-background border font-medium placeholder:font-medium border-border rounded-lg text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-3  focus:ring-ring focus:border-focusborder focus:ring-offset-[.2px] focus:outline-none  transition-all duration-300 ease-out shadow hover:border-border disabled:opacity-50 disabled:cursor-not-allowed ${
               isWithIcon ? 'pl-8' : 'pl-3'
             } py-2.5 ${className}`}
           />

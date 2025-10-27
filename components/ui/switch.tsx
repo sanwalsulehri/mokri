@@ -1,7 +1,6 @@
-
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 interface SwitchProps {
@@ -13,6 +12,7 @@ interface SwitchProps {
   disabled?: boolean;
   className?: string;
   size?: 'sm' | 'md' | 'lg';
+  controlTheme?: boolean;
 }
 
 export function Switch({ 
@@ -23,14 +23,40 @@ export function Switch({
   onChange,
   disabled = false,
   className = "",
-  size = 'md'
+  size = 'md',
+  controlTheme = false
 }: SwitchProps) {
   const [isChecked, setIsChecked] = useState(checked);
+  const [isDark, setIsDark] = useState(false);
+
+  // Detect dark mode from data-theme
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      setIsDark(document.documentElement.getAttribute("data-theme") === "dark");
+    });
+    observer.observe(document.documentElement, { attributes: true });
+    const currentTheme = document.documentElement.getAttribute("data-theme");
+    setIsDark(currentTheme === "dark");
+    
+    // If controlTheme is true, sync isChecked with theme
+    if (controlTheme) {
+      setIsChecked(currentTheme === "dark");
+    }
+    
+    return () => observer.disconnect();
+  }, [controlTheme, isChecked]);
 
   const handleToggle = () => {
     if (!disabled) {
       const newChecked = !isChecked;
       setIsChecked(newChecked);
+      
+      // If controlTheme is true, toggle the theme
+      if (controlTheme) {
+        const newTheme = newChecked ? "dark" : "light";
+        document.documentElement.setAttribute("data-theme", newTheme);
+      }
+      
       onChange?.(newChecked);
     }
   };
@@ -75,24 +101,32 @@ export function Switch({
         whileTap={{ scale: 0.95 }}
         transition={{ duration: 0.1 }}
       >
+        {/* Track */}
         <motion.div
-          className={`${currentSize.track} rounded-full transition-all duration-300 hover:opacity-70`}
+          className={`${currentSize.track} rounded-full transition-all`}
           animate={{
-            backgroundColor: isChecked ? 'var(--foreground)' : 'var(--secondary)'
+            backgroundColor: isChecked
+              ? 'var(--foreground)'
+              : 'var(--secondary)'
           }}
           transition={{
-            duration: 0.3,
-            ease: "easeInOut"
+            duration: 0.15,
+            ease: 'easeInOut'
           }}
         />
+
+        {/* Thumb */}
         <motion.span
-          className={`${currentSize.thumb} absolute top-0.5 left-0.5 pointer-events-none inline-block rounded-full bg-background shadow-lg`}
+          className={`${currentSize.thumb} absolute top-0.5 left-0.5 pointer-events-none inline-block rounded-full shadow-lg`}
           animate={{
-            x: isChecked ? (size === 'sm' ? 16 : size === 'md' ? 23 : 31) : 0
+            x: isChecked ? (size === 'sm' ? 17 : size === 'md' ? 24 : 32) : 1,
+            backgroundColor: isDark
+              ? (isChecked ? '#000000' : '#ffffff')
+              : (isChecked ? '#ffffff' : '#000000')
           }}
           transition={{
-            duration: 0.2,
-            ease: "easeInOut"
+            duration: 0.15,
+            ease: 'easeInOut'
           }}
         />
       </motion.button>
@@ -106,4 +140,3 @@ export function Switch({
     </div>
   );
 }
-  
