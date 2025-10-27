@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Avatar from './avatar';
 import { Card } from './card';
+import { Fade } from './fade';
 
 interface MarqueeCard {
   id: number | string;
@@ -190,25 +191,7 @@ const Marquee: React.FC<MarqueeProps> = ({
   };
   
   return (
-    <div className={`relative overflow-hidden py-4 ${className}`}>
-      {/* Fade edges */}
-      {fadeEdges && (
-        <>
-          <motion.div 
-            className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-background via-background/80 to-transparent z-10 pointer-events-none"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-          />
-          <motion.div 
-            className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-background via-background/80 to-transparent z-10 pointer-events-none"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-          />
-        </>
-      )}
-      
+    <Fade fadeLeft={fadeEdges} fadeRight={fadeEdges} className={`py-4 ${className}`}>
       {/* Marquee layers */}
       <div className="-space-y-1">
         {layers === 'double' ? (
@@ -223,7 +206,7 @@ const Marquee: React.FC<MarqueeProps> = ({
           renderMarqueeLayer(direction, 'single')
         )}
       </div>
-    </div>
+    </Fade>
   );
 };
 
