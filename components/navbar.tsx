@@ -3,18 +3,35 @@
 import { ThemeToggle } from './theme-toggle';
 import { Button } from './ui/button';
 import Container from './ui/container';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      setIsDark(document.documentElement.getAttribute("data-theme") === "dark");
+    });
+    observer.observe(document.documentElement, { attributes: true });
+    setIsDark(document.documentElement.getAttribute("data-theme") === "dark");
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <nav className="w-full border-b border-foreground/10 bg-background/80 backdrop-blur-md sticky top-0 z-50">
-      <Container size="xl" padding="lg">
+    <nav className="w-full bg-background/80 backdrop-blur-md sticky top-0 z-50">
+      <Container size="2xl" padding="lg">
         <div className="flex justify-between items-center h-16">
           {/* Logo and Navigation Links */}
           <div className="flex items-center space-x-8">
-            <h1 className="text-2xl font-bold text-foreground">Vexel</h1>
+            <Image
+              src={isDark ? "/logo_white.png" : "/logo_dark.png"}
+              alt="Vertex"
+              width={120}
+              height={40}
+              className="h-8 w-auto"
+            />
             
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-2">
