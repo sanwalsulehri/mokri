@@ -131,8 +131,7 @@ export function PaymentForm({
             {/* Action Buttons */}
             <div className="flex justify-end gap-3 pt-6">
               <Button
-                type="button"
-                bg={false}
+                outline={true}
               >
                 Cancel
               </Button>
