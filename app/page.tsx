@@ -1,5 +1,8 @@
+'use client';
+
 import { Navbar } from "../components/navbar";
 import { Footer } from "../components/footer";
+import { PaymentForm } from "../components/ui/payment-form";
 
 // Define presets directly in this file to test
 const FooterPresets = {
@@ -25,20 +28,16 @@ const FooterPresets = {
 
 export default function Home() {
   return (
-   <div className="">
+   <div className="min-h-screen bg-gradient-to-br from-background via-background to-background/50">
      <Navbar />
-     <div className="flex items-center justify-center ">
-       <div className="text-center">
-         <h1 className="text-4xl font-bold mb-8">The Foundation</h1>
-         <p className="text-lg text-gray-600 mb-12">Different Footer Presets</p>
-       </div>
+     <div className="py-16">
+       <PaymentForm 
+         onSubmit={(data) => console.log('Payment form submitted:', data)}
+       />
      </div>
      
      {/* Minimal Footer */}
-       <Footer {...FooterPresets.minimal} />
-
-     
-
+     <Footer {...FooterPresets.minimal} />
    </div>
   );
 }

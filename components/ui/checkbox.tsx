@@ -101,7 +101,7 @@ export function Checkbox({
       <label
         htmlFor={id}
         className={`
-          flex items-center justify-center
+          flex items-center 
           ${sizeClasses[size].spacing}
           ${sizeClasses[size].label}
           text-foreground

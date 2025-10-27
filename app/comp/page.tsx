@@ -443,7 +443,7 @@ function CompPageContent() {
         <Badge variant="destructive">Click me</Badge>
       </div>
       <div className="space-y-2">
-        <Input />
+        <Input bg={true} />
         <Input isLabel={true} label="Name" />
         <Input isWithIcon={true} />
         <Input isWithButton={true} buttonText="Submit" />

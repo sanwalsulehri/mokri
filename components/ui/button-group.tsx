@@ -93,7 +93,7 @@ export function ButtonGroupItem({
       onClick={onClick}
       disabled={disabled}
       className={`${variantClasses[variant]} ${active ? 'shadow-sm' : ''} text-xs sm:text-sm px-2 py-1 sm:px-3 sm:py-2 ${className}`}
-      bg={false}
+      secondary={true}
     >
       {children}
     </Button>
@@ -117,7 +117,7 @@ export function BorderedButtonGroup({
 
   const getButtonVariantClasses = (variant: string, active: boolean) => {
     const baseClasses = {
-      default: active ? 'bg-foreground text-background' : 'bg-transparent text-foreground hover:bg-foreground/10',
+      default: active ? 'bg-foreground text-background' : 'bg-muted/50 text-foreground hover:bg-muted/70',
       primary: active ? 'bg-blue-600 text-white' : 'bg-transparent text-blue-600 hover:bg-blue-50',
       secondary: active ? 'bg-gray-600 text-white' : 'bg-transparent text-gray-600 hover:bg-gray-50',
       destructive: active ? 'bg-red-600 text-white' : 'bg-transparent text-red-600 hover:bg-red-50',
@@ -165,7 +165,7 @@ export function BorderedButtonGroup({
                 cursor-pointer leading-tight 
                 font-medium transition-all duration-200 ease-in-out 
                 focus:outline-none
-                bg-transparent text-foreground hover:bg-foreground/10
+                bg-muted/50 text-foreground hover:bg-muted/70
                 border-l border-border rounded-r-lg overflow-hidden
                 ${disabled ? 'opacity-50 cursor-not-allowed pointer-events-none' : ''}
               `}

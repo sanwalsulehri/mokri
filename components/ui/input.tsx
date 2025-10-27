@@ -5,7 +5,7 @@ import { Button } from './button';
 interface InputProps {
   label?: string;
   placeholder?: string;
-  type?: 'text' | 'email' | 'password' | 'number' | 'tel' | 'url';
+  type?: 'text' | 'email' | 'password' | 'number' | 'tel' | 'url' | 'file';
   isLabel?: boolean;
   isWithIcon?: boolean;
   customIcon?: React.ReactNode;
@@ -19,6 +19,8 @@ interface InputProps {
   onButtonClick?: () => void;
   buttonText?: string;
   disabled?: boolean;
+  bg?: boolean;
+  accept?: string;
 }
 
 export function Input({ 
@@ -37,7 +39,9 @@ export function Input({
   onKeyDown,
   onButtonClick,
   buttonText = "Submit",
-  disabled = false
+  disabled = false,
+  bg = false,
+  accept
 }: InputProps) {
 
   return (
@@ -83,7 +87,8 @@ export function Input({
             onBlur={onBlur}
             onKeyDown={onKeyDown}
             disabled={disabled}
-            className={`w-full bg-background border font-medium placeholder:font-medium border-border rounded-lg text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-3  focus:ring-ring focus:border-focusborder focus:ring-offset-[.2px] focus:outline-none  transition-all duration-300 ease-out shadow hover:border-border disabled:opacity-50 disabled:cursor-not-allowed ${
+            accept={accept}
+            className={`w-full ${bg ? 'bg-muted/30' : 'bg-transparent'} border font-medium placeholder:font-medium border-border rounded-lg text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-3  focus:ring-ring focus:border-focusborder focus:ring-offset-[.2px] focus:outline-none  transition-all duration-300 ease-out shadow hover:border-border disabled:opacity-50 disabled:cursor-not-allowed ${
               isWithIcon ? 'pl-8' : 'pl-3'
             } py-2.5 ${className}`}
           />
