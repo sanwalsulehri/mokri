@@ -25,9 +25,9 @@ const FooterPresets = {
 
 export default function Home() {
   return (
-   <div className="min-h-screen">
+   <div className="">
      <Navbar />
-     <div className="flex items-center justify-center min-h-[calc(100vh-8rem)]">
+     <div className="flex items-center justify-center ">
        <div className="text-center">
          <h1 className="text-4xl font-bold mb-8">The Foundation</h1>
          <p className="text-lg text-gray-600 mb-12">Different Footer Presets</p>
@@ -35,22 +35,9 @@ export default function Home() {
      </div>
      
      {/* Minimal Footer */}
-     <div className="mb-8">
-       <h2 className="text-2xl font-semibold text-center mb-4">Minimal Footer</h2>
        <Footer {...FooterPresets.minimal} />
-     </div>
 
-     {/* Full Footer */}
-     <div className="mb-8">
-       <h2 className="text-2xl font-semibold text-center mb-4">Full Footer</h2>
-       <Footer {...FooterPresets.full} />
-     </div>
-
-     {/* Company Footer */}
-     <div className="mb-8">
-       <h2 className="text-2xl font-semibold text-center mb-4">Company Footer</h2>
-       <Footer {...FooterPresets.company} />
-     </div>
+     
 
    </div>
   );

@@ -58,6 +58,7 @@ export function ThemeToggle({
       className={`p-2 ${className}`}
       aria-label="Toggle theme"
       bg={false}
+      size="sm"
     >
       {theme === 'light' ? (lightIcon || defaultLightIcon) : (darkIcon || defaultDarkIcon)}
     </Button>
