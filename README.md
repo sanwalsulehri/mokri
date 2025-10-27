@@ -1,62 +1,55 @@
-# ✨ Vexel
+# Vexel
 
-A beautiful, modern React components library built with Next.js, TypeScript, and Tailwind CSS. Vexel provides a collection of stunning, accessible, and customizable components to accelerate your development.
+A minimal, beautiful React components library built with Next.js, TypeScript, and Tailwind CSS.
 
-## 🚀 Features
+## Components
 
-- **Beautiful Components** - Carefully crafted, modern UI components
-- **TypeScript** - Full type safety and excellent developer experience
-- **Tailwind CSS** - Utility-first CSS framework for rapid styling
-- **Motion** - Smooth animations and transitions
-- **Accessible** - Built with accessibility in mind
-- **Customizable** - Easy to theme and customize
-- **Modern Stack** - Built with Next.js 16 and React 19
+- **Button** - Customizable buttons with variants
+- **Button Group** - Grouped button components
+- **Card** - Content containers
+- **Input** - Form input fields
+- **Textarea** - Multi-line text input
+- **Checkbox** - Custom checkbox component
+- **Switch** - Toggle switches
+- **Badge** - Status indicators
+- **Avatar** - User profile images
+- **Calendar** - Date picker calendar
+- **Date Picker** - Date selection component
+- **Command** - Command palette
+- **Dropdown** - Dropdown menus
+- **Dropdown Menu** - Advanced dropdown
+- **Collapsible** - Expandable content
+- **Accordion** - Collapsible sections
+- **Tabs** - Tab navigation
+- **Modal** - Overlay dialogs
+- **Drawer** - Slide-out panels
+- **Toast** - Notification messages
+- **Tooltip** - Hover information
+- **Slider** - Range input
+- **Progress Bar** - Loading indicators
+- **Skeleton** - Loading placeholders
+- **Loader** - Spinner components
+- **Data Table** - Sortable tables
+- **Input OTP** - One-time password input
+- **Scroll Area** - Custom scrollable areas
+- **Carousel** - Image carousels
+- **Image** - Optimized images
+- **Banner** - Alert banners
+- **Breadcrumbs** - Navigation breadcrumbs
+- **Container** - Layout containers
+- **Typography** - Text components
+- **Testimonials** - Review components
+- **Marquee** - Scrolling text
+- **Pagination** - Page navigation
 
-## 🎨 Components
+## Tech Stack
 
-Coming soon! This library will include:
+- **Next.js 16** - React framework
+- **TypeScript** - Type safety
+- **Tailwind CSS** - Styling
+- **Framer Motion** - Animations
 
-- Buttons
-- Cards
-- Forms
-- Navigation
-- Modals
-- Animations
-- And much more...
-
-## 📦 Installation
-
-```bash
-npm install vexel
-# or
-yarn add vexel
-# or
-pnpm add vexel
-```
-
-## 🚀 Quick Start
-
-```tsx
-import { Button, Card } from 'vexel'
-
-function App() {
-  return (
-    <div>
-      <Button variant="primary">
-        Click me
-      </Button>
-      <Card>
-        <h2>Beautiful Card</h2>
-        <p>This is a beautiful card component</p>
-      </Card>
-    </div>
-  )
-}
-```
-
-## 🛠️ Development
-
-To contribute to Vexel or run it locally:
+## Getting Started
 
 ```bash
 # Clone the repository
@@ -65,32 +58,16 @@ git clone https://github.com/sanwalsulehri/vexel.git
 # Install dependencies
 npm install
 
-# Start the development server
+# Start development server
 npm run dev
-
-# Build the library
-npm run build
 ```
 
-## 📚 Documentation
+Visit `http://localhost:3000/comp` to see all components in action.
 
-Visit our [documentation site](https://vexel.dev) for detailed component documentation, examples, and guides.
+## License
 
-## 🤝 Contributing
-
-We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- [Next.js](https://nextjs.org/) - The React framework
-- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
-- [Motion](https://motion.dev/) - Animation library
-- [TypeScript](https://www.typescriptlang.org/) - Type safety
+MIT
 
 ---
 
-Made with ❤️ by [sanwalsulehri](https://github.com/sanwalsulehri)
+Made by [sanwalsulehri](https://github.com/sanwalsulehri)
