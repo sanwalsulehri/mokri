@@ -14,7 +14,8 @@ export function Button({ children, onClick, className = "", bg = true, outline =
   const sizeClasses = {
     sm: 'px-3 py-[7px] text-sm',
     md: 'px-4 py-2 text-sm',
-    lg: 'px-6 py-2.5 text-base'
+    lg: 'px-4 py-2 text-base',
+    xl: 'px-6 py-2.5 text-base'
   };
 
   return (

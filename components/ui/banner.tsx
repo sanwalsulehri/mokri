@@ -36,42 +36,42 @@ export function Banner({
     switch (variant) {
       case 'success':
         return {
-          container: 'bg-muted border-border text-foreground',
+          container: 'bg-secondary/30 border-border text-foreground',
           icon: 'text-foreground',
           iconBg: '',
           cross: 'text-foreground/70'
         };
       case 'warning':
         return {
-          container: 'bg-muted border-border text-foreground',
+          container: 'bg-secondary/30 border-border text-foreground',
           icon: 'text-foreground',
           iconBg: '',
           cross: 'text-foreground/70'
         };
       case 'error':
         return {
-          container: 'bg-muted border-border text-red-600',
-          icon: 'text-red-600',
+          container: 'bg-secondary/30 border-border text-red-600',
+          icon: 'text-red-540',
           iconBg: '',
-          cross: 'text-red-600'
+          cross: 'text-red-400'
         };
       case 'info':
         return {
-          container: 'bg-muted border-border text-foreground',
+          container: 'bg-secondary/30 border-border text-foreground',
           icon: 'text-foreground',
           iconBg: '',
           cross: 'text-foreground/70'
         };
       case 'gradient':
         return {
-          container: 'bg-muted border-border text-foreground',
+          container: 'bg-secondary/30 border-border text-foreground',
           icon: 'text-foreground',
           iconBg: '',
           cross: 'text-foreground/70'
         };
       default:
         return {
-          container: 'bg-muted border-border text-foreground',
+          container: 'bg-secondary/30 border-border text-foreground',
           icon: 'text-foreground',
           iconBg: '',
           cross: 'text-foreground/70'
