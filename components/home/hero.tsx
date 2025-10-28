@@ -1,6 +1,7 @@
 import React from 'react'
 import { Button } from '../ui/button'
 import { Badge } from '../ui/badge'
+import ComponentSet from "../component-set"
 
 const Hero = () => {
   return (
@@ -35,6 +36,7 @@ const Hero = () => {
           </div>
         </div>
       </div>
+      <ComponentSet />
     </div>
   )
 }

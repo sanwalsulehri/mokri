@@ -61,7 +61,7 @@ export function PaymentForm({
                 <Input
                   label="Card Number"
                   isLabel={true}
-                  placeholder="1234 5678 9012 3456"
+                  placeholder="1234"
                   value={formData.cardNumber}
                   onChange={(e) => handleInputChange('cardNumber', e.target.value)}
                 />

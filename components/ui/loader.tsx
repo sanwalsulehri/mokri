@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 export interface LoaderProps {
   size?: 'sm' | 'md' | 'lg';
-  variant?: 'spinner' | 'dots' | 'pulse' | 'bars';
+  variant?: 'spinner' | 'dots' | 'pulse' | 'bars' | 'outline';
   color?: 'primary' | 'secondary' | 'accent';
   className?: string;
 }
@@ -23,21 +23,24 @@ export function Loader({
           spinner: 'w-4 h-4',
           dots: 'w-2 h-2',
           pulse: 'w-3 h-3',
-          bars: 'w-1 h-4'
+          bars: 'w-1 h-4',
+          outline: 'w-4 h-4'
         };
       case 'lg':
         return {
           spinner: 'w-8 h-8',
           dots: 'w-3 h-3',
           pulse: 'w-6 h-6',
-          bars: 'w-2 h-8'
+          bars: 'w-2 h-8',
+          outline: 'w-8 h-8'
         };
       default: // md
         return {
           spinner: 'w-6 h-6',
           dots: 'w-2.5 h-2.5',
           pulse: 'w-4 h-4',
-          bars: 'w-1.5 h-6'
+          bars: 'w-1.5 h-6',
+          outline: 'w-6 h-6'
         };
     }
   };
@@ -140,6 +143,12 @@ export function Loader({
     </div>
   );
 
+  const renderOutline = () => (
+    <div className={`flex items-center justify-center ${className}`}>
+      <div className={`${sizeStyles.outline} border-2 border-current border-t-transparent rounded-full animate-spin`}></div>
+    </div>
+  );
+
   switch (variant) {
     case 'dots':
       return renderDots();
@@ -147,6 +156,8 @@ export function Loader({
       return renderPulse();
     case 'bars':
       return renderBars();
+    case 'outline':
+      return renderOutline();
     default:
       return renderSpinner();
   }
@@ -173,5 +184,10 @@ export const LoaderPresets = {
     size: 'md' as const,
     variant: 'bars' as const,
     color: 'accent' as const
+  },
+  outlineLoader: {
+    size: 'md' as const,
+    variant: 'outline' as const,
+    color: 'primary' as const
   }
 };

@@ -6,39 +6,30 @@ interface IconButtonProps {
   children: React.ReactNode;
   onClick?: () => void;
   className?: string;
-  size?: 'xs' | 'sm' | 'md' | 'lg';
   disabled?: boolean;
-  "aria-label"?: string;
-  type?: 'button' | 'submit' | 'reset';
+  size?: 'sm' | 'md' | 'lg';
 }
 
-export function IconButton({
-  children,
-  onClick,
+export function IconButton({ 
+  children, 
+  onClick, 
   className = "",
-  size = 'md',
   disabled = false,
-  type = 'button',
-  ...rest
+  size = 'md'
 }: IconButtonProps) {
-  const sizeClasses: Record<NonNullable<IconButtonProps['size']>, string> = {
-    xs: 'h-6 w-6',
-    sm: 'h-8 w-8',
-    md: 'h-9 w-9',
-    lg: 'h-10 w-10'
-  };
-
   return (
     <button
-      type={type}
       onClick={onClick}
       disabled={disabled}
-      className={`${sizeClasses[size]} inline-flex items-center justify-center rounded-lg text-foreground bg-transparent hover:bg-foreground/10 transition-all duration-200 ease-in-out focus:outline-none ${disabled ? 'opacity-50 cursor-not-allowed pointer-events-none' : ''} ${className}`}
-      {...rest}
+      className={`
+        ${size === 'sm' ? 'w-8 h-8' : size === 'md' ? 'w-10 h-10' : 'w-12 h-12'} flex items-center justify-center rounded-lg
+        text-muted-foreground hover:text-foreground hover:bg-muted
+        transition-colors duration-200 cursor-pointer
+        disabled:opacity-50 disabled:cursor-not-allowed
+        ${className}
+      `}
     >
       {children}
     </button>
   );
 }
-
-
