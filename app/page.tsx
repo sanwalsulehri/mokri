@@ -30,15 +30,14 @@ const FooterPresets = {
 
 export default function Home() {
   return (
-   <div className="min-h-screen ">
+   <div className="min-h-screen flex flex-col">
      <Navbar />
    
-     <Container size="2xl" padding="lg">
+     <Container size="2xl" padding="lg" className="flex-1">
        <Hero />
      </Container>
 
-     
-    
+     <Footer {...FooterPresets.minimal} />
    </div>
   );
 }
