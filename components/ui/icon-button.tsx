@@ -6,7 +6,7 @@ interface IconButtonProps {
   children: React.ReactNode;
   onClick?: () => void;
   className?: string;
-  size?: 'sm' | 'md' | 'lg';
+  size?: 'xs' | 'sm' | 'md' | 'lg';
   disabled?: boolean;
   "aria-label"?: string;
   type?: 'button' | 'submit' | 'reset';
@@ -22,6 +22,7 @@ export function IconButton({
   ...rest
 }: IconButtonProps) {
   const sizeClasses: Record<NonNullable<IconButtonProps['size']>, string> = {
+    xs: 'h-6 w-6',
     sm: 'h-8 w-8',
     md: 'h-9 w-9',
     lg: 'h-10 w-10'
