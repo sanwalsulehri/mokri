@@ -125,7 +125,7 @@ const ComponentSet = () => {
               </svg>
             </div>
             <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
-              <IconButton onClick={() => console.log("Voice message")}>
+              <IconButton size="sm" onClick={() => console.log("Voice message")}>
                 <svg
                   className="w-4 h-4"
                   fill="none"
@@ -203,7 +203,7 @@ const ComponentSet = () => {
               </svg>
             </div>
             <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
-              <IconButton onClick={() => console.log("Copy URL")}>
+              <IconButton size="sm" onClick={() => console.log("Copy URL")}>
                 <svg
                   className="w-4 h-4"
                   fill="none"
@@ -249,7 +249,7 @@ const ComponentSet = () => {
               <span className="text-muted-foreground whitespace-nowrap">
                 52% used
               </span>
-              <IconButton onClick={() => console.log("Send message")}>
+              <IconButton size="sm" onClick={() => console.log("Send message")}>
                 <svg
                   className="w-4 h-4"
                   fill="none"
