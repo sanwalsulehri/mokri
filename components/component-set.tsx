@@ -10,7 +10,7 @@ import { Slider } from "./ui/slider";
 import { Checkbox } from "./ui/checkbox";
 import { AvatarGroup } from "./ui/avatar";
 import { ProfileVerification } from "./ui/profile-verification";
-import { ButtonGroup } from "./ui/button-group";
+import { ButtonGroup, ButtonGroupItem } from "./ui/button-group";
 import { Pagination, PaginationPresets } from "./ui/pagination";
 import { IconButton } from "./ui/icon-button";
 import { HeaderBar } from "./ui/header-bar";
@@ -275,13 +275,17 @@ const ComponentSet = () => {
 
           {/* Action Bar */}
           <div className="w-fit">
-            <ButtonGroup
-              buttons={[
-                { label: "Archive", onClick: () => console.log("Archive") },
-                { label: "Report", onClick: () => console.log("Report") },
-                { label: "Snooze", onClick: () => console.log("Snooze") },
-              ]}
-            />
+            <ButtonGroup variant="bordered">
+              <ButtonGroupItem onClick={() => console.log("Archive")}>
+                Archive
+              </ButtonGroupItem>
+              <ButtonGroupItem onClick={() => console.log("Report")}>
+                Report
+              </ButtonGroupItem>
+              <ButtonGroupItem onClick={() => console.log("Snooze")}>
+                Snooze
+              </ButtonGroupItem>
+            </ButtonGroup>
           </div>
 
           {/* Pagination/Navigation */}
@@ -295,7 +299,7 @@ const ComponentSet = () => {
           </div>
 
           {/* Compute Environment Section */}
-          <div className="w-fit">
+          <div className="w-full">
             <Card
               title="Compute Environment"
               description="Select the compute environment for your cluster."
@@ -325,11 +329,11 @@ const ComponentSet = () => {
           </div>
 
           {/* Number of GPUs Input */}
-          <div className="w-fit">
+          <div className="w-full">
             <Card
               title="Number of GPUs"
               description="You can add more later."
-              className="p-4"
+              className="p-4 w-full"
               shadow={false}
               dashed={true}
             >
@@ -426,7 +430,7 @@ const ComponentSet = () => {
           </div>
 
           {/* Two-factor authentication */}
-          <div className="w-fit">
+          <div className="w-full">
             <Card
               title="Two-factor authentication"
               description="Verify via email or phone number."

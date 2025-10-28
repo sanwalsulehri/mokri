@@ -42,7 +42,7 @@ export function Card({
       <div className="">
       {/* Title */}
       {title && (
-        <h3 className={`text-2xl font-semibold text-foreground text-center ${titleClassName}`}>
+        <h3 className={`text-xl font-semibold text-foreground text-center ${titleClassName}`}>
           {title}
         </h3>
       )}

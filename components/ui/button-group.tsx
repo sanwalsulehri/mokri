@@ -58,7 +58,7 @@ export function ButtonGroup({
     segmented: orientation === 'horizontal' ? '[&>*:not(:first-child)]:ml-0 [&>*:not(:last-child)]:mr-0 [&>*:not(:first-child)]:rounded-l-none [&>*:not(:last-child)]:rounded-r-none [&>*:not(:first-child):not(:last-child)]:rounded-none [&>*:not(:first-child)]:border-l-0' : '[&>*:not(:first-child)]:mt-0 [&>*:not(:last-child)]:mb-0 [&>*:not(:first-child)]:rounded-t-none [&>*:not(:last-child)]:rounded-b-none [&>*:not(:first-child):not(:last-child)]:rounded-none [&>*:not(:first-child)]:border-t-0',
     attached: orientation === 'horizontal' ? '[&>*:not(:first-child)]:ml-0 [&>*:not(:last-child)]:mr-0 [&>*:not(:first-child)]:rounded-l-none [&>*:not(:last-child)]:rounded-r-none [&>*:not(:first-child):not(:last-child)]:rounded-none [&>*:not(:first-child)]:border-l-0 [&>*:not(:first-child)]:shadow-none' : '[&>*:not(:first-child)]:mt-0 [&>*:not(:last-child)]:mb-0 [&>*:not(:first-child)]:rounded-t-none [&>*:not(:last-child)]:rounded-b-none [&>*:not(:first-child):not(:last-child)]:rounded-none [&>*:not(:first-child)]:border-t-0 [&>*:not(:first-child)]:shadow-none',
     spaced: orientation === 'horizontal' ? 'gap-1 sm:gap-2' : 'gap-1 sm:gap-2',
-    bordered: 'border border-border rounded-lg overflow-hidden bg-background'
+    bordered: 'border border-border divide-x divide-border rounded-lg overflow-hidden bg-background'
   };
 
   return (
@@ -92,8 +92,8 @@ export function ButtonGroupItem({
     <Button
       onClick={onClick}
       disabled={disabled}
-      className={`${variantClasses[variant]} ${active ? 'shadow-sm' : ''} text-xs sm:text-sm px-2 py-1 sm:px-3 sm:py-2 ${className}`}
-      secondary={true}
+      className={`${variantClasses[variant]} ${active ? 'shadow-sm' : ''} text-xs sm:text-sm px-2 py-1 sm:px-3 rounded-none sm:py-2 ${className}`}
+      bg={false}
     >
       {children}
     </Button>
