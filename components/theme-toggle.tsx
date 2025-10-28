@@ -3,6 +3,7 @@
 import { useTheme } from './theme-provider';
 import { Switch } from './ui/switch';
 import { Button } from './ui/button';
+import { IconButton } from './ui/icon-button';
 import React from 'react';
 
 interface ThemeToggleProps {
@@ -54,14 +55,13 @@ export function ThemeToggle({
   }
 
   return (
-    <Button
+    <IconButton
       onClick={toggleTheme}
-      className={`p-2 ${className}`}
+      className={className}
       aria-label="Toggle theme"
-      bg={false}
       size="sm"
     >
       {theme === 'light' ? (lightIcon || defaultLightIcon) : (darkIcon || defaultDarkIcon)}
-    </Button>
+    </IconButton>
   );
 }
