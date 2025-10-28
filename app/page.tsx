@@ -3,6 +3,8 @@
 import { Navbar } from "../components/navbar";
 import { Footer } from "../components/footer";
 import { PaymentForm } from "../components/ui/payment-form";
+import Hero from "../components/home/hero";
+import Container from "../components/ui/container";
 
 // Define presets directly in this file to test
 const FooterPresets = {
@@ -28,16 +30,16 @@ const FooterPresets = {
 
 export default function Home() {
   return (
-   <div className="min-h-screen bg-gradient-to-br from-background via-background to-background/50">
+   <div className="min-h-screen ">
      <Navbar />
-     <div className="py-16">
-       <PaymentForm 
-         onSubmit={(data) => console.log('Payment form submitted:', data)}
-       />
-     </div>
+   
+     <Container size="2xl" padding="lg">
+       <Hero />
+     </Container>
+
+     <Radio />
      
-     {/* Minimal Footer */}
-     <Footer {...FooterPresets.minimal} />
+    
    </div>
   );
 }

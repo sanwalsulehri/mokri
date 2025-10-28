@@ -119,7 +119,7 @@ export function Switch({
         <motion.span
           className={`${currentSize.thumb} absolute top-0.5 left-0.5 pointer-events-none inline-block rounded-full shadow-lg`}
           animate={{
-            x: isChecked ? (size === 'sm' ? 17 : size === 'md' ? 24 : 32) : 1,
+            x: isChecked ? (size === 'sm' ? 16 : size === 'md' ? 24 : 32) : 0,
             backgroundColor: isDark
               ? (isChecked ? '#000000' : '#ffffff')
               : (isChecked ? '#ffffff' : '#000000')

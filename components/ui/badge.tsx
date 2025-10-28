@@ -5,12 +5,16 @@ interface BadgeProps {
     onClick?: () => void;
     className?: string;
     bg?: boolean;
+    hover?: boolean;
     variant?: 'default' | 'secondary' | 'destructive' | 'muted';
   }
   
-  export function Badge({ children, onClick, className = "", bg = true, variant = 'default' }: BadgeProps) {
+  export function Badge({ children, onClick, className = "", bg = true, hover = false, variant = 'default' }: BadgeProps) {
     const getVariantClasses = () => {
       if (!bg) {
+        if (hover) {
+          return 'text-foreground bg-transparent ';
+        }
         return 'text-foreground bg-transparent border border-foreground/20 ';
       }
       
@@ -26,10 +30,26 @@ interface BadgeProps {
       }
     };
 
+    const getHoverClasses = () => {
+      if (hover) {
+        switch (variant) {
+          case 'secondary':
+            return 'hover:bg-secondary hover:text-foreground';
+          case 'destructive':
+            return 'hover:bg-destructive hover:text-white';
+          case 'muted':
+            return 'hover:bg-muted hover:text-foreground';
+          default:
+            return 'hover:bg-foreground hover:text-background';
+        }
+      }
+      return '';
+    };
+
     return (
      <button 
        onClick={onClick}
-       className={`px-2 py-1 flex justify-center items-center gap-1 leading-tight rounded-full text-xs font-medium transition-all duration-200 ease-in-out ${getVariantClasses()} ${className}`}
+       className={`px-2 py-1 flex justify-center items-center gap-1 leading-tight rounded-full text-xs font-medium transition-all duration-300 ease-in-out ${getVariantClasses()} ${getHoverClasses()} ${className}`}
      >
        {children}
      </button>

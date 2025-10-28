@@ -179,6 +179,10 @@ function CompPageContent() {
   return (
     <div className="min-h-screen space-y-10">
       <ThemeToggle />
+
+      <Switch />
+      <Switch size="md" />
+      <Switch size="lg" />
     
       <h1>Components</h1>
       <div className="flex gap-4 flex-wrap">

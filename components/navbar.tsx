@@ -22,7 +22,7 @@ export function Navbar() {
 
   return (
     <nav className="w-full bg-background/80 backdrop-blur-md sticky top-0 z-50">
-      <Container size="3xl" padding="lg">
+      <Container size="2xl" padding="lg">
         <div className="flex justify-between items-center h-16">
           {/* Logo and Navigation Links */}
           <div className="flex items-center space-x-8">
