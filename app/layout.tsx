@@ -6,7 +6,7 @@ import { ThemeProvider } from "../components/theme-provider";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
-  fallback: ["Geist Fallback"],
+  fallback: ["Geist Fallback", "system-ui", "sans-serif"],
 });
 
 const geistMono = Geist_Mono({
