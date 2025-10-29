@@ -5,11 +5,14 @@ import { Button } from './ui/button';
 import { IconButton } from './ui/icon-button';
 import Container from './ui/container';
 import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
+  const pathname = usePathname();
+  const isDocs = pathname?.startsWith('/docs/');
 
   useEffect(() => {
     const observer = new MutationObserver(() => {
@@ -21,8 +24,8 @@ export function Navbar() {
   }, []);
 
   return (
-    <nav className="w-full bg-background/80 backdrop-blur-md sticky top-0 z-50">
-      <Container size="2xl" padding="lg">
+    <nav className="w-full bg-background/80 backdrop-blur-md sticky top-0 z-[999999]">
+      <Container size={isDocs ? "3xl" : "2xl"} padding="lg">
         <div className="flex justify-between items-center h-16">
           {/* Logo and Navigation Links */}
           <div className="flex items-center space-x-8">
@@ -36,10 +39,10 @@ export function Navbar() {
             
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-2">
-              <Button bg={false} size="sm" className="text-sm font-medium" asChild>
+              <Button bg={false} size="sm" className="text-sm font-medium">
                 <a href="/docs">Docs</a>
               </Button>
-              <Button bg={false} size="sm" className="text-sm font-medium" asChild>
+              <Button bg={false} size="sm" className="text-sm font-medium">
                 <a href="/docs/components/button">Components</a>
               </Button>
               <Button bg={false} size="sm" className="text-sm font-medium">
@@ -93,10 +96,10 @@ export function Navbar() {
             <div className="px-6 py-8 space-y-8">
               {/* Navigation Links */}
               <div className="space-y-2">
-                <Button bg={false} size="sm" className="w-full justify-start text-xl font-medium px-4 py-4" asChild>
+                <Button bg={false} size="sm" className="w-full justify-start text-xl font-medium px-4 py-4">
                   <a href="/docs">Docs</a>
                 </Button>
-                <Button bg={false} size="sm" className="w-full justify-start text-xl font-medium px-4 py-4" asChild>
+                <Button bg={false} size="sm" className="w-full justify-start text-xl font-medium px-4 py-4">
                   <a href="/docs/components/button">Components</a>
                 </Button>
                 <Button bg={false} size="sm" className="w-full justify-start text-xl font-medium px-4 py-4">
