@@ -6,7 +6,7 @@ import ComponentSet from "../component-set"
 const Hero = () => {
   return (
     <div className="py-20 min-h-screen">
-      <div className="max-w-5xl w-full mx-auto text-center">
+      <div className="max-w-5xl w-full mx-auto text-center mb-16">
         <div className="">
           <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
             <Badge bg={true} variant="secondary" className="px-2 py-1">
@@ -26,7 +26,7 @@ const Hero = () => {
             Build faster and design smarter — everything you need to create interfaces that feel refined, cohesive, and unmistakably yours.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center mt-12 gap-2">
+          <div className="flex flex-col sm:flex-row items-center justify-center mt-8 gap-2">
             <Button size="md" className="">
               Get Started
             </Button>
