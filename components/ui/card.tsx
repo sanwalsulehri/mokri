@@ -12,6 +12,8 @@ interface CardProps {
   className?: string;
   dashed?: boolean;
   shadow?: boolean;
+  padding?: string;
+  rounded?: string;
   titleClassName?: string;
   descriptionClassName?: string;
   contentClassName?: string;
@@ -21,9 +23,11 @@ export function Card({
   title,
   description,
   children,
-  className = "max-w-[450px] p-6 rounded-lg",
+  className = "",
   dashed = false,
   shadow = true,
+  padding = "p-6",
+  rounded = "rounded-lg",
   titleClassName = "",
   descriptionClassName = "",
   contentClassName = ""
@@ -34,15 +38,15 @@ export function Card({
   return (
     <div 
       className={`
-        w-full bg-background rounded-lg border border-border  
-        ${borderClass} ${shadowClass} space-y-6
+        w-full bg-background ${rounded} border border-border ${padding}
+        ${borderClass} ${shadowClass} 
         ${className}
       `}
     >
       <div className="">
       {/* Title */}
       {title && (
-        <h3 className={`text-xl font-semibold text-foreground text-center ${titleClassName}`}>
+        <h3 className={`text-xl mt-6 font-semibold text-foreground text-center ${titleClassName}`}>
           {title}
         </h3>
       )}
@@ -56,7 +60,7 @@ export function Card({
 </div>
       {/* Content */}
       {children && (
-        <div className={`space-y-4 ${contentClassName}`}>
+        <div className={`space-y-4  ${contentClassName}`}>
           {children}
         </div>
       )}

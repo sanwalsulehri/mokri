@@ -10,6 +10,7 @@
   --focusborder: #c2bfbf;
   --ring: #cbd5e1;
   --accent: #f1f5f9;
+  --glow: rgba(0, 0, 0, 0.1);
 }
 
 [data-theme="light"] {
@@ -22,6 +23,7 @@
   --focusborder: #c2bfbf;
   --ring: #e1e2e2;
   --accent: #f1f5f9;
+  --glow: rgba(0, 0, 0, 0.1);
 }
 
 [data-theme="dark"] {
@@ -34,6 +36,7 @@
   --focusborder: #252525;
   --ring: #3d3e3f;
   --accent: #1e293b;
+  --glow: rgba(255, 255, 255, 0.1);
 }
 
 @theme inline {

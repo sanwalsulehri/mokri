@@ -4,6 +4,7 @@ import { Navbar } from "../components/navbar";
 import { Footer } from "../components/footer";
 import { PaymentForm } from "../components/ui/payment-form";
 import Hero from "../components/home/hero";
+import { Features } from "../components/home/features";
 import Container from "../components/ui/container";
 
 // Define presets directly in this file to test
@@ -36,6 +37,8 @@ export default function Home() {
      <Container size="2xl" padding="lg" className="flex-1">
        <Hero />
      </Container>
+
+     <Features />
 
      <Footer {...FooterPresets.minimal} />
    </div>
