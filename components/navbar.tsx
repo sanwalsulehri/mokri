@@ -36,11 +36,11 @@ export function Navbar() {
             
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-2">
-              <Button bg={false} size="sm" className="text-sm font-medium">
-                Docs
+              <Button bg={false} size="sm" className="text-sm font-medium" asChild>
+                <a href="/docs">Docs</a>
               </Button>
-              <Button bg={false} size="sm" className="text-sm font-medium">
-                Components
+              <Button bg={false} size="sm" className="text-sm font-medium" asChild>
+                <a href="/docs/components/button">Components</a>
               </Button>
               <Button bg={false} size="sm" className="text-sm font-medium">
                 Theme
@@ -93,11 +93,11 @@ export function Navbar() {
             <div className="px-6 py-8 space-y-8">
               {/* Navigation Links */}
               <div className="space-y-2">
-                <Button bg={false} size="sm" className="w-full justify-start text-xl font-medium px-4 py-4">
-                  Docs
+                <Button bg={false} size="sm" className="w-full justify-start text-xl font-medium px-4 py-4" asChild>
+                  <a href="/docs">Docs</a>
                 </Button>
-                <Button bg={false} size="sm"  className="w-full justify-start text-xl font-medium px-4 py-4">
-                  Components
+                <Button bg={false} size="sm" className="w-full justify-start text-xl font-medium px-4 py-4" asChild>
+                  <a href="/docs/components/button">Components</a>
                 </Button>
                 <Button bg={false} size="sm" className="w-full justify-start text-xl font-medium px-4 py-4">
                   Theme
