@@ -13,9 +13,17 @@ interface ComponentPageProps {
   }>;
 }
 
+function kebabToPascalCase(input: string) {
+  return input
+    .split('-')
+    .filter(Boolean)
+    .map(part => part.charAt(0).toUpperCase() + part.slice(1))
+    .join('');
+}
+
 export default function ComponentPage({ params }: ComponentPageProps) {
   const resolvedParams = React.use(params);
-  const componentName = resolvedParams.component.charAt(0).toUpperCase() + resolvedParams.component.slice(1).replace('-', '');
+  const componentName = kebabToPascalCase(resolvedParams.component);
   
   const componentInfo = {
     'Accordion': {

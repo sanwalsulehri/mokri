@@ -21,6 +21,30 @@ import { ButtonGroup, ButtonGroupItem } from '../ui/button-group';
 import { Calendar } from '../ui/calendar';
 import { Collapsible } from '../ui/collapsible';
 import { Command } from '../ui/command';
+import { Pagination } from '../ui/pagination';
+import { Loader } from '../ui/loader';
+import { PaymentForm } from '../ui/payment-form';
+import { ProfileVerification } from '../ui/profile-verification';
+import { Marquee } from '../ui/marquee';
+import TextArea from '../ui/textarea';
+import { Select } from '../ui/select';
+import { ScrollArea } from '../ui/scroll-area';
+import { Dropdown } from '../ui/dropdown';
+import { DataTable } from '../ui/data-table';
+import { DatePicker } from '../ui/date-picker';
+import { DropdownMenu } from '../ui/dropdown-menu';
+import { Modal } from '../ui/modal';
+import { Drawer } from '../ui/drawer';
+import { Accordion } from '../ui/accordion';
+import { Tooltip } from '../ui/tooltip';
+import { Carousel, BeautifulCardCarousel, BeautifulImageCarousel } from '../ui/carousel';
+import { ToastProvider } from '../ui/toast';
+import { Tabs } from '../ui/tabs';
+import { Testimonials } from '../ui/testimonials';
+import Image from '../ui/image';
+import Typography from '../ui/typography';
+import { ProgressBar } from '../ui/progress-bar';
+import Skeleton from '../ui/skeleton';
 
 // CLI theme colors for light and dark modes (industry-style terminal palette)
 const cliTheme = {
@@ -50,44 +74,44 @@ export const componentsRegistry = [
   { name: 'ButtonGroup', path: 'button-group', component: ButtonGroup },
   { name: 'Calendar', path: 'calendar', component: Calendar },
   { name: 'Card', path: 'card', component: Card },
-  { name: 'Carousel', path: 'carousel', component: null },
+  { name: 'Carousel', path: 'carousel', component: Carousel },
   { name: 'Checkbox', path: 'checkbox', component: Checkbox },
   { name: 'Collapsible', path: 'collapsible', component: Collapsible },
   { name: 'Command', path: 'command', component: Command },
   { name: 'Container', path: 'container', component: Container },
-  { name: 'DataTable', path: 'data-table', component: null },
-  { name: 'DatePicker', path: 'date-picker', component: null },
-  { name: 'Drawer', path: 'drawer', component: null },
-  { name: 'Dropdown', path: 'dropdown', component: null },
-  { name: 'DropdownMenu', path: 'dropdown-menu', component: null },
-  { name: 'Fade', path: 'fade', component: null },
-  { name: 'HeaderBar', path: 'header-bar', component: null },
-  { name: 'IconButton', path: 'icon-button', component: null },
-  { name: 'Image', path: 'image', component: null },
-  { name: 'ImageCarousel', path: 'image-carousel', component: null },
+  { name: 'DataTable', path: 'data-table', component: DataTable },
+  { name: 'DatePicker', path: 'date-picker', component: DatePicker },
+  { name: 'Drawer', path: 'drawer', component: Drawer },
+  { name: 'Dropdown', path: 'dropdown', component: Dropdown },
+  { name: 'DropdownMenu', path: 'dropdown-menu', component: DropdownMenu },
+  { name: 'Fade', path: 'fade', component: Fade },
+  { name: 'HeaderBar', path: 'header-bar', component: HeaderBar },
+  { name: 'IconButton', path: 'icon-button', component: IconButton },
+  { name: 'Image', path: 'image', component: Image },
+  { name: 'ImageCarousel', path: 'image-carousel', component: BeautifulImageCarousel },
   { name: 'Input', path: 'input', component: Input },
-  { name: 'InputOTP', path: 'input-otp', component: null },
-  { name: 'Loader', path: 'loader', component: null },
+  { name: 'InputOTP', path: 'input-otp', component: InputOTP },
+  { name: 'Loader', path: 'loader', component: Loader },
   { name: 'MagicCard', path: 'magic-card', component: MagicCard },
-  { name: 'Marquee', path: 'marquee', component: null },
-  { name: 'Modal', path: 'modal', component: null },
-  { name: 'Pagination', path: 'pagination', component: null },
-  { name: 'PaymentForm', path: 'payment-form', component: null },
-  { name: 'ProfileVerification', path: 'profile-verification', component: null },
-  { name: 'ProgressBar', path: 'progress-bar', component: null },
+  { name: 'Marquee', path: 'marquee', component: Marquee },
+  { name: 'Modal', path: 'modal', component: Modal },
+  { name: 'Pagination', path: 'pagination', component: Pagination },
+  { name: 'PaymentForm', path: 'payment-form', component: PaymentForm },
+  { name: 'ProfileVerification', path: 'profile-verification', component: ProfileVerification },
+  { name: 'ProgressBar', path: 'progress-bar', component: ProgressBar },
   { name: 'Radio', path: 'radio', component: Radio },
   { name: 'RadioCard', path: 'radio-card', component: RadioCard },
-  { name: 'ScrollArea', path: 'scroll-area', component: null },
-  { name: 'Select', path: 'select', component: null },
-  { name: 'Skeleton', path: 'skeleton', component: null },
+  { name: 'ScrollArea', path: 'scroll-area', component: ScrollArea },
+  { name: 'Select', path: 'select', component: Select },
+  { name: 'Skeleton', path: 'skeleton', component: Skeleton },
   { name: 'Slider', path: 'slider', component: Slider },
   { name: 'Switch', path: 'switch', component: Switch },
-  { name: 'Tabs', path: 'tabs', component: null },
-  { name: 'Testimonials', path: 'testimonials', component: null },
-  { name: 'Textarea', path: 'textarea', component: null },
-  { name: 'Toast', path: 'toast', component: null },
-  { name: 'Tooltip', path: 'tooltip', component: null },
-  { name: 'Typography', path: 'typography', component: null },
+  { name: 'Tabs', path: 'tabs', component: Tabs },
+  { name: 'Testimonials', path: 'testimonials', component: Testimonials },
+  { name: 'Textarea', path: 'textarea', component: TextArea },
+  { name: 'Toast', path: 'toast', component: ToastProvider },
+  { name: 'Tooltip', path: 'tooltip', component: Tooltip },
+  { name: 'Typography', path: 'typography', component: Typography },
 ];
 
 const sidebarItems = [
