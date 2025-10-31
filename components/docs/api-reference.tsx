@@ -2003,7 +2003,7 @@ export function APIReference({ componentName }: { componentName: string }) {
       </div>
 
       {/* Props Table */}
-      <div className="space-y-4">
+      <div className="space-y-4" id="api-props">
         <h4 className="text-xl font-semibold">Props</h4>
         
         <div className="bg-muted rounded-lg overflow-hidden">
@@ -2059,7 +2059,7 @@ export function APIReference({ componentName }: { componentName: string }) {
 
       {/* Examples */}
       {api.examples && (
-        <div className="space-y-4">
+        <div className="space-y-4" id="api-examples">
           <h4 className="text-xl font-semibold">Examples</h4>
           
           {api.examples.map((example, index) => (
@@ -2079,7 +2079,7 @@ export function APIReference({ componentName }: { componentName: string }) {
 
       {/* Presets */}
       {api.presets && (
-        <div className="space-y-4">
+        <div className="space-y-4" id="api-presets">
           <h4 className="text-xl font-semibold">Presets</h4>
           
           <div className="bg-muted rounded-lg p-6">
