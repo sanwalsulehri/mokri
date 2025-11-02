@@ -214,6 +214,7 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
     buttonGroupActive: null as string | null,
     calendarDate: null as Date | null,
     drawerOpen: false,
+    otpValue: '',
   });
 
   // Detect dark mode from document on mount
@@ -252,6 +253,7 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
       case 'DropdownMenu':
       case 'Fade':
       case 'IconButton':
+      case 'InputOTP':
       case 'UserList':
       case 'Image':
       case 'ImageCarousel':
@@ -349,18 +351,30 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
             <Input bg={true} className="w-full" />
           </div>
         );
+      case 'InputOTP':
+        return (
+          <div className="w-full max-w-sm sm:max-w-md mx-auto flex flex-col items-center">
+            <InputOTP
+              length={6}
+              value={demoState.otpValue}
+              onChange={(value) => setDemoState(prev => ({ ...prev, otpValue: value }))}
+              size="sm"
+              autoFocus={true}
+            />
+          </div>
+        );
         case 'Checkbox':
         return (
           <div className="space-y-4">
               <Checkbox defaultChecked label="Accept terms and conditions" />
           </div>
         );
-        case 'Switch':
+      case 'Switch':
         return (
           <div className="space-y-4">
             <div className="flex items-center space-x-3">
                 <Switch />
-                <label className="text-sm font-medium">Enable notifications</label>
+              <label className="text-sm font-medium">Enable notifications</label>
             </div>
           </div>
         );

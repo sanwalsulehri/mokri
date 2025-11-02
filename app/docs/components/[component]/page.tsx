@@ -14,6 +14,16 @@ interface ComponentPageProps {
 }
 
 function kebabToPascalCase(input: string) {
+  // Special mappings for acronyms and special cases
+  const specialCases: Record<string, string> = {
+    'input-otp': 'InputOTP',
+    'otp': 'OTP'
+  };
+  
+  if (specialCases[input]) {
+    return specialCases[input];
+  }
+  
   return input
     .split('-')
     .filter(Boolean)
