@@ -251,7 +251,7 @@ const BeautifulImageCarousel: React.FC<ImageCarouselProps> = ({
       </Slider>
       
       {/* Custom Pagination Styles */}
-      <style jsx global>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         .slick-dots {
           bottom: -50px !important;
           display: flex !important;
@@ -302,7 +302,7 @@ const BeautifulImageCarousel: React.FC<ImageCarouselProps> = ({
           border-color: var(--foreground) !important;
           transform: scale(1.3) !important;
         }
-      `}</style>
+      ` }} />
     </div>
   );
 };
