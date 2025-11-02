@@ -16,14 +16,29 @@ function SmoothLink({ href, label, isMain = false, isSub = false }: { href: stri
       const element = document.querySelector(href);
       if (element) {
         const rect = element.getBoundingClientRect();
-        const isVisible = rect.top >= 0 && rect.top <= window.innerHeight / 2;
-        setIsActive(isVisible);
+        const windowHeight = window.innerHeight;
+        const elementTop = rect.top;
+        const elementBottom = rect.bottom;
+        
+        // Check if element is in the viewport or just above it
+        const isInView = elementTop < windowHeight * 0.5 && elementBottom > 100;
+        setIsActive(isInView);
+      } else {
+        setIsActive(false);
       }
     };
 
+    // Check on mount and scroll
     checkActive();
-    window.addEventListener('scroll', checkActive);
-    return () => window.removeEventListener('scroll', checkActive);
+    const timeoutId = setTimeout(checkActive, 100);
+    window.addEventListener('scroll', checkActive, { passive: true });
+    window.addEventListener('resize', checkActive);
+    
+    return () => {
+      clearTimeout(timeoutId);
+      window.removeEventListener('scroll', checkActive);
+      window.removeEventListener('resize', checkActive);
+    };
   }, [href]);
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -35,6 +50,8 @@ function SmoothLink({ href, label, isMain = false, isSub = false }: { href: stri
         top: offsetTop,
         behavior: 'smooth'
       });
+      // Set active immediately after click
+      setTimeout(() => setIsActive(true), 300);
     }
   };
 
@@ -45,7 +62,7 @@ function SmoothLink({ href, label, isMain = false, isSub = false }: { href: stri
     : 'block text-sm py-2 px-3 rounded-md transition-all duration-200';
 
   const activeClasses = isActive
-    ? 'bg-primary/15 text-primary font-medium border-l-2 border-primary'
+    ? 'bg-muted/60 text-primary font-semibold '
     : 'text-foreground/70 hover:text-foreground hover:bg-muted/60 active:bg-muted/70';
 
   return (
