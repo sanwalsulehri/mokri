@@ -2,6 +2,46 @@
 
 import React from 'react';
 import { Badge } from '../ui/badge';
+import { CodeWindow } from './docs-layout';
+
+// Helper function to highlight code snippets (for prop types)
+function highlightType(type: string, isDark: boolean): string {
+  const colors = isDark
+    ? {
+        keyword: '#C586C0',
+        type: '#4EC9B0',
+        string: '#CE9178',
+      }
+    : {
+        keyword: '#d73a49',
+        type: '#005cc5',
+        string: '#032f62',
+      };
+
+  // Escape HTML
+  let out = type
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+
+  // Highlight strings
+  out = out.replace(/(['"])([^'"]*)\1/g, (match, quote, content) => {
+    return `${quote}<span style="color:${colors.string}">${content}</span>${quote}`;
+  });
+
+  // Highlight keywords
+  out = out.replace(/\b(keyof|typeof|extends|infer|as|const|readonly)\b/g, (match) => {
+    return `<span style="color:${colors.keyword}">${match}</span>`;
+  });
+
+  // Highlight types (but not if already highlighted)
+  out = out.replace(/\b(string|number|boolean|any|void|unknown|object|Record|Array|Promise|React\.(Node|Component|FC))\b/g, (match) => {
+    if (match.includes('<span')) return match;
+    return `<span style="color:${colors.type}">${match}</span>`;
+  });
+
+  return out;
+}
 
 interface PropDefinition {
   name: string;
@@ -1982,34 +2022,29 @@ export function APIReference({ componentName }: { componentName: string }) {
     <div className="space-y-8">
       {/* Component Overview */}
       <div className="space-y-4">
-        <h3 className="text-2xl font-semibold flex items-center gap-2">
+        <h3 className="text-2xl font-semibold flex items-center gap-2 px-4 py-3 bg-muted/30 rounded-lg">
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
           </svg>
           API Reference
         </h3>
         
-        <div className="bg-muted rounded-lg p-6">
+        <div className="bg-muted/50 rounded-2xl p-4 md:p-6">
           <h4 className="text-lg font-semibold mb-2">{api.name}</h4>
           <p className="text-foreground/70 mb-4">{api.description}</p>
           
-          <div className="bg-secondary rounded-lg p-4">
-            <h5 className="text-sm font-semibold mb-2">Import</h5>
-            <pre className="text-sm font-mono text-foreground overflow-x-auto">
-              <code>{api.import}</code>
-            </pre>
-          </div>
+          <CodeWindow code={api.import} filename="import.ts" />
         </div>
       </div>
 
       {/* Props Table */}
       <div className="space-y-4" id="api-props">
-        <h4 className="text-xl font-semibold">Props</h4>
+        <h4 className="text-xl font-semibold px-4 py-3 bg-muted/30 rounded-lg">Props</h4>
         
-        <div className="bg-muted rounded-lg overflow-hidden">
+        <div className="bg-muted/50 rounded-2xl p-4 md:p-6 overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-secondary">
+              <thead>
                 <tr>
                   <th className="px-4 py-3 text-left text-sm font-semibold">Prop</th>
                   <th className="px-4 py-3 text-left text-sm font-semibold">Type</th>
@@ -2022,20 +2057,23 @@ export function APIReference({ componentName }: { componentName: string }) {
                   <tr key={index} className="border-t border-border">
                     <td className="px-4 py-3">
                       <div className="flex items-center gap-2">
-                        <code className="text-sm font-mono bg-background px-2 py-1 rounded">
+                        <code className="text-sm font-mono bg-muted px-2 py-1 rounded">
                           {prop.name}
                         </code>
                         {prop.required && (
-                          <Badge variant="secondary" className="text-xs">
+                          <Badge variant="secondary" bg className="text-xs bg-muted text-foreground/80">
                             Required
                           </Badge>
                         )}
                       </div>
                     </td>
                     <td className="px-4 py-3">
-                      <code className="text-sm font-mono text-blue-600 dark:text-blue-400">
-                        {prop.type}
-                      </code>
+                      <code 
+                        className="text-sm font-mono text-foreground/80"
+                        dangerouslySetInnerHTML={{ 
+                          __html: highlightType(prop.type, typeof document !== 'undefined' && document.documentElement.getAttribute('data-theme') === 'dark')
+                        }}
+                      />
                     </td>
                     <td className="px-4 py-3">
                       {prop.default ? (
@@ -2060,18 +2098,14 @@ export function APIReference({ componentName }: { componentName: string }) {
       {/* Examples */}
       {api.examples && (
         <div className="space-y-4" id="api-examples">
-          <h4 className="text-xl font-semibold">Examples</h4>
+          <h4 className="text-xl font-semibold px-4 py-3 bg-muted/30 rounded-lg">Examples</h4>
           
           {api.examples.map((example, index) => (
             <div key={index} className="space-y-2">
               <h5 className="text-sm font-semibold text-foreground/70">
                 Example {index + 1}
               </h5>
-              <div className="bg-secondary rounded-lg p-4">
-                <pre className="text-sm font-mono text-foreground overflow-x-auto">
-                  <code>{example}</code>
-                </pre>
-              </div>
+              <CodeWindow code={example} filename="example.tsx" />
             </div>
           ))}
         </div>
@@ -2080,9 +2114,9 @@ export function APIReference({ componentName }: { componentName: string }) {
       {/* Presets */}
       {api.presets && (
         <div className="space-y-4" id="api-presets">
-          <h4 className="text-xl font-semibold">Presets</h4>
+          <h4 className="text-xl font-semibold px-4 py-3 bg-muted/30 rounded-lg">Presets</h4>
           
-          <div className="bg-muted rounded-lg p-6">
+          <div className="bg-muted/50 rounded-2xl p-4 md:p-6">
             <div className="space-y-3">
               {Object.entries(api.presets).map(([presetName, description]) => (
                 <div key={presetName} className="flex items-start gap-3">

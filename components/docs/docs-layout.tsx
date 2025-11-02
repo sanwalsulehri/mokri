@@ -21,15 +21,19 @@ import { ButtonGroup, ButtonGroupItem } from '../ui/button-group';
 import { Calendar } from '../ui/calendar';
 import { Collapsible } from '../ui/collapsible';
 import { Command } from '../ui/command';
+import { Fade } from '../ui/fade';
+import { HeaderBar } from '../ui/header-bar';
+import { IconButton } from '../ui/icon-button';
+import { InputOTP } from '../ui/input-otp';
 import { Pagination } from '../ui/pagination';
 import { Loader } from '../ui/loader';
 import { PaymentForm } from '../ui/payment-form';
 import { ProfileVerification } from '../ui/profile-verification';
 import { Marquee } from '../ui/marquee';
-import TextArea from '../ui/textarea';
+import { TextArea } from '../ui/textarea';
 import { Select } from '../ui/select';
 import { ScrollArea } from '../ui/scroll-area';
-import { Dropdown } from '../ui/dropdown';
+import { DropDown } from '../ui/dropdown';
 import { DataTable } from '../ui/data-table';
 import { DatePicker } from '../ui/date-picker';
 import { DropdownMenu } from '../ui/dropdown-menu';
@@ -37,7 +41,7 @@ import { Modal } from '../ui/modal';
 import { Drawer } from '../ui/drawer';
 import { Accordion } from '../ui/accordion';
 import { Tooltip } from '../ui/tooltip';
-import { Carousel, BeautifulCardCarousel, BeautifulImageCarousel } from '../ui/carousel';
+import { BeautifulCardCarousel, BeautifulImageCarousel } from '../ui/carousel';
 import { ToastProvider } from '../ui/toast';
 import { Tabs } from '../ui/tabs';
 import { Testimonials } from '../ui/testimonials';
@@ -74,7 +78,7 @@ export const componentsRegistry = [
   { name: 'ButtonGroup', path: 'button-group', component: ButtonGroup },
   { name: 'Calendar', path: 'calendar', component: Calendar },
   { name: 'Card', path: 'card', component: Card },
-  { name: 'Carousel', path: 'carousel', component: Carousel },
+  { name: 'Carousel', path: 'carousel', component: BeautifulCardCarousel },
   { name: 'Checkbox', path: 'checkbox', component: Checkbox },
   { name: 'Collapsible', path: 'collapsible', component: Collapsible },
   { name: 'Command', path: 'command', component: Command },
@@ -82,7 +86,7 @@ export const componentsRegistry = [
   { name: 'DataTable', path: 'data-table', component: DataTable },
   { name: 'DatePicker', path: 'date-picker', component: DatePicker },
   { name: 'Drawer', path: 'drawer', component: Drawer },
-  { name: 'Dropdown', path: 'dropdown', component: Dropdown },
+  { name: 'Dropdown', path: 'dropdown', component: DropDown },
   { name: 'DropdownMenu', path: 'dropdown-menu', component: DropdownMenu },
   { name: 'Fade', path: 'fade', component: Fade },
   { name: 'HeaderBar', path: 'header-bar', component: HeaderBar },
@@ -152,7 +156,7 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
                   <h3 className="px-3 text-xs font-semibold text-foreground/50 uppercase tracking-wider mb-3">
                     {section.title}
                   </h3>
-                  <nav className="space-y-1">
+                  <nav className="space-y-">
                     {section.items.map((item) => (
                       <Link
                         key={item.href}
@@ -246,8 +250,8 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
           } catch {}
         }
         return (
-          <Card title={componentName} description="Preview coming soon" dashed>
-            <div className="h-24 bg-muted/30 rounded-lg border border-border flex items-center justify-center">
+          <Card title={componentName} className="border-0 shadow-none">
+            <div className="h-24 rounded-lg border border-border flex items-center justify-center">
               <span className="text-foreground/50 text-sm">Generic placeholder</span>
             </div>
           </Card>
@@ -408,13 +412,10 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
     <div className="space-y-8">
       {/* Component Showcase Box */}
       <Card
-        title="Live Preview"
-        description="Interactive component demo"
-        className="shadow-xl"
+      
+        className="shadow-md"
       >
-        <div className="min-h-[30ch] flex items-center justify-center">
           {renderComponentDemo()}
-        </div>
       </Card>
     </div>
   );
@@ -515,20 +516,38 @@ export function getComponentCode(componentName: string): string {
 }
 
 export function CodeWindow({ code, filename = 'component.tsx' }: { code: string; filename?: string }) {
-  const [isDark, setIsDark] = React.useState(false);
+  const [isDark, setIsDark] = React.useState(() => {
+    if (typeof document === 'undefined') return false;
+    return document.documentElement.getAttribute('data-theme') === 'dark';
+  });
+  
   React.useEffect(() => {
-    if (typeof document !== 'undefined') {
-      setIsDark(document.documentElement.classList.contains('dark'));
-    }
+    if (typeof document === 'undefined') return;
+    
+    const checkDarkMode = () => {
+      const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+      setIsDark(dark);
+    };
+    
+    // Initial check
+    checkDarkMode();
+    
+    // Watch for data-theme attribute changes
+    const observer = new MutationObserver(checkDarkMode);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-theme', 'class']
+    });
+    
+    return () => observer.disconnect();
   }, []);
 
   const editorTheme = React.useMemo(() => {
     return isDark
       ? {
-          bg: '#1e1e1e',
+          bg: '#151515',
           fg: '#d4d4d4',
-          headerBg: '#252526',
-          border: 'rgba(255,255,255,0.08)',
+          headerBg: '#1C1C1C',
           colors: {
             comment: '#6A9955',
             string: '#CE9178',
@@ -538,10 +557,9 @@ export function CodeWindow({ code, filename = 'component.tsx' }: { code: string;
           },
         }
       : {
-          bg: '#ffffff',
+          bg: '#F7F7F7',
           fg: '#24292e',
-          headerBg: '#f6f8fa',
-          border: 'rgba(27,31,35,0.15)',
+          headerBg: '#F1F1F1',
           colors: {
             comment: '#6a737d',
             string: '#032f62',
@@ -560,16 +578,66 @@ export function CodeWindow({ code, filename = 'component.tsx' }: { code: string;
 
   function highlight(input: string) {
     let out = escapeHtml(input);
+    
+    // Helper to check if already inside a span
+    const isInsideSpan = (str: string | undefined, pos: number | undefined): boolean => {
+      if (typeof str !== 'string' || typeof pos !== 'number') return false;
+      const before = str.substring(0, pos);
+      const openSpans = (before.match(/<span[^>]*>/g) || []).length;
+      const closeSpans = (before.match(/<\/span>/g) || []).length;
+      return openSpans > closeSpans;
+    };
+    
+    // Helper to check if a position is inside an HTML tag
+    const isInsideTag = (str: string | undefined, pos: number | undefined): boolean => {
+      if (typeof str !== 'string' || typeof pos !== 'number') return false;
+      let depth = 0;
+      for (let i = 0; i < pos; i++) {
+        if (str.substring(i, i + 4) === '&lt;') {
+          depth++;
+        } else if (str.substring(i, i + 4) === '&gt;') {
+          depth--;
+        }
+      }
+      return depth > 0;
+    };
+    
+    // Strings first (handle quotes)
+    out = out.replace(/(['"])((?:\\.|(?!\1)[^\\])*?)\1/gm, (match, quote, content, offset, str) => {
+      if (isInsideSpan(str, offset)) return match;
+      return `${quote}<span style="color:${editorTheme.colors.string}">${content}</span>${quote}`;
+    });
+    
     // Comments
-    out = out.replace(/(^|\n)\s*(\/\/.*)$/gmu, (m) => `<span style="color:${editorTheme.colors.comment}">${m}</span>`);
-    // Strings
-    out = out.replace(/(['"])((?:\\.|(?!\1).)*)\1/gm, (m) => `<span style="color:${editorTheme.colors.string}">${m}</span>`);
-    // Keywords
-    out = out.replace(/\b(import|from|const|let|var|return|function|export|default|new|class|extends|if|else|switch|case|for|while|await|async|type|interface)\b/gm, `<span style="color:${editorTheme.colors.keyword}">$1</span>`);
-    // Types
-    out = out.replace(/\b(React|string|number|boolean|any|void|unknown|Record|Array)\b/gm, `<span style="color:${editorTheme.colors.type}">$1</span>`);
+    out = out.replace(/(\/\/[^\n]*)/gm, (match, p1, offset, str) => {
+      if (isInsideSpan(str, offset)) return match;
+      return `<span style="color:${editorTheme.colors.comment}">${match}</span>`;
+    });
+    
     // JSX tag names (opening)
-    out = out.replace(/&lt;(\/?)([A-Za-z][A-Za-z0-9]*)/gm, (full, slash, name) => `&lt;${slash}<span style="color:${editorTheme.colors.tag}">${name}</span>`);
+    out = out.replace(/&lt;([A-Za-z][A-Za-z0-9]*)/gm, (match, name, offset, str) => {
+      if (isInsideSpan(str, offset)) return match;
+      return `&lt;<span style="color:${editorTheme.colors.tag}">${name}</span>`;
+    });
+    
+    // JSX tag names (closing)
+    out = out.replace(/&lt;\/([A-Za-z][A-Za-z0-9]*)&gt;/gm, (match, name, offset, str) => {
+      if (isInsideSpan(str, offset)) return match;
+      return `&lt;/<span style="color:${editorTheme.colors.tag}">${name}</span>&gt;`;
+    });
+    
+    // Keywords
+    out = out.replace(/\b(import|from|const|let|var|return|function|export|default|new|class|extends|if|else|switch|case|for|while|await|async|type|interface)\b/gm, (match, p1, offset, str) => {
+      if (isInsideSpan(str, offset) || isInsideTag(str, offset)) return match;
+      return `<span style="color:${editorTheme.colors.keyword}">${match}</span>`;
+    });
+    
+    // Types
+    out = out.replace(/\b(React|string|number|boolean|any|void|unknown|Record|Array)\b/gm, (match, p1, offset, str) => {
+      if (isInsideSpan(str, offset) || isInsideTag(str, offset)) return match;
+      return `<span style="color:${editorTheme.colors.type}">${match}</span>`;
+    });
+    
     return out;
   }
 
@@ -581,23 +649,31 @@ export function CodeWindow({ code, filename = 'component.tsx' }: { code: string;
     }
   };
   return (
-    <div className="rounded-xl overflow-hidden bg-secondary text-foreground border border-border">
-      <div className="flex items-center justify-between px-4 py-3 bg-muted border-b border-border">
+    <div 
+      className="rounded-xl overflow-hidden"
+      style={{ 
+        backgroundColor: editorTheme.bg, 
+        color: editorTheme.fg
+      } as React.CSSProperties}
+    >
+      <div 
+        className="flex items-center justify-between px-4 py-3"
+        style={{ 
+          backgroundColor: editorTheme.headerBg
+        } as React.CSSProperties}
+      >
         <div className="flex items-center gap-2">
-          <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
-          <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
-          <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
+          <span className="text-xs opacity-70 font-mono">{"<>"} {filename}</span>
         </div>
-        <div className="flex items-center gap-3">
-          <span className="text-xs text-foreground/70 font-mono">{filename}</span>
-          <button
-            onClick={copyToClipboard}
-            className="px-2 py-1 rounded-md text-xs font-medium border border-border hover:bg-muted transition-colors"
-            aria-label="Copy code"
-          >
-            Copy
-          </button>
-        </div>
+        <button
+          onClick={copyToClipboard}
+          className="px-2 py-1 rounded-md text-xs font-medium transition-colors opacity-80 hover:opacity-100 hover:bg-black/5 dark:hover:bg-white/5"
+          aria-label="Copy code"
+        >
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+          </svg>
+        </button>
       </div>
       <pre className="p-6 overflow-x-auto text-sm font-mono leading-relaxed">
         <code dangerouslySetInnerHTML={{ __html: highlight(code) }} />

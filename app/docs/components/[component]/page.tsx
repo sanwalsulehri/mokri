@@ -308,9 +308,7 @@ export default function ComponentPage({ params }: ComponentPageProps) {
                 </svg>
                 Preview
               </h2>
-              <div className="bg-background border border-border rounded-2xl p-6 md:p-8 min-h-[360px] md:min-h-[420px]">
                 <ComponentDemo componentName={componentName} Component={registered?.component ?? null} />
-              </div>
             </div>
 
             {/* Installation */}
