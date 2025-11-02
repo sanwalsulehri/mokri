@@ -38,7 +38,7 @@ import { DropDown } from '../ui/dropdown';
 import { DataTable } from '../ui/data-table';
 import { DatePicker } from '../ui/date-picker';
 import { DropdownMenu } from '../ui/dropdown-menu';
-import { Modal } from '../ui/modal';
+import { Modal, ModalTrigger } from '../ui/modal';
 import { Drawer } from '../ui/drawer';
 import { Accordion } from '../ui/accordion';
 import { Tooltip } from '../ui/tooltip';
@@ -255,6 +255,7 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
       case 'IconButton':
       case 'InputOTP':
       case 'Loader':
+      case 'Modal':
       case 'UserList':
       case 'Image':
       case 'ImageCarousel':
@@ -372,7 +373,28 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
             <Loader size="md" variant="pulse" />
           </div>
         );
-        case 'Checkbox':
+      case 'Modal':
+        return (
+          <div className="w-full flex justify-center">
+            <ModalTrigger
+              modalTitle="Simple Modal"
+              modalContent={
+          <div className="space-y-4">
+                  <p className="text-foreground/80">
+                    This is a simple modal dialog. You can add any content here.
+                  </p>
+                  <div className="flex gap-2">
+                    <Button>Action 1</Button>
+                    <Button bg={false}>Action 2</Button>
+            </div>
+                </div>
+              }
+            >
+              <Button>Open Modal</Button>
+            </ModalTrigger>
+          </div>
+        );
+      case 'Checkbox':
         return (
           <div className="space-y-4">
               <Checkbox defaultChecked label="Accept terms and conditions" />
@@ -428,12 +450,12 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
             <div className="max-w-md w-full">
               <MagicCard isMagic className="w-full">
                 <div className="text-center">
-                  <div className="mb-4 inline-flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 mb-4">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="mb-4 inline-flex items-center justify-center w-12 h-12 rounded-full bg-muted mb-4">
+                    <svg className="w-6 h-6 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
                     </svg>
-                  </div>
-                  <h3 className="text-xl font-bold mb-2 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Magic Card ✨</h3>
+          </div>
+                  <h3 className="text-xl font-bold mb-2 text-foreground">Magic Card ✨</h3>
                   <p className="text-sm text-foreground/70 leading-relaxed">
                     Hover your cursor over this card to see the magical glow follow your movement!
                   </p>
@@ -442,9 +464,9 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                       <span>Interactive Effect</span>
                       <span>•</span>
                       <span>Smooth Animation</span>
-                    </div>
-                  </div>
-                </div>
+              </div>
+              </div>
+            </div>
               </MagicCard>
             </div>
           </div>
