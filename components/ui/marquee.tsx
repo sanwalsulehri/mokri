@@ -180,7 +180,7 @@ const Marquee: React.FC<MarqueeProps> = ({
         <div className={`flex items-center py-2 ${isReverse ? 'flex-row-reverse' : ''}`}>
           {duplicatedItems.map((item, index) => {
             if (children) {
-              return renderCustomItem(item, `${layerKey}-custom-${index}`);
+              return renderCustomItem(item as React.ReactNode, `${layerKey}-custom-${index}`);
             } else {
               return renderCardItem(item as MarqueeCard, `${layerKey}-card-${(item as MarqueeCard).id}-${index}`);
             }
