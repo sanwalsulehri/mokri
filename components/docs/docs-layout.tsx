@@ -232,6 +232,7 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
       case 'Avatar':
       case 'Slider':
       case 'MagicCard':
+      case 'Accordion':
       case 'Breadcrumbs':
       case 'ButtonGroup':
       case 'Calendar':
@@ -402,6 +403,18 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
               <Command items={[{ id: '1', label: 'Open' }, { id: '2', label: 'Save' }]} />
             </div>
           );
+        case 'Accordion':
+          return (
+            <div className="w-full max-w-md">
+              <Accordion
+                items={[
+                  { id: 'item-1', title: 'Is it accessible?', content: 'Yes. It adheres to the WAI-ARIA design pattern.' },
+                  { id: 'item-2', title: 'Is it styled?', content: 'Yes. It comes with default styles that matches the other components.' },
+                  { id: 'item-3', title: 'Is it animated?', content: 'Yes. It\'s animated by default, but you can disable it.' },
+                ]}
+              />
+            </div>
+          );
         default:
           return null;
       }
@@ -415,7 +428,9 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
       
         className="shadow-md"
       >
-          {renderComponentDemo()}
+          <div className="flex items-center justify-center min-h-[30ch]">
+            {renderComponentDemo()}
+          </div>
       </Card>
     </div>
   );
