@@ -11,7 +11,7 @@ export default function InstallationPage() {
 Node.js 18+ required
 React 18+ or Next.js 13+ recommended`;
 
-  const installNpm = `npm install @mokri/ui`;
+  const installNpm = `npm install mokri-ui`;
 
   const nextjsTailwind = `// tailwind.config.ts
 import type { Config } from 'tailwindcss'
@@ -211,7 +211,7 @@ export default function Page() {
   const packageJson = `// package.json dependencies
 {
   "dependencies": {
-    "@mokri/ui": "latest",
+    "mokri-ui": "latest",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "tailwindcss": "^3.4.0",
