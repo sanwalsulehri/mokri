@@ -52,7 +52,7 @@ export default function IntroductionPage() {
               <Button asChild>
                 <a href="/docs/installation">Installation Guide</a>
               </Button>
-              <Button variant="outline" asChild>
+              <Button outline="true" asChild>
                 <a href="/docs/components">Browse Components</a>
               </Button>
             </div>
