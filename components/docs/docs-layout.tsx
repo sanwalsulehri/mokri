@@ -284,13 +284,34 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
           );
         case 'Card':
           return (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <Card title="Card Title" description="Card description">
-                <p className="text-sm text-foreground/70">Card content goes here.</p>
-              </Card>
-              <Card title="Dashed Card" description="Card description" dashed>
-                <p className="text-sm text-foreground/70">Card content goes here.</p>
-              </Card>
+            <div className="flex justify-center">
+              <div className="w-full max-w-md">
+                <Card
+                  title="Sign In"
+                  description="Enter your credentials to access your account"
+                >
+                  <Input 
+                    isLabel={true} 
+                    label="Email" 
+                    type="email" 
+                    placeholder="Enter your email" 
+                  />
+                  <Input 
+                    isLabel={true} 
+                    label="Password" 
+                    type="password" 
+                    placeholder="Enter your password" 
+                  />
+                  <Switch 
+                    title="Remember me"
+                    leftLabel="Remember me"
+                  />
+                  <div className="space-y-3">
+                    <Button className="w-full min-h-[34px]">Sign In</Button>
+                    <Button bg={false} outline={true} className="w-full min-h-[34px]">Create Account</Button>
+                  </div>
+                </Card>
+              </div>
             </div>
           );
         case 'Badge':
