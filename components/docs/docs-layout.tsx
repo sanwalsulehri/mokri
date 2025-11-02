@@ -26,7 +26,7 @@ import { Fade } from '../ui/fade';
 import { HeaderBar } from '../ui/header-bar';
 import { IconButton } from '../ui/icon-button';
 import { InputOTP } from '../ui/input-otp';
-import { Pagination } from '../ui/pagination';
+import { Pagination, PaginationPresets } from '../ui/pagination';
 import { Loader } from '../ui/loader';
 import { PaymentForm } from '../ui/payment-form';
 import { ProfileVerification } from '../ui/profile-verification';
@@ -214,7 +214,9 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
     buttonGroupActive: null as string | null,
     calendarDate: null as Date | null,
     drawerOpen: false,
+    modalOpen: false,
     otpValue: '',
+    currentPage: 1,
   });
 
   // Detect dark mode from document on mount
@@ -256,6 +258,7 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
       case 'InputOTP':
       case 'Loader':
       case 'Modal':
+      case 'Pagination':
       case 'UserList':
       case 'Image':
       case 'ImageCarousel':
@@ -379,14 +382,14 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
             <ModalTrigger
               modalTitle="Simple Modal"
               modalContent={
-          <div className="space-y-4">
+                <div className="space-y-4">
                   <p className="text-foreground/80">
                     This is a simple modal dialog. You can add any content here.
                   </p>
                   <div className="flex gap-2">
                     <Button>Action 1</Button>
                     <Button bg={false}>Action 2</Button>
-            </div>
+                  </div>
                 </div>
               }
             >
@@ -394,7 +397,19 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
             </ModalTrigger>
           </div>
         );
-      case 'Checkbox':
+      case 'Pagination':
+        return (
+          <div className="w-full flex justify-center">
+            <Pagination
+              currentPage={demoState.currentPage || 1}
+              totalPages={10}
+              onPageChange={(page) => setDemoState(prev => ({ ...prev, currentPage: page }))}
+              withBorder={false}
+              {...PaginationPresets.full}
+            />
+          </div>
+        );
+        case 'Checkbox':
         return (
           <div className="space-y-4">
               <Checkbox defaultChecked label="Accept terms and conditions" />
