@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "mokri",
+  title: "Mokri",
   description: "A beautiful library built with Next.js, TypeScript, and Tailwind CSS",
   icons: {
     icon: "/fav.png",
