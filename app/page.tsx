@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { Navbar } from "../components/navbar";
 import { Footer } from "../components/footer";
@@ -13,34 +13,34 @@ const FooterPresets = {
     showNewsletter: false,
     showSocial: false,
     showBreadcrumbs: false,
-    columns: 1
+    columns: 1,
   },
   full: {
     showNewsletter: true,
     showSocial: true,
     showBreadcrumbs: true,
-    columns: 4
+    columns: 4,
   },
   company: {
     showNewsletter: true,
     showSocial: true,
     showBreadcrumbs: false,
-    columns: 3
-  }
+    columns: 3,
+  },
 };
 
 export default function Home() {
   return (
-   <div className="min-h-screen flex flex-col">
-     <Navbar />
-   
-     <Container size="2xl" padding="lg" className="flex-1">
-       <Hero />
-     </Container>
+    <div className="min-h-screen flex flex-col">
+      <Navbar />
 
-     <Features />
+      <Container size="2xl" padding="lg" className="flex-1">
+        <Hero />
+      </Container>
 
-     <Footer {...FooterPresets.minimal} />
-   </div>
+      <Features />
+
+      <Footer {...FooterPresets.minimal} />
+    </div>
   );
 }
