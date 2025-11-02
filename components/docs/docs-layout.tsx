@@ -27,7 +27,7 @@ import { HeaderBar } from '../ui/header-bar';
 import { IconButton } from '../ui/icon-button';
 import { InputOTP } from '../ui/input-otp';
 import { Pagination, PaginationPresets } from '../ui/pagination';
-import { Loader } from '../ui/loader';
+import { Loader, LoaderPresets } from '../ui/loader';
 import { PaymentForm } from '../ui/payment-form';
 import { ProfileVerification } from '../ui/profile-verification';
 import { Marquee } from '../ui/marquee';
@@ -44,7 +44,7 @@ import { Accordion } from '../ui/accordion';
 import { Tooltip } from '../ui/tooltip';
 import { BeautifulCardCarousel, BeautifulImageCarousel } from '../ui/carousel';
 import { ToastProvider } from '../ui/toast';
-import { Tabs } from '../ui/tabs';
+import { Tabs, TabPresets, AnimationPresets } from '../ui/tabs';
 import { Testimonials } from '../ui/testimonials';
 import { UserList, sampleUsers } from '../ui/user-list';
 import { Image } from '../ui/image';
@@ -264,6 +264,7 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
       case 'ScrollArea':
       case 'Select':
       case 'Skeleton':
+      case 'Tabs':
       case 'UserList':
       case 'Image':
       case 'ImageCarousel':
@@ -375,10 +376,116 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
         );
       case 'Loader':
         return (
-          <div className="w-full flex justify-center items-center gap-8 py-8">
-            <Loader size="md" variant="spinner" />
-            <Loader size="md" variant="dots" />
-            <Loader size="md" variant="pulse" />
+          <div className="w-full space-y-6">
+            {/* Spinner Variants */}
+            <div>
+              <h3 className="text-sm font-medium mb-3">Spinner Loaders</h3>
+              <div className="flex items-center gap-6">
+                <div className="flex items-center gap-2">
+                  <Loader size="sm" variant="spinner" />
+                  <span className="text-sm text-foreground/70">Small</span>
+            </div>
+                <div className="flex items-center gap-2">
+                  <Loader size="md" variant="spinner" />
+                  <span className="text-sm text-foreground/70">Medium</span>
+          </div>
+                <div className="flex items-center gap-2">
+                  <Loader size="lg" variant="spinner" />
+                  <span className="text-sm text-foreground/70">Large</span>
+          </div>
+          </div>
+            </div>
+
+            {/* Dots Variants */}
+            <div>
+              <h3 className="text-sm font-medium mb-3">Dots Loaders</h3>
+              <div className="flex items-center gap-6">
+                <div className="flex items-center gap-2">
+                  <Loader size="sm" variant="dots" />
+                  <span className="text-sm text-foreground/70">Small</span>
+            </div>
+                <div className="flex items-center gap-2">
+                  <Loader size="md" variant="dots" />
+                  <span className="text-sm text-foreground/70">Medium</span>
+          </div>
+                <div className="flex items-center gap-2">
+                  <Loader size="lg" variant="dots" />
+                  <span className="text-sm text-foreground/70">Large</span>
+          </div>
+          </div>
+            </div>
+
+            {/* Pulse Variants */}
+            <div>
+              <h3 className="text-sm font-medium mb-3">Pulse Loaders</h3>
+              <div className="flex items-center gap-6">
+                <div className="flex items-center gap-2">
+                  <Loader size="sm" variant="pulse" />
+                  <span className="text-sm text-foreground/70">Small</span>
+              </div>
+                <div className="flex items-center gap-2">
+                  <Loader size="md" variant="pulse" />
+                  <span className="text-sm text-foreground/70">Medium</span>
+              </div>
+                <div className="flex items-center gap-2">
+                  <Loader size="lg" variant="pulse" />
+                  <span className="text-sm text-foreground/70">Large</span>
+            </div>
+          </div>
+            </div>
+
+            {/* Bars Variants */}
+            <div>
+              <h3 className="text-sm font-medium mb-3">Bars Loaders</h3>
+              <div className="flex items-center gap-6">
+              <div className="flex items-center gap-2">
+                  <Loader size="sm" variant="bars" />
+                  <span className="text-sm text-foreground/70">Small</span>
+              </div>
+                <div className="flex items-center gap-2">
+                  <Loader size="md" variant="bars" />
+                  <span className="text-sm text-foreground/70">Medium</span>
+            </div>
+                <div className="flex items-center gap-2">
+                  <Loader size="lg" variant="bars" />
+                  <span className="text-sm text-foreground/70">Large</span>
+          </div>
+              </div>
+            </div>
+
+            {/* Color Variants */}
+            <div>
+              <h3 className="text-sm font-medium mb-3">Color Variants</h3>
+              <div className="flex items-center gap-6">
+                <div className="flex items-center gap-2">
+                  <Loader color="primary" />
+                  <span className="text-sm text-foreground/70">Primary</span>
+            </div>
+                <div className="flex items-center gap-2">
+                  <Loader color="secondary" />
+                  <span className="text-sm text-foreground/70">Secondary</span>
+          </div>
+          </div>
+          </div>
+
+            {/* Preset Examples */}
+            <div>
+              <h3 className="text-sm font-medium mb-3">Preset Examples</h3>
+              <div className="flex items-center gap-6">
+                <div className="flex items-center gap-2">
+                  <Loader {...LoaderPresets.smallSpinner} />
+                  <span className="text-sm text-foreground/70">Small Spinner</span>
+          </div>
+                <div className="flex items-center gap-2">
+                  <Loader {...LoaderPresets.mediumDots} />
+                  <span className="text-sm text-foreground/70">Medium Dots</span>
+            </div>
+                <div className="flex items-center gap-2">
+                  <Loader {...LoaderPresets.largePulse} />
+                  <span className="text-sm text-foreground/70">Large Pulse</span>
+          </div>
+            </div>
+          </div>
           </div>
         );
       case 'Modal':
@@ -394,8 +501,8 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                   <div className="flex gap-2">
                     <Button>Action 1</Button>
                     <Button bg={false}>Action 2</Button>
-                  </div>
-                </div>
+              </div>
+            </div>
               }
             >
               <Button>Open Modal</Button>
@@ -412,7 +519,7 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
               withBorder={false}
               {...PaginationPresets.full}
             />
-            </div>
+          </div>
         );
       case 'ProgressBar':
         return (
@@ -528,7 +635,7 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                 <option value="au">Australia</option>
                 <option value="de">Germany</option>
               </Select>
-          </div>
+            </div>
           </div>
         );
       case 'Skeleton':
@@ -544,8 +651,8 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                     <Skeleton animation="pulse" width="100px" height="20px" />
                     <Skeleton animation="pulse" width="150px" height="20px" />
                     <Skeleton animation="pulse" width="80px" height="20px" />
-              </div>
-              </div>
+            </div>
+          </div>
                 
                 <div className="space-y-2">
                   <h4 className="text-sm font-medium">Wave Animation</h4>
@@ -553,7 +660,7 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                     <Skeleton animation="wave" width="100px" height="20px" />
                     <Skeleton animation="wave" width="150px" height="20px" />
                     <Skeleton animation="wave" width="80px" height="20px" />
-              </div>
+            </div>
             </div>
                 
                 <div className="space-y-2">
@@ -571,19 +678,19 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                     <Skeleton animation="none" width="100px" height="20px" />
                     <Skeleton animation="none" width="150px" height="20px" />
                     <Skeleton animation="none" width="80px" height="20px" />
+              </div>
             </div>
           </div>
-          </div>
-          </div>
+            </div>
 
             {/* Complex Layouts */}
-            <div>
+              <div>
               <h3 className="text-sm font-medium mb-3">Complex Layouts</h3>
               <div className="space-y-6">
                 <div className="space-y-2">
                   <h4 className="text-sm font-medium">Table Skeleton</h4>
                   <SkeletonTable rows={4} columns={4} />
-          </div>
+              </div>
             </div>
           </div>
 
@@ -607,9 +714,61 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                     <Skeleton {...SkeletonPresets.mediumButton} />
                     <Skeleton {...SkeletonPresets.largeButton} />
           </div>
-              </div>
             </div>
           </div>
+          </div>
+          </div>
+        );
+      case 'Tabs':
+        return (
+          <div className="w-full space-y-6">
+            <div>
+              <h3 className="text-sm font-medium mb-3">Underline Tabs (Smooth Animation)</h3>
+              <Tabs
+                variant="underline"
+                tabs={[
+                  { id: 'tab1', label: 'Overview' },
+                  { id: 'tab2', label: 'Analytics' },
+                  { id: 'tab3', label: 'Settings' }
+                ]}
+                contents={[
+                  {
+                    id: 'tab1',
+                    content: (
+                      <div className="space-y-4">
+                        <h4 className="text-lg font-semibold">Overview</h4>
+                        <p className="text-foreground/70">
+                          This is the overview tab content with smooth animations. Notice the gentle transitions.
+                        </p>
+                      </div>
+                    )
+                  },
+                  {
+                    id: 'tab2',
+                    content: (
+                      <div className="space-y-4">
+                        <h4 className="text-lg font-semibold">Analytics</h4>
+                        <p className="text-foreground/70">
+                          Analytics dashboard with charts and metrics. Smooth content transitions.
+                        </p>
+                      </div>
+                    )
+                  },
+                  {
+                    id: 'tab3',
+                    content: (
+                      <div className="space-y-4">
+                        <h4 className="text-lg font-semibold">Settings</h4>
+                        <p className="text-foreground/70">
+                          Configure your application settings here.
+                        </p>
+                      </div>
+                    )
+                  }
+                ]}
+                animations={AnimationPresets.smooth}
+              />
+            </div>
           </div>
         );
       case 'Avatar':
@@ -669,8 +828,8 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
           </div>
               </div>
               </MagicCard>
+              </div>
             </div>
-          </div>
         );
       case 'Breadcrumbs':
         return (
@@ -860,7 +1019,7 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                       size="sm"
                     />
           </div>
-              </div>
+            </div>
               </Collapsible>
           </div>
         );
@@ -947,7 +1106,7 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                     <Switch title="Enable Notifications" leftLabel="Off" rightLabel="On" />
                     <Switch title="Dark Mode" leftLabel="Light" rightLabel="Dark" />
                     <Switch title="Auto-save" leftLabel="Off" rightLabel="On" />
-          </div>
+            </div>
                   
             <div className="space-y-4">
                     <h3 className="text-lg font-semibold">Account</h3>
@@ -958,8 +1117,8 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                   <div className="flex gap-2 pt-4">
                     <Button className="flex-1">Save Changes</Button>
                     <Button bg={false} className="flex-1">Cancel</Button>
+              </div>
             </div>
-          </div>
               </Drawer>
           </div>
         );
@@ -1022,9 +1181,9 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                     className="flex-shrink-0 w-32 h-24 bg-muted rounded-lg flex items-center justify-center text-sm font-medium"
                   >
                     Card {num}
-            </div>
-                ))}
               </div>
+                ))}
+            </div>
             </Fade>
           </div>
         );
@@ -1164,12 +1323,12 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                 arrowsInside={true}
                 showPagination={true}
               />
-            </div>
+          </div>
           </div>
         );
       default:
           return null;
-      }
+    }
     })();
   };
 
