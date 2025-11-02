@@ -50,7 +50,7 @@ import { UserList, sampleUsers } from '../ui/user-list';
 import { Image } from '../ui/image';
 import Typography from '../ui/typography';
 import { ProgressBar } from '../ui/progress-bar';
-import Skeleton from '../ui/skeleton';
+import Skeleton, { SkeletonTable, SkeletonPresets } from '../ui/skeleton';
 
 // CLI theme colors for light and dark modes (industry-style terminal palette)
 const cliTheme = {
@@ -263,6 +263,7 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
       case 'ProgressBar':
       case 'ScrollArea':
       case 'Select':
+      case 'Skeleton':
       case 'UserList':
       case 'Image':
       case 'ImageCarousel':
@@ -527,7 +528,88 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                 <option value="au">Australia</option>
                 <option value="de">Germany</option>
               </Select>
+          </div>
+          </div>
+        );
+      case 'Skeleton':
+        return (
+          <div className="w-full space-y-6">
+            {/* Animation Variants */}
+            <div>
+              <h3 className="text-sm font-medium mb-3">Animation Variants</h3>
+              <div className="space-y-4">
+                <div className="space-y-2">
+                  <h4 className="text-sm font-medium">Pulse Animation (Default)</h4>
+                  <div className="flex items-center gap-4">
+                    <Skeleton animation="pulse" width="100px" height="20px" />
+                    <Skeleton animation="pulse" width="150px" height="20px" />
+                    <Skeleton animation="pulse" width="80px" height="20px" />
+              </div>
+              </div>
+                
+                <div className="space-y-2">
+                  <h4 className="text-sm font-medium">Wave Animation</h4>
+                  <div className="flex items-center gap-4">
+                    <Skeleton animation="wave" width="100px" height="20px" />
+                    <Skeleton animation="wave" width="150px" height="20px" />
+                    <Skeleton animation="wave" width="80px" height="20px" />
+              </div>
             </div>
+                
+                <div className="space-y-2">
+                  <h4 className="text-sm font-medium">Shimmer Animation</h4>
+                  <div className="flex items-center gap-4">
+                    <Skeleton animation="shimmer" width="100px" height="20px" />
+                    <Skeleton animation="shimmer" width="150px" height="20px" />
+                    <Skeleton animation="shimmer" width="80px" height="20px" />
+              </div>
+            </div>
+                
+                <div className="space-y-2">
+                  <h4 className="text-sm font-medium">No Animation</h4>
+                  <div className="flex items-center gap-4">
+                    <Skeleton animation="none" width="100px" height="20px" />
+                    <Skeleton animation="none" width="150px" height="20px" />
+                    <Skeleton animation="none" width="80px" height="20px" />
+            </div>
+          </div>
+          </div>
+          </div>
+
+            {/* Complex Layouts */}
+            <div>
+              <h3 className="text-sm font-medium mb-3">Complex Layouts</h3>
+              <div className="space-y-6">
+                <div className="space-y-2">
+                  <h4 className="text-sm font-medium">Table Skeleton</h4>
+                  <SkeletonTable rows={4} columns={4} />
+          </div>
+            </div>
+          </div>
+
+            {/* Preset Examples */}
+            <div>
+              <h3 className="text-sm font-medium mb-3">Preset Examples</h3>
+              <div className="space-y-4">
+                <div className="space-y-2">
+                  <h4 className="text-sm font-medium">Text Presets</h4>
+                  <div className="space-y-2">
+                    <Skeleton {...SkeletonPresets.title} />
+                    <Skeleton {...SkeletonPresets.subtitle} />
+                    <Skeleton {...SkeletonPresets.paragraph} />
+            </div>
+          </div>
+                
+                <div className="space-y-2">
+                  <h4 className="text-sm font-medium">Component Presets</h4>
+                  <div className="flex items-center gap-4">
+                    <Skeleton {...SkeletonPresets.smallButton} />
+                    <Skeleton {...SkeletonPresets.mediumButton} />
+                    <Skeleton {...SkeletonPresets.largeButton} />
+          </div>
+              </div>
+            </div>
+          </div>
           </div>
         );
       case 'Avatar':
@@ -560,8 +642,8 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                   <div className="mb-4 inline-flex items-center justify-center w-12 h-12 rounded-full bg-muted mb-4">
                     <svg className="w-6 h-6 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-                    </svg>
-          </div>
+                </svg>
+              </div>
                   <h3 className="text-xl font-bold mb-2 text-foreground">Magic Card ✨</h3>
                   <p className="text-sm text-foreground/70 leading-relaxed">
                     Hover your cursor over this card to see the magical glow follow your movement!
@@ -571,9 +653,9 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                       <span>Interactive Effect</span>
                       <span>•</span>
                       <span>Smooth Animation</span>
-              </div>
-              </div>
             </div>
+          </div>
+              </div>
               </MagicCard>
             </div>
           </div>
@@ -625,20 +707,20 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                     }
                   ]}
                 />
-              </div>
+            </div>
           </div>
         );
       case 'Calendar':
         return (
             <div className="flex justify-center">
-              <div>
+            <div>
                 <Calendar
                   selectedDate={demoState.calendarDate || undefined}
                   onDateSelect={(date) => setDemoState(prev => ({ ...prev, calendarDate: date }))}
                   size="md"
                   showToday={true}
                 />
-              </div>
+            </div>
           </div>
         );
       case 'Carousel':
@@ -753,20 +835,20 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                       size="sm"
                       defaultChecked={true}
                     />
-          </div>
+              </div>
                   <div className="flex items-center justify-between">
                     <Checkbox 
                       label="SMS notifications" 
                       size="sm"
                     />
-              </div>
+            </div>
                   <div className="flex items-center justify-between">
                     <Checkbox 
                       label="Marketing emails" 
                       size="sm"
                     />
-            </div>
-                </div>
+          </div>
+              </div>
               </Collapsible>
           </div>
         );
@@ -853,19 +935,19 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                     <Switch title="Enable Notifications" leftLabel="Off" rightLabel="On" />
                     <Switch title="Dark Mode" leftLabel="Light" rightLabel="Dark" />
                     <Switch title="Auto-save" leftLabel="Off" rightLabel="On" />
-            </div>
+          </div>
                   
             <div className="space-y-4">
                     <h3 className="text-lg font-semibold">Account</h3>
                     <Input isLabel={true} label="Username" placeholder="Enter username" />
                     <Input isLabel={true} label="Email" type="email" placeholder="Enter email" />
-              </div>
+          </div>
                   
                   <div className="flex gap-2 pt-4">
                     <Button className="flex-1">Save Changes</Button>
                     <Button bg={false} className="flex-1">Cancel</Button>
-              </div>
             </div>
+          </div>
               </Drawer>
           </div>
         );
@@ -929,8 +1011,8 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                   >
                     Card {num}
             </div>
-              ))}
-            </div>
+                ))}
+              </div>
             </Fade>
           </div>
         );
