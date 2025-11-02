@@ -250,13 +250,21 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
         // fall through handled below by reusing curated demos above
         break;
       default:
-        if (Component) {
-          try {
-            return (
-              <div className="w-full max-w-full">
-                <Component />
-              </div>
-            );
+    if (Component) {
+      try {
+            // Add max-width for Select and Dropdown components
+            if (componentName === 'Select' || componentName === 'Dropdown') {
+              return (
+                <div className="w-full max-w-xs mx-auto">
+                  <Component />
+                </div>
+              );
+            }
+        return (
+          <div className="w-full max-w-full">
+            <Component />
+          </div>
+        );
           } catch {}
         }
         return (
@@ -270,25 +278,25 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
 
     // Curated block selected above
     return (() => {
-      switch (componentName) {
-        case 'Button':
-          return (
-            <div className="space-y-6">
-              <div className="flex gap-3 flex-wrap">
-                <Button>Default</Button>
-                <Button bg={false}>No Background</Button>
-                <Button outline>Outline</Button>
+    switch (componentName) {
+      case 'Button':
+        return (
+          <div className="space-y-6">
+            <div className="flex gap-3 flex-wrap">
+              <Button>Default</Button>
+              <Button bg={false}>No Background</Button>
+              <Button outline>Outline</Button>
                  <Button  className='bg-blue-500 hover:bg-blue-600 text-white'>Custom Color</Button>
-              </div>
-              <div className="flex gap-3 flex-wrap">
-                <Button size="sm">Small</Button>
-                <Button size="md">Medium</Button>
-                <Button size="lg">Large</Button>
-              </div>
             </div>
-          );
-        case 'Card':
-          return (
+            <div className="flex gap-3 flex-wrap">
+              <Button size="sm">Small</Button>
+              <Button size="md">Medium</Button>
+              <Button size="lg">Large</Button>
+            </div>
+          </div>
+        );
+      case 'Card':
+        return (
             <div className="flex justify-center">
               <div className="w-full max-w-md">
                 <Card
@@ -315,96 +323,96 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                     <Button className="w-full min-h-[34px]">Sign In</Button>
                     <Button bg={false} outline={true} className="w-full min-h-[34px]">Create Account</Button>
                   </div>
-                </Card>
+            </Card>
               </div>
-            </div>
-          );
-        case 'Badge':
-          return (
-            <div className="flex gap-3 flex-wrap">
-              <Badge>Default</Badge>
-              <Badge variant="secondary">Secondary</Badge>
-              <Badge bg={false}>No Background</Badge>
-            </div>
-          );
-        case 'Input':
-          return (
-            <div className="space-y-4 max-w-md">
-              <Input placeholder="Enter your email" />
+          </div>
+        );
+      case 'Badge':
+        return (
+          <div className="flex gap-3 flex-wrap">
+            <Badge>Default</Badge>
+            <Badge variant="secondary">Secondary</Badge>
+            <Badge bg={false}>No Background</Badge>
+          </div>
+        );
+      case 'Input':
+        return (
+          <div className="space-y-4 max-w-md">
+            <Input placeholder="Enter your email" />
               <Input type="password" placeholder="Password" />
-            </div>
-          );
+          </div>
+        );
         case 'Checkbox':
-          return (
-            <div className="space-y-4">
+        return (
+          <div className="space-y-4">
               <Checkbox defaultChecked label="Accept terms and conditions" />
-            </div>
-          );
+          </div>
+        );
         case 'Switch':
-          return (
-            <div className="space-y-4">
-              <div className="flex items-center space-x-3">
+        return (
+          <div className="space-y-4">
+            <div className="flex items-center space-x-3">
                 <Switch />
                 <label className="text-sm font-medium">Enable notifications</label>
-              </div>
             </div>
-          );
-        case 'Radio':
-          return (
-            <div className="space-y-4">
+          </div>
+        );
+      case 'Radio':
+        return (
+          <div className="space-y-4">
               <Radio name="demo" value="option1" label="Option 1" checked />
               <Radio name="demo" value="option2" label="Option 2" />
-            </div>
-          );
-        case 'RadioCard':
-          return (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl">
+          </div>
+        );
+      case 'RadioCard':
+        return (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl">
               <RadioCard name="plan" label="Basic Plan" description="Perfect for individuals" value="basic" checked />
               <RadioCard name="plan" label="Pro Plan" description="Best for teams" value="pro" />
+          </div>
+        );
+      case 'Avatar':
+        return (
+          <div className="space-y-6">
+            <div className="flex gap-4">
+              <Avatar src="https://i.pravatar.cc/100?img=1" alt="User" />
+              <Avatar src="https://i.pravatar.cc/100?img=2" alt="User" />
+              <Avatar src="https://i.pravatar.cc/100?img=3" alt="User" />
             </div>
-          );
-        case 'Avatar':
-          return (
-            <div className="space-y-6">
-              <div className="flex gap-4">
-                <Avatar src="https://i.pravatar.cc/100?img=1" alt="User" />
-                <Avatar src="https://i.pravatar.cc/100?img=2" alt="User" />
-                <Avatar src="https://i.pravatar.cc/100?img=3" alt="User" />
-              </div>
               <AvatarGroup avatars={[
                 { src: 'https://i.pravatar.cc/100?img=1', alt: 'John Doe' },
                 { src: 'https://i.pravatar.cc/100?img=2', alt: 'Jane Smith' },
                 { src: 'https://i.pravatar.cc/100?img=3', alt: 'Bob Johnson' },
               ]} />
-            </div>
-          );
-        case 'Slider':
-          return (
-            <div className="space-y-4 max-w-md">
+          </div>
+        );
+      case 'Slider':
+        return (
+          <div className="space-y-4 max-w-md">
               <Slider defaultValue={50} min={0} max={100} step={1} />
-            </div>
-          );
-        case 'MagicCard':
-          return (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <MagicCard>
-                <h3 className="text-lg font-semibold mb-2">Normal Card</h3>
-                <p className="text-sm text-foreground/70">This is a regular card without magic effects.</p>
-              </MagicCard>
-              <MagicCard isMagic>
-                <h3 className="text-lg font-semibold mb-2">Magic Card ✨</h3>
-                <p className="text-sm text-foreground/70">Hover to see the magic glow follow your cursor!</p>
-              </MagicCard>
-            </div>
-          );
-        case 'Breadcrumbs':
-          return (
+          </div>
+        );
+      case 'MagicCard':
+        return (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <MagicCard>
+              <h3 className="text-lg font-semibold mb-2">Normal Card</h3>
+              <p className="text-sm text-foreground/70">This is a regular card without magic effects.</p>
+            </MagicCard>
+            <MagicCard isMagic>
+              <h3 className="text-lg font-semibold mb-2">Magic Card ✨</h3>
+              <p className="text-sm text-foreground/70">Hover to see the magic glow follow your cursor!</p>
+            </MagicCard>
+          </div>
+        );
+      case 'Breadcrumbs':
+        return (
             <div className="w-full flex justify-center">
               <Breadcrumbs items={[{ label: 'Docs', href: '/docs' }, { label: 'Components', href: '/docs/components' }, { label: 'Breadcrumbs' }]} />
-            </div>
-          );
-        case 'ButtonGroup':
-          return (
+          </div>
+        );
+      case 'ButtonGroup':
+        return (
             <div className="w-full flex justify-center">
               <div className="max-w-md">
                 <BorderedButtonGroup
@@ -445,10 +453,10 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                   ]}
                 />
               </div>
-            </div>
-          );
-        case 'Calendar':
-          return (
+          </div>
+        );
+      case 'Calendar':
+        return (
             <div className="flex justify-center">
               <div>
                 <Calendar
@@ -458,10 +466,10 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                   showToday={true}
                 />
               </div>
-            </div>
-          );
-        case 'Carousel':
-          return (
+          </div>
+        );
+      case 'Carousel':
+        return (
             <div className="w-full">
               <style dangerouslySetInnerHTML={{ __html: `
                 .carousel-preview .slick-dots {
@@ -553,11 +561,11 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                   autoPlay={false}
                   arrowsInside={true}
                 />
-              </div>
             </div>
-          );
-        case 'Collapsible':
-          return (
+          </div>
+        );
+      case 'Collapsible':
+        return (
             <div className="w-full max-w-2xl">
               <Collapsible
                 title="Account Settings"
@@ -572,32 +580,32 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                       size="sm"
                       defaultChecked={true}
                     />
-                  </div>
+          </div>
                   <div className="flex items-center justify-between">
                     <Checkbox 
                       label="SMS notifications" 
                       size="sm"
                     />
-                  </div>
+              </div>
                   <div className="flex items-center justify-between">
                     <Checkbox 
                       label="Marketing emails" 
                       size="sm"
                     />
-                  </div>
+            </div>
                 </div>
               </Collapsible>
-            </div>
-          );
-        case 'Command':
-          return (
-            <div className="w-full max-w-md">
+          </div>
+        );
+      case 'Command':
+        return (
+          <div className="w-full max-w-md">
               <Command />
-            </div>
-          );
+          </div>
+        );
         case 'Accordion':
-          return (
-            <div className="w-full max-w-md">
+        return (
+          <div className="w-full max-w-md">
               <Accordion
                 items={[
                   { id: 'item-1', title: 'Is it accessible?', content: 'Yes. It adheres to the WAI-ARIA design pattern.' },
@@ -605,10 +613,10 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                   { id: 'item-3', title: 'Is it animated?', content: 'Yes. It\'s animated by default, but you can disable it.' },
                 ]}
               />
-            </div>
-          );
+          </div>
+        );
         case 'Banner':
-          return (
+        return (
             <div className="w-full max-w-2xl">
               <Banner 
                 title="Heads up" 
@@ -616,10 +624,10 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                 size="sm"
                 dismissible 
               />
-            </div>
-          );
+          </div>
+        );
         case 'Container':
-          return (
+        return (
             <div className="w-full space-y-3">
               <Container size="xs" className="bg-muted py-4">
                 <Typography variant="small">XS Container (max-w-sm)</Typography>
@@ -627,10 +635,10 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
               <Container size="sm" className="bg-muted py-4">
                 <Typography variant="small">SM Container (max-w-4xl)</Typography>
               </Container>
-            </div>
-          );
+          </div>
+        );
         case 'DataTable':
-          return (
+        return (
             <div className="w-full overflow-x-auto">
               <DataTable
                 data={[
@@ -650,10 +658,10 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                 size="md"
                 selectable={true}
               />
-            </div>
-          );
-        case 'Drawer':
-          return (
+          </div>
+        );
+      case 'Drawer':
+        return (
             <div className="w-full flex justify-center">
               <Button onClick={() => setDemoState(prev => ({ ...prev, drawerOpen: true }))}>
                 Open Right Drawer
@@ -672,23 +680,23 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                     <Switch title="Enable Notifications" leftLabel="Off" rightLabel="On" />
                     <Switch title="Dark Mode" leftLabel="Light" rightLabel="Dark" />
                     <Switch title="Auto-save" leftLabel="Off" rightLabel="On" />
-                  </div>
+            </div>
                   
-                  <div className="space-y-4">
+            <div className="space-y-4">
                     <h3 className="text-lg font-semibold">Account</h3>
                     <Input isLabel={true} label="Username" placeholder="Enter username" />
                     <Input isLabel={true} label="Email" type="email" placeholder="Enter email" />
-                  </div>
+            </div>
                   
                   <div className="flex gap-2 pt-4">
                     <Button className="flex-1">Save Changes</Button>
                     <Button bg={false} className="flex-1">Cancel</Button>
-                  </div>
-                </div>
-              </Drawer>
             </div>
-          );
-        default:
+          </div>
+              </Drawer>
+          </div>
+        );
+      default:
           return null;
       }
     })();
@@ -702,8 +710,8 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
         className="shadow-md"
       >
           <div className="flex items-center justify-center min-h-[30ch]">
-            {renderComponentDemo()}
-          </div>
+          {renderComponentDemo()}
+        </div>
       </Card>
     </div>
   );

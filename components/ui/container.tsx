@@ -17,12 +17,12 @@ const Container: React.FC<ContainerProps> = ({
 }) => {
   const getSizeClasses = () => {
     const sizes = {
-      xs: 'max-w-sm',
-      sm: 'max-w-4xl',
+      xs: 'w-full max-w-sm',
+      sm: 'w-full max-w-4xl',
       md: 'max-w-5xl',
-      lg: 'max-w-6xl',
-      xl: 'max-w-7xl',
-      '2xl': 'max-w-[1480px]',
+      lg: 'w-full max-w-6xl',
+      xl: 'w-full max-w-7xl',
+      '2xl': 'w-full max-w-[1480px]',
       '3xl': 'max-w-[1700px]'
     };
     return sizes[size];

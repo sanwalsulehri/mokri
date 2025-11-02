@@ -284,8 +284,8 @@ export default function ComponentPage({ params }: ComponentPageProps) {
     <DocsLayout>
       <div className="flex gap-6">
         {/* Main Content */}
-        <Container size="sm">
-        <div className="flex-1 min-w-0 px-6 md:px-8">
+        <Container size="sm" className="w-full">
+        <div className="flex-1 w-full min-w-full px-6 md:px-8">
           <div className="max-w-5xl mx-auto space-y-12">
             {/* Breadcrumbs */}
             <div className="pt-2">
