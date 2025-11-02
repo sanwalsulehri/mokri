@@ -588,7 +588,7 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
         case 'Command':
           return (
             <div className="w-full max-w-md">
-              <Command items={[{ id: '1', label: 'Open' }, { id: '2', label: 'Save' }]} />
+              <Command />
             </div>
           );
         case 'Accordion':
