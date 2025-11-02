@@ -424,15 +424,29 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
         );
       case 'MagicCard':
         return (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <MagicCard>
-              <h3 className="text-lg font-semibold mb-2">Normal Card</h3>
-              <p className="text-sm text-foreground/70">This is a regular card without magic effects.</p>
-            </MagicCard>
-            <MagicCard isMagic>
-              <h3 className="text-lg font-semibold mb-2">Magic Card ✨</h3>
-              <p className="text-sm text-foreground/70">Hover to see the magic glow follow your cursor!</p>
-            </MagicCard>
+          <div className="w-full flex justify-center">
+            <div className="max-w-md w-full">
+              <MagicCard isMagic className="w-full">
+                <div className="text-center">
+                  <div className="mb-4 inline-flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 mb-4">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-xl font-bold mb-2 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Magic Card ✨</h3>
+                  <p className="text-sm text-foreground/70 leading-relaxed">
+                    Hover your cursor over this card to see the magical glow follow your movement!
+                  </p>
+                  <div className="mt-4 pt-4 border-t border-border">
+                    <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
+                      <span>Interactive Effect</span>
+                      <span>•</span>
+                      <span>Smooth Animation</span>
+                    </div>
+                  </div>
+                </div>
+              </MagicCard>
+            </div>
           </div>
         );
       case 'Breadcrumbs':
