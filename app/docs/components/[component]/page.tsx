@@ -136,10 +136,15 @@ export default function ComponentPage({ params }: ComponentPageProps) {
       description: 'A button component that only contains an icon.',
       import: 'import { IconButton } from "@/components/ui/icon-button"'
     },
+    'UserList': {
+      title: 'UserList',
+      description: 'A user list display with avatars and add action.',
+      import: 'import { UserList, sampleUsers } from "@/components/ui/user-list"'
+    },
     'Image': {
       title: 'Image',
-      description: 'An image component with various display options.',
-      import: 'import Image from "@/components/ui/image"'
+      description: 'An image component with standard HTML img attributes and additional props.',
+      import: 'import { Image } from "@/components/ui/image"'
     },
     'ImageCarousel': {
       title: 'ImageCarousel',

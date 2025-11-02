@@ -1717,17 +1717,41 @@ const componentAPIs: Record<string, ComponentAPI> = {
   }
   ,
 
-  Image: {
-    name: 'Image',
+  UserList: {
+    name: 'UserList',
     description: 'A user list display with avatars and add action.',
-    import: 'import { Image, sampleUsers } from "@/components/ui/image"',
+    import: 'import { UserList, sampleUsers } from "@/components/ui/user-list"',
     props: [
       { name: 'users', type: 'Array<{ id: string; name: string; email: string; avatar?: string; avatarFallback?: string }>', required: true, description: 'Users to render' },
       { name: 'onAddUser', type: '(userId: string) => void', required: false, description: 'Called when add button clicked' },
       { name: 'className', type: 'string', required: false, default: '""', description: 'Additional CSS classes' }
     ],
     examples: [
-      `// Basic\n<Image users={sampleUsers} onAddUser={(id) => console.log(id)} />`
+      `// Basic\n<UserList users={sampleUsers} onAddUser={(id) => console.log(id)} />`,
+      `// With custom handler\n<UserList \n  users={sampleUsers} \n  onAddUser={(userId) => {\n    console.log('Added user:', userId);\n    // Add your logic here\n  }} \n/>`
+    ]
+  },
+
+  Image: {
+    name: 'Image',
+    description: 'An image component with standard HTML img attributes and additional props.',
+    import: 'import { Image } from "@/components/ui/image"',
+    props: [
+      { name: 'src', type: 'string', required: true, description: 'Image source URL' },
+      { name: 'alt', type: 'string', required: true, description: 'Alt text for accessibility' },
+      { name: 'width', type: 'number | string', required: false, description: 'Image width' },
+      { name: 'height', type: 'number | string', required: false, description: 'Image height' },
+      { name: 'className', type: 'string', required: false, default: '""', description: 'Additional CSS classes' },
+      { name: 'loading', type: '"lazy" | "eager"', required: false, default: '"lazy"', description: 'Image loading strategy' },
+      { name: 'objectFit', type: '"contain" | "cover" | "fill" | "none" | "scale-down"', required: false, description: 'Object fit CSS property' },
+      { name: 'objectPosition', type: 'string', required: false, description: 'Object position CSS property' },
+      { name: 'onLoad', type: '(e: React.SyntheticEvent<HTMLImageElement, Event>) => void', required: false, description: 'Called when image loads' },
+      { name: 'onError', type: '(e: React.SyntheticEvent<HTMLImageElement, Event>) => void', required: false, description: 'Called when image fails to load' }
+    ],
+    examples: [
+      `// Basic\n<Image src="/image.jpg" alt="Description" width={400} height={300} />`,
+      `// With styling\n<Image \n  src="/image.jpg" \n  alt="Description" \n  width={400} \n  height={300} \n  className="rounded-lg object-cover" \n/>`,
+      `// Lazy loading\n<Image \n  src="/image.jpg" \n  alt="Description" \n  width={400} \n  height={300} \n  loading="lazy" \n/>`
     ]
   },
 

@@ -33,7 +33,8 @@ import Skeleton, {
 } from "../../components/ui/skeleton";
 import Avatar from "../../components/ui/avatar";
 import { DropdownMenu, DropdownIcons } from "../../components/ui/dropdown-menu";
-import { Image, sampleUsers } from "../../components/ui/image";
+import { UserList, sampleUsers } from "../../components/ui/user-list";
+import { Image } from "../../components/ui/image";
 import Typography, { TypographyPresets, Heading1, Heading2, Heading3, Body, Small, Caption, Lead } from "../../components/ui/typography";
 import Container from "../../components/ui/container";
 import { BeautifulImageCarousel, BeautifulCardCarousel } from "../../components/ui/carousel";
@@ -1568,7 +1569,7 @@ function CompPageContent() {
               <div className="space-y-2">
                 <h4 className="text-sm font-medium">Sample User List</h4>
                 <div className="max-w-sm">
-                  <Image 
+                  <UserList 
                     users={sampleUsers}
                     onAddUser={(userId) => console.log('Add user:', userId)}
                   />

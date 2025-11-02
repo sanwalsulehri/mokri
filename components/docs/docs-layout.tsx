@@ -46,7 +46,8 @@ import { BeautifulCardCarousel, BeautifulImageCarousel } from '../ui/carousel';
 import { ToastProvider } from '../ui/toast';
 import { Tabs } from '../ui/tabs';
 import { Testimonials } from '../ui/testimonials';
-import Image from '../ui/image';
+import { UserList, sampleUsers } from '../ui/user-list';
+import { Image } from '../ui/image';
 import Typography from '../ui/typography';
 import { ProgressBar } from '../ui/progress-bar';
 import Skeleton from '../ui/skeleton';
@@ -92,6 +93,7 @@ export const componentsRegistry = [
   { name: 'Fade', path: 'fade', component: Fade },
   { name: 'HeaderBar', path: 'header-bar', component: HeaderBar },
   { name: 'IconButton', path: 'icon-button', component: IconButton },
+  { name: 'UserList', path: 'user-list', component: UserList },
   { name: 'Image', path: 'image', component: Image },
   { name: 'ImageCarousel', path: 'image-carousel', component: BeautifulImageCarousel },
   { name: 'Input', path: 'input', component: Input },
@@ -250,6 +252,8 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
       case 'DropdownMenu':
       case 'Fade':
       case 'IconButton':
+      case 'UserList':
+      case 'Image':
         // fall through handled below by reusing curated demos above
         break;
       default:
@@ -799,6 +803,29 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
             </IconButton>
+          </div>
+        );
+      case 'UserList':
+        return (
+          <div className="w-full flex justify-center">
+            <div className="max-w-sm w-full">
+              <UserList 
+                users={sampleUsers}
+                onAddUser={(userId) => console.log('Add user:', userId)}
+              />
+            </div>
+          </div>
+        );
+      case 'Image':
+        return (
+          <div className="w-full flex justify-center">
+            <Image
+              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=300&fit=crop"
+              alt="Sample image"
+              width={400}
+              height={300}
+              className="rounded-lg object-cover"
+            />
           </div>
         );
       default:
