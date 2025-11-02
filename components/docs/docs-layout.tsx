@@ -248,6 +248,7 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
       case 'DataTable':
       case 'Drawer':
       case 'DropdownMenu':
+      case 'Fade':
         // fall through handled below by reusing curated demos above
         break;
       default:
@@ -743,6 +744,23 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
               ]}
               align="left"
             />
+          </div>
+        );
+      case 'Fade':
+        return (
+          <div className="w-full max-w-2xl mx-auto">
+            <Fade fadeLeft={true} fadeRight={true} fadeWidth="md" fadeOpacity={0.8}>
+              <div className="flex gap-4 overflow-x-auto px-4 py-2">
+                {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
+                  <div
+                    key={num}
+                    className="flex-shrink-0 w-32 h-24 bg-muted rounded-lg flex items-center justify-center text-sm font-medium"
+                  >
+                    Card {num}
+                  </div>
+                ))}
+              </div>
+            </Fade>
           </div>
         );
       default:
