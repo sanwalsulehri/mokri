@@ -434,9 +434,28 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
         );
       case 'Radio':
         return (
-          <div className="space-y-4">
-              <Radio name="demo" value="option1" label="Option 1" checked />
-              <Radio name="demo" value="option2" label="Option 2" />
+          <div className="space-y-4 max-w-md">
+            <Radio 
+              name="demo-radio" 
+              value="option1" 
+              label="Option 1" 
+              checked={demoState.radioValue === 'option1'}
+              onChange={(value) => setDemoState(prev => ({ ...prev, radioValue: value }))}
+            />
+            <Radio 
+              name="demo-radio" 
+              value="option2" 
+              label="Option 2" 
+              checked={demoState.radioValue === 'option2'}
+              onChange={(value) => setDemoState(prev => ({ ...prev, radioValue: value }))}
+            />
+            <Radio 
+              name="demo-radio" 
+              value="option3" 
+              label="Option 3" 
+              checked={demoState.radioValue === 'option3'}
+              onChange={(value) => setDemoState(prev => ({ ...prev, radioValue: value }))}
+            />
           </div>
         );
       case 'RadioCard':
