@@ -175,8 +175,8 @@ export default function ThemedComponent() {
 
   return (
     <DocsLayout>
-      <Container size="sm">
-        <div className="px-6 md:px-8 max-w-5xl mx-auto space-y-10">
+      <Container size="3xl">
+        <div className="px-6 md:px-8 space-y-10">
           <div className="pt-2">
             <Breadcrumbs showHome={false} items={[{ label: 'Docs', href: '/docs' }, { label: 'Theming' }]} />
           </div>

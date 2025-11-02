@@ -12,8 +12,8 @@ export default function IntroductionPage() {
 
   return (
     <DocsLayout>
-      <Container size="sm">
-        <div className="px-6 md:px-8 max-w-5xl mx-auto space-y-10">
+      <Container size="3xl">
+        <div className="px-6 md:px-8 space-y-10">
           <div className="pt-2">
             <Breadcrumbs showHome={false} items={[{ label: 'Docs', href: '/docs' }, { label: 'Introduction' }]} />
           </div>
@@ -68,7 +68,9 @@ export default function IntroductionPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2 p-4 border border-border rounded-lg">
                 <div className="flex items-center gap-2">
-                  <span className="text-2xl">🎨</span>
+                  <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+                  </svg>
                   <h3 className="font-semibold">Fully Customizable</h3>
                 </div>
                 <p className="text-sm text-foreground/70">
@@ -78,7 +80,9 @@ export default function IntroductionPage() {
               </div>
               <div className="space-y-2 p-4 border border-border rounded-lg">
                 <div className="flex items-center gap-2">
-                  <span className="text-2xl">♿</span>
+                  <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                  </svg>
                   <h3 className="font-semibold">Accessible</h3>
                 </div>
                 <p className="text-sm text-foreground/70">
@@ -88,7 +92,9 @@ export default function IntroductionPage() {
               </div>
               <div className="space-y-2 p-4 border border-border rounded-lg">
                 <div className="flex items-center gap-2">
-                  <span className="text-2xl">🌙</span>
+                  <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                  </svg>
                   <h3 className="font-semibold">Dark Mode</h3>
                 </div>
                 <p className="text-sm text-foreground/70">
@@ -98,7 +104,9 @@ export default function IntroductionPage() {
               </div>
               <div className="space-y-2 p-4 border border-border rounded-lg">
                 <div className="flex items-center gap-2">
-                  <span className="text-2xl">🔧</span>
+                  <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                  </svg>
                   <h3 className="font-semibold">TypeScript</h3>
                 </div>
                 <p className="text-sm text-foreground/70">
@@ -108,7 +116,9 @@ export default function IntroductionPage() {
               </div>
               <div className="space-y-2 p-4 border border-border rounded-lg">
                 <div className="flex items-center gap-2">
-                  <span className="text-2xl">📱</span>
+                  <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                  </svg>
                   <h3 className="font-semibold">Responsive</h3>
                 </div>
                 <p className="text-sm text-foreground/70">
@@ -118,7 +128,9 @@ export default function IntroductionPage() {
               </div>
               <div className="space-y-2 p-4 border border-border rounded-lg">
                 <div className="flex items-center gap-2">
-                  <span className="text-2xl">⚡</span>
+                  <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
                   <h3 className="font-semibold">Performance</h3>
                 </div>
                 <p className="text-sm text-foreground/70">

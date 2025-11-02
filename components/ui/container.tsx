@@ -23,7 +23,7 @@ const Container: React.FC<ContainerProps> = ({
       lg: 'w-full max-w-6xl',
       xl: 'w-full max-w-7xl',
       '2xl': 'w-full max-w-[1480px]',
-      '3xl': 'max-w-[1700px]'
+      '3xl': 'w-full max-w-[1700px]'
     };
     return sizes[size];
   };
