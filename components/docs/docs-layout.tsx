@@ -123,9 +123,9 @@ export const componentsRegistry = [
 
 const sidebarItems = [
   { title: 'Get Started', items: [
+    { name: 'Introduction', href: '/docs' },
     { name: 'Installation', href: '/docs/installation' },
     { name: 'Theming', href: '/docs/theming' },
-    { name: 'Dark Mode', href: '/docs/dark-mode' },
   ]},
   { title: 'Components', items: componentsRegistry.map(comp => ({
     name: comp.name,
@@ -654,7 +654,7 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                 <option value="au">Australia</option>
                 <option value="de">Germany</option>
               </Select>
-            </div>
+          </div>
           </div>
         );
       case 'Skeleton':
@@ -671,7 +671,7 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                     <Skeleton animation="pulse" width="150px" height="20px" />
                     <Skeleton animation="pulse" width="80px" height="20px" />
               </div>
-            </div>
+              </div>
                 
                 <div className="space-y-2">
                   <h4 className="text-sm font-medium">Wave Animation</h4>
@@ -679,8 +679,8 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                     <Skeleton animation="wave" width="100px" height="20px" />
                     <Skeleton animation="wave" width="150px" height="20px" />
                     <Skeleton animation="wave" width="80px" height="20px" />
+              </div>
             </div>
-          </div>
                 
                 <div className="space-y-2">
                   <h4 className="text-sm font-medium">Shimmer Animation</h4>
@@ -697,10 +697,10 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                     <Skeleton animation="none" width="100px" height="20px" />
                     <Skeleton animation="none" width="150px" height="20px" />
                     <Skeleton animation="none" width="80px" height="20px" />
-              </div>
             </div>
           </div>
-            </div>
+          </div>
+          </div>
 
             {/* Complex Layouts */}
             <div>
@@ -709,7 +709,7 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                 <div className="space-y-2">
                   <h4 className="text-sm font-medium">Table Skeleton</h4>
                   <SkeletonTable rows={4} columns={4} />
-            </div>
+          </div>
             </div>
           </div>
 
@@ -723,8 +723,8 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                     <Skeleton {...SkeletonPresets.title} />
                     <Skeleton {...SkeletonPresets.subtitle} />
                     <Skeleton {...SkeletonPresets.paragraph} />
-              </div>
             </div>
+          </div>
                 
                 <div className="space-y-2">
                   <h4 className="text-sm font-medium">Component Presets</h4>
@@ -732,10 +732,10 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                     <Skeleton {...SkeletonPresets.smallButton} />
                     <Skeleton {...SkeletonPresets.mediumButton} />
                     <Skeleton {...SkeletonPresets.largeButton} />
+          </div>
               </div>
             </div>
           </div>
-            </div>
           </div>
         );
       case 'Tabs':
@@ -759,7 +759,7 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                         <p className="text-foreground/70">
                           This is the overview tab content with smooth animations. Notice the gentle transitions.
                         </p>
-              </div>
+            </div>
                     )
                   },
                   {
@@ -770,7 +770,7 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                         <p className="text-foreground/70">
                           Analytics dashboard with charts and metrics. Smooth content transitions.
                         </p>
-            </div>
+          </div>
                     )
                   },
                   {
@@ -781,7 +781,7 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                         <p className="text-foreground/70">
                           Configure your application settings here.
                         </p>
-          </div>
+                </div>
                     )
                   }
                 ]}
@@ -899,7 +899,7 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
       case 'Typography':
         return (
           <div className="w-full space-y-6">
-            <div>
+              <div>
               <h3 className="text-sm font-medium mb-3">Typography Examples</h3>
               <div className="space-y-4">
                 <div className="space-y-2">
@@ -911,8 +911,8 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                     <Typography variant="h4">Heading 4 - Minor Heading</Typography>
                     <Typography variant="h5">Heading 5 - Small Heading</Typography>
                     <Typography variant="h6">Heading 6 - Smallest Heading</Typography>
-                  </div>
-                </div>
+              </div>
+            </div>
                 
                 <div className="space-y-2">
                   <h4 className="text-sm font-medium">Text Variants</h4>
@@ -921,9 +921,9 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                     <Body>This is a regular body text paragraph that contains the main content of your page.</Body>
                     <Small>This is small text used for secondary information or captions.</Small>
                     <Caption>This is caption text for very small details or metadata.</Caption>
-                  </div>
-                </div>
-              </div>
+            </div>
+          </div>
+          </div>
             </div>
           </div>
         );
