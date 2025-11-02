@@ -270,6 +270,7 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                 <Button>Default</Button>
                 <Button bg={false}>No Background</Button>
                 <Button outline>Outline</Button>
+                 <Button  className='bg-blue-500 hover:bg-blue-600 text-white'>Custom Color</Button>
               </div>
               <div className="flex gap-3 flex-wrap">
                 <Button size="sm">Small</Button>
