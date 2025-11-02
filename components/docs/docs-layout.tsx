@@ -629,8 +629,20 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
         );
       case 'Slider':
         return (
-          <div className="space-y-4 max-w-md">
-              <Slider defaultValue={50} min={0} max={100} step={1} />
+          <div className="w-full flex justify-center">
+            <div className="w-full max-w-xs sm:max-w-sm md:max-w-md space-y-2">
+              <h3 className="text-sm font-medium">Volume Control</h3>
+              <Slider
+                value={demoState.sliderValue}
+                onChange={(value) => setDemoState(prev => ({ ...prev, sliderValue: value }))}
+                min={0}
+                max={100}
+                step={1}
+                size="md"
+                className="w-full"
+              />
+              <p className="text-xs sm:text-sm text-muted-foreground mt-2">Volume: {demoState.sliderValue}%</p>
+            </div>
           </div>
         );
       case 'MagicCard':
