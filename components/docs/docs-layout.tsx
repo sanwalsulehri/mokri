@@ -240,6 +240,7 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
       case 'Breadcrumbs':
       case 'ButtonGroup':
       case 'Calendar':
+      case 'Carousel':
       case 'Collapsible':
       case 'Command':
         // fall through handled below by reusing curated demos above
@@ -454,6 +455,102 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                   onDateSelect={(date) => setDemoState(prev => ({ ...prev, calendarDate: date }))}
                   size="md"
                   showToday={true}
+                />
+              </div>
+            </div>
+          );
+        case 'Carousel':
+          return (
+            <div className="w-full">
+              <style dangerouslySetInnerHTML={{ __html: `
+                .carousel-preview .slick-dots {
+                  bottom: -40px !important;
+                }
+                .carousel-preview .slick-dots li button {
+                  width: 6px !important;
+                  height: 6px !important;
+                }
+                @media (min-width: 768px) {
+                  .carousel-preview .slick-dots li button {
+                    width: 8px !important;
+                    height: 8px !important;
+                  }
+                }
+                .carousel-preview .slick-prev,
+                .carousel-preview .slick-next {
+                  width: 28px !important;
+                  height: 28px !important;
+                  padding: 5px !important;
+                }
+                .carousel-preview .slick-prev svg,
+                .carousel-preview .slick-next svg {
+                  width: 12px !important;
+                  height: 12px !important;
+                }
+                @media (min-width: 768px) {
+                  .carousel-preview .slick-prev,
+                  .carousel-preview .slick-next {
+                    width: 30px !important;
+                    height: 30px !important;
+                    padding: 6px !important;
+                  }
+                  .carousel-preview .slick-prev svg,
+                  .carousel-preview .slick-next svg {
+                    width: 14px !important;
+                    height: 14px !important;
+                  }
+                }
+              ` }} />
+              <div className="carousel-preview">
+                <style dangerouslySetInnerHTML={{ __html: `
+                  .carousel-preview .slick-slide > div > div {
+                    height: 100% !important;
+                  }
+                  .carousel-preview .slick-track {
+                    display: flex !important;
+                    align-items: stretch !important;
+                  }
+                  .carousel-preview .slick-slide {
+                    height: auto !important;
+                  }
+                  .carousel-preview .slick-slide > div {
+                    height: 100% !important;
+                  }
+                ` }} />
+                <BeautifulCardCarousel
+                  data={[
+                    {
+                      id: "feature-1",
+                      title: "Advanced Analytics",
+                      subtitle: "Data Insights",
+                      description: "Get detailed insights and analytics to make informed decisions for your business growth.",
+                      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop"
+                    },
+                    {
+                      id: "feature-2",
+                      title: "Team Collaboration",
+                      subtitle: "Work Together",
+                      description: "Collaborate seamlessly with your team members using our advanced collaboration tools.",
+                      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=300&fit=crop"
+                    },
+                    {
+                      id: "feature-3",
+                      title: "Security First",
+                      subtitle: "Protected Data",
+                      description: "Your data is protected with enterprise-grade security and encryption protocols.",
+                      image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&h=300&fit=crop"
+                    },
+                    {
+                      id: "feature-4",
+                      title: "Mobile Ready",
+                      subtitle: "Any Device",
+                      description: "Access your data and collaborate from any device, anywhere in the world.",
+                      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=300&fit=crop"
+                    }
+                  ]}
+                  itemsPerView={2}
+                  autoPlay={false}
+                  arrowsInside={true}
                 />
               </div>
             </div>

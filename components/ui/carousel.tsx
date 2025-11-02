@@ -137,12 +137,12 @@ const defaultCardData: CardCarouselItem[] = [
 const CustomPrevArrow = ({ onClick, arrowsInside = false }: { onClick?: () => void; arrowsInside?: boolean }) => (
   <button
     onClick={onClick}
-    className={`absolute top-1/2 -translate-y-1/2 z-20 bg-background/90 hover:bg-background/95 border border-border rounded-full p-2 md:p-3 shadow-lg hover:shadow-xl transition-all duration-300 group ${
+    className={`absolute top-1/2 -translate-y-1/2 z-20 bg-background/90 hover:bg-background/95 border border-border rounded-full p-1.5 md:p-2 shadow-lg hover:shadow-xl transition-all duration-300 group ${
       arrowsInside ? 'left-4' : 'left-4 max-[1339px]:left-4 min-[1350px]:-left-12'
     }`}
   >
     <svg
-      className="w-4 h-4 md:w-6 md:h-6 text-foreground/70 group-hover:text-foreground transition-colors"
+      className="w-3 h-3 md:w-4 md:h-4 text-foreground/70 group-hover:text-foreground transition-colors"
       fill="none"
       stroke="currentColor"
       viewBox="0 0 24 24"
@@ -160,12 +160,12 @@ const CustomPrevArrow = ({ onClick, arrowsInside = false }: { onClick?: () => vo
 const CustomNextArrow = ({ onClick, arrowsInside = false }: { onClick?: () => void; arrowsInside?: boolean }) => (
   <button
     onClick={onClick}
-    className={`absolute top-1/2 -translate-y-1/2 z-20 bg-background/90 hover:bg-background/95 border border-border rounded-full p-2 md:p-3 shadow-lg hover:shadow-xl transition-all duration-300 group ${
+    className={`absolute top-1/2 -translate-y-1/2 z-20 bg-background/90 hover:bg-background/95 border border-border rounded-full p-1.5 md:p-2 shadow-lg hover:shadow-xl transition-all duration-300 group ${
       arrowsInside ? 'right-4' : 'right-4 max-[1339px]:right-4 min-[1350px]:-right-12'
     }`}
   >
     <svg
-      className="w-4 h-4 md:w-6 md:h-6 text-foreground/70 group-hover:text-foreground transition-colors"
+      className="w-3 h-3 md:w-4 md:h-4 text-foreground/70 group-hover:text-foreground transition-colors"
       fill="none"
       stroke="currentColor"
       viewBox="0 0 24 24"
@@ -352,7 +352,7 @@ const BeautifulCardCarousel: React.FC<CardCarouselProps> = ({
       <Slider {...settings}>
         {data.map((card) => (
           <div key={card.id} className="px-3">
-            <div className="relative group overflow-hidden rounded-2xl transition-all duration-500 bg-background border border-border">
+            <div className="relative group overflow-hidden rounded-2xl transition-all duration-500 bg-background border border-border h-full flex flex-col">
               {/* Image with same padding as content */}
               <div className="p-3 md:p-4">
                 <div className="aspect-[3/2] md:aspect-[4/3] overflow-hidden rounded-xl">
@@ -365,14 +365,14 @@ const BeautifulCardCarousel: React.FC<CardCarouselProps> = ({
               </div>
               
               {/* Content with same padding */}
-              <div className="px-3 pb-3 md:px-4 md:pb-4">
+              <div className="px-3 pb-3 md:px-4 md:pb-4 flex-1 flex flex-col">
                 <h3 className="text-lg md:text-xl font-bold text-foreground mb-1 md:mb-2">
                   {card.title}
                 </h3>
                 <p className="text-xs md:text-sm font-medium text-foreground/60 mb-2 md:mb-3">
                   {card.subtitle}
                 </p>
-                <p className="text-xs md:text-sm text-foreground/70 leading-relaxed">
+                <p className="text-xs md:text-sm text-foreground/70 leading-relaxed flex-1">
                   {card.description}
                 </p>
               </div>
@@ -382,7 +382,20 @@ const BeautifulCardCarousel: React.FC<CardCarouselProps> = ({
       </Slider>
       
       {/* Custom Pagination Styles */}
-      <style jsx global>{`
+      <style dangerouslySetInnerHTML={{ __html: `
+        .slick-slide > div > div {
+          height: 100% !important;
+        }
+        .slick-track {
+          display: flex !important;
+          align-items: stretch !important;
+        }
+        .slick-slide {
+          height: auto !important;
+        }
+        .slick-slide > div {
+          height: 100% !important;
+        }
         .slick-dots {
           bottom: -50px !important;
           display: flex !important;
@@ -433,7 +446,7 @@ const BeautifulCardCarousel: React.FC<CardCarouselProps> = ({
           border-color: var(--foreground) !important;
           transform: scale(1.3) !important;
         }
-      `}</style>
+      ` }} />
     </div>
   );
 };

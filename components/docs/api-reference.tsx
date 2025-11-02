@@ -587,6 +587,26 @@ const componentAPIs: Record<string, ComponentAPI> = {
     ]
   },
 
+  Carousel: {
+    name: 'Carousel',
+    description: 'A card carousel with images and textual content, built on slick.',
+    import: 'import { BeautifulCardCarousel } from "@/components/ui/carousel"',
+    props: [
+      { name: 'data', type: 'Array<{ id: number | string; title: string; subtitle: string; description: string; image: string; gradient?: string }>', required: false, description: 'Card slides to render' },
+      { name: 'itemsPerView', type: 'number', required: false, default: '3', description: 'Cards visible at once' },
+      { name: 'showPagination', type: 'boolean', required: false, default: 'true', description: 'Show dot indicators' },
+      { name: 'autoPlay', type: 'boolean', required: false, default: 'false', description: 'Enable autoplay' },
+      { name: 'autoPlaySpeed', type: 'number', required: false, default: '5000', description: 'Autoplay interval in ms' },
+      { name: 'showArrows', type: 'boolean', required: false, default: 'true', description: 'Show previous/next arrows' },
+      { name: 'arrowsInside', type: 'boolean', required: false, default: 'false', description: 'Place arrows inside the slide area' }
+    ],
+    examples: [
+      `// Basic carousel\n<BeautifulCardCarousel />`,
+      `// Two cards per view\n<BeautifulCardCarousel itemsPerView={2} />`,
+      `// With autoplay and inside arrows\n<BeautifulCardCarousel\n  itemsPerView={2}\n  autoPlay={true}\n  autoPlaySpeed={4000}\n  arrowsInside={true}\n/>`
+    ]
+  },
+
   BeautifulCardCarousel: {
     name: 'BeautifulCardCarousel',
     description: 'A card carousel with images and textual content, built on slick.',
