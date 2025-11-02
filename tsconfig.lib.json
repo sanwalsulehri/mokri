@@ -1,0 +1,28 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "declaration": true,
+    "declarationMap": true,
+    "emitDeclarationOnly": false,
+    "module": "ESNext",
+    "target": "ES6",
+    "jsx": "react-jsx"
+  },
+  "include": [
+    "lib/**/*.ts",
+    "lib/**/*.tsx",
+    "components/ui/**/*.ts",
+    "components/ui/**/*.tsx"
+  ],
+  "exclude": [
+    "**/*.spec.ts",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "node_modules",
+    "dist",
+    ".next",
+    "app/**/*"
+  ]
+}
+  
