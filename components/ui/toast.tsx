@@ -64,7 +64,7 @@ function ToastContainer() {
   const { toasts, removeToast } = useToast();
 
   return (
-    <div className="fixed top-2 right-2 md:top-4 md:right-4 z-50 space-y-2 md:space-y-3 max-w-xs md:max-w-sm w-full">
+    <div className="fixed top-2 right-2 md:top-4 md:right-4 z-[10000000] space-y-2 md:space-y-3 max-w-xs md:max-w-sm w-full">
       <AnimatePresence mode="popLayout">
         {toasts.map((toast, index) => (
           <motion.div

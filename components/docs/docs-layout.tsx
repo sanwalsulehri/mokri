@@ -43,7 +43,7 @@ import { Drawer } from '../ui/drawer';
 import { Accordion } from '../ui/accordion';
 import { Tooltip } from '../ui/tooltip';
 import { BeautifulCardCarousel, BeautifulImageCarousel } from '../ui/carousel';
-import { ToastProvider } from '../ui/toast';
+import { ToastProvider, useToast } from '../ui/toast';
 import { Tabs, TabPresets, AnimationPresets } from '../ui/tabs';
 import { Testimonials } from '../ui/testimonials';
 import { UserList, sampleUsers } from '../ui/user-list';
@@ -266,6 +266,7 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
       case 'Skeleton':
       case 'Tabs':
       case 'Testimonials':
+      case 'Toast':
       case 'UserList':
       case 'Image':
       case 'ImageCarousel':
@@ -787,6 +788,68 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
             </div>
           </div>
         );
+      case 'Toast':
+        // Create a component that uses the toast hook
+        const ToastDemo = () => {
+          const { addToast } = useToast();
+        return (
+            <div className="w-full space-y-4">
+              <p className="text-sm text-foreground/70 text-center">Click any button to see toast notifications</p>
+              <div className="flex gap-4 flex-wrap justify-center">
+                <Button 
+                  onClick={() => addToast({
+                    title: "Success!",
+                    description: "Your action was completed successfully.",
+                    variant: "success"
+                  })}
+                >
+                  Success Toast
+                </Button>
+                
+                <Button 
+                  onClick={() => addToast({
+                    title: "Error Alert",
+                    description: "Something went wrong. Please try again.",
+                    variant: "error"
+                  })}
+                  bg={false}
+                >
+                  Error Toast
+                </Button>
+                
+                <Button 
+                  onClick={() => addToast({
+                    title: "Warning",
+                    description: "Please review your input before proceeding.",
+                    variant: "warning"
+                  })}
+                  bg={false} 
+                  outline={true}
+                >
+                  Warning Toast
+                </Button>
+                
+                <Button 
+                  onClick={() => addToast({
+                    title: "Information",
+                    description: "Here's some useful information for you.",
+                    variant: "default"
+                  })}
+                >
+                  Info Toast
+                </Button>
+            </div>
+          </div>
+        );
+        };
+
+        return (
+          <div className="w-full">
+            <ToastProvider>
+              <ToastDemo />
+            </ToastProvider>
+          </div>
+        );
       case 'Testimonials':
         return (
           <div className="w-full flex justify-center">
@@ -807,7 +870,7 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
               <Avatar src="https://i.pravatar.cc/100?img=1" alt="User" />
               <Avatar src="https://i.pravatar.cc/100?img=2" alt="User" />
               <Avatar src="https://i.pravatar.cc/100?img=3" alt="User" />
-            </div>
+          </div>
               <AvatarGroup avatars={[
                 { src: 'https://i.pravatar.cc/100?img=1', alt: 'John Doe' },
                 { src: 'https://i.pravatar.cc/100?img=2', alt: 'Jane Smith' },
@@ -830,7 +893,7 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                 className="w-full"
               />
               <p className="text-xs sm:text-sm text-muted-foreground mt-2">Volume: {demoState.sliderValue}%</p>
-          </div>
+            </div>
           </div>
         );
       case 'MagicCard':
@@ -843,7 +906,7 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                     <svg className="w-6 h-6 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
                 </svg>
-            </div>
+              </div>
                   <h3 className="text-xl font-bold mb-2 text-foreground">Magic Card ✨</h3>
                   <p className="text-sm text-foreground/70 leading-relaxed">
                     Hover your cursor over this card to see the magical glow follow your movement!
@@ -853,12 +916,12 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                       <span>Interactive Effect</span>
                       <span>•</span>
                       <span>Smooth Animation</span>
+            </div>
           </div>
               </div>
-            </div>
               </MagicCard>
               </div>
-          </div>
+            </div>
         );
       case 'Breadcrumbs':
         return (
