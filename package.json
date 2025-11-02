@@ -1,12 +1,14 @@
 {
   "name": "@ui/mokri",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": false,
   "description": "A fast and elegant UI library built with Next.js + Tailwind",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -15,7 +17,14 @@
     "lib:build": "tsc --project tsconfig.lib.json",
     "prepublishOnly": "npm run lib:build"
   },
-  "keywords": ["nextjs", "ui", "library", "react", "tailwind", "mokri"],
+  "keywords": [
+    "nextjs",
+    "ui",
+    "library",
+    "react",
+    "tailwind",
+    "mokri"
+  ],
   "author": "Sanwal Sulehri",
   "license": "MIT",
   "dependencies": {
