@@ -259,6 +259,7 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
       case 'Loader':
       case 'Modal':
       case 'Pagination':
+      case 'ProgressBar':
       case 'UserList':
       case 'Image':
       case 'ImageCarousel':
@@ -407,6 +408,13 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
               withBorder={false}
               {...PaginationPresets.full}
             />
+          </div>
+        );
+      case 'ProgressBar':
+        return (
+          <div className="w-full max-w-md mx-auto space-y-4">
+            <ProgressBar value={25} />
+            <ProgressBar value={75} color="purple" />
           </div>
         );
         case 'Checkbox':
