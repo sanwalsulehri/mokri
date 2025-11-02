@@ -245,7 +245,7 @@ export default function Page() {
             </div>
             <p className="text-lg text-foreground/70 max-w-2xl">
               Get started by installing the package and setting up your project.
-              Follow the steps below to add Vexel UI to your Next.js
+              Follow the steps below to add tertex UI to your Next.js
               application.
             </p>
           </header>
@@ -254,7 +254,7 @@ export default function Page() {
             <div className="space-y-2">
               <h2 className="text-2xl font-semibold">Prerequisites</h2>
               <p className="text-foreground/70">
-                Before installing Vexel UI, make sure you have the following:
+                Before installing tertex UI, make sure you have the following:
               </p>
               <ul className="list-disc list-inside space-y-1 text-foreground/70 ml-4">
                 <li>Node.js 18.0 or later</li>
@@ -269,7 +269,7 @@ export default function Page() {
             <div className="space-y-2">
               <h2 className="text-2xl font-semibold">Installation</h2>
               <p className="text-foreground/70">
-                Install the Vexel UI package and required dependencies.
+                Install the tertex UI package and required dependencies.
               </p>
             </div>
             <div className="space-y-4">
@@ -413,7 +413,7 @@ export default function Page() {
             <div className="space-y-2">
               <h2 className="text-2xl font-semibold">Next Steps</h2>
               <p className="text-foreground/70">
-                Now that you have Vexel UI installed, you can:
+                Now that you have tertex UI installed, you can:
               </p>
               <ul className="list-disc list-inside space-y-2 text-foreground/70 ml-4">
                 <li>
