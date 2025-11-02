@@ -210,6 +210,7 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
     radioValue: 'option1',
     sliderValue: 50,
     buttonGroupActive: null as string | null,
+    calendarDate: null as Date | null,
   });
 
   // Detect dark mode from document on mount
@@ -425,8 +426,15 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
           );
         case 'Calendar':
           return (
-            <div className="w-full max-w-md">
-              <Calendar />
+            <div className="flex justify-center">
+              <div>
+                <Calendar
+                  selectedDate={demoState.calendarDate || undefined}
+                  onDateSelect={(date) => setDemoState(prev => ({ ...prev, calendarDate: date }))}
+                  size="md"
+                  showToday={true}
+                />
+              </div>
             </div>
           );
         case 'Collapsible':
