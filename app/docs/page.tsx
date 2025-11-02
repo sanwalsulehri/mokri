@@ -9,7 +9,7 @@ import { Badge } from '../../components/ui/badge';
 import { Button } from '../../components/ui/button';
 
 export default function IntroductionPage() {
-  const quickInstall = `npm install @ui/mokri`;
+  const quickInstall = `npm install @mokri/ui`;
 
   return (
     <DocsLayout>
