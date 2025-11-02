@@ -1,11 +1,63 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { DocsLayout, ComponentDemo, componentsRegistry, getComponentCode, CodeWindow } from '../../../../components/docs/docs-layout';
 import Container from '../../../../components/ui/container';
 import { Badge } from '../../../../components/ui/badge';
 import { APIReference } from '../../../../components/docs/api-reference';
 import { Breadcrumbs } from '../../../../components/ui/breadcrumbs';
+
+// Smooth link component for right sidebar
+function SmoothLink({ href, label, isMain = false, isSub = false }: { href: string; label: string; isMain?: boolean; isSub?: boolean }) {
+  const [isActive, setIsActive] = useState(false);
+
+  useEffect(() => {
+    const checkActive = () => {
+      const element = document.querySelector(href);
+      if (element) {
+        const rect = element.getBoundingClientRect();
+        const isVisible = rect.top >= 0 && rect.top <= window.innerHeight / 2;
+        setIsActive(isVisible);
+      }
+    };
+
+    checkActive();
+    window.addEventListener('scroll', checkActive);
+    return () => window.removeEventListener('scroll', checkActive);
+  }, [href]);
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const element = document.querySelector(href);
+    if (element) {
+      const offsetTop = (element as HTMLElement).offsetTop - 100;
+      window.scrollTo({
+        top: offsetTop,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const baseClasses = isSub 
+    ? 'block text-xs py-1.5 px-3 rounded-md transition-all duration-200'
+    : isMain
+    ? 'block text-sm font-medium py-2 px-3 rounded-md transition-all duration-200'
+    : 'block text-sm py-2 px-3 rounded-md transition-all duration-200';
+
+  const activeClasses = isActive
+    ? 'bg-primary/15 text-primary font-medium border-l-2 border-primary'
+    : 'text-foreground/70 hover:text-foreground hover:bg-muted/60 active:bg-muted/70';
+
+  return (
+    <a
+      href={href}
+      onClick={handleClick}
+      className={`${baseClasses} ${activeClasses}`}
+    >
+      {label}
+    </a>
+  );
+}
 
 interface ComponentPageProps {
   params: Promise<{
