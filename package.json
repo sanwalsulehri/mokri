@@ -22,7 +22,7 @@
     "components",
     "tertex"
   ],
-  "author": "Your Name",
+  "author": "Sanwal Sulehri",
   "license": "MIT",
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.16",
