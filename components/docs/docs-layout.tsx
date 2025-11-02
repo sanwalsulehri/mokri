@@ -254,6 +254,7 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
       case 'IconButton':
       case 'UserList':
       case 'Image':
+      case 'ImageCarousel':
         // fall through handled below by reusing curated demos above
         break;
       default:
@@ -826,6 +827,85 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
               height={300}
               className="rounded-lg object-cover"
             />
+          </div>
+        );
+      case 'ImageCarousel':
+        return (
+          <div className="w-full max-w-5xl mx-auto pb-8">
+            <style dangerouslySetInnerHTML={{ __html: `
+              .image-carousel-preview .slick-prev,
+              .image-carousel-preview .slick-next {
+                width: 28px !important;
+                height: 28px !important;
+                padding: 5px !important;
+                z-index: 10 !important;
+              }
+              .image-carousel-preview .slick-prev svg,
+              .image-carousel-preview .slick-next svg {
+                width: 12px !important;
+                height: 12px !important;
+              }
+              @media (min-width: 768px) {
+                .image-carousel-preview .slick-prev,
+                .image-carousel-preview .slick-next {
+                  width: 32px !important;
+                  height: 32px !important;
+                  padding: 6px !important;
+                }
+                .image-carousel-preview .slick-prev svg,
+                .image-carousel-preview .slick-next svg {
+                  width: 14px !important;
+                  height: 14px !important;
+                }
+              }
+              .image-carousel-preview .slick-dots {
+                bottom: -30px !important;
+              }
+              .image-carousel-preview .slick-dots li button {
+                width: 6px !important;
+                height: 6px !important;
+              }
+              @media (min-width: 768px) {
+                .image-carousel-preview .slick-dots li button {
+                  width: 8px !important;
+                  height: 8px !important;
+                }
+              }
+            ` }} />
+            <div className="image-carousel-preview">
+              <BeautifulImageCarousel
+                data={[
+                  {
+                    id: 1,
+                    title: "Mountain Peak",
+                    subtitle: "Majestic Views",
+                    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=500&fit=crop"
+                  },
+                  {
+                    id: 2,
+                    title: "Ocean Waves",
+                    subtitle: "Serene Beauty",
+                    image: "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=800&h=500&fit=crop"
+                  },
+                  {
+                    id: 3,
+                    title: "Forest Trail",
+                    subtitle: "Nature's Path",
+                    image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&h=500&fit=crop"
+                  },
+                  {
+                    id: 4,
+                    title: "City Skyline",
+                    subtitle: "Urban Dreams",
+                    image: "https://images.unsplash.com/photo-1514565131-fce0801e5785?w=800&h=500&fit=crop"
+                  }
+                ]}
+                itemsPerView={2}
+                autoPlay={false}
+                arrowsInside={true}
+                showPagination={true}
+              />
+            </div>
           </div>
         );
       default:
