@@ -6,7 +6,7 @@ import Container from '../../../components/ui/container';
 import { Breadcrumbs } from '../../../components/ui/breadcrumbs';
 
 export default function InstallationPage() {
-  const installNpm = `// Install via npm\nnpm install @vexel/ui`;
+  const installNpm = `// Install via npm\nnpm install @tertex/ui`;
   
   const setupTailwind = `// tailwind.config.ts\nimport type { Config } from 'tailwindcss'\n\nexport default {\n  content: [\n    './app/**/*.{ts,tsx}',\n    './components/**/*.{ts,tsx}',\n  ],\n  theme: {\n    extend: {}\n  }\n} satisfies Config`;
   const basicUsage = `// app/page.tsx\nimport { Button } from '@/components/ui/button'\n\nexport default function Page() {\n  return <Button>Install success</Button>\n}`;

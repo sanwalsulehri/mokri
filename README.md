@@ -1,4 +1,4 @@
-# Vertex
+# tertex
 
 A minimal, beautiful React components library built with Next.js, TypeScript, and Tailwind CSS.
 
@@ -53,7 +53,7 @@ A minimal, beautiful React components library built with Next.js, TypeScript, an
 
 ```bash
 # Clone the repository
-git clone https://github.com/sanwalsulehri/Vertex.git
+git clone https://github.com/sanwalsulehri/tertex.git
 
 # Install dependencies
 npm install

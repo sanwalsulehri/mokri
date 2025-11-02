@@ -120,8 +120,8 @@ const componentAPIs: Record<string, ComponentAPI> = {
   items={[
     {
       id: 'item-1',
-      title: 'What is Vertex UI?',
-      content: 'Vertex UI is a collection of reusable components...'
+      title: 'What is tertex UI?',
+      content: 'tertex UI is a collection of reusable components...'
     },
     {
       id: 'item-2', 

@@ -51,7 +51,7 @@ export function Footer({
               <div className="flex items-center gap-2">
                 <Image
                   src={isDark ? "/logo_white.png" : "/logo_dark.png"}
-                  alt="Vertex"
+                  alt="tertex"
                   width={120}
                   height={40}
                   className="h-8 w-auto"
@@ -150,12 +150,12 @@ export function Footer({
           {/* Minimal footer - centered */}
           {columns === 1 ? (
             <div className="text-center text-sm text-foreground/70">
-              Built by <a href="https://github.com" className="underline hover:text-foreground transition-colors">vertex</a> at <a href="https://vercel.com" className="underline hover:text-foreground transition-colors">Vercel</a>. The source code is available on <a href="https://github.com" className="underline hover:text-foreground transition-colors">GitHub</a>.
+              Built by <a href="https://github.com" className="underline hover:text-foreground transition-colors">tertex</a> at <a href="https://vercel.com" className="underline hover:text-foreground transition-colors">Vercel</a>. The source code is available on <a href="https://github.com" className="underline hover:text-foreground transition-colors">GitHub</a>.
             </div>
           ) : (
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               <div className="flex items-center gap-4 text-sm text-foreground/70">
-                <span>© {currentYear} Vertex. All rights reserved.</span>
+                <span>© {currentYear} tertex. All rights reserved.</span>
               </div>
               
               <div className="flex items-center gap-4">
@@ -191,7 +191,7 @@ export function Footer({
                   <svg className="w-4 h-4 text-red-500" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
                   </svg>
-                  <span className="text-sm text-foreground/70">by Vertex Team</span>
+                  <span className="text-sm text-foreground/70">by tertex Team</span>
                 </div>
               </div>
             </div>

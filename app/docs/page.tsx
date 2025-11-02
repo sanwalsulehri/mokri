@@ -11,7 +11,7 @@ export default function DocsPage() {
         <div className="space-y-8">
           {/* Header */}
           <div className="space-y-4">
-            <h1 className="text-4xl font-bold">Vertex UI</h1>
+            <h1 className="text-4xl font-bold">tertex UI</h1>
             <p className="text-lg text-foreground/70 max-w-2xl">
               A collection of reusable components built with React, TypeScript, and Tailwind CSS. 
               Copy, paste, and customize to your heart's content.
@@ -24,7 +24,7 @@ export default function DocsPage() {
             <div className="bg-muted/50 rounded-lg p-6">
               <h3 className="text-lg font-semibold mb-4">Installation</h3>
               <pre className="bg-background rounded-md p-4 overflow-x-auto text-sm">
-                <code>npm install @vertex/ui</code>
+                <code>npm install @tertex/ui</code>
               </pre>
             </div>
           </div>

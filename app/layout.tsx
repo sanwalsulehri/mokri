@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Vertex",
+  title: "tertex",
   description: "A beautiful library built with Next.js, TypeScript, and Tailwind CSS",
 };
 
