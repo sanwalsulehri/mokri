@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import React from 'react';
-import { DocsLayout, CodeWindow } from '../../../components/docs/docs-layout';
-import Container from '../../../components/ui/container';
-import { Breadcrumbs } from '../../../components/ui/breadcrumbs';
-import { Badge } from '../../../components/ui/badge';
+import React from "react";
+import { DocsLayout, CodeWindow } from "../../../components/docs/docs-layout";
+import Container from "../../../components/ui/container";
+import { Breadcrumbs } from "../../../components/ui/breadcrumbs";
+import { Badge } from "../../../components/ui/badge";
 
 export default function ThemingPage() {
   const cssVariables = `// app/globals.css
@@ -178,7 +178,10 @@ export default function ThemedComponent() {
       <Container size="3xl">
         <div className="px-6 md:px-8 space-y-10">
           <div className="pt-2">
-            <Breadcrumbs showHome={false} items={[{ label: 'Docs', href: '/docs' }, { label: 'Theming' }]} />
+            <Breadcrumbs
+              showHome={false}
+              items={[{ label: "Docs", href: "/docs" }, { label: "Theming" }]}
+            />
           </div>
 
           <header className="space-y-4">
@@ -187,7 +190,9 @@ export default function ThemedComponent() {
               <Badge variant="secondary">CSS Variables</Badge>
             </div>
             <p className="text-lg text-foreground/70 max-w-2xl">
-              Customize the appearance of your components using CSS variables and Tailwind CSS. Vexel UI uses a CSS variable-based theming system that works seamlessly with both light and dark modes.
+              Customize the appearance of your components using CSS variables
+              and Tailwind CSS. Vexel UI uses a CSS variable-based theming
+              system that works seamlessly with both light and dark modes.
             </p>
           </header>
 
@@ -195,9 +200,10 @@ export default function ThemedComponent() {
             <div className="space-y-2">
               <h2 className="text-2xl font-semibold">Overview</h2>
               <p className="text-foreground/70">
-                Vexel UI uses CSS variables for theming, which allows you to customize colors globally. 
-                All colors are defined using HSL format, making it easy to create cohesive color schemes 
-                that automatically adapt to light and dark modes.
+                Vexel UI uses CSS variables for theming, which allows you to
+                customize colors globally. All colors are defined using HSL
+                format, making it easy to create cohesive color schemes that
+                automatically adapt to light and dark modes.
               </p>
             </div>
           </section>
@@ -206,7 +212,11 @@ export default function ThemedComponent() {
             <div className="space-y-2">
               <h2 className="text-2xl font-semibold">CSS Variables</h2>
               <p className="text-foreground/70">
-                Define your theme colors using CSS variables in your <code className="px-1.5 py-0.5 bg-muted rounded text-xs">globals.css</code> file:
+                Define your theme colors using CSS variables in your{" "}
+                <code className="px-1.5 py-0.5 bg-muted rounded text-xs">
+                  globals.css
+                </code>{" "}
+                file:
               </p>
             </div>
             <CodeWindow code={cssVariables} filename="app/globals.css" />
@@ -216,7 +226,11 @@ export default function ThemedComponent() {
             <div className="space-y-2">
               <h2 className="text-2xl font-semibold">Tailwind Configuration</h2>
               <p className="text-foreground/70">
-                Map CSS variables to Tailwind colors in your <code className="px-1.5 py-0.5 bg-muted rounded text-xs">tailwind.config.ts</code>:
+                Map CSS variables to Tailwind colors in your{" "}
+                <code className="px-1.5 py-0.5 bg-muted rounded text-xs">
+                  tailwind.config.ts
+                </code>
+                :
               </p>
             </div>
             <CodeWindow code={tailwindConfig} filename="tailwind.config.ts" />
@@ -236,13 +250,18 @@ export default function ThemedComponent() {
             <div className="space-y-2">
               <h2 className="text-2xl font-semibold">Customizing Colors</h2>
               <p className="text-foreground/70">
-                You can customize any color by updating the corresponding CSS variable:
+                You can customize any color by updating the corresponding CSS
+                variable:
               </p>
             </div>
             <CodeWindow code={customTheme} filename="app/globals.css" />
             <p className="text-sm text-foreground/60">
-              Colors use HSL format: <code className="px-1.5 py-0.5 bg-muted rounded text-xs">hue saturation% lightness%</code>. 
-              The values are space-separated (not comma-separated) for use with Tailwind's HSL function.
+              Colors use HSL format:{" "}
+              <code className="px-1.5 py-0.5 bg-muted rounded text-xs">
+                hue saturation% lightness%
+              </code>
+              . The values are space-separated (not comma-separated) for use
+              with Tailwind's HSL function.
             </p>
           </section>
 
@@ -250,7 +269,8 @@ export default function ThemedComponent() {
             <div className="space-y-2">
               <h2 className="text-2xl font-semibold">Usage in Components</h2>
               <p className="text-foreground/70">
-                Use theme colors in your components with Tailwind utility classes:
+                Use theme colors in your components with Tailwind utility
+                classes:
               </p>
             </div>
             <CodeWindow code={usageExample} filename="components/themed.tsx" />
@@ -260,18 +280,32 @@ export default function ThemedComponent() {
             <div className="space-y-2">
               <h2 className="text-2xl font-semibold">Dark Mode</h2>
               <p className="text-foreground/70">
-                Dark mode is automatically supported through the <code className="px-1.5 py-0.5 bg-muted rounded text-xs">.dark</code> class. 
-                When the dark class is applied to your <code className="px-1.5 py-0.5 bg-muted rounded text-xs">html</code> or <code className="px-1.5 py-0.5 bg-muted rounded text-xs">body</code> element, 
-                all components will automatically use the dark theme colors.
+                Dark mode is automatically supported through the{" "}
+                <code className="px-1.5 py-0.5 bg-muted rounded text-xs">
+                  .dark
+                </code>{" "}
+                class. When the dark class is applied to your{" "}
+                <code className="px-1.5 py-0.5 bg-muted rounded text-xs">
+                  html
+                </code>{" "}
+                or{" "}
+                <code className="px-1.5 py-0.5 bg-muted rounded text-xs">
+                  body
+                </code>{" "}
+                element, all components will automatically use the dark theme
+                colors.
               </p>
             </div>
-            <CodeWindow code={`// Enable dark mode
+            <CodeWindow
+              code={`// Enable dark mode
 <html lang="en" className="dark">
   <body>...</body>
 </html>
 
 // Or toggle dynamically
-document.documentElement.classList.toggle('dark')`} filename="app/layout.tsx" />
+document.documentElement.classList.toggle('dark')`}
+              filename="app/layout.tsx"
+            />
           </section>
 
           <section className="space-y-4">
@@ -286,29 +320,55 @@ document.documentElement.classList.toggle('dark')`} filename="app/layout.tsx" />
                 <div className="space-y-2">
                   <h3 className="font-medium">Base Colors</h3>
                   <ul className="text-sm text-foreground/70 space-y-1 ml-4 list-disc">
-                    <li><code>--background</code> - Page background</li>
-                    <li><code>--foreground</code> - Primary text</li>
-                    <li><code>--border</code> - Border color</li>
-                    <li><code>--input</code> - Input border</li>
-                    <li><code>--ring</code> - Focus ring</li>
+                    <li>
+                      <code>--background</code> - Page background
+                    </li>
+                    <li>
+                      <code>--foreground</code> - Primary text
+                    </li>
+                    <li>
+                      <code>--border</code> - Border color
+                    </li>
+                    <li>
+                      <code>--input</code> - Input border
+                    </li>
+                    <li>
+                      <code>--ring</code> - Focus ring
+                    </li>
                   </ul>
                 </div>
                 <div className="space-y-2">
                   <h3 className="font-medium">Semantic Colors</h3>
                   <ul className="text-sm text-foreground/70 space-y-1 ml-4 list-disc">
-                    <li><code>--primary</code> - Primary brand color</li>
-                    <li><code>--secondary</code> - Secondary color</li>
-                    <li><code>--accent</code> - Accent highlights</li>
-                    <li><code>--muted</code> - Muted backgrounds</li>
-                    <li><code>--destructive</code> - Error/danger color</li>
+                    <li>
+                      <code>--primary</code> - Primary brand color
+                    </li>
+                    <li>
+                      <code>--secondary</code> - Secondary color
+                    </li>
+                    <li>
+                      <code>--accent</code> - Accent highlights
+                    </li>
+                    <li>
+                      <code>--muted</code> - Muted backgrounds
+                    </li>
+                    <li>
+                      <code>--destructive</code> - Error/danger color
+                    </li>
                   </ul>
                 </div>
                 <div className="space-y-2">
                   <h3 className="font-medium">Component Colors</h3>
                   <ul className="text-sm text-foreground/70 space-y-1 ml-4 list-disc">
-                    <li><code>--card</code> - Card backgrounds</li>
-                    <li><code>--popover</code> - Popover backgrounds</li>
-                    <li><code>--radius</code> - Border radius value</li>
+                    <li>
+                      <code>--card</code> - Card backgrounds
+                    </li>
+                    <li>
+                      <code>--popover</code> - Popover backgrounds
+                    </li>
+                    <li>
+                      <code>--radius</code> - Border radius value
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -319,5 +379,3 @@ document.documentElement.classList.toggle('dark')`} filename="app/layout.tsx" />
     </DocsLayout>
   );
 }
-
-
