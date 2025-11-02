@@ -2022,14 +2022,14 @@ export function APIReference({ componentName }: { componentName: string }) {
     <div className="space-y-8">
       {/* Component Overview */}
       <div className="space-y-4">
-        <h3 className="text-2xl font-semibold flex items-center gap-2 px-4 py-3 bg-muted/30 rounded-lg">
+        <h3 className="text-2xl font-medium flex items-center gap-2">
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
           </svg>
           API Reference
         </h3>
         
-        <div className="bg-muted/50 rounded-2xl p-4 md:p-6">
+        <div>
           <h4 className="text-lg font-semibold mb-2">{api.name}</h4>
           <p className="text-foreground/70 mb-4">{api.description}</p>
           
@@ -2039,7 +2039,7 @@ export function APIReference({ componentName }: { componentName: string }) {
 
       {/* Props Table */}
       <div className="space-y-4" id="api-props">
-        <h4 className="text-xl font-semibold px-4 py-3 bg-muted/30 rounded-lg">Props</h4>
+        <h4 className="text-xl font-medium">Props</h4>
         
         <div className="bg-muted/50 rounded-2xl p-4 md:p-6 overflow-hidden">
           <div className="overflow-x-auto">
@@ -2098,7 +2098,7 @@ export function APIReference({ componentName }: { componentName: string }) {
       {/* Examples */}
       {api.examples && (
         <div className="space-y-4" id="api-examples">
-          <h4 className="text-xl font-semibold px-4 py-3 bg-muted/30 rounded-lg">Examples</h4>
+          <h4 className="text-xl font-medium">Examples</h4>
           
           {api.examples.map((example, index) => (
             <div key={index} className="space-y-2">
@@ -2114,7 +2114,7 @@ export function APIReference({ componentName }: { componentName: string }) {
       {/* Presets */}
       {api.presets && (
         <div className="space-y-4" id="api-presets">
-          <h4 className="text-xl font-semibold px-4 py-3 bg-muted/30 rounded-lg">Presets</h4>
+          <h4 className="text-xl font-medium">Presets</h4>
           
           <div className="bg-muted/50 rounded-2xl p-4 md:p-6">
             <div className="space-y-3">
