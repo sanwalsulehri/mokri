@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useId } from 'react';
 
 interface CheckboxProps {
   checked?: boolean;
@@ -23,6 +23,8 @@ export function Checkbox({
   className = '',
   id
 }: CheckboxProps) {
+  const generatedId = useId();
+  const checkboxId = id || (label ? generatedId : undefined);
   const [isChecked, setIsChecked] = useState(defaultChecked);
   const actualChecked = checked !== undefined ? checked : isChecked;
 
@@ -58,7 +60,7 @@ export function Checkbox({
     <div className="relative inline-flex items-center justify-center">
     <input
       type="checkbox"
-      id={id}
+      id={checkboxId}
       checked={actualChecked}
       onChange={handleChange}
       disabled={disabled}
@@ -105,7 +107,7 @@ export function Checkbox({
           ${sizeClasses[size].spacing}
           ${sizeClasses[size].label}
           text-foreground
-          cursor-pointer
+          select-none
           ${disabled ? 'opacity-50 cursor-not-allowed' : ''}
           ${className}
         `}

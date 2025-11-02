@@ -333,10 +333,7 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
         case 'Checkbox':
           return (
             <div className="space-y-4">
-              <div className="flex items-center space-x-3">
-                <Checkbox defaultChecked />
-                <label className="text-sm font-medium">Accept terms and conditions</label>
-              </div>
+              <Checkbox defaultChecked label="Accept terms and conditions" />
             </div>
           );
         case 'Switch':
