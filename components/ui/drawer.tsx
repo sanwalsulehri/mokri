@@ -88,13 +88,12 @@ export function Drawer({
       {isOpen && (
         <>
           {/* Overlay */}
-          <div className="relative z-[9999]">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-30"
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[9999999]"
             onClick={onClose}
           />
 
@@ -112,7 +111,7 @@ export function Drawer({
             }}
             className={`
               fixed ${positionClasses[position]} ${sizeClasses[size]}
-              bg-background border-border shadow-2xl z-[9999]
+              bg-background border-border shadow-2xl z-[9999999]
               flex flex-col
               ${position === 'left' || position === 'right' ? 'border-l' : 'border-t'}
               ${className}
@@ -165,7 +164,6 @@ export function Drawer({
               {children}
             </div>
           </motion.div>
-          </div>
         </>
       )}
     </AnimatePresence>

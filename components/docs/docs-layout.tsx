@@ -211,6 +211,7 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
     sliderValue: 50,
     buttonGroupActive: null as string | null,
     calendarDate: null as Date | null,
+    drawerOpen: false,
   });
 
   // Detect dark mode from document on mount
@@ -245,6 +246,7 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
       case 'Command':
       case 'Container':
       case 'DataTable':
+      case 'Drawer':
         // fall through handled below by reusing curated demos above
         break;
       default:
@@ -648,6 +650,42 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                 size="md"
                 selectable={true}
               />
+            </div>
+          );
+        case 'Drawer':
+          return (
+            <div className="w-full flex justify-center">
+              <Button onClick={() => setDemoState(prev => ({ ...prev, drawerOpen: true }))}>
+                Open Right Drawer
+              </Button>
+              <Drawer 
+                isOpen={demoState.drawerOpen} 
+                onClose={() => setDemoState(prev => ({ ...prev, drawerOpen: false }))}
+                title="Settings"
+                description="Configure your application settings"
+                position="right"
+                size="md"
+              >
+                <div className="space-y-6">
+                  <div className="space-y-4">
+                    <h3 className="text-lg font-semibold">General Settings</h3>
+                    <Switch title="Enable Notifications" leftLabel="Off" rightLabel="On" />
+                    <Switch title="Dark Mode" leftLabel="Light" rightLabel="Dark" />
+                    <Switch title="Auto-save" leftLabel="Off" rightLabel="On" />
+                  </div>
+                  
+                  <div className="space-y-4">
+                    <h3 className="text-lg font-semibold">Account</h3>
+                    <Input isLabel={true} label="Username" placeholder="Enter username" />
+                    <Input isLabel={true} label="Email" type="email" placeholder="Enter email" />
+                  </div>
+                  
+                  <div className="flex gap-2 pt-4">
+                    <Button className="flex-1">Save Changes</Button>
+                    <Button bg={false} className="flex-1">Cancel</Button>
+                  </div>
+                </div>
+              </Drawer>
             </div>
           );
         default:
