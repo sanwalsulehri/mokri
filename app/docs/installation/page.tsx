@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import React from 'react';
-import { DocsLayout, CodeWindow } from '../../../components/docs/docs-layout';
-import Container from '../../../components/ui/container';
-import { Breadcrumbs } from '../../../components/ui/breadcrumbs';
-import { Badge } from '../../../components/ui/badge';
+import React from "react";
+import { DocsLayout, CodeWindow } from "../../../components/docs/docs-layout";
+import Container from "../../../components/ui/container";
+import { Breadcrumbs } from "../../../components/ui/breadcrumbs";
+import { Badge } from "../../../components/ui/badge";
 
 export default function InstallationPage() {
   const prerequisites = `// Prerequisites
@@ -12,7 +12,7 @@ Node.js 18+ required
 React 18+ or Next.js 13+ recommended`;
 
   const installNpm = `npm install @tertex/ui`;
-  
+
   const nextjsTailwind = `// tailwind.config.ts
 import type { Config } from 'tailwindcss'
 
@@ -227,16 +227,26 @@ export default function Page() {
       <Container size="3xl">
         <div className="px-6 md:px-8 space-y-10">
           <div className="pt-2">
-            <Breadcrumbs showHome={false} items={[{ label: 'Docs', href: '/docs' }, { label: 'Installation' }]} />
+            <Breadcrumbs
+              showHome={false}
+              items={[
+                { label: "Docs", href: "/docs" },
+                { label: "Installation" },
+              ]}
+            />
           </div>
 
           <header className="space-y-4">
             <div className="flex items-center gap-2">
-              <h1 className="text-4xl font-bold tracking-tight">Installation</h1>
+              <h1 className="text-4xl font-bold tracking-tight">
+                Installation
+              </h1>
               <Badge variant="secondary">Next.js</Badge>
             </div>
             <p className="text-lg text-foreground/70 max-w-2xl">
-              Get started by installing the package and setting up your project. Follow the steps below to add Vexel UI to your Next.js application.
+              Get started by installing the package and setting up your project.
+              Follow the steps below to add Vexel UI to your Next.js
+              application.
             </p>
           </header>
 
@@ -264,12 +274,19 @@ export default function Page() {
             </div>
             <div className="space-y-4">
               <div>
-                <h3 className="text-lg font-medium mb-2">1. Install the package</h3>
+                <h3 className="text-lg font-medium mb-2">
+                  1. Install the package
+                </h3>
                 <CodeWindow code={installNpm} filename="bash" />
               </div>
               <div>
-                <h3 className="text-lg font-medium mb-2">2. Install peer dependencies</h3>
-                <CodeWindow code={`npm install tailwindcss-animate clsx tailwind-merge framer-motion`} filename="bash" />
+                <h3 className="text-lg font-medium mb-2">
+                  2. Install peer dependencies
+                </h3>
+                <CodeWindow
+                  code={`npm install tailwindcss-animate clsx tailwind-merge framer-motion`}
+                  filename="bash"
+                />
               </div>
             </div>
           </section>
@@ -283,34 +300,64 @@ export default function Page() {
             </div>
             <div className="space-y-4">
               <div>
-                <h3 className="text-lg font-medium mb-2">1. Configure Tailwind CSS</h3>
+                <h3 className="text-lg font-medium mb-2">
+                  1. Configure Tailwind CSS
+                </h3>
                 <p className="text-sm text-foreground/60 mb-2">
-                  Update your <code className="px-1.5 py-0.5 bg-muted rounded text-xs">tailwind.config.ts</code> file:
+                  Update your{" "}
+                  <code className="px-1.5 py-0.5 bg-muted rounded text-xs">
+                    tailwind.config.ts
+                  </code>{" "}
+                  file:
                 </p>
-                <CodeWindow code={nextjsTailwind} filename="tailwind.config.ts" />
+                <CodeWindow
+                  code={nextjsTailwind}
+                  filename="tailwind.config.ts"
+                />
               </div>
               <div>
-                <h3 className="text-lg font-medium mb-2">2. Add CSS Variables</h3>
+                <h3 className="text-lg font-medium mb-2">
+                  2. Add CSS Variables
+                </h3>
                 <p className="text-sm text-foreground/60 mb-2">
-                  Add the following to your <code className="px-1.5 py-0.5 bg-muted rounded text-xs">app/globals.css</code> file:
+                  Add the following to your{" "}
+                  <code className="px-1.5 py-0.5 bg-muted rounded text-xs">
+                    app/globals.css
+                  </code>{" "}
+                  file:
                 </p>
                 <CodeWindow code={globalsCSS} filename="app/globals.css" />
               </div>
               <div>
-                <h3 className="text-lg font-medium mb-2">3. Configure TypeScript paths (optional)</h3>
+                <h3 className="text-lg font-medium mb-2">
+                  3. Configure TypeScript paths (optional)
+                </h3>
                 <p className="text-sm text-foreground/60 mb-2">
-                  Update your <code className="px-1.5 py-0.5 bg-muted rounded text-xs">tsconfig.json</code> for path aliases:
+                  Update your{" "}
+                  <code className="px-1.5 py-0.5 bg-muted rounded text-xs">
+                    tsconfig.json
+                  </code>{" "}
+                  for path aliases:
                 </p>
                 <CodeWindow code={tsconfig} filename="tsconfig.json" />
               </div>
               <div>
-                <h3 className="text-lg font-medium mb-2">4. Create utility function (optional)</h3>
+                <h3 className="text-lg font-medium mb-2">
+                  4. Create utility function (optional)
+                </h3>
                 <p className="text-sm text-foreground/60 mb-2">
-                  Create a <code className="px-1.5 py-0.5 bg-muted rounded text-xs">lib/utils.ts</code> file for className merging:
+                  Create a{" "}
+                  <code className="px-1.5 py-0.5 bg-muted rounded text-xs">
+                    lib/utils.ts
+                  </code>{" "}
+                  file for className merging:
                 </p>
                 <CodeWindow code={utilsTs} filename="lib/utils.ts" />
                 <p className="text-sm text-foreground/60 mt-2">
-                  Don't forget to install: <code className="px-1.5 py-0.5 bg-muted rounded text-xs">npm install clsx tailwind-merge</code>
+                  Don't forget to install:{" "}
+                  <code className="px-1.5 py-0.5 bg-muted rounded text-xs">
+                    npm install clsx tailwind-merge
+                  </code>
                 </p>
               </div>
             </div>
@@ -323,7 +370,8 @@ export default function Page() {
                 Organize your components in the following structure:
               </p>
             </div>
-            <CodeWindow code={`your-project/
+            <CodeWindow
+              code={`your-project/
 ├── app/
 │   ├── globals.css
 │   ├── layout.tsx
@@ -336,7 +384,9 @@ export default function Page() {
 ├── lib/
 │   └── utils.ts
 ├── tailwind.config.ts
-└── tsconfig.json`} filename="project structure" />
+└── tsconfig.json`}
+              filename="project structure"
+            />
           </section>
 
           <section className="space-y-4">
@@ -366,10 +416,37 @@ export default function Page() {
                 Now that you have Vexel UI installed, you can:
               </p>
               <ul className="list-disc list-inside space-y-2 text-foreground/70 ml-4">
-                <li>Browse the <a href="/docs/components" className="text-foreground underline">components</a> to see what's available</li>
-                <li>Learn about <a href="/docs/theming" className="text-foreground underline">theming</a> and customization</li>
-                <li>Set up <a href="/docs/dark-mode" className="text-foreground underline">dark mode</a> for your application</li>
-                <li>Check component documentation for usage examples and API references</li>
+                <li>
+                  Browse the{" "}
+                  <a
+                    href="/docs/components"
+                    className="text-foreground underline"
+                  >
+                    components
+                  </a>{" "}
+                  to see what's available
+                </li>
+                <li>
+                  Learn about{" "}
+                  <a href="/docs/theming" className="text-foreground underline">
+                    theming
+                  </a>{" "}
+                  and customization
+                </li>
+                <li>
+                  Set up{" "}
+                  <a
+                    href="/docs/dark-mode"
+                    className="text-foreground underline"
+                  >
+                    dark mode
+                  </a>{" "}
+                  for your application
+                </li>
+                <li>
+                  Check component documentation for usage examples and API
+                  references
+                </li>
               </ul>
             </div>
           </section>
@@ -378,5 +455,3 @@ export default function Page() {
     </DocsLayout>
   );
 }
-
-
