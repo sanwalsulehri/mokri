@@ -254,6 +254,7 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
       case 'Fade':
       case 'IconButton':
       case 'InputOTP':
+      case 'Loader':
       case 'UserList':
       case 'Image':
       case 'ImageCarousel':
@@ -361,6 +362,14 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
               size="sm"
               autoFocus={true}
             />
+          </div>
+        );
+      case 'Loader':
+        return (
+          <div className="w-full flex justify-center items-center gap-8 py-8">
+            <Loader size="md" variant="spinner" />
+            <Loader size="md" variant="dots" />
+            <Loader size="md" variant="pulse" />
           </div>
         );
         case 'Checkbox':
