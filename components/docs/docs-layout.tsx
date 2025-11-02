@@ -171,9 +171,9 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
                       const isActive = isExactMatch || isNestedMatch;
                       
                       return (
-                        <Link
-                          key={item.href}
-                          href={item.href}
+                      <Link
+                        key={item.href}
+                          href={item.href as any}
                           scroll={false}
                           prefetch={true}
                           className={`group flex items-center px-3 py-2 text-sm rounded-lg transition-all duration-200 ${
@@ -181,9 +181,9 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
                               ? 'bg-muted/60 text-primary font-medium'
                               : 'text-foreground/70 hover:text-foreground hover:bg-muted/50'
                           }`}
-                        >
-                          <span className="flex-1 truncate">{item.name}</span>
-                        </Link>
+                      >
+                        <span className="flex-1 truncate">{item.name}</span>
+                      </Link>
                       );
                     })}
                   </nav>

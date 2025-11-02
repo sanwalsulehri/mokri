@@ -53,7 +53,7 @@ export default function IntroductionPage() {
               <Link href="/docs/installation" prefetch={true}>
                 <Button>Installation Guide</Button>
               </Link>
-              <Link href="/docs/components" prefetch={true}>
+              <Link href="/docs/components/button" prefetch={true}>
                 <Button outline={true}>Browse Components</Button>
               </Link>
             </div>
