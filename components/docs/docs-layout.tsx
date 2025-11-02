@@ -210,6 +210,7 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
     checked: false,
     switchChecked: false,
     radioValue: 'option1',
+    radioCardValue: 'basic',
     sliderValue: 50,
     buttonGroupActive: null as string | null,
     calendarDate: null as Date | null,
@@ -460,9 +461,25 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
         );
       case 'RadioCard':
         return (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl">
-              <RadioCard name="plan" label="Basic Plan" description="Perfect for individuals" value="basic" checked />
-              <RadioCard name="plan" label="Pro Plan" description="Best for teams" value="pro" />
+          <div className="w-full flex justify-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl w-full">
+              <RadioCard 
+                name="demo-plan" 
+                label="Basic Plan" 
+                description="Perfect for individuals" 
+                value="basic" 
+                checked={demoState.radioCardValue === 'basic'}
+                onChange={(value) => setDemoState(prev => ({ ...prev, radioCardValue: value }))}
+              />
+              <RadioCard 
+                name="demo-plan" 
+                label="Pro Plan" 
+                description="Best for teams" 
+                value="pro" 
+                checked={demoState.radioCardValue === 'pro'}
+                onChange={(value) => setDemoState(prev => ({ ...prev, radioCardValue: value }))}
+              />
+            </div>
           </div>
         );
       case 'Avatar':
