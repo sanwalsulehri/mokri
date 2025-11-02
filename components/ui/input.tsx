@@ -21,6 +21,7 @@ interface InputProps {
   disabled?: boolean;
   bg?: boolean;
   accept?: string;
+  readOnly?: boolean;
 }
 
 export function Input({ 
@@ -41,7 +42,8 @@ export function Input({
   buttonText = "Submit",
   disabled = false,
   bg = false,
-  accept
+  accept,
+  readOnly = false
 }: InputProps) {
 
   return (
@@ -88,7 +90,8 @@ export function Input({
             onKeyDown={onKeyDown}
             disabled={disabled}
             accept={accept}
-            className={`w-full ${bg ? 'bg-muted/30' : 'bg-transparent'} border font-medium placeholder:font-medium border-border rounded-lg text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-3  focus:ring-ring focus:border-focusborder focus:ring-offset-[.2px] focus:outline-none  transition-all duration-300 ease-out shadow hover:border-border disabled:opacity-50 disabled:cursor-not-allowed ${
+            readOnly={readOnly}
+            className={`w-full ${bg ? 'bg-muted/30' : 'bg-transparent'} border font-medium placeholder:font-medium border-border rounded-lg text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-3  focus:ring-ring focus:border-focusborder focus:ring-offset-[.2px] focus:outline-none  transition-all duration-300 ease-out shadow hover:border-border disabled:opacity-50 disabled:cursor-not-allowed ${readOnly ? 'cursor-default' : ''} ${
               isWithIcon ? 'pl-8' : 'pl-3'
             } py-2.5 ${className}`}
           />
