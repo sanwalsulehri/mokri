@@ -39,20 +39,20 @@ export function DataTable<T extends Record<string, any>>({
   const sizeClasses = {
     sm: {
       table: 'text-xs sm:text-sm',
-      header: 'px-2 sm:px-3 py-2 sm:py-3',
-      cell: 'px-2 sm:px-3 py-2 sm:py-3',
+      header: 'px-2 sm:px-3 py-2 sm:py-3 whitespace-nowrap',
+      cell: 'px-2 sm:px-3 py-2 sm:py-3 whitespace-nowrap',
       checkbox: 'w-3 h-3 sm:w-4 sm:h-4'
     },
     md: {
       table: 'text-sm sm:text-base',
-      header: 'px-3 sm:px-4 py-3 sm:py-4',
-      cell: 'px-3 sm:px-4 py-3 sm:py-4',
+      header: 'px-3 sm:px-4 py-3 sm:py-4 whitespace-nowrap',
+      cell: 'px-3 sm:px-4 py-3 sm:py-4 whitespace-nowrap',
       checkbox: 'w-4 h-4 sm:w-5 sm:h-5'
     },
     lg: {
       table: 'text-base sm:text-lg',
-      header: 'px-4 sm:px-5 py-4 sm:py-5',
-      cell: 'px-4 sm:px-5 py-4 sm:py-5',
+      header: 'px-4 sm:px-5 py-4 sm:py-5 whitespace-nowrap',
+      cell: 'px-4 sm:px-5 py-4 sm:py-5 whitespace-nowrap',
       checkbox: 'w-5 h-5 sm:w-6 sm:h-6'
     }
   };

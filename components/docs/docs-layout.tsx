@@ -244,6 +244,7 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
       case 'Collapsible':
       case 'Command':
       case 'Container':
+      case 'DataTable':
         // fall through handled below by reusing curated demos above
         break;
       default:
@@ -624,6 +625,29 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
               <Container size="sm" className="bg-muted py-4">
                 <Typography variant="small">SM Container (max-w-4xl)</Typography>
               </Container>
+            </div>
+          );
+        case 'DataTable':
+          return (
+            <div className="w-full overflow-x-auto">
+              <DataTable
+                data={[
+                  { id: 1, name: 'John Doe', email: 'john@example.com', role: 'Admin', department: 'Engineering', projects: 12, lastLogin: '2 hours ago' },
+                  { id: 2, name: 'Jane Smith', email: 'jane@example.com', role: 'User', department: 'Marketing', projects: 8, lastLogin: '1 day ago' },
+                  { id: 3, name: 'Bob Johnson', email: 'bob@example.com', role: 'Moderator', department: 'Support', projects: 15, lastLogin: '30 minutes ago' },
+                  { id: 4, name: 'Alice Brown', email: 'alice@example.com', role: 'User', department: 'Sales', projects: 5, lastLogin: 'Never' }
+                ]}
+                columns={[
+                  { key: 'name' as const, label: 'Name', sortable: true },
+                  { key: 'email' as const, label: 'Email', sortable: true },
+                  { key: 'role' as const, label: 'Role', sortable: true },
+                  { key: 'department' as const, label: 'Department', sortable: true },
+                  { key: 'projects' as const, label: 'Projects', sortable: true },
+                  { key: 'lastLogin' as const, label: 'Last Login', sortable: true }
+                ]}
+                size="md"
+                selectable={true}
+              />
             </div>
           );
         default:
