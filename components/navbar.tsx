@@ -12,7 +12,7 @@ export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
   const pathname = usePathname();
-  const isDocs = pathname?.startsWith('/docs/');
+  const isDocs = pathname?.startsWith('/');
 
   useEffect(() => {
     const observer = new MutationObserver(() => {
