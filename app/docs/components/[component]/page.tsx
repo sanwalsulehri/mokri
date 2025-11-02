@@ -358,28 +358,30 @@ export default function ComponentPage({ params }: ComponentPageProps) {
         </Container>
 
         {/* Right Sidebar */}
-        <aside className="hidden lg:block sticky top-20 h-[calc(100vh-5rem)] overflow-y-auto flex-none max-w-80 w-full p-6 space-y-8">
-          {/* On this page - links only */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold flex items-center gap-2">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-              </svg>
-              On this page
-            </h3>
-            <nav className="space-y-2">
-              <a href="#examples" className="block text-sm text-foreground/70 hover:text-foreground transition-colors">Preview</a>
-              <a href="#installation" className="block text-sm text-foreground/70 hover:text-foreground transition-colors">Installation</a>
-              <a href="#code" className="block text-sm text-foreground/70 hover:text-foreground transition-colors">Usage</a>
-              <div className="pt-1">
-                <a href="#api" className="block text-sm font-medium text-foreground hover:text-foreground transition-colors">API Reference</a>
-                <div className="mt-2 ml-3 space-y-1">
-                  <a href="#api-props" className="block text-xs text-foreground/70 hover:text-foreground transition-colors">Props</a>
-                  <a href="#api-examples" className="block text-xs text-foreground/70 hover:text-foreground transition-colors">Examples</a>
-                  <a href="#api-presets" className="block text-xs text-foreground/70 hover:text-foreground transition-colors">Presets</a>
+        <aside className="hidden lg:block sticky top-20 h-[calc(100vh-5rem)] overflow-y-auto flex-none max-w-80 w-full">
+          <div className="p-6 space-y-6">
+            {/* On this page - links only */}
+            <div className="space-y-4">
+              <h3 className="text-sm font-semibold text-foreground/80 uppercase tracking-wider flex items-center gap-2">
+                <svg className="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                </svg>
+                On this page
+              </h3>
+              <nav className="space-y-1">
+                <SmoothLink href="#examples" label="Preview" />
+                <SmoothLink href="#installation" label="Installation" />
+                <SmoothLink href="#code" label="Usage" />
+                <div className="pt-2 mt-2 border-t border-border/50">
+                  <SmoothLink href="#api" label="API Reference" isMain />
+                  <div className="mt-2 ml-4 space-y-1.5">
+                    <SmoothLink href="#api-props" label="Props" isSub />
+                    <SmoothLink href="#api-examples" label="Examples" isSub />
+                    <SmoothLink href="#api-presets" label="Presets" isSub />
+                  </div>
                 </div>
-              </div>
-            </nav>
+              </nav>
+            </div>
           </div>
         </aside>
       </div>

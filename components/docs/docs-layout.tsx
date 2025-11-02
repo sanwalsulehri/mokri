@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Card } from '../ui/card';
 import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
@@ -135,6 +136,7 @@ const sidebarItems = [
 
 export function DocsLayout({ children }: { children: React.ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <div className="min-h-screen bg-background scroll-smooth">
@@ -159,16 +161,31 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
                   <h3 className="px-3 text-xs font-semibold text-foreground/50 uppercase tracking-wider mb-3">
                     {section.title}
                   </h3>
-                  <nav className="space-y-">
-                    {section.items.map((item) => (
-                      <Link
-                        key={item.href}
-                        href={item.href}
-                        className="group flex items-center px-3 py-2 text-sm text-foreground/70 hover:text-foreground hover:bg-muted/50 rounded-lg transition-all duration-200"
-                      >
-                        <span className="flex-1 truncate">{item.name}</span>
-                      </Link>
-                    ))}
+                  <nav className="space-y-1">
+                    {section.items.map((item) => {
+                      // More precise active detection - exact match or starts with and is not just a partial match
+                      const isExactMatch = pathname === item.href;
+                      const isNestedMatch = item.href !== '/docs' && 
+                        pathname?.startsWith(item.href) && 
+                        (pathname === item.href || pathname?.startsWith(item.href + '/'));
+                      const isActive = isExactMatch || isNestedMatch;
+                      
+                      return (
+                        <Link
+                          key={item.href}
+                          href={item.href}
+                          scroll={false}
+                          prefetch={true}
+                          className={`group flex items-center px-3 py-2 text-sm rounded-lg transition-all duration-200 ${
+                            isActive
+                              ? 'bg-primary/10 text-primary font-medium'
+                              : 'text-foreground/70 hover:text-foreground hover:bg-muted/50'
+                          }`}
+                        >
+                          <span className="flex-1 truncate">{item.name}</span>
+                        </Link>
+                      );
+                    })}
                   </nav>
                 </div>
               ))}

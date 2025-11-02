@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { DocsLayout, CodeWindow } from '../../components/docs/docs-layout';
 import Container from '../../components/ui/container';
 import { Breadcrumbs } from '../../components/ui/breadcrumbs';
@@ -49,12 +50,12 @@ export default function IntroductionPage() {
             </div>
             <CodeWindow code={quickInstall} filename="bash" />
             <div className="flex gap-3">
-              <a href="/docs/installation">
+              <Link href="/docs/installation" prefetch={true}>
                 <Button>Installation Guide</Button>
-              </a>
-              <a href="/docs/components">
+              </Link>
+              <Link href="/docs/components" prefetch={true}>
                 <Button outline={true}>Browse Components</Button>
-              </a>
+              </Link>
             </div>
           </section>
 
