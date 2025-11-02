@@ -247,6 +247,7 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
       case 'Container':
       case 'DataTable':
       case 'Drawer':
+      case 'DropdownMenu':
         // fall through handled below by reusing curated demos above
         break;
       default:
@@ -694,6 +695,54 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
             </div>
           </div>
               </Drawer>
+          </div>
+        );
+      case 'DropdownMenu':
+        return (
+          <div className="w-full flex justify-center">
+            <DropdownMenu
+              trigger={
+                <Avatar 
+                  size="lg" 
+                  fallback="L" 
+                  className="cursor-pointer"
+                />
+              }
+              options={[
+                {
+                  label: 'Profile',
+                  value: 'profile',
+                  icon: <DropdownIcons.Profile />,
+                  onClick: () => console.log('Profile clicked')
+                },
+                {
+                  label: 'Settings',
+                  value: 'settings',
+                  icon: <DropdownIcons.Settings />,
+                  onClick: () => console.log('Settings clicked')
+                },
+                {
+                  label: 'Notifications',
+                  value: 'notifications',
+                  icon: <DropdownIcons.Bell />,
+                  onClick: () => console.log('Notifications clicked')
+                },
+                {
+                  label: 'Help',
+                  value: 'help',
+                  icon: <DropdownIcons.Help />,
+                  onClick: () => console.log('Help clicked'),
+                  divider: true
+                },
+                {
+                  label: 'Logout',
+                  value: 'logout',
+                  icon: <DropdownIcons.Logout />,
+                  onClick: () => console.log('Logout clicked')
+                }
+              ]}
+              align="left"
+            />
           </div>
         );
       default:
