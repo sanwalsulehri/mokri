@@ -175,7 +175,7 @@ export default function ThemedComponent() {
 
   return (
     <DocsLayout>
-      <Container size="3xl">
+      <Container size="md">
         <div className="px-6 md:px-8 space-y-10">
           <div className="pt-2">
             <Breadcrumbs

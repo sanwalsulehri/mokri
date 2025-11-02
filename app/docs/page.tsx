@@ -12,7 +12,7 @@ export default function IntroductionPage() {
 
   return (
     <DocsLayout>
-      <Container size="3xl">
+      <Container size="md">
         <div className="px-6 md:px-8 space-y-10">
           <div className="pt-2">
             <Breadcrumbs showHome={false} items={[{ label: 'Docs', href: '/docs' }, { label: 'Introduction' }]} />
