@@ -261,6 +261,8 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
       case 'Modal':
       case 'Pagination':
       case 'ProgressBar':
+      case 'ScrollArea':
+      case 'Select':
       case 'UserList':
       case 'Image':
       case 'ImageCarousel':
@@ -269,8 +271,8 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
       default:
     if (Component) {
       try {
-            // Add max-width for Select and Dropdown components
-            if (componentName === 'Select' || componentName === 'Dropdown') {
+            // Add max-width for Dropdown components
+            if (componentName === 'Dropdown') {
               return (
                 <div className="w-full max-w-xs mx-auto">
                   <Component />
@@ -384,7 +386,7 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
             <ModalTrigger
               modalTitle="Simple Modal"
               modalContent={
-                <div className="space-y-4">
+          <div className="space-y-4">
                   <p className="text-foreground/80">
                     This is a simple modal dialog. You can add any content here.
                   </p>
@@ -409,7 +411,7 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
               withBorder={false}
               {...PaginationPresets.full}
             />
-          </div>
+            </div>
         );
       case 'ProgressBar':
         return (
@@ -418,7 +420,7 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
             <ProgressBar value={75} color="purple" />
           </div>
         );
-        case 'Checkbox':
+      case 'Checkbox':
         return (
           <div className="space-y-4">
               <Checkbox defaultChecked label="Accept terms and conditions" />
@@ -436,17 +438,17 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
       case 'Radio':
         return (
           <div className="space-y-4 max-w-md">
-            <Radio 
+            <Radio
               name="demo-radio" 
-              value="option1" 
-              label="Option 1" 
+              value="option1"
+              label="Option 1"
               checked={demoState.radioValue === 'option1'}
               onChange={(value) => setDemoState(prev => ({ ...prev, radioValue: value }))}
             />
-            <Radio 
+            <Radio
               name="demo-radio" 
-              value="option2" 
-              label="Option 2" 
+              value="option2"
+              label="Option 2"
               checked={demoState.radioValue === 'option2'}
               onChange={(value) => setDemoState(prev => ({ ...prev, radioValue: value }))}
             />
@@ -463,22 +465,68 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
         return (
           <div className="w-full flex justify-center">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl w-full">
-              <RadioCard 
+            <RadioCard
                 name="demo-plan" 
-                label="Basic Plan" 
-                description="Perfect for individuals" 
-                value="basic" 
+              label="Basic Plan"
+              description="Perfect for individuals"
+              value="basic"
                 checked={demoState.radioCardValue === 'basic'}
                 onChange={(value) => setDemoState(prev => ({ ...prev, radioCardValue: value }))}
-              />
-              <RadioCard 
+            />
+            <RadioCard
                 name="demo-plan" 
-                label="Pro Plan" 
-                description="Best for teams" 
-                value="pro" 
+              label="Pro Plan"
+              description="Best for teams"
+              value="pro"
                 checked={demoState.radioCardValue === 'pro'}
                 onChange={(value) => setDemoState(prev => ({ ...prev, radioCardValue: value }))}
-              />
+            />
+            </div>
+          </div>
+        );
+      case 'ScrollArea':
+        return (
+          <div className="w-full flex justify-center">
+            <div className="w-full max-w-xs sm:max-w-sm md:max-w-md">
+              <ScrollArea
+                title="Tags"
+                size="md"
+                showBorder={true}
+              >
+                <div className="text-xs sm:text-sm text-foreground font-mono">v1.2.0-beta.50</div>
+                <div className="text-xs sm:text-sm text-foreground font-mono">v1.2.0-beta.49</div>
+                <div className="text-xs sm:text-sm text-foreground font-mono">v1.2.0-beta.48</div>
+                <div className="text-xs sm:text-sm text-foreground font-mono">v1.2.0-beta.47</div>
+                <div className="text-xs sm:text-sm text-foreground font-mono">v1.2.0-beta.46</div>
+                <div className="text-xs sm:text-sm text-foreground font-mono">v1.2.0-beta.45</div>
+                <div className="text-xs sm:text-sm text-foreground font-mono">v1.2.0-beta.44</div>
+                <div className="text-xs sm:text-sm text-foreground font-mono">v1.2.0-beta.43</div>
+                <div className="text-xs sm:text-sm text-foreground font-mono">v1.2.0-beta.42</div>
+                <div className="text-xs sm:text-sm text-foreground font-mono">v1.2.0-beta.41</div>
+                <div className="text-xs sm:text-sm text-foreground font-mono">v1.2.0-beta.40</div>
+                <div className="text-xs sm:text-sm text-foreground font-mono">v1.2.0-beta.39</div>
+                <div className="text-xs sm:text-sm text-foreground font-mono">v1.2.0-beta.38</div>
+                <div className="text-xs sm:text-sm text-foreground font-mono">v1.2.0-beta.37</div>
+                <div className="text-xs sm:text-sm text-foreground font-mono">v1.2.0-beta.36</div>
+              </ScrollArea>
+            </div>
+          </div>
+        );
+      case 'Select':
+        return (
+          <div className="w-full flex justify-center">
+            <div className="w-full max-w-xs">
+              <Select 
+                isLabel={true}
+                label="Country"
+                placeholder="Select a country..."
+              >
+                <option value="us">United States</option>
+                <option value="uk">United Kingdom</option>
+                <option value="ca">Canada</option>
+                <option value="au">Australia</option>
+                <option value="de">Germany</option>
+              </Select>
             </div>
           </div>
         );
