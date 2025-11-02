@@ -49,12 +49,12 @@ export default function IntroductionPage() {
             </div>
             <CodeWindow code={quickInstall} filename="bash" />
             <div className="flex gap-3">
-              <Button asChild>
-                <a href="/docs/installation">Installation Guide</a>
-              </Button>
-              <Button outline="true" asChild>
-                <a href="/docs/components">Browse Components</a>
-              </Button>
+              <a href="/docs/installation">
+                <Button>Installation Guide</Button>
+              </a>
+              <a href="/docs/components">
+                <Button outline={true}>Browse Components</Button>
+              </a>
             </div>
           </section>
 
