@@ -243,6 +243,7 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
       case 'Carousel':
       case 'Collapsible':
       case 'Command':
+      case 'Container':
         // fall through handled below by reusing curated demos above
         break;
       default:
@@ -612,6 +613,17 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                 size="sm"
                 dismissible 
               />
+            </div>
+          );
+        case 'Container':
+          return (
+            <div className="w-full space-y-3">
+              <Container size="xs" className="bg-muted py-4">
+                <Typography variant="small">XS Container (max-w-sm)</Typography>
+              </Container>
+              <Container size="sm" className="bg-muted py-4">
+                <Typography variant="small">SM Container (max-w-4xl)</Typography>
+              </Container>
             </div>
           );
         default:
