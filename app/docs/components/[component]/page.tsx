@@ -12,46 +12,84 @@ function SmoothLink({ href, label, isMain = false, isSub = false }: { href: stri
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
+    // Get all section elements for comparison
+    const getAllSections = () => {
+      return ['#examples', '#installation', '#code', '#api', '#api-props', '#api-examples', '#api-presets']
+        .map(selector => ({
+          selector,
+          element: document.querySelector(selector)
+        }))
+        .filter(({ element }) => element !== null);
+    };
+
     const checkActive = () => {
-      const element = document.querySelector(href);
-      if (element) {
-        const rect = element.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
-        const elementTop = rect.top;
-        const elementBottom = rect.bottom;
-        
-        // Check if element is in the viewport or just above it
-        const isInView = elementTop < windowHeight * 0.5 && elementBottom > 100;
-        setIsActive(isInView);
-      } else {
+      const currentElement = document.querySelector(href);
+      if (!currentElement) {
         setIsActive(false);
+        return;
+      }
+
+      const allSections = getAllSections();
+      const scrollPosition = window.scrollY + 150; // Offset for sticky header
+      let activeSection = null;
+      let minDistance = Infinity;
+
+      // Find the section closest to the scroll position
+      allSections.forEach(({ selector, element }) => {
+        if (!element) return;
+        const top = (element as HTMLElement).offsetTop;
+        const distance = Math.abs(scrollPosition - top);
+        
+        if (top <= scrollPosition && distance < minDistance) {
+          minDistance = distance;
+          activeSection = selector;
+        }
+      });
+
+      // For nested sections (API Reference subsections), check if they're in view
+      if (isSub) {
+        const rect = currentElement.getBoundingClientRect();
+        const isInView = rect.top >= 100 && rect.top <= window.innerHeight * 0.6;
+        setIsActive(isInView || activeSection === href);
+      } else {
+        setIsActive(activeSection === href);
       }
     };
 
     // Check on mount and scroll
     checkActive();
-    const timeoutId = setTimeout(checkActive, 100);
-    window.addEventListener('scroll', checkActive, { passive: true });
+    const timeoutId = setTimeout(checkActive, 200);
+    const scrollHandler = () => {
+      requestAnimationFrame(checkActive);
+    };
+    
+    window.addEventListener('scroll', scrollHandler, { passive: true });
     window.addEventListener('resize', checkActive);
     
     return () => {
       clearTimeout(timeoutId);
-      window.removeEventListener('scroll', checkActive);
+      window.removeEventListener('scroll', scrollHandler);
       window.removeEventListener('resize', checkActive);
     };
-  }, [href]);
+  }, [href, isSub]);
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     const element = document.querySelector(href);
     if (element) {
-      const offsetTop = (element as HTMLElement).offsetTop - 100;
+      const headerOffset = 120;
+      const elementPosition = (element as HTMLElement).offsetTop;
+      const offsetPosition = elementPosition - headerOffset;
+
       window.scrollTo({
-        top: offsetTop,
+        top: offsetPosition,
         behavior: 'smooth'
       });
-      // Set active immediately after click
-      setTimeout(() => setIsActive(true), 300);
+      
+      // Update active state after scroll
+      setTimeout(() => {
+        setIsActive(true);
+      }, 500);
     }
   };
 
