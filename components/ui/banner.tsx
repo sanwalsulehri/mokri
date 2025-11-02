@@ -83,7 +83,7 @@ export function Banner({
     switch (size) {
       case 'sm':
         return {
-          container: 'px-3 py-1.5 md:px-4 md:py-2',
+          container: 'px-3 py-2 md:px-4 md:py-2',
           icon: 'w-3 h-3 md:w-4 md:h-4',
           iconContainer: 'w-5 h-5 md:w-6 md:h-6',
           title: 'text-xs md:text-sm font-semibold',
@@ -140,7 +140,7 @@ export function Banner({
       default:
         return (
           <svg className={sizeStyles.icon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
           </svg>
         );
     }

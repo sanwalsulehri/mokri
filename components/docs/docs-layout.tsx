@@ -233,6 +233,7 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
       case 'Slider':
       case 'MagicCard':
       case 'Accordion':
+      case 'Banner':
       case 'Breadcrumbs':
       case 'ButtonGroup':
       case 'Calendar':
@@ -371,8 +372,8 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
           );
         case 'Breadcrumbs':
           return (
-            <div className="w-full max-w-md">
-              <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Components', href: '/docs/components' }, { label: 'Breadcrumbs' }]} />
+            <div className="w-full flex justify-center">
+              <Breadcrumbs items={[{ label: 'Docs', href: '/docs' }, { label: 'Components', href: '/docs/components' }, { label: 'Breadcrumbs' }]} />
             </div>
           );
         case 'ButtonGroup':
@@ -412,6 +413,17 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                   { id: 'item-2', title: 'Is it styled?', content: 'Yes. It comes with default styles that matches the other components.' },
                   { id: 'item-3', title: 'Is it animated?', content: 'Yes. It\'s animated by default, but you can disable it.' },
                 ]}
+              />
+            </div>
+          );
+        case 'Banner':
+          return (
+            <div className="w-full max-w-2xl">
+              <Banner 
+                title="Heads up" 
+                description="We launched something new. Check out our latest features and improvements." 
+                size="sm"
+                dismissible 
               />
             </div>
           );

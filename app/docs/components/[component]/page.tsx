@@ -290,11 +290,10 @@ export default function ComponentPage({ params }: ComponentPageProps) {
             {/* Breadcrumbs */}
             <div className="pt-2">
               <Breadcrumbs 
-                showHome={false}
                 items={[
                   { label: 'Docs', href: '/docs' },
                   { label: 'Components', href: '/docs/components' },
-                  { label: componentName }
+                  { label: info.title }
                 ]}
               />
             </div>
@@ -339,7 +338,7 @@ export default function ComponentPage({ params }: ComponentPageProps) {
                 <APIReference componentName={componentName} />
               </div>
             </div>
-          </div>
+          </div> 
         </div>
         </Container>
 
