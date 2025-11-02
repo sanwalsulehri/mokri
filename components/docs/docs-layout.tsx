@@ -41,14 +41,14 @@ import { DropdownMenu } from '../ui/dropdown-menu';
 import { Modal, ModalTrigger } from '../ui/modal';
 import { Drawer } from '../ui/drawer';
 import { Accordion } from '../ui/accordion';
-import { Tooltip } from '../ui/tooltip';
+import { Tooltip, TooltipWrapper } from '../ui/tooltip';
 import { BeautifulCardCarousel, BeautifulImageCarousel } from '../ui/carousel';
 import { ToastProvider, useToast } from '../ui/toast';
 import { Tabs, TabPresets, AnimationPresets } from '../ui/tabs';
 import { Testimonials } from '../ui/testimonials';
 import { UserList, sampleUsers } from '../ui/user-list';
 import { Image } from '../ui/image';
-import Typography from '../ui/typography';
+import Typography, { Heading1, Heading2, Heading3, Body, Small, Caption, Lead } from '../ui/typography';
 import { ProgressBar } from '../ui/progress-bar';
 import Skeleton, { SkeletonTable, SkeletonPresets } from '../ui/skeleton';
 
@@ -267,6 +267,8 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
       case 'Tabs':
       case 'Testimonials':
       case 'Toast':
+      case 'Tooltip':
+      case 'Typography':
       case 'UserList':
       case 'Image':
       case 'ImageCarousel':
@@ -860,6 +862,68 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                 showNavigation={true}
                 showDots={true}
               />
+            </div>
+          </div>
+        );
+      case 'Tooltip':
+        return (
+          <div className="w-full space-y-4">
+            <h3 className="text-sm font-medium mb-3">Tooltip Components</h3>
+            <div className="flex gap-4 flex-wrap justify-center">
+              <TooltipWrapper tooltip="This is a tooltip on top" position="top">
+                <Button bg={false} outline={true}>Hover me (Top)</Button>
+              </TooltipWrapper>
+
+              <TooltipWrapper tooltip="This tooltip appears on the bottom" position="bottom">
+                <Button bg={false} outline={true}>Hover me (Bottom)</Button>
+              </TooltipWrapper>
+
+              <TooltipWrapper tooltip="Left side tooltip" position="left">
+                <Button bg={false} outline={true}>Hover me (Left)</Button>
+              </TooltipWrapper>
+
+              <TooltipWrapper tooltip="Right side tooltip with longer text" position="right">
+                <Button bg={false} outline={true}>Hover me (Right)</Button>
+              </TooltipWrapper>
+
+              <TooltipWrapper tooltip="Quick tooltip with no delay" delay={0}>
+                <Button bg={false}>Instant Tooltip</Button>
+              </TooltipWrapper>
+
+              <TooltipWrapper tooltip="Slow tooltip with 1 second delay" delay={1000}>
+                <Button bg={false}>Slow Tooltip</Button>
+              </TooltipWrapper>
+            </div>
+          </div>
+        );
+      case 'Typography':
+        return (
+          <div className="w-full space-y-6">
+            <div>
+              <h3 className="text-sm font-medium mb-3">Typography Examples</h3>
+              <div className="space-y-4">
+                <div className="space-y-2">
+                  <h4 className="text-sm font-medium">Heading Variants</h4>
+                  <div className="space-y-3">
+                    <Heading1>Heading 1 - Main Title</Heading1>
+                    <Heading2>Heading 2 - Section Title</Heading2>
+                    <Heading3>Heading 3 - Subsection Title</Heading3>
+                    <Typography variant="h4">Heading 4 - Minor Heading</Typography>
+                    <Typography variant="h5">Heading 5 - Small Heading</Typography>
+                    <Typography variant="h6">Heading 6 - Smallest Heading</Typography>
+                  </div>
+                </div>
+                
+                <div className="space-y-2">
+                  <h4 className="text-sm font-medium">Text Variants</h4>
+                  <div className="space-y-3">
+                    <Lead>This is a lead paragraph that stands out and draws attention to important content.</Lead>
+                    <Body>This is a regular body text paragraph that contains the main content of your page.</Body>
+                    <Small>This is small text used for secondary information or captions.</Small>
+                    <Caption>This is caption text for very small details or metadata.</Caption>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         );
