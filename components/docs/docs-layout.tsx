@@ -345,9 +345,8 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
         );
       case 'Input':
         return (
-          <div className="space-y-4 max-w-md">
-            <Input placeholder="Enter your email" />
-              <Input type="password" placeholder="Password" />
+          <div className="w-full max-w-md mx-auto">
+            <Input bg={true} className="w-full" />
           </div>
         );
         case 'Checkbox':
