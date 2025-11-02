@@ -17,7 +17,8 @@ import Container from '../ui/container';
 import { Navbar } from '../navbar';
 import { Banner } from '../ui/banner';
 import { Breadcrumbs } from '../ui/breadcrumbs';
-import { ButtonGroup, ButtonGroupItem } from '../ui/button-group';
+import { ButtonGroup, ButtonGroupItem, BorderedButtonGroup } from '../ui/button-group';
+import { DropdownIcons } from '../ui/dropdown-menu';
 import { Calendar } from '../ui/calendar';
 import { Collapsible } from '../ui/collapsible';
 import { Command } from '../ui/command';
@@ -208,6 +209,7 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
     switchChecked: false,
     radioValue: 'option1',
     sliderValue: 50,
+    buttonGroupActive: null as string | null,
   });
 
   // Detect dark mode from document on mount
@@ -379,12 +381,46 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
           );
         case 'ButtonGroup':
           return (
-            <div className="w-full max-w-md">
-              <ButtonGroup variant="segmented">
-                <ButtonGroupItem active>Day</ButtonGroupItem>
-                <ButtonGroupItem>Week</ButtonGroupItem>
-                <ButtonGroupItem>Month</ButtonGroupItem>
-              </ButtonGroup>
+            <div className="w-full flex justify-center">
+              <div className="max-w-md">
+                <BorderedButtonGroup
+                  buttons={[
+                    { 
+                      label: 'All', 
+                      active: demoState.buttonGroupActive === 'all', 
+                      onClick: () => setDemoState(prev => ({ ...prev, buttonGroupActive: 'all' })) 
+                    },
+                    { 
+                      label: 'Active', 
+                      active: demoState.buttonGroupActive === 'active', 
+                      onClick: () => setDemoState(prev => ({ ...prev, buttonGroupActive: 'active' })) 
+                    },
+                    { 
+                      label: 'Pending', 
+                      active: demoState.buttonGroupActive === 'pending', 
+                      onClick: () => setDemoState(prev => ({ ...prev, buttonGroupActive: 'pending' })) 
+                    }
+                  ]}
+                  moreOptions={[
+                    { 
+                      label: 'Completed', 
+                      onClick: () => setDemoState(prev => ({ ...prev, buttonGroupActive: 'completed' })),
+                      icon: <DropdownIcons.Bell />
+                    },
+                    { 
+                      label: 'Archived', 
+                      onClick: () => setDemoState(prev => ({ ...prev, buttonGroupActive: 'archived' })),
+                      icon: <DropdownIcons.Settings />
+                    },
+                    { 
+                      label: 'Deleted', 
+                      onClick: () => setDemoState(prev => ({ ...prev, buttonGroupActive: 'deleted' })),
+                      icon: <DropdownIcons.Logout />,
+                      divider: true
+                    }
+                  ]}
+                />
+              </div>
             </div>
           );
         case 'Calendar':
