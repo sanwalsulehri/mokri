@@ -9,7 +9,7 @@ import { Badge } from '../../components/ui/badge';
 import { Button } from '../../components/ui/button';
 
 export default function IntroductionPage() {
-  const quickInstall = `npm install @tertex/ui`;
+  const quickInstall = `npm install @ui/mokri`;
 
   return (
     <DocsLayout>
@@ -25,16 +25,16 @@ export default function IntroductionPage() {
               <Badge variant="secondary">Get Started</Badge>
             </div>
             <p className="text-lg text-foreground/70 max-w-2xl">
-              tertex UI is a collection of beautifully designed, accessible, and customizable React components 
+              mokri UI is a collection of beautifully designed, accessible, and customizable React components 
               built with TypeScript and Tailwind CSS. Start building modern user interfaces faster.
             </p>
           </header>
 
           <section className="space-y-4">
             <div className="space-y-2">
-              <h2 className="text-2xl font-semibold">What is tertex UI?</h2>
+              <h2 className="text-2xl font-semibold">What is mokri UI?</h2>
               <p className="text-foreground/70">
-                tertex UI is a component library that provides you with copy-and-paste React components built using 
+                mokri UI is a component library that provides you with copy-and-paste React components built using 
                 Tailwind CSS. Unlike traditional component libraries, you have full control over the source code. 
                 This means you can customize every component to match your design system perfectly.
               </p>
@@ -63,7 +63,7 @@ export default function IntroductionPage() {
             <div className="space-y-2">
               <h2 className="text-2xl font-semibold">Features</h2>
               <p className="text-foreground/70">
-                tertex UI is built with modern web standards and best practices in mind.
+                mokri UI is built with modern web standards and best practices in mind.
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -146,7 +146,7 @@ export default function IntroductionPage() {
             <div className="space-y-2">
               <h2 className="text-2xl font-semibold">How it Works</h2>
               <p className="text-foreground/70">
-                tertex UI components are installed as source code into your project, giving you complete control.
+                mokri UI components are installed as source code into your project, giving you complete control.
               </p>
             </div>
             <div className="space-y-3">
@@ -157,7 +157,7 @@ export default function IntroductionPage() {
                 <div className="flex-1 space-y-1">
                   <h3 className="font-medium">Install the package</h3>
                   <p className="text-sm text-foreground/70">
-                    Add tertex UI to your project using npm. This installs the component source code and required dependencies.
+                    Add mokri UI to your project using npm. This installs the component source code and required dependencies.
                   </p>
                 </div>
               </div>
@@ -190,7 +190,7 @@ export default function IntroductionPage() {
             <div className="space-y-2">
               <h2 className="text-2xl font-semibold">Next Steps</h2>
               <p className="text-foreground/70">
-                Ready to get started? Follow these steps to set up tertex UI in your project.
+                Ready to get started? Follow these steps to set up mokri UI in your project.
               </p>
             </div>
             <div className="space-y-3">
@@ -198,7 +198,7 @@ export default function IntroductionPage() {
                 <a href="/docs/installation" className="block">
                   <h3 className="font-semibold mb-1">Installation →</h3>
                   <p className="text-sm text-foreground/70">
-                    Learn how to install and configure tertex UI in your Next.js project.
+                    Learn how to install and configure mokri UI in your Next.js project.
                   </p>
                 </a>
               </div>

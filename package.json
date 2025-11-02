@@ -1,5 +1,5 @@
 {
-  "name": "@ui/tertex",
+  "name": "@ui/mokri",
   "version": "0.1.1",
   "private": false,
   "description": "A fast and elegant UI library built with Next.js + Tailwind",
@@ -15,7 +15,7 @@
     "lib:build": "tsc --project tsconfig.lib.json",
     "prepublishOnly": "npm run lib:build"
   },
-  "keywords": ["nextjs", "ui", "library", "react", "tailwind", "tertex"],
+  "keywords": ["nextjs", "ui", "library", "react", "tailwind", "mokri"],
   "author": "Sanwal Sulehri",
   "license": "MIT",
   "dependencies": {

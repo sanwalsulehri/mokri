@@ -191,7 +191,7 @@ export default function ThemedComponent() {
             </div>
             <p className="text-lg text-foreground/70 max-w-2xl">
               Customize the appearance of your components using CSS variables
-              and Tailwind CSS. tertex UI uses a CSS variable-based theming
+              and Tailwind CSS. mokri UI uses a CSS variable-based theming
               system that works seamlessly with both light and dark modes.
             </p>
           </header>
@@ -200,7 +200,7 @@ export default function ThemedComponent() {
             <div className="space-y-2">
               <h2 className="text-2xl font-semibold">Overview</h2>
               <p className="text-foreground/70">
-                tertex UI uses CSS variables for theming, which allows you to
+                mokri UI uses CSS variables for theming, which allows you to
                 customize colors globally. All colors are defined using HSL
                 format, making it easy to create cohesive color schemes that
                 automatically adapt to light and dark modes.
