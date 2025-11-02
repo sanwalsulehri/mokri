@@ -5,6 +5,7 @@
     "declaration": true,
     "declarationMap": true,
     "emitDeclarationOnly": false,
+    "noEmit": false,
     "module": "ESNext",
     "target": "ES6",
     "jsx": "react-jsx"
@@ -12,8 +13,8 @@
   "include": [
     "lib/**/*.ts",
     "lib/**/*.tsx",
-    "components/ui/**/*.ts",
-    "components/ui/**/*.tsx"
+    "components/**/*.ts",
+    "components/**/*.tsx"
   ],
   "exclude": [
     "**/*.spec.ts",
@@ -22,7 +23,7 @@
     "node_modules",
     "dist",
     ".next",
-    "app/**/*"
+    "app/**/*",
+    "components/docs/**/*"
   ]
 }
-  
