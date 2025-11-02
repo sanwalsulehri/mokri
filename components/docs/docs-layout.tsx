@@ -20,7 +20,7 @@ import { Breadcrumbs } from '../ui/breadcrumbs';
 import { ButtonGroup, ButtonGroupItem, BorderedButtonGroup } from '../ui/button-group';
 import { DropdownIcons } from '../ui/dropdown-menu';
 import { Calendar } from '../ui/calendar';
-import { Collapsible } from '../ui/collapsible';
+import { Collapsible, CollapsibleGroup, CollapsibleIcons } from '../ui/collapsible';
 import { Command } from '../ui/command';
 import { Fade } from '../ui/fade';
 import { HeaderBar } from '../ui/header-bar';
@@ -554,8 +554,35 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
           );
         case 'Collapsible':
           return (
-            <div className="w-full max-w-md">
-              <Collapsible title="Details">Hidden content</Collapsible>
+            <div className="w-full max-w-2xl">
+              <Collapsible
+                title="Account Settings"
+                variant="default"
+                size="sm"
+                icon={<CollapsibleIcons.Settings />}
+              >
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <Checkbox 
+                      label="Email notifications" 
+                      size="sm"
+                      defaultChecked={true}
+                    />
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <Checkbox 
+                      label="SMS notifications" 
+                      size="sm"
+                    />
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <Checkbox 
+                      label="Marketing emails" 
+                      size="sm"
+                    />
+                  </div>
+                </div>
+              </Collapsible>
             </div>
           );
         case 'Command':

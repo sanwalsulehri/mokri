@@ -106,19 +106,23 @@ export function Collapsible({
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className=""
+            transition={{ 
+              height: { duration: 0.25, ease: [0.4, 0, 0.2, 1] },
+              opacity: { duration: 0.25, ease: [0.4, 0, 0.2, 1] }
+            }}
+            className="overflow-hidden"
           >
-            <div className={`
-              ${sizeClasses[size].padding}
-              ${sizeClasses[size].content}
-              text-foreground/80
-              overflow-visible
-              ${variant !== 'minimal' ? 'border-t border-border bg-muted/20' : ''}
-              ${variant !== 'minimal' ? 'rounded-b-lg' : ''}
-            `}>
+            <motion.div
+              className={`
+                ${sizeClasses[size].padding}
+                ${sizeClasses[size].content}
+                text-foreground/80
+                ${variant !== 'minimal' ? 'border-t border-border bg-muted/20' : ''}
+                ${variant !== 'minimal' ? 'rounded-b-lg' : ''}
+              `}
+            >
               {children}
-            </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
