@@ -265,6 +265,7 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
       case 'Select':
       case 'Skeleton':
       case 'Tabs':
+      case 'Testimonials':
       case 'UserList':
       case 'Image':
       case 'ImageCarousel':
@@ -460,11 +461,11 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                 <div className="flex items-center gap-2">
                   <Loader color="primary" />
                   <span className="text-sm text-foreground/70">Primary</span>
-            </div>
+              </div>
                 <div className="flex items-center gap-2">
                   <Loader color="secondary" />
                   <span className="text-sm text-foreground/70">Secondary</span>
-          </div>
+            </div>
           </div>
           </div>
 
@@ -475,11 +476,11 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                 <div className="flex items-center gap-2">
                   <Loader {...LoaderPresets.smallSpinner} />
                   <span className="text-sm text-foreground/70">Small Spinner</span>
-          </div>
+            </div>
                 <div className="flex items-center gap-2">
                   <Loader {...LoaderPresets.mediumDots} />
                   <span className="text-sm text-foreground/70">Medium Dots</span>
-            </div>
+          </div>
                 <div className="flex items-center gap-2">
                   <Loader {...LoaderPresets.largePulse} />
                   <span className="text-sm text-foreground/70">Large Pulse</span>
@@ -512,13 +513,28 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
       case 'Pagination':
         return (
           <div className="w-full flex justify-center">
-            <Pagination
-              currentPage={demoState.currentPage || 1}
-              totalPages={10}
-              onPageChange={(page) => setDemoState(prev => ({ ...prev, currentPage: page }))}
-              withBorder={false}
-              {...PaginationPresets.full}
-            />
+            <style dangerouslySetInnerHTML={{ __html: `
+              .pagination-preview [class*="button"] {
+                min-width: 20px !important;
+                height: 24px !important;
+                padding: 2px 4px !important;
+                font-size: 10px !important;
+              }
+              .pagination-preview svg {
+                width: 10px !important;
+                height: 10px !important;
+              }
+            `}} />
+            <div className="pagination-preview">
+              <Pagination
+                currentPage={demoState.currentPage || 1}
+                totalPages={10}
+                onPageChange={(page) => setDemoState(prev => ({ ...prev, currentPage: page }))}
+                withBorder={false}
+                size="sm"
+                {...PaginationPresets.full}
+              />
+            </div>
           </div>
         );
       case 'ProgressBar':
@@ -651,8 +667,8 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                     <Skeleton animation="pulse" width="100px" height="20px" />
                     <Skeleton animation="pulse" width="150px" height="20px" />
                     <Skeleton animation="pulse" width="80px" height="20px" />
+              </div>
             </div>
-          </div>
                 
                 <div className="space-y-2">
                   <h4 className="text-sm font-medium">Wave Animation</h4>
@@ -661,7 +677,7 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                     <Skeleton animation="wave" width="150px" height="20px" />
                     <Skeleton animation="wave" width="80px" height="20px" />
             </div>
-            </div>
+          </div>
                 
                 <div className="space-y-2">
                   <h4 className="text-sm font-medium">Shimmer Animation</h4>
@@ -684,13 +700,13 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
             </div>
 
             {/* Complex Layouts */}
-              <div>
+            <div>
               <h3 className="text-sm font-medium mb-3">Complex Layouts</h3>
               <div className="space-y-6">
                 <div className="space-y-2">
                   <h4 className="text-sm font-medium">Table Skeleton</h4>
                   <SkeletonTable rows={4} columns={4} />
-              </div>
+            </div>
             </div>
           </div>
 
@@ -704,8 +720,8 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                     <Skeleton {...SkeletonPresets.title} />
                     <Skeleton {...SkeletonPresets.subtitle} />
                     <Skeleton {...SkeletonPresets.paragraph} />
+              </div>
             </div>
-          </div>
                 
                 <div className="space-y-2">
                   <h4 className="text-sm font-medium">Component Presets</h4>
@@ -713,16 +729,16 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                     <Skeleton {...SkeletonPresets.smallButton} />
                     <Skeleton {...SkeletonPresets.mediumButton} />
                     <Skeleton {...SkeletonPresets.largeButton} />
-          </div>
+              </div>
             </div>
           </div>
-          </div>
+            </div>
           </div>
         );
       case 'Tabs':
         return (
           <div className="w-full space-y-6">
-            <div>
+              <div>
               <h3 className="text-sm font-medium mb-3">Underline Tabs (Smooth Animation)</h3>
               <Tabs
                 variant="underline"
@@ -740,7 +756,7 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                         <p className="text-foreground/70">
                           This is the overview tab content with smooth animations. Notice the gentle transitions.
                         </p>
-                      </div>
+              </div>
                     )
                   },
                   {
@@ -751,7 +767,7 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                         <p className="text-foreground/70">
                           Analytics dashboard with charts and metrics. Smooth content transitions.
                         </p>
-                      </div>
+            </div>
                     )
                   },
                   {
@@ -762,11 +778,24 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                         <p className="text-foreground/70">
                           Configure your application settings here.
                         </p>
-                      </div>
+          </div>
                     )
                   }
                 ]}
                 animations={AnimationPresets.smooth}
+              />
+            </div>
+          </div>
+        );
+      case 'Testimonials':
+        return (
+          <div className="w-full flex justify-center">
+            <div className="w-full max-w-md sm:max-w-lg">
+              <Testimonials 
+                autoPlay={true}
+                autoPlayInterval={5000}
+                showNavigation={true}
+                showDots={true}
               />
             </div>
           </div>
@@ -801,7 +830,7 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                 className="w-full"
               />
               <p className="text-xs sm:text-sm text-muted-foreground mt-2">Volume: {demoState.sliderValue}%</p>
-            </div>
+          </div>
           </div>
         );
       case 'MagicCard':
@@ -814,7 +843,7 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                     <svg className="w-6 h-6 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
                 </svg>
-              </div>
+            </div>
                   <h3 className="text-xl font-bold mb-2 text-foreground">Magic Card ✨</h3>
                   <p className="text-sm text-foreground/70 leading-relaxed">
                     Hover your cursor over this card to see the magical glow follow your movement!
@@ -824,12 +853,12 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                       <span>Interactive Effect</span>
                       <span>•</span>
                       <span>Smooth Animation</span>
-            </div>
           </div>
               </div>
+            </div>
               </MagicCard>
               </div>
-            </div>
+          </div>
         );
       case 'Breadcrumbs':
         return (
