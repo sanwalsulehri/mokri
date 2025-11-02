@@ -11,6 +11,7 @@ interface Testimonial {
   company: string;
   content: string;
   avatar?: string;
+  image?: string;
   rating: number;
 }
 
