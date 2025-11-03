@@ -40,6 +40,7 @@
     "@tailwindcss/node": "^4.1.16",
     "@tailwindcss/postcss": "^4.1.16",
     "@types/node": "^24.10.0",
+    "@types/react-dom": "^19.2.2",
     "@types/react-slick": "^0.23.13",
     "autoprefixer": "^10.4.20",
     "lightningcss": "^1.30.2",
