@@ -25,7 +25,8 @@ export function Navbar() {
   }, []);
 
   return (
-    <nav className="w-full bg-background/80 backdrop-blur-md sticky top-0 z-[999999]">
+    <>
+    <nav className="w-full bg-background/80 backdrop-blur-md fixed top-0 left-0 right-0 z-[999999]">
       <Container size={isDocs ? "3xl" : "2xl"} padding="lg">
         <div className="flex justify-between items-center h-16">
           {/* Logo and Navigation Links */}
@@ -131,5 +132,8 @@ export function Navbar() {
         </Drawer>
       </Container>
     </nav>
+    {/* Spacer to offset fixed navbar height */}
+    <div className="h-16" />
+    </>
   );
 }
