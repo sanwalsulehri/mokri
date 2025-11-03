@@ -1,7 +1,8 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin "tailwindcss-animate";
 
+
+/* fix: CSS variables root selector */
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -41,7 +42,19 @@
   --glow: rgba(255, 255, 255, 0.1);
 }
 
-/* Tailwind v3 setup (variables defined above are used directly) */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-secondary: var(--secondary);
+  --color-destructive: var(--destructive);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-focusborder: var(--focusborder);
+  --color-ring: var(--ring);
+  --color-accent: var(--accent);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
 
 body {
   background: var(--background);

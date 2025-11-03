@@ -10,8 +10,8 @@
     "dist"
   ],
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "CSS_TRANSFORMER_WASM=1 next dev",
+    "build": "CSS_TRANSFORMER_WASM=1 next build",
     "start": "next start",
     "lint": "eslint",
     "lib:build": "tsc --project tsconfig.lib.json",
@@ -37,15 +37,17 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@tailwindcss/node": "^4.1.16",
     "@tailwindcss/postcss": "^4.1.16",
     "@types/node": "^24.10.0",
     "@types/react-slick": "^0.23.13",
     "autoprefixer": "^10.4.20",
-    "next": "^14.2.3",
+    "lightningcss": "^1.30.2",
+    "next": "^16.0.1",
     "postcss": "^8.4.35",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "tailwindcss": "^3.4.4",
+    "tailwindcss": "^4.1.0",
     "typescript": "^5.3.3"
   }
 }
