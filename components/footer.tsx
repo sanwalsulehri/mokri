@@ -150,7 +150,7 @@ export function Footer({
           {/* Minimal footer - centered */}
           {columns === 1 ? (
             <div className="text-center text-sm text-foreground/70">
-              Built by <a href="https://github.com" className="underline hover:text-foreground transition-colors">mokri</a> at <a href="https://vercel.com" className="underline hover:text-foreground transition-colors">Vercel</a>. The source code is available on <a href="https://github.com" className="underline hover:text-foreground transition-colors">GitHub</a>.
+              Built by <a href="https://github.com/sanwalsulehri/mokri" className="underline hover:text-foreground transition-colors">mokri</a> at <a href="https://vercel.com" className="underline hover:text-foreground transition-colors">Vercel</a>. The source code is available on <a href="https://github.com/sanwalsulehri/mokri" className="underline hover:text-foreground transition-colors">GitHub</a>.
             </div>
           ) : (
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">

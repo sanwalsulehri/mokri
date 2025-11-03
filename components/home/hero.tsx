@@ -27,12 +27,16 @@ const Hero = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center mt-8 gap-2">
-            <Button size="md" className="">
-              Get Started
-            </Button>
-            <Button bg={false} size="md" className="">
-              View Components
-            </Button>
+            <a href="/docs">
+              <Button size="md" className="">
+                Get Started
+              </Button>
+            </a>
+            <a href="/docs/components/button">
+              <Button bg={false} size="md" className="">
+                View Components
+              </Button>
+            </a>
           </div>
         </div>
       </div>
