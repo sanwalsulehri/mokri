@@ -30,11 +30,11 @@ export function Button({ children, onClick, className = "", bg = true, outline =
     defaultClasses = 'text-foreground bg-transparent hover:bg-foreground/10';
   } else if (!bg && hasCustomBg) {
     // Custom background: only add text color if not in className
-    defaultClasses = className.includes('text-') ? '' : 'text-white';
+    defaultClasses = className.includes('text-') ? '' : 'text-foreground';
   }
   
   if (outline && !hasCustomBg) {
-    defaultClasses = 'border border-border shadow-xs bg-transparent text-foreground hover:bg-muted';
+    defaultClasses = 'border border-border shadow-xs bg-transparent hover:bg-muted';
   }
 
   return (
