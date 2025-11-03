@@ -101,7 +101,7 @@ const Typography: React.FC<TypographyProps> = ({
     }
   };
 
-  const Element = getElement() as keyof JSX.IntrinsicElements;
+  const Element = getElement() as keyof React.JSX.IntrinsicElements;
 
   return (
     <Element className={combinedClasses}>
