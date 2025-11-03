@@ -139,10 +139,10 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
 
   return (
-    <div className="min-h-screen bg-background scroll-smooth">
+    <div className="min-h-screen bg-background scroll-smooth overflow-x-hidden">
           <Navbar />
 
-      <div className="flex">
+      <div className="flex w-full overflow-x-hidden">
         {/* Sidebar */}
         <aside className={`
           fixed left-0 top-0 z-50 w-80 max-h-[80vh] overflow-hidden  backdrop-blur-xl border-r border-border/50 rounded-tr-xl rounded-br-xl
@@ -194,8 +194,8 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
         </aside>
 
         {/* Main Content */}
-        <main className="flex-1 md:ml-80 lg:ml-88">
-          <div className="py-8">
+        <main className="flex-1 md:ml-80 lg:ml-88 w-full overflow-x-hidden">
+          <div className="py-8 px-4 md:px-6">
             {children}
           </div>
         </main>

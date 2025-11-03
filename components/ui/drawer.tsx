@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from './button';
 
@@ -27,6 +28,11 @@ export function Drawer({
   size = 'md',
   showCloseButton = true
 }: DrawerProps) {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+    return () => setMounted(false);
+  }, []);
   // Handle escape key
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
@@ -83,7 +89,7 @@ export function Drawer({
     }
   };
 
-  return (
+  const content = (
     <AnimatePresence>
       {isOpen && (
         <>
@@ -93,7 +99,7 @@ export function Drawer({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[9999999]"
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[2147483647]"
             onClick={onClose}
           />
 
@@ -111,13 +117,12 @@ export function Drawer({
             }}
             className={`
               fixed ${positionClasses[position]} ${sizeClasses[size]}
-              bg-background border-border shadow-2xl z-[9999999]
+              bg-background border-border shadow-2xl z-[2147483647]
               flex flex-col
               ${position === 'left' || position === 'right' ? 'border-l' : 'border-t'}
               ${className}
             `}
           >
-            {/* Header */}
             {(title || description || showCloseButton) && (
               <div className="flex items-center justify-between p-4 md:p-6 border-b border-border">
                 <div className="flex-1">
@@ -132,7 +137,6 @@ export function Drawer({
                     </p>
                   )}
                 </div>
-                
                 {showCloseButton && (
                   <Button
                     onClick={onClose}
@@ -158,8 +162,6 @@ export function Drawer({
                 )}
               </div>
             )}
-
-            {/* Content */}
             <div className="flex-1 overflow-y-auto p-4 md:p-6">
               {children}
             </div>
@@ -168,4 +170,7 @@ export function Drawer({
       )}
     </AnimatePresence>
   );
+
+  if (!mounted) return null;
+  return createPortal(content, document.body);
 }

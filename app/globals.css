@@ -63,6 +63,18 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Prevent horizontal overflow on mobile */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Make media naturally responsive */
+img, video, canvas, svg {
+  max-width: 100%;
+  height: auto;
+}
+
 /* Skeleton animations */
 @keyframes wave {
   0% {
