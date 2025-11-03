@@ -2006,6 +2006,26 @@ const componentAPIs: Record<string, ComponentAPI> = {
       { name: 'maxLength', type: 'number', required: false, description: 'Max character length' }
     ]
   },
+  // Alias to support route-generated component name "Textarea"
+  Textarea: {
+    name: 'TextArea',
+    description: 'Textarea with optional label and submit button.',
+    import: 'import { TextArea } from "@/components/ui/textarea"',
+    props: [
+      { name: 'label', type: 'string', required: false, description: 'Field label when isLabel is true' },
+      { name: 'placeholder', type: 'string', required: false, default: '"Enter your message..."', description: 'Placeholder text' },
+      { name: 'isLabel', type: 'boolean', required: false, default: 'false', description: 'Show label' },
+      { name: 'isWithButton', type: 'boolean', required: false, default: 'false', description: 'Show submit button below' },
+      { name: 'className', type: 'string', required: false, default: '""', description: 'Additional CSS classes' },
+      { name: 'value', type: 'string', required: false, description: 'Controlled value' },
+      { name: 'onChange', type: '(e: React.ChangeEvent<HTMLTextAreaElement>) => void', required: false, description: 'Change handler' },
+      { name: 'onButtonClick', type: '() => void', required: false, description: 'Button click handler' },
+      { name: 'buttonText', type: 'string', required: false, default: '"Submit"', description: 'Button label' },
+      { name: 'disabled', type: 'boolean', required: false, default: 'false', description: 'Disable input' },
+      { name: 'rows', type: 'number', required: false, default: '4', description: 'Number of rows' },
+      { name: 'maxLength', type: 'number', required: false, description: 'Max character length' }
+    ]
+  },
 
   Toast: {
     name: 'Toast',
