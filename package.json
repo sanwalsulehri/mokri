@@ -10,8 +10,8 @@
     "dist"
   ],
   "scripts": {
-    "dev": "CSS_TRANSFORMER_WASM=1 next dev",
-    "build": "CSS_TRANSFORMER_WASM=1 next build",
+    "dev": "next dev",
+    "build": "next build",
     "start": "next start",
     "lint": "eslint",
     "lib:build": "tsc --project tsconfig.lib.json",
@@ -43,6 +43,7 @@
     "@types/react-slick": "^0.23.13",
     "autoprefixer": "^10.4.20",
     "lightningcss": "^1.30.2",
+    "lightningcss-wasm": "^1.30.2",
     "next": "^16.0.1",
     "postcss": "^8.4.35",
     "react": "^18.3.1",
