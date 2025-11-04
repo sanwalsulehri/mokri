@@ -1464,7 +1464,7 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                 }
               }
             ` }} />
-            <div className="image-carousel-preview space-y-8">
+            <div className="image-carousel-preview">
               <ImageCarousel
                 data={[
                   "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=700&fit=crop",
@@ -1473,19 +1473,6 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                   "https://images.unsplash.com/photo-1514565131-fce0801e5785?w=1200&h=700&fit=crop"
                 ]}
                 variant="modern"
-                autoPlay={false}
-                showArrows={false}
-                showPagination={true}
-              />
-              <ImageCarousel
-                data={[
-                  "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=700&fit=crop",
-                  "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=1200&h=700&fit=crop",
-                  "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1200&h=700&fit=crop",
-                  "https://images.unsplash.com/photo-1514565131-fce0801e5785?w=1200&h=700&fit=crop"
-                ]}
-                variant="simple"
-                itemsPerView={3}
                 autoPlay={false}
                 showArrows={false}
                 showPagination={true}
