@@ -43,7 +43,8 @@ import { Modal, ModalTrigger } from '../ui/modal';
 import { Drawer } from '../ui/drawer';
 import { Accordion } from '../ui/accordion';
 import { Tooltip, TooltipWrapper } from '../ui/tooltip';
-import { BeautifulCardCarousel, BeautifulImageCarousel } from '../ui/carousel';
+import { BeautifulCardCarousel } from '../ui/carousel';
+import { ImageCarousel } from '../ui/image-carousel';
 import { ToastProvider, useToast } from '../ui/toast';
 import { Tabs, TabPresets, AnimationPresets } from '../ui/tabs';
 import { Testimonials } from '../ui/testimonials';
@@ -96,7 +97,7 @@ export const componentsRegistry = [
   { name: 'IconButton', path: 'icon-button', component: IconButton },
   { name: 'UserList', path: 'user-list', component: UserList },
   { name: 'Image', path: 'image', component: Image },
-  { name: 'ImageCarousel', path: 'image-carousel', component: BeautifulImageCarousel },
+  { name: 'ImageCarousel', path: 'image-carousel', component: ImageCarousel },
   { name: 'Input', path: 'input', component: Input },
   { name: 'InputOTP', path: 'input-otp', component: InputOTP },
   { name: 'Loader', path: 'loader', component: Loader },
@@ -1463,40 +1464,33 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
                 }
               }
             ` }} />
-            <div className="image-carousel-preview">
-              <BeautifulImageCarousel
+            <div className="image-carousel-preview space-y-8">
+              <ImageCarousel
                 data={[
-                  {
-                    id: 1,
-                    title: "Mountain Peak",
-                    subtitle: "Majestic Views",
-                    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=500&fit=crop"
-                  },
-                  {
-                    id: 2,
-                    title: "Ocean Waves",
-                    subtitle: "Serene Beauty",
-                    image: "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=800&h=500&fit=crop"
-                  },
-                  {
-                    id: 3,
-                    title: "Forest Trail",
-                    subtitle: "Nature's Path",
-                    image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&h=500&fit=crop"
-                  },
-                  {
-                    id: 4,
-                    title: "City Skyline",
-                    subtitle: "Urban Dreams",
-                    image: "https://images.unsplash.com/photo-1514565131-fce0801e5785?w=800&h=500&fit=crop"
-                  }
+                  "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=700&fit=crop",
+                  "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=1200&h=700&fit=crop",
+                  "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1200&h=700&fit=crop",
+                  "https://images.unsplash.com/photo-1514565131-fce0801e5785?w=1200&h=700&fit=crop"
                 ]}
-                itemsPerView={2}
+                variant="modern"
                 autoPlay={false}
-                arrowsInside={true}
+                showArrows={false}
                 showPagination={true}
               />
-          </div>
+              <ImageCarousel
+                data={[
+                  "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=700&fit=crop",
+                  "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=1200&h=700&fit=crop",
+                  "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1200&h=700&fit=crop",
+                  "https://images.unsplash.com/photo-1514565131-fce0801e5785?w=1200&h=700&fit=crop"
+                ]}
+                variant="simple"
+                itemsPerView={3}
+                autoPlay={false}
+                showArrows={false}
+                showPagination={true}
+              />
+            </div>
           </div>
         );
       default:

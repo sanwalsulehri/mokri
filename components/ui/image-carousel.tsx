@@ -5,22 +5,18 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-// Interfaces
-interface ImageCarouselItem {
-  id: number | string;
-  title: string;
-  subtitle: string;
-  image: string;
-}
-
+// Interfaces (accept only image URLs)
 interface ImageCarouselProps {
-  data?: ImageCarouselItem[];
+  data?: string[];
   itemsPerView?: number;
   showPagination?: boolean;
   autoPlay?: boolean;
   autoPlaySpeed?: number;
   showArrows?: boolean;
   arrowsInside?: boolean;
+  // simple: regular multi-slide; modern: centered big image with peeking sides
+  variant?: 'simple' | 'modern';
+  modernMaxWidth?: string | number;
 }
 
 // Custom Arrow Components
@@ -71,43 +67,13 @@ const CustomNextArrow = ({ onClick, arrowsInside = false }: { onClick?: () => vo
 );
 
 // Default Data
-const defaultImageData: ImageCarouselItem[] = [
-  {
-    id: 1,
-    title: "Mountain Landscape",
-    subtitle: "Nature's Beauty",
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=500&fit=crop"
-  },
-  {
-    id: 2,
-    title: "Ocean Waves",
-    subtitle: "Serene Waters",
-    image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&h=500&fit=crop"
-  },
-  {
-    id: 3,
-    title: "Forest Path",
-    subtitle: "Peaceful Journey",
-    image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&h=500&fit=crop"
-  },
-  {
-    id: 4,
-    title: "City Skyline",
-    subtitle: "Urban Dreams",
-    image: "https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?w=800&h=500&fit=crop"
-  },
-  {
-    id: 5,
-    title: "Desert Sunset",
-    subtitle: "Golden Hour",
-    image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=500&fit=crop"
-  },
-  {
-    id: 6,
-    title: "Lakeside View",
-    subtitle: "Tranquil Moments",
-    image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=500&fit=crop"
-  }
+const defaultImageData: string[] = [
+  "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=500&fit=crop",
+  "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&h=500&fit=crop",
+  "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&h=500&fit=crop",
+  "https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?w=800&h=500&fit=crop",
+  "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=500&fit=crop",
+  "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=500&fit=crop"
 ];
 
 // Image Carousel Component
@@ -118,13 +84,16 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({
   autoPlay = false,
   autoPlaySpeed = 3000,
   showArrows = true,
-  arrowsInside = false
+  arrowsInside = false,
+  variant = 'modern',
+  modernMaxWidth = '100%'
 }) => {
+  const isModern = variant === 'modern';
   const settings = {
     dots: showPagination,
     infinite: true,
     speed: 800,
-    slidesToShow: itemsPerView,
+    slidesToShow: isModern ? 3 : itemsPerView,
     slidesToScroll: 1,
     autoplay: autoPlay,
     autoplaySpeed: autoPlaySpeed,
@@ -132,11 +101,13 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({
     arrows: showArrows,
     prevArrow: <CustomPrevArrow arrowsInside={arrowsInside} />,
     nextArrow: <CustomNextArrow arrowsInside={arrowsInside} />,
+    centerMode: isModern,
+    centerPadding: isModern ? '0px' : '0px',
     responsive: [
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: Math.min(itemsPerView, 2),
+          slidesToShow: isModern ? 3 : Math.min(itemsPerView, 2),
           slidesToScroll: 1,
         }
       },
@@ -151,43 +122,46 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({
   };
 
   return (
-    <div className="relative w-full max-w-7xl mx-auto px-4">
-      <Slider {...settings}>
-        {data.map((item) => (
-          <div key={item.id} className="px-3">
-            <div className="relative group overflow-hidden rounded-2xl transition-all duration-500">
-              <div className="aspect-[4/3] overflow-hidden">
+    <div
+      className="relative w-full mx-auto px-4 h-fit overflow-x-hidden overflow-y-hidden"
+      style={{ maxWidth: isModern ? modernMaxWidth : undefined, paddingBottom: '32px' } as React.CSSProperties}
+    >
+      <Slider {...settings} className={isModern ? 'max-h-[50vh]' : ''}>
+        {data.map((src, index) => (
+          <div key={index} className={` h-fit ${isModern ? 'px-1' : 'px-3'} `}>
+            <div className={`relative ${isModern ? 'overflow-visible' : 'overflow-hidden'} rounded-2xl`} style={isModern ? ({ height: '40vh', minHeight: '40vh' } as React.CSSProperties) : undefined}>
+              <div className={`${isModern ? 'overflow-hidden' : 'overflow-hidden'} h-full rounded-2xl`}>
                 <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  src={src}
+                  alt="carousel-image"
+                  className={`block w-full h-full object-cover rounded-2xl`}
                 />
               </div>
-              
-              {/* Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              
-              {/* Content */}
-              <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-                <h3 className="text-xl font-bold mb-1">{item.title}</h3>
-                <p className="text-sm opacity-90">{item.subtitle}</p>
-              </div>
-              
-              {/* Shine Effect */}
-              <div className="absolute inset-0 -skew-x-12 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-shine transition-opacity duration-500" />
             </div>
           </div>
         ))}
       </Slider>
       
-      {/* Custom Pagination Styles */}
+      {/* Custom Styles */}
       <style dangerouslySetInnerHTML={{ __html: `
+        ${isModern ? `
+        .slick-list { overflow: visible !important; }
+        .slick-track { display: flex; align-items: stretch !important; }
+        .slick-slide { transition: opacity 420ms ease; height: auto !important; }
+        .slick-slide > div { height: 100% !important; }
+        .slick-slide img { transition: transform 480ms ease, opacity 420ms ease; transform-origin: center center; will-change: transform; height: 100% !important; }
+        .slick-center img { transform: scale(1.12); opacity: 1; }
+        .slick-slide:not(.slick-center) img { transform: scale(0.9); opacity: 0.6; }
+        @media (min-width: 1024px){ .slick-slider .slick-list { padding: 0 0 !important; } }
+        @media (min-width: 768px) and (max-width: 1023.98px){ .slick-slider .slick-list { padding: 0 0 !important; } }
+        @media (max-width: 767.98px){ .slick-slider .slick-list { padding: 0 0 !important; } }
+        ` : ''}
         .slick-dots {
-          bottom: -50px !important;
+          bottom: 4px !important;
           display: flex !important;
           justify-content: center !important;
           align-items: center !important;
-          gap: 12px !important;
+          gap: 8px !important;
         }
         .slick-dots li {
           width: auto !important;
