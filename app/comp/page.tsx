@@ -2240,7 +2240,7 @@ function CompPageContent() {
           </div>
           <div className="py-8">
             <ImageCarousel
-              data={customImageData}
+              data={customImageData.map(item => item.image)}
               itemsPerView={2}
               autoPlay={true}
               autoPlaySpeed={4000}
