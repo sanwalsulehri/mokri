@@ -53,6 +53,7 @@ import { Image } from '../ui/image';
 import Typography, { Heading1, Heading2, Heading3, Body, Small, Caption, Lead } from '../ui/typography';
 import { ProgressBar } from '../ui/progress-bar';
 import Skeleton, { SkeletonTable, SkeletonPresets } from '../ui/skeleton';
+import { ThemeToggle } from '../ui/theme-toggle';
 
 // CLI theme colors for light and dark modes (industry-style terminal palette)
 const cliTheme = {
@@ -121,6 +122,7 @@ export const componentsRegistry = [
   { name: 'Toast', path: 'toast', component: ToastProvider },
   { name: 'Tooltip', path: 'tooltip', component: Tooltip },
   { name: 'Typography', path: 'typography', component: Typography },
+  { name: 'ThemeToggle', path: 'theme-toggle', component: ThemeToggle },
 ];
 
 const sidebarItems = [
@@ -292,6 +294,19 @@ export function ComponentDemo({ componentName, Component }: { componentName: str
       case 'ImageCarousel':
         // fall through handled below by reusing curated demos above
         break;
+      case 'ThemeToggle':
+        return (
+          <div className="flex items-center gap-6">
+            <div className="flex items-center gap-2">
+              <span className="text-sm text-foreground/70">Button</span>
+              <ThemeToggle />
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-sm text-foreground/70">Switch</span>
+              <ThemeToggle variant="switch" leftLabel="Light" rightLabel="Dark" />
+            </div>
+          </div>
+        );
       default:
     if (Component) {
       try {

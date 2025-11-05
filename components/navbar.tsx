@@ -1,6 +1,6 @@
 'use client';
 
-import { ThemeToggle } from './theme-toggle';
+import { ThemeToggle } from './ui/theme-toggle';
 import { Button } from './ui/button';
 import { IconButton } from './ui/icon-button';
 import Container from './ui/container';

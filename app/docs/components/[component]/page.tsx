@@ -382,6 +382,11 @@ export default function ComponentPage({ params }: ComponentPageProps) {
       title: 'Typography',
       description: 'Typography components for consistent text styling.',
       import: 'import Typography from "@/components/ui/typography"'
+    },
+    'ThemeToggle': {
+      title: 'ThemeToggle',
+      description: 'Toggle between light and dark themes using a button or switch.',
+      import: 'import { ThemeToggle } from "@/components/ui/theme-toggle"'
     }
   };
 

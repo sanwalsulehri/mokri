@@ -130,6 +130,9 @@ export * from "../components/ui/switch";
 // Tabs
 export * from "../components/ui/tabs";
 
+// Theme Toggle
+export * from "../components/ui/theme-toggle";
+
 // Testimonials
 export * from "../components/ui/testimonials";
 

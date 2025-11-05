@@ -1235,6 +1235,25 @@ const componentAPIs: Record<string, ComponentAPI> = {
     ]
   },
 
+  ThemeToggle: {
+    name: 'ThemeToggle',
+    description: 'Toggle between light and dark themes using a button or switch.',
+    import: 'import { ThemeToggle } from "@/components/ui/theme-toggle"',
+    props: [
+      { name: 'variant', type: '"button" | "switch"', required: false, default: '"button"', description: 'Render as icon button or as a labeled switch' },
+      { name: 'size', type: '"sm" | "md" | "lg"', required: false, default: '"md"', description: 'Control size (switch/button)' },
+      { name: 'className', type: 'string', required: false, default: '""', description: 'Additional classes' },
+      { name: 'lightIcon', type: 'React.ReactNode', required: false, description: 'Custom icon for light theme' },
+      { name: 'darkIcon', type: 'React.ReactNode', required: false, description: 'Custom icon for dark theme' },
+      { name: 'leftLabel', type: 'string', required: false, description: 'Left label for switch variant' },
+      { name: 'rightLabel', type: 'string', required: false, description: 'Right label for switch variant' }
+    ],
+    examples: [
+      `// Icon button\n<ThemeToggle />`,
+      `// Switch with labels\n<ThemeToggle variant="switch" leftLabel="Light" rightLabel="Dark" />`
+    ]
+  },
+
   Checkbox: {
     name: 'Checkbox',
     description: 'A control that allows the user to select one or more options from a set.',
