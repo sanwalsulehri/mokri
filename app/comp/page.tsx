@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { ThemeToggle } from "../../components/theme-toggle";
+import { ThemeToggle } from "../../components/ui/theme-toggle";
 import { Button } from "../../components/ui/button";
 import { Badge } from "../../components/ui/badge";
 import { Input } from "../../components/ui/input";
