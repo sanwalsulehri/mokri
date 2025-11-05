@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { useTheme } from '../../components/theme-provider';
+import { useTheme } from './theme-provider';
 import { Switch } from './switch';
 import { IconButton } from './icon-button';
 

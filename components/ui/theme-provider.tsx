@@ -14,7 +14,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     if (savedTheme) {
       setTheme(savedTheme);
     } else {
-      // Default to dark mode
       setTheme('dark');
     }
   }, []);
@@ -36,3 +35,7 @@ export function useTheme() {
   if (!context) throw new Error('useTheme must be used within a ThemeProvider');
   return context;
 }
+
+export default ThemeProvider;
+
+

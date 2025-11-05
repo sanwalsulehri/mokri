@@ -133,6 +133,9 @@ export * from "../components/ui/tabs";
 // Theme Toggle
 export * from "../components/ui/theme-toggle";
 
+// Theme Provider
+export * from "../components/ui/theme-provider";
+
 // Testimonials
 export * from "../components/ui/testimonials";
 
