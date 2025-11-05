@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button } from '../ui/button'
+import Link from 'next/link'
 import { Badge } from '../ui/badge'
 import ComponentSet from "../component-set"
 
@@ -27,16 +28,12 @@ const Hero = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center mt-8 gap-2">
-            <a href="/docs">
-              <Button size="md" className="">
-                Get Started
-              </Button>
-            </a>
-            <a href="/docs/components/button">
-              <Button bg={false} size="md" className="">
-                View Components
-              </Button>
-            </a>
+            <Button size="md" className="">
+              <Link href="/docs">Get Started</Link>
+            </Button>
+            <Button bg={false} size="md" className="">
+              <Link href="/docs/components/button">View Components</Link>
+            </Button>
           </div>
         </div>
       </div>

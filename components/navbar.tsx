@@ -8,6 +8,7 @@ import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import { Drawer } from './ui/drawer';
+import Link from 'next/link';
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -31,7 +32,7 @@ export function Navbar() {
         <div className="flex justify-between items-center h-16">
           {/* Logo and Navigation Links */}
           <div className="flex items-center space-x-8">
-            <a href="/" aria-label="Go to home">
+            <Link href="/" aria-label="Go to home">
               <Image
                 src={isDark ? "/logo_white.png" : "/logo_dark.png"}
                 alt="mokri"
@@ -39,21 +40,21 @@ export function Navbar() {
                 height={40}
                 className="h-8 w-auto"
               />
-            </a>
+            </Link>
             
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-2">
               <Button bg={false} size="sm" className="text-sm font-medium">
-                <a href="/docs">Docs</a>
+                <Link href="/docs">Docs</Link>
               </Button>
               <Button bg={false} size="sm" className="text-sm font-medium">
-                <a href="/docs/components/button">Components</a>
+                <Link href="/docs/components/button">Components</Link>
               </Button>
               <Button bg={false} size="sm" className="text-sm font-medium">
-                Theme
+                <Link href="/docs/theming">Theme</Link>
               </Button>
               <Button bg={false} size="sm" className="text-sm font-medium">
-                Colors
+                <Link href="/colors">Colors</Link>
               </Button>
             </div>
           </div>
@@ -104,16 +105,16 @@ export function Navbar() {
         >
           <div className="space-y-2">
             <Button bg={false} size="sm" className="w-full justify-start text-xl font-medium px-4 py-4">
-              <a href="/docs">Docs</a>
+              <Link href="/docs">Docs</Link>
             </Button>
             <Button bg={false} size="sm" className="w-full justify-start text-xl font-medium px-4 py-4">
-              <a href="/docs/components/button">Components</a>
+              <Link href="/docs/components/button">Components</Link>
             </Button>
             <Button bg={false} size="sm" className="w-full justify-start text-xl font-medium px-4 py-4">
-              Theme
+              <Link href="/docs/theming">Theme</Link>
             </Button>
             <Button bg={false} size="sm" className="w-full justify-start text-xl font-medium px-4 py-4">
-              Colors
+              <Link href="/colors">Colors</Link>
             </Button>
           </div>
 

@@ -7,120 +7,78 @@ import { Breadcrumbs } from "../../../components/ui/breadcrumbs";
 import { Badge } from "../../../components/ui/badge";
 
 export default function ThemingPage() {
-  const cssVariables = `// app/globals.css
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+  const cssVariables = `// app/globals.css (Tailwind v4)
+@import "tailwindcss";
+@plugin "tailwindcss-animate";
+@import "mokri-ui/tailwind.css"; // makes Tailwind scan mokri-ui
 
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-    --radius: 0.5rem;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-  }
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --card: #ffffff;
+  --card-foreground: #171717;
+  --popover: #ffffff;
+  --popover-foreground: #171717;
+  --primary: 222.2 47.4% 11.2%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 210 40% 96.1%;
+  --secondary-foreground: 222.2 47.4% 11.2%;
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --accent: 210 40% 96.1%;
+  --accent-foreground: 222.2 47.4% 11.2%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 222.2 84% 4.9%;
+  --radius: 0.5rem;
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-}`;
+[data-theme="dark"] {
+  --background: #0A0A0A;
+  --foreground: #E5E5E5;
+  --card: #0A0A0A;
+  --card-foreground: #E5E5E5;
+  --popover: #0A0A0A;
+  --popover-foreground: #E5E5E5;
+  --primary: 210 40% 98%;
+  --primary-foreground: 222.2 47.4% 11.2%;
+  --secondary: 217.2 32.6% 17.5%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+  --accent: 217.2 32.6% 17.5%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
+  --border: #262626;
+  --input: #262626;
+  --ring: #3d3e3f;
+}
 
-  const tailwindConfig = `// tailwind.config.ts
-import type { Config } from "tailwindcss"
-
-const config = {
-  darkMode: ["class"],
-  theme: {
-    extend: {
-      colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-        },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
-        },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-        },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
-        },
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
-        },
-      },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
-      },
-    },
-  },
-  plugins: [require("tailwindcss-animate")],
-} satisfies Config
-
-export default config`;
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+`;
 
   const customColors = `// app/globals.css - Custom Color Example
 :root {
@@ -133,8 +91,8 @@ export default config`;
 }`;
 
   const usageExample = `// Using theme colors in components
-import { Button } from '@/components/ui/button'
-import { Card } from '@/components/ui/card'
+import { Button } from 'mokri-ui'
+import { Card } from 'mokri-ui'
 
 export default function ThemedComponent() {
   return (
@@ -161,7 +119,7 @@ export default function ThemedComponent() {
   --primary: 217.2 91.2% 59.8%; /* Lighter blue for dark mode */
 }`;
 
-  const colorMapping = `// How CSS variables map to Tailwind classes
+  const colorMapping = `// How CSS variables map to Tailwind classes (via @theme inline)
 --background → bg-background
 --foreground → text-foreground
 --primary → bg-primary, text-primary, border-primary
@@ -224,16 +182,13 @@ export default function ThemedComponent() {
 
           <section className="space-y-4">
             <div className="space-y-2">
-              <h2 className="text-2xl font-semibold">Tailwind Configuration</h2>
+              <h2 className="text-2xl font-semibold">Tailwind v4 mapping</h2>
               <p className="text-foreground/70">
-                Map CSS variables to Tailwind colors in your{" "}
-                <code className="px-1.5 py-0.5 bg-muted rounded text-xs">
-                  tailwind.config.ts
-                </code>
-                :
+                No <code className="px-1.5 py-0.5 bg-muted rounded text-xs">tailwind.config.ts</code> is required. Mapping is done in CSS with
+                <code className="px-1.5 py-0.5 bg-muted rounded text-xs">@theme inline</code> as shown below:
               </p>
             </div>
-            <CodeWindow code={tailwindConfig} filename="tailwind.config.ts" />
+            <CodeWindow code={`@theme inline {\n  --color-background: var(--background);\n  --color-foreground: var(--foreground);\n  --color-primary: var(--primary);\n  --color-primary-foreground: var(--primary-foreground);\n  // ... see globals.css\n}`} filename="globals.css (@theme inline)" />
           </section>
 
           <section className="space-y-4">
