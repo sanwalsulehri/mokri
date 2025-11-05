@@ -79,6 +79,7 @@ export default config;
 ```css
 @import "tailwindcss";
 @plugin "tailwindcss-animate";
+@import "mokri-ui/tailwind.css"; /* NEW: auto-scan mokri-ui; no @source paths needed */
 
 :root {
   --background: #ffffff;
@@ -93,7 +94,7 @@ export default config;
 }
 ```
 
-**Note:** Tailwind CSS v4 uses CSS-based configuration instead of `tailwind.config.ts`. See the [full installation guide](/docs/installation) for complete setup instructions.
+**Note:** Tailwind CSS v4 uses CSS-based configuration instead of `tailwind.config.ts`. With mokri-ui, just import `mokri-ui/tailwind.css` and you do not need to add any `@source` lines. See the [full installation guide](/docs/installation).
 
 ### Usage
 

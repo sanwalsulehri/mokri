@@ -28,6 +28,7 @@ export default config;`;
   const globalsCSS = `// app/globals.css
 @import "tailwindcss";
 @plugin "tailwindcss-animate";
+@import "mokri-ui/tailwind.css"; // NEW: auto-scan mokri-ui, no @source needed
 
 /* CSS variables for theming */
 :root {
@@ -302,7 +303,8 @@ export default nextConfig;`;
                   <code className="px-1.5 py-0.5 bg-muted rounded text-xs">
                     @tailwind
                   </code>{" "}
-                  directives:
+                  directives. With mokri-ui you can now import a single helper
+                  file that registers Tailwind sources for the package:
                 </p>
                 <CodeWindow code={globalsCSS} filename="app/globals.css" />
                 <p className="text-sm text-foreground/60 mt-2">
