@@ -46,10 +46,70 @@ A minimal, beautiful React components library built with Next.js, TypeScript, an
 
 - **Next.js 16** - React framework
 - **TypeScript** - Type safety
-- **Tailwind CSS** - Styling
+- **Tailwind CSS v4** - Styling (CSS-based configuration)
 - **Framer Motion** - Animations
+- **React Slick** - Carousel components
 
 ## Getting Started
+
+### Installation
+
+```bash
+# Install the package
+npm install mokri-ui
+
+# Install peer dependencies
+npm install tailwindcss@^4.1.0 @tailwindcss/postcss@^4.1.16 tailwindcss-animate@^1.0.7 clsx@^2.1.1 tailwind-merge@^3.3.1 framer-motion@^12.23.24 react-slick@^0.31.0 slick-carousel@^1.8.1
+```
+
+### Setup Tailwind CSS v4
+
+1. **Configure PostCSS** (`postcss.config.mjs`):
+```javascript
+const config = {
+  plugins: {
+    "@tailwindcss/postcss": {},
+  },
+};
+
+export default config;
+```
+
+2. **Configure Tailwind in CSS** (`app/globals.css`):
+```css
+@import "tailwindcss";
+@plugin "tailwindcss-animate";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  /* ... other CSS variables */
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  /* ... other theme variables */
+}
+```
+
+**Note:** Tailwind CSS v4 uses CSS-based configuration instead of `tailwind.config.ts`. See the [full installation guide](/docs/installation) for complete setup instructions.
+
+### Usage
+
+```tsx
+import { Button, Card } from 'mokri-ui'
+
+export default function Page() {
+  return (
+    <Card>
+      <Button>Get Started</Button>
+    </Card>
+  )
+}
+```
+
+### Development
 
 ```bash
 # Clone the repository

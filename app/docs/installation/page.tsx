@@ -9,170 +9,95 @@ import { Badge } from "../../../components/ui/badge";
 export default function InstallationPage() {
   const prerequisites = `// Prerequisites
 Node.js 18+ required
-React 18+ or Next.js 13+ recommended`;
+React 18+ or Next.js 13+ recommended
+Tailwind CSS v4.1.0 or later (required)`;
 
   const installNpm = `npm install mokri-ui`;
 
-  const nextjsTailwind = `// tailwind.config.ts
-import type { Config } from 'tailwindcss'
+  const installDeps = `npm install tailwindcss@^4.1.0 @tailwindcss/postcss@^4.1.16 tailwindcss-animate@^1.0.7 clsx@^2.1.1 tailwind-merge@^3.3.1 framer-motion@^12.23.24 react-slick@^0.31.0 slick-carousel@^1.8.1`;
 
-const config: Config = {
-  darkMode: ["class"],
-  content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
-  ],
-  theme: {
-    container: {
-      center: true,
-      padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
-    },
-    extend: {
-      colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-        },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
-        },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-        },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
-        },
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
-        },
-      },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
-      },
-      keyframes: {
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
-        },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
-        },
-      },
-      animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-      },
-    },
+  const postcssConfig = `// postcss.config.mjs
+const config = {
+  plugins: {
+    "@tailwindcss/postcss": {},
   },
-  plugins: [require("tailwindcss-animate")],
-} satisfies Config
+};
 
-export default config`;
+export default config;`;
 
   const globalsCSS = `// app/globals.css
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin "tailwindcss-animate";
 
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-    --radius: 0.5rem;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-  }
+/* CSS variables for theming */
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --secondary: #262626;
+  --destructive: #9E4042;
+  --muted: #F3F4F6;
+  --border: #E5E5E5;
+  --focusborder: #c2bfbf;
+  --ring: #cbd5e1;
+  --accent: #f1f5f9;
+  --glow: rgba(0, 0, 0, 0.1);
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-}`;
+[data-theme="light"] {
+  --background: #ffffff;
+  --foreground: #171717;
+  --secondary: #E5E5E5;
+  --destructive: #9E4042;
+  --muted: #f5f6f7;
+  --border: #E5E5E5;
+  --focusborder: #c2bfbf;
+  --ring: #e1e2e2;
+  --accent: #f1f5f9;
+  --glow: rgba(0, 0, 0, 0.1);
+}
 
-  const componentsJson = `// components.json
-{
-  "$schema": "https://ui.shadcn.com/schema.json",
-  "style": "default",
-  "rsc": true,
-  "tsx": true,
-  "tailwind": {
-    "config": "tailwind.config.ts",
-    "css": "app/globals.css",
-    "baseColor": "slate",
-    "cssVariables": true,
-    "prefix": ""
-  },
-  "aliases": {
-    "components": "@/components",
-    "utils": "@/lib/utils",
-    "ui": "@/components/ui"
-  }
+[data-theme="dark"] {
+  --background: #0A0A0A;
+  --foreground: #E5E5E5;
+  --secondary: #262626;
+  --destructive: #9E4042;
+  --muted: #1e1e1e;
+  --border: #262626;
+  --focusborder: #252525;
+  --ring: #3d3e3f;
+  --accent: #1e293b;
+  --glow: rgba(255, 255, 255, 0.1);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-secondary: var(--secondary);
+  --color-destructive: var(--destructive);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-focusborder: var(--focusborder);
+  --color-ring: var(--ring);
+  --color-accent: var(--accent);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Prevent horizontal overflow on mobile */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Make media naturally responsive */
+img, video, canvas, svg {
+  max-width: 100%;
+  height: auto;
 }`;
 
   const utilsTs = `// lib/utils.ts
@@ -184,8 +109,8 @@ export function cn(...inputs: ClassValue[]) {
 }`;
 
   const componentUsage = `// app/page.tsx
-import { Button } from '@/components/ui/button'
-import { Card } from '@/components/ui/card'
+import { Button } from 'mokri-ui'
+import { Card } from 'mokri-ui'
 
 export default function Page() {
   return (
@@ -201,26 +126,67 @@ export default function Page() {
   const tsconfig = `// tsconfig.json
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "target": "ES2017",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
     "paths": {
       "@/*": ["./*"]
     }
-  }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": ["node_modules"]
 }`;
 
   const packageJson = `// package.json dependencies
 {
   "dependencies": {
     "mokri-ui": "latest",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "tailwindcss": "^3.4.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwindcss": "^4.1.0",
+    "@tailwindcss/postcss": "^4.1.16",
     "tailwindcss-animate": "^1.0.7",
-    "clsx": "^2.0.0",
-    "tailwind-merge": "^2.0.0",
-    "framer-motion": "^10.16.0"
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.3.1",
+    "framer-motion": "^12.23.24",
+    "react-slick": "^0.31.0",
+    "slick-carousel": "^1.8.1"
+  },
+  "devDependencies": {
+    "@types/react-slick": "^0.23.13",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.35",
+    "typescript": "^5.3.3"
   }
 }`;
+
+  const nextConfig = `// next.config.mjs
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+};
+
+export default nextConfig;`;
 
   return (
     <DocsLayout>
@@ -260,7 +226,7 @@ export default function Page() {
                 <li>Node.js 18.0 or later</li>
                 <li>React 18.0 or later</li>
                 <li>Next.js 13.0 or later (recommended)</li>
-                <li>Tailwind CSS 3.4 or later</li>
+                <li>Tailwind CSS 4.1.0 or later (required)</li>
               </ul>
             </div>
           </section>
@@ -283,10 +249,10 @@ export default function Page() {
                 <h3 className="text-lg font-medium mb-2">
                   2. Install peer dependencies
                 </h3>
-                <CodeWindow
-                  code={`npm install tailwindcss-animate clsx tailwind-merge framer-motion`}
-                  filename="bash"
-                />
+                <p className="text-sm text-foreground/60 mb-2">
+                  Install Tailwind CSS v4 and all required dependencies:
+                </p>
+                <CodeWindow code={installDeps} filename="bash" />
               </div>
             </div>
           </section>
@@ -301,32 +267,57 @@ export default function Page() {
             <div className="space-y-4">
               <div>
                 <h3 className="text-lg font-medium mb-2">
-                  1. Configure Tailwind CSS
+                  1. Configure PostCSS
                 </h3>
                 <p className="text-sm text-foreground/60 mb-2">
-                  Update your{" "}
+                  Tailwind CSS v4 uses PostCSS for processing. Create or update your{" "}
                   <code className="px-1.5 py-0.5 bg-muted rounded text-xs">
-                    tailwind.config.ts
+                    postcss.config.mjs
                   </code>{" "}
                   file:
                 </p>
-                <CodeWindow
-                  code={nextjsTailwind}
-                  filename="tailwind.config.ts"
-                />
+                <CodeWindow code={postcssConfig} filename="postcss.config.mjs" />
+                <p className="text-sm text-foreground/60 mt-2">
+                  <strong>Note:</strong> Tailwind CSS v4 does not require a{" "}
+                  <code className="px-1.5 py-0.5 bg-muted rounded text-xs">
+                    tailwind.config.ts
+                  </code>{" "}
+                  file. Configuration is done directly in CSS.
+                </p>
               </div>
               <div>
                 <h3 className="text-lg font-medium mb-2">
-                  2. Add CSS Variables
+                  2. Configure Tailwind CSS in globals.css
                 </h3>
                 <p className="text-sm text-foreground/60 mb-2">
                   Add the following to your{" "}
                   <code className="px-1.5 py-0.5 bg-muted rounded text-xs">
                     app/globals.css
                   </code>{" "}
-                  file:
+                  file. Tailwind v4 uses{" "}
+                  <code className="px-1.5 py-0.5 bg-muted rounded text-xs">
+                    @import
+                  </code>{" "}
+                  instead of{" "}
+                  <code className="px-1.5 py-0.5 bg-muted rounded text-xs">
+                    @tailwind
+                  </code>{" "}
+                  directives:
                 </p>
                 <CodeWindow code={globalsCSS} filename="app/globals.css" />
+                <p className="text-sm text-foreground/60 mt-2">
+                  <strong>Important:</strong> Make sure to import this CSS file in your{" "}
+                  <code className="px-1.5 py-0.5 bg-muted rounded text-xs">
+                    app/layout.tsx
+                  </code>{" "}
+                  file:
+                </p>
+                <CodeWindow
+                  code={`// app/layout.tsx
+import "./globals.css";
+// ... rest of your layout code`}
+                  filename="app/layout.tsx"
+                />
               </div>
               <div>
                 <h3 className="text-lg font-medium mb-2">
@@ -343,22 +334,16 @@ export default function Page() {
               </div>
               <div>
                 <h3 className="text-lg font-medium mb-2">
-                  4. Create utility function (optional)
+                  4. Create utility function (recommended)
                 </h3>
                 <p className="text-sm text-foreground/60 mb-2">
                   Create a{" "}
                   <code className="px-1.5 py-0.5 bg-muted rounded text-xs">
                     lib/utils.ts
                   </code>{" "}
-                  file for className merging:
+                  file for className merging. This is used by many components:
                 </p>
                 <CodeWindow code={utilsTs} filename="lib/utils.ts" />
-                <p className="text-sm text-foreground/60 mt-2">
-                  Don't forget to install:{" "}
-                  <code className="px-1.5 py-0.5 bg-muted rounded text-xs">
-                    npm install clsx tailwind-merge
-                  </code>
-                </p>
               </div>
             </div>
           </section>
@@ -383,7 +368,7 @@ export default function Page() {
 │       └── ...
 ├── lib/
 │   └── utils.ts
-├── tailwind.config.ts
+├── postcss.config.mjs
 └── tsconfig.json`}
               filename="project structure"
             />
@@ -403,10 +388,19 @@ export default function Page() {
             <div className="space-y-2">
               <h2 className="text-2xl font-semibold">Required Dependencies</h2>
               <p className="text-foreground/70">
-                Make sure these packages are installed in your project:
+                Make sure these packages are installed in your project. These are the exact versions used in this project:
               </p>
             </div>
             <CodeWindow code={packageJson} filename="package.json" />
+            <div className="mt-4 p-4 bg-muted/50 rounded-lg">
+              <p className="text-sm text-foreground/70">
+                <strong>Note:</strong> Tailwind CSS v4 requires{" "}
+                <code className="px-1.5 py-0.5 bg-background rounded text-xs">
+                  @tailwindcss/postcss
+                </code>{" "}
+                for PostCSS integration. Make sure to install it along with Tailwind CSS v4.
+              </p>
+            </div>
           </section>
 
           <section className="space-y-4">
