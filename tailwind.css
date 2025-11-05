@@ -1,0 +1,7 @@
+/* Tailwind v4 source hints for mokri-ui */
+/* Import this in the consumer's globals.css: @import "mokri-ui/tailwind.css"; */
+
+@source "./dist/components/ui/**/*.js";
+@source "./dist/lib/index.js";
+
+
